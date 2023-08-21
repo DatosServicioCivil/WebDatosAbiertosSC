@@ -98,16 +98,16 @@ total_nombrados = df[df.Estado.isin(["CON NOMBRAMIENTO", "FINALIZADO", "Finaliza
 
 kpi1,kpi2,kpi3,kpi4=st.columns(4,gap='large')
 with kpi1:
-        st.image('streamlit/imagenes/reclutamiento_seleccion.png',use_column_width='auto')
+        st.image('imagenes/reclutamiento_seleccion.png',use_column_width='auto')
         st.metric(label='Concursos publicados:',value=total_concursos_publicados)
 with kpi2:
-        st.image('streamlit/imagenes/cargo.jpeg',use_column_width='auto')
+        st.image('imagenes/cargo.jpeg',use_column_width='auto')
         st.metric(label='Cargos publicados:',value=cantidad_cargos_publicados)
 with kpi3:
-        st.image('streamlit/imagenes/ministerio.png',use_column_width='auto')
+        st.image('imagenes/ministerio.png',use_column_width='auto')
         st.metric(label='Servicios con publicaciones:',value=servicios)
 with kpi4:
-        st.image('streamlit/imagenes/seleccionado.png',use_column_width='auto')
+        st.image('imagenes/seleccionado.png',use_column_width='auto')
         st.metric(label='Total ADP nombrados/as:',value=total_nombrados)
 st.markdown('---')
 st.markdown('##')
