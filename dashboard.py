@@ -25,7 +25,7 @@ st.set_page_config(page_title="Web Datos Abiertos Servicio Civil",\
 #--funcion para traer datos y guardar en cache----
 @st.cache_data
 def get_data():
-        df=pd.read_csv('/Users/cristiangonzalezavalos/Desktop/Magister/concursos_adp.csv')
+        df=pd.read_csv('concursos_adp.csv')
         df=df[(df['Estado']!='Sin Efecto') & (df['Estado']!= 'SIN EFECTO')]
         df['Ministerio'] = df['Ministerio'].str.replace(r'(Ministerio de |Ministerio del )\s*', '', regex=True)
         df['Ministerio'] = df['Ministerio'].str.replace(r'(Ministerio )\s*', '', regex=True)
