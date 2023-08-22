@@ -123,10 +123,10 @@ graf1=px.bar(tabla_grafico_1,x='año',y='Concursos',title='<b>Publicados por añ
 
 #col1,col2=st.columns(2,gap='large')
 #with col1:
-        st.plotly_chart(graf1,use_container_width=True)
-        st.write(f'En el 2004 el sistema de Alta Dirección Publica empieza funcionar. En su primer año convoca a concurso 16 cargos. En sus 20 años de fncionamiento el sistema a convocado **{total_concursos_publicados}** concursos tanto de primer como segundo nivel jerárquico.')
+st.plotly_chart(graf1,use_container_width=True)
+st.write(f'En el 2004 el sistema de Alta Dirección Publica empieza funcionar. En su primer año convoca a concurso 16 cargos. En sus 20 años de fncionamiento el sistema a convocado **{total_concursos_publicados}** concursos tanto de primer como segundo nivel jerárquico.')
 #with col2:
-        st.plotly_chart(graf2,use_container_width=True)
+st.plotly_chart(graf2,use_container_width=True)
 
 st.markdown('##')
 st.title(':1234: Detalle concursos publicados')
