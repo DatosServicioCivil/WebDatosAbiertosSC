@@ -38,6 +38,9 @@ graf2 = px.line(
     labels={'year': 'Año', 'Porcentaje': 'Porcentaje'},  # Customize axis labels
 )
 
+# Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
+graf2.update_layout(yaxis_tickformat='%')
+
 # Add lines for "Mujeres" and "Hombres"
 graf2.add_trace(
     go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Mujeres')
