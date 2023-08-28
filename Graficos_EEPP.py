@@ -19,7 +19,7 @@ st.subheader(date)
 
 # define si se ven los ejes Y
 visible_y_axis=True
-color_line='#9dd866'
+color_line='#216d41'
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
 graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
@@ -57,7 +57,7 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
-graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 
 col1,col2,col3=st.columns(3,gap='small')
