@@ -12,7 +12,7 @@ df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
 df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
 df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv')
 
-date='31 de Agosto de 2023'
+date='31 de Marzo de 2023'
 
 st.title('Estadísticas Portal Empleos Públicos')
 st.subheader(date)
