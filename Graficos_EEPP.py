@@ -3,6 +3,19 @@ import streamlit as st
 import plotly.express as px 
 import plotly.graph_objects as go
 
+custom_css = """
+<style>
+body {
+    width: 90%;  /* Ancho del cuerpo principal */
+    margin: auto; /* Centrar en la página */
+}
+</style>
+"""
+
+st.markdown(custom_css, unsafe_allow_html=True)
+
+
+
 
 
 df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')    
