@@ -61,12 +61,12 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
 graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Convocatorias por Año
-graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>').\
+graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>', color='#4f3d7a').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Vacantes Concursadas por Año
-graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>').\
+graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color='#4f3d7a').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 #----------------------------------------------------------------------------------------------------------------------------
