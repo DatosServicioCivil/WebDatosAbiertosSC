@@ -20,7 +20,7 @@ st.subheader(date)
 # define si se ven los ejes Y
 visible_y_axis=True
 color_line='#216d41'
-color_bar='#4f3d7a'
+color_bar='#802dcb'
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
 graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
@@ -61,12 +61,12 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
 graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Convocatorias por Año
-graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>', color='#4f3d7a').\
+graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>', color=color_bar).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Vacantes Concursadas por Año
-graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color='#4f3d7a').\
+graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color=color_bar).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 #----------------------------------------------------------------------------------------------------------------------------
