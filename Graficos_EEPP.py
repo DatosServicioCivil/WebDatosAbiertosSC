@@ -21,7 +21,7 @@ st.subheader(date)
 visible_y_axis=False
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
-graf1=px.bar(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>',text_auto=True).\
+graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>',text_auto=True).\
         update_yaxes(visible=visible_y_axis).\
                 update_xaxes(title_text=None)
 
@@ -45,7 +45,7 @@ graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mod
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
-graf3=px.bar(df_postulaciones,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>',text_auto=True).\
+graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>',text_auto=True).\
         update_yaxes(visible=visible_y_axis).\
                 update_xaxes(title_text=None)
 
