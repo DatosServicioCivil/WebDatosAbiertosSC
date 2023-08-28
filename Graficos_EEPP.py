@@ -18,7 +18,7 @@ st.title('Estadísticas Portal Empleos Públicos')
 st.subheader(date)
 
 # define si se ven los ejes Y
-visible_y_axis=False
+visible_y_axis=True
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
 graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>').\
