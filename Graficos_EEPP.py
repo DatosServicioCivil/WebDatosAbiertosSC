@@ -39,7 +39,7 @@ graf2 = px.line(
 )
 
 # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
-graf2.update_layout(yaxis_tickformat='%')
+graf2.update_layout(yaxis_tickformat='.2%')
 
 # Add lines for "Mujeres" and "Hombres"
 graf2.add_trace(
