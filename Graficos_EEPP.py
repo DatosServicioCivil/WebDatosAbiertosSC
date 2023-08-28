@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 
 
 #--funcion para traer datos y guardar en cache----
-@st.cache_data
+@st.cache
 def get_data_1():
     df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')
     return df_postulaciones
