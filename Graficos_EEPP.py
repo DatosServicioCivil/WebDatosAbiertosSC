@@ -32,6 +32,10 @@ graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline
 df_mujeres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Mujeres']
 df_hombres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Hombres']
 
+# Asignar colores de acuerdo a una paleta de colores a cada sexo
+sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
+
+
 # Create the line plot using Plotly Express
 graf2 = px.line(
     title='<b>Distribución de Postulaciones por Sexo</b>',
@@ -43,9 +47,9 @@ graf2.update_layout(yaxis_tickformat='.2%')
 
 # Add lines for "Mujeres" and "Hombres"
 graf2.add_trace(
-    go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Mujeres')
+    go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Mujeres',line_color=sexo_color_map['Mujeres'])
 )
-graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Hombres'))
+graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Hombres',line_color=sexo_color_map['Hombres']))
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
