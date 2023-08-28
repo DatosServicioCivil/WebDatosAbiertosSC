@@ -39,9 +39,9 @@ graf2 = px.line(
 
 # Add lines for "Mujeres" and "Hombres"
 graf2.add_trace(
-    go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines', name='Mujeres')
+    go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines',line_shape='spline', name='Mujeres')
 )
-graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines', name='Hombres'))
+graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines',line_shape='spline', name='Hombres'))
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
