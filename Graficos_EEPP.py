@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 
 df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')    
-df_postulaciones_sexo=pd.read_csv('EEPP/porcentaje_postulaciones_sexo_e.csv')
+df_postulaciones_sexo=pd.read_csv('EEPP/porcentaje_postulaciones_sexo_e.csv',sep=";")
 df_postulaciones_promedio=pd.read_csv('EEPP/Postulacion_Promedio_x_Año.csv')
 df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
 df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
