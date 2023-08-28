@@ -4,40 +4,13 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 
-#--funcion para traer datos y guardar en cache----
-@st.cache
-def get_data_1():
-    df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')
-    return df_postulaciones
-df_postulaciones=get_data_1()
 
-def get_data_2():
-    df_postulaciones_sexo=pd.read_csv('EEPP/Porcentaje_Postulaciones_Sexo_e.csv')
-    return df_postulaciones_sexo
-df_postulaciones_sexo=get_data_2()
-
-def get_data_3():
-    df_postulaciones_promedio=pd.read_csv('EEPP/Postulacion_Promedio_x_Año.csv')
-    return df_postulaciones_promedio
-df_postulaciones_promedio=get_data_3()
-
-def get_data_4():
-    df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
-    return df_convocatorias
-df_convocatorias=get_data_4()
-    
-def get_data_5():
-    df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
-    return df_vacantes
-df_vacantes=get_data_5()
-
-def get_data_6():
-    df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv')
-    return df_ConvEnLinea
-df_ConvEnLinea=get_data_6()
-    
-    
-
+df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')    
+df_postulaciones_sexo=pd.read_csv('EEPP/Porcentaje_Postulaciones_Sexo_e.csv')
+df_postulaciones_promedio=pd.read_csv('EEPP/Postulacion_Promedio_x_Año.csv')
+df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
+df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
+df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv')
 
 date='31 de Agosto de 2023'
 
