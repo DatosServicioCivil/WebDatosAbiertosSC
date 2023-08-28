@@ -59,6 +59,13 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
 
 graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
+# grafico Convocatorias por Año
+graf4=px.bar(df_convocatorias,x='Año',y='Convoctorias',title='<b>Evolución de convocatorias por año</b>', color=color_line)).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                update_xaxes(title_text=None)
+#----------------------------------------------------------------------------------------------------------------------------
+
+
 
 col1,col2,col3=st.columns(3,gap='small')
 with col1:
@@ -68,4 +75,8 @@ with col2:
     st.plotly_chart(graf2,use_container_width=True)
 
 with col3:
-    st.plotly_chart(graf3,use_container_width=True)
+    st.plotly_chart(graf4,use_container_width=True)
+
+col4, col5, col6=st.columns(3,gap='small')
+with col4:
+        st.plotly_chart(graf3,use_container_width=True)
