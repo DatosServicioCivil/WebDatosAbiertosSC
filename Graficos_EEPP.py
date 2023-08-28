@@ -24,6 +24,7 @@ visible_y_axis=True
 graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
+graf1.update_traces(mode='lines+markers', marker=dict(size=8))
 
 #----------------------------------------------------------------------------------------------------------------------------
 #grafico 2: Distribución de Postulaciones por Sexo
@@ -49,8 +50,8 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
-
-
+graf3.update_traces(mode='lines+markers', marker=dict(size=8))
+#----------------------------------------------------------------------------------------------------------------------------
 
 col1,col2,col3=st.columns(3,gap='small')
 with col1:
