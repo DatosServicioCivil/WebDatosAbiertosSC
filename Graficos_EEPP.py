@@ -75,7 +75,7 @@ graf6=px.line(df_ConvEnLinea,x='Año',y='% Convocatorias Postulacion en Linea',t
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
-graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
 #----------------------------------------------------------------------------------------------------------------------------
 
 
