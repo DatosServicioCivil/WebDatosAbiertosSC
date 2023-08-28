@@ -27,10 +27,6 @@ graf1=px.bar(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de
 
 #----------------------------------------------------------------------------------------------------------------------------
 #grafico 2: Distribución de Postulaciones por Sexo
-# Load your data
-df_postulaciones_sexo = pd.read_csv('datos/EEPP/Porcentaje_Postulaciones_Sexo_e.csv', encoding='utf-8', sep=";").\
-                          update_yaxes(visible=visible_y_axis)#.update_xaxes(title_text=None)      
-
 # Create separate DataFrames for "Mujeres" and "Hombres"
 df_mujeres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Mujeres']
 df_hombres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Hombres']
