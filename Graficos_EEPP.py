@@ -21,7 +21,7 @@ st.subheader(date)
 visible_y_axis=False
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
-graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>',text_auto=True).\
+graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>').\
         update_yaxes(visible=visible_y_axis).\
                 update_xaxes(title_text=None)
 
