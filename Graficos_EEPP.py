@@ -52,7 +52,7 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
 
 
 
-col1,col2,col3=st.columns(3)
+col1,col2,col3=st.columns(3,gap='small')
 with col1:
     st.plotly_chart(graf1,use_container_width=True)
 
