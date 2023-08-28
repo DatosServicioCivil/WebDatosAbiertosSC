@@ -20,6 +20,7 @@ st.subheader(date)
 # define si se ven los ejes Y
 visible_y_axis=True
 color_line='#216d41'
+color_bar='#4f3d7a'
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
 graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
@@ -60,9 +61,21 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
 graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Convocatorias por Año
-graf4=px.bar(df_convocatorias,x='Año',y='Convoctorias',title='<b>Evolución de convocatorias por año</b>', color=color_line).\
+graf4=px.bar(df_convocatorias,x='Año',y='Convoctorias',title='<b>Evolución de convocatorias por año</b>', color=color_bar).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
+#----------------------------------------------------------------------------------------------------------------------------
+# grafico Vacantes Concursadas por Año
+graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>', color=color_bar).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                update_xaxes(title_text=None)
+#----------------------------------------------------------------------------------------------------------------------------
+# grafico Porcentaje de Convocatorias en Linea por Año
+graf6=px.line(df_ConvEnLinea,x='Año',y='% Convocatorias Postulacion en Linea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                update_xaxes(title_text=None)
+
+graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 
 
@@ -70,13 +83,16 @@ graf4=px.bar(df_convocatorias,x='Año',y='Convoctorias',title='<b>Evolución de 
 col1,col2,col3=st.columns(3,gap='small')
 with col1:
     st.plotly_chart(graf1,use_container_width=True)
-
 with col2:
     st.plotly_chart(graf2,use_container_width=True)
-
 with col3:
     st.plotly_chart(graf4,use_container_width=True)
+
 
 col4, col5, col6=st.columns(3,gap='small')
 with col4:
         st.plotly_chart(graf3,use_container_width=True)
+with col5:
+        st.plotly_chart(graf5,use_container_width=True)
+with col6:
+        st.plotly_chart(graf6,use_container_width=True)
