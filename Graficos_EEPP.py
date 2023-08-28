@@ -19,12 +19,13 @@ st.subheader(date)
 
 # define si se ven los ejes Y
 visible_y_axis=True
+color_line='#9dd866'
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
-graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de Postulaciones por Año</b>').\
+graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
-graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline',line_color='color_line')
 
 #----------------------------------------------------------------------------------------------------------------------------
 #grafico 2: Distribución de Postulaciones por Sexo
@@ -38,7 +39,7 @@ sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores po
 
 # Create the line plot using Plotly Express
 graf2 = px.line(
-    title='<b>Distribución de Postulaciones por Sexo</b>',
+    title='<b>Evolución de postulaciones por año y sexo</b>',
     labels={'year': 'Año', 'Porcentaje': 'Porcentaje'},  # Customize axis labels
 )
 
@@ -57,7 +58,7 @@ graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio -
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
-graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline',line_color='color_line')
 #----------------------------------------------------------------------------------------------------------------------------
 
 col1,col2,col3=st.columns(3,gap='small')
