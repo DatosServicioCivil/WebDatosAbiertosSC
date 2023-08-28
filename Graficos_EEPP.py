@@ -46,7 +46,7 @@ graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mod
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
 graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
-        update_yaxes(visible=visible_y_axis).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
 
