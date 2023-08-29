@@ -7,7 +7,7 @@ st.set_page_config(layout='wide')
 
 df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
 df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
-df_seleccionados=pd.read_csv('PCH/Seleccionado_x_año.csv',sep=";")
+df_seleccionados=pd.read_csv('PCH/Seleccionado_x_año.csv',sep=";",encoding='utf-8')
 
 date='31 de Marzo de 2023'
 
