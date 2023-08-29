@@ -51,7 +51,7 @@ graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
-graf3=px.line(df_seleccionados,x='Año',y='Seleccionados',title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>').\
+graf3=px.line(df_seleccionados,x='year',y='Seleccionados',title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
