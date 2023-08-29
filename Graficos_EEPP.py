@@ -71,7 +71,7 @@ graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocato
                 update_xaxes(title_text=None)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Porcentaje de Convocatorias en Linea por Año
-graf6=px.line(df_ConvEnLinea,x='Año',y='% Convocatorias Postulacion en Linea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
+graf6=px.line(df_ConvEnLinea,x='Año',y='% Convocatorias Postulacion en Linea',title='<b>Evolución de convocatorias en línea por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
