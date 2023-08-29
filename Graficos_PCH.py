@@ -34,7 +34,7 @@ graf2=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Seleccionados por Año
 # Create the line plot
-graf3 = px.line(df_seleccionados, x='year', y='Seleccionados ', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
+graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
     .update_yaxes(visible=visible_y_axis, title_text=None)\
     .update_xaxes(title_text=None)
 
