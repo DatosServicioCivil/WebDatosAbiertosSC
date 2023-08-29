@@ -5,16 +5,18 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
-df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')    
-df_postulaciones_sexo=pd.read_csv('EEPP/porcentaje_postulaciones_sexo_e.csv',sep=";")
-df_postulaciones_promedio=pd.read_csv('EEPP/Postulacion_Promedio_x_Año.csv')
-df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
+df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
+#df_postulaciones_sexo=pd.read_csv('EEPP/porcentaje_postulaciones_sexo_e.csv',sep=";")
+#df_postulaciones_promedio=pd.read_csv('EEPP/Postulacion_Promedio_x_Año.csv')
+df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
 df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
-df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv',sep=";")
+#df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv',sep=";")
+df_seleccionados=pd.read_csv('PCH/.csv',sep=";")
+
 
 date='31 de Marzo de 2023'
 
-st.title('Estadísticas Portal Empleos Públicos')
+st.title('Estadísticas Portal Prácticas Chile')
 st.subheader(date)
 
 # define si se ven los ejes Y
@@ -62,16 +64,6 @@ graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Convocatorias por Año
 graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-        update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None)
-#----------------------------------------------------------------------------------------------------------------------------
-# grafico Vacantes Concursadas por Año
-graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-        update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None)
-#----------------------------------------------------------------------------------------------------------------------------
-# grafico Porcentaje de Convocatorias en Linea por Año
-graf6=px.line(df_ConvEnLinea,x='year',y='Porcentaje Convocatorias Postulacion en Linea',title='<b>Evolución de convocatorias en línea por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 
