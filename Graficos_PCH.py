@@ -18,7 +18,7 @@ st.subheader(date)
 # define si se ven los ejes Y
 visible_y_axis=True
 color_line='#216d41'
-color_bar='#802dcb'
+color_bar='#6633CC'
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Evolución de Postulaciones por Año
 graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución de postulaciones por año</b>').\
