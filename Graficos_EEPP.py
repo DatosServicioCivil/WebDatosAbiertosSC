@@ -61,32 +61,32 @@ graf2.update_layout(
 )
 
 # actualiza el eje x para nostrar todas las etiquetas de años
-graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1)
+graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
 graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None,tickmode='linear', dtick=1)
+                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 
 graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Convocatorias por Año
 graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None,tickmode='linear', dtick=1)
+                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf4.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Vacantes Concursadas por Año
 graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None,tickmode='linear', dtick=1)
+                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf5.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Porcentaje de Convocatorias en Linea por Año
 graf6=px.line(df_ConvEnLinea,x='year',y='Porcentaje Convocatorias Postulacion en Linea',title='<b>Evolución de convocatorias en línea por año</b>').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
-                update_xaxes(title_text=None,tickmode='linear', dtick=1)
+                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 
 graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
 graf6.update_layout(yaxis_tickformat='.0%')
