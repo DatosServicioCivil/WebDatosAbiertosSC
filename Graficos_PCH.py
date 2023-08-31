@@ -37,6 +37,7 @@ graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución d
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+graf1.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 
 # grafico Convocatorias por Año
