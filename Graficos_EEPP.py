@@ -57,8 +57,18 @@ graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mod
 
 # Actualizar la ubicación de la leyenda
 graf2.update_layout(
-    legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace',grid=dict(rows=1, columns=2))  # Ubicar debajo del eje x en dos columnas
+    legend=dict(x=0, y=1, traceorder='normal', bgcolor='rgba(0,0,0,0)'),
+    grid=dict(rows=1, columns=1),
 )
+
+
+#graf2.update_layout(
+#    legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace',grid=dict(rows=1, columns=2))  # Ubicar debajo del eje x en dos columnas
+#)
+
+# Agregar formas a la leyenda para simular dos columnas
+graf2.add_shape(type="rect", x0=0.5, y0=1, x1=1, y1=0.5, xref="paper", yref="paper", layer="below", fillcolor="rgba(0,0,0,0)")
+graf2.add_shape(type="rect", x0=0, y0=1, x1=0.5, y1=0.5, xref="paper", yref="paper", layer="below", fillcolor="rgba(0,0,0,0)")
 
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
