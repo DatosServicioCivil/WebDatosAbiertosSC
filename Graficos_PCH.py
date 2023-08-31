@@ -64,5 +64,11 @@ col3, col4=st.columns(2,gap='small')
 with col3:
         st.plotly_chart(graf3,use_container_width=True)
 with col4:
-        st.markdown('<p class="big-font">'Prácticas Chile es un programa gestionado por el Servicio Civil, \nque busca promover y atraer talento joven al Estado, y que permite a \nestudiantes de carreras universitarias y técnicas realizar sus prácticas \nen ministerios y servicios públicos, poniendo al servicio del país sus \nconocimientos y habilidades.'</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">'Prácticas Chile es un programa gestionado por el Servicio Civil, '</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">'que busca promover y atraer talento joven al Estado, y que permite a '</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">'estudiantes de carreras universitarias y técnicas realizar sus prácticas '</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">'en ministerios y servicios públicos, poniendo al servicio del país sus '</p>', unsafe_allow_html=True)
+        st.markdown('<p class="big-font">'conocimientos y habilidades.'</p>', unsafe_allow_html=True)
+        
+        
         #st.text('Prácticas Chile es un programa gestionado por el Servicio Civil, \nque busca promover y atraer talento joven al Estado, y que permite a \nestudiantes de carreras universitarias y técnicas realizar sus prácticas \nen ministerios y servicios públicos, poniendo al servicio del país sus \nconocimientos y habilidades.')
