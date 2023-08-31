@@ -29,6 +29,7 @@ graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución d
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
 graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+graf1.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 #grafico 2: Distribución de Postulaciones por Sexo
 # Create separate DataFrames for "Mujeres" and "Hombres"
@@ -66,11 +67,13 @@ graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline
 graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
+graf4.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Vacantes Concursadas por Año
 graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None)
+graf5.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Porcentaje de Convocatorias en Linea por Año
 graf6=px.line(df_ConvEnLinea,x='year',y='Porcentaje Convocatorias Postulacion en Linea',title='<b>Evolución de convocatorias en línea por año</b>').\
