@@ -68,4 +68,4 @@ col4, col5=st.columns(2,gap='small')
 with col4:
         st.plotly_chart(graf3,use_container_width=True)
 with col4:
-        st.text()
+        st.text('')
