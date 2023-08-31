@@ -55,6 +55,11 @@ graf2.add_trace(
 )
 graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Hombres',line_color=sexo_color_map['Hombres']))
 
+# Actualizar la ubicación de la leyenda
+graf2.update_layout(
+    legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top')  # Ubicar debajo del eje x
+)
+
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Postulación Promedio por Año
 graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
