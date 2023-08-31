@@ -25,7 +25,8 @@ color_bar='#6633CC'
 st.markdown("""
 <style>
 .normal-font {
-    font-size:20px !important;
+    font-size:30px;
+    fott-type:roboto
 }
 </style>
 """, unsafe_allow_html=True)
