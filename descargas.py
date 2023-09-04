@@ -20,7 +20,7 @@ plt.rcParams['figure.figsize'] = 8, 8
 
 
 
-st.markdown('# Descarga de Datasets and Reportes')
+st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
 st.markdown('**Dirección Nacional del Servicio Civil**') 
 #st.markdown("## Key COVID-19 Metrics")
