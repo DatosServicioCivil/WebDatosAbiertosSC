@@ -29,7 +29,7 @@ st.markdown('**Dirección Nacional del Servicio Civil**')
 st.markdown("El Servicio Civil pone a disposición una serie de reportes y datasets para descargar.")
 st.markdown('Por información adicional contactanos a traves de nuestro sitio de *Atención Ciudadana y Contacto* (https://www.serviciocivil.cl/contacto)')
 
-Tematica = st.radio('Selecciona una temática', ['ADP', 'Gestión de Persona en el Estado'], default=['ADP'])
+Tematica = st.radio('Selecciona una temática', ['ADP', 'Gestión de Persona en el Estado'])
 
 if Tematica=='ADP':
   col1,col2,col3=st.columns(3,gap='small')
