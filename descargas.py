@@ -4,6 +4,8 @@ from matplotlib import pyplot as plt
 import matplotlib.style as style
 from datetime import date
 
+st.set_page_config(layout='wide')
+
 today = date.today()
 #sns.set_style('whitegrid')
 style.use('fivethirtyeight')
