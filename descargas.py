@@ -34,7 +34,7 @@ st.markdown('Por información adicional contactanos a traves de nuestro sitio de
 col1,col2,col3=st.columns(3,gap='small')
 with col1:
   st.text('Cargos ADP')
-   st.download_button(
+  st.download_button(
         label='Descargar',
         data='ADP/Cargos_ADP.csv',
         file_name='Cargos_ADP.csv',
