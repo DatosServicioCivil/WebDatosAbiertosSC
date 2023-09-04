@@ -21,6 +21,17 @@ plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 8, 8
 
 
+@st.cache(ttl=3*60*60, suppress_st_warning=True)
+def get_data():
+    Cargos = pd.read_csv('ADP/Cargos_ADP.csv')
+    Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv')
+    return Cargos, Publicaciones
+
+Cargos, Publicaciones = get_data()
+
+
+
+
 
 st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
@@ -39,14 +50,14 @@ if Tematica=='ADP':
     st.markdown('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
     st.download_button(
           label='Descargar',
-          data='ADP/Cargos_ADP.csv',
+          data=cargos,
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col2:
     st.write('**Concursos ADP**')
-    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
+    st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
     st.download_button(
           label='Descargar',
           data='ADP/Publicaciones_ADP.csv',
@@ -56,7 +67,7 @@ if Tematica=='ADP':
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col3:
     st.write('**Nóminas ADP**')
-    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes envío nómina, Año envío nómina')
+    st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes envío nómina, Año envío nómina')
     st.download_button(
           label='Descargar',
           data='ADP/Nominas_ADP.csv',
