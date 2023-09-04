@@ -56,5 +56,32 @@ with col3:
         file_name='Nominas_ADP.csv',
         mime='text/csv'
         )
+
+col4,col5,col6=st.columns(3,gap='small')
+with col4:
+  st.text('Nombramientos ADP')
+  st.download_button(
+        label='Descargar',
+        data='ADP/Nombramientos_ADP.csv',
+        file_name='Nombramientos_ADP.csv',
+        mime='text/csv'
+        )
+with col5:
+  st.text('Concursos desiertos')
+  st.download_button(
+        label='Descargar',
+        data='ADP/desiertos_ADP.csv',
+        file_name='desiertos_ADP.csv',
+        mime='text/csv'
+        )
+with col6:
+  st.text('Tiempos Concursos ADP')
+  st.download_button(
+        label='Descargar',
+        data='ADP/Tiempos_ADP.csv',
+        file_name='Tiempos_ADP.csv',
+        mime='text/csv'
+        )
+
   #st.download_button('Download file', ADP/Nominas_ADP.csv)
 
