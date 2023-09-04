@@ -20,18 +20,15 @@ plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 8, 8
 
-
-@st.cache(ttl=3*60*60, suppress_st_warning=True)
+#-----inicio carga de datos------------------------------------------------
+#@st.cache(ttl=3*60*60, suppress_st_warning=True)
 def get_data():
     Cargos = pd.read_csv('ADP/Cargos_ADP.csv')
     Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv')
     return Cargos, Publicaciones
 
 Cargos, Publicaciones = get_data()
-
-
-
-
+#-----fin carga de datos------------------------------------------------
 
 st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
@@ -60,7 +57,7 @@ if Tematica=='ADP':
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
     st.download_button(
           label='Descargar',
-          data='ADP/Publicaciones_ADP.csv',
+          data=Publicaciones,
           file_name='Publicaciones_ADP.csv',
           mime='text/csv'
           )
