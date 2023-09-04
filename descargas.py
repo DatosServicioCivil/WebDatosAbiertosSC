@@ -87,7 +87,7 @@ else:
    st.markdown('Informe Trimestral Monitoreo de Resultados reportados referidos a Cumplimiento Norma Reclutamiento y Selección')
    col7,col8=st.columns(2,gap='medium')
    with col7:
-      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección \n *I trimestre 2023*") 
+      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección - **I trimestre 2023**") 
       st.download_button(
           label='Descargar',
           data='GestionPersonas/1er-inf-trim-resultados-cumplimiento-norma-RyS_abril2023.pdf',
@@ -96,7 +96,7 @@ else:
           )
       st.write(':blue[Fecha de emisión abril 2023]')
    with col8:
-      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección \n *II trimestre 2023*") 
+      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección - **II trimestre 2023**") 
       st.download_button(
           label='Descargar',
           data='GestionPersonas/2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023 (1).pdf',
