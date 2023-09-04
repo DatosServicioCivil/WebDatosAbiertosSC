@@ -103,6 +103,7 @@ else:
           file_name='2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023 (1).pdf',
           mime='pdf'
           )
-      st.write(f":grey[Fecha de emisión julio 2023]')
+      st.write(':blue[Fecha de emisión julio 2023]')
+      st.markdown(':grey[Fecha de emisión julio 2023]')
   #st.download_button('Download file', ADP/Nominas_ADP.csv)
 
