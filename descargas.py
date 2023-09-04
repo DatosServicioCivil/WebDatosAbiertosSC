@@ -32,7 +32,7 @@ st.markdown('Por información adicional contactanos a traves de nuestro sitio de
 Tematica = st.radio('Selecciona una temática', ['ADP', 'Gestión de Persona en el Estado'],horizontal =True)
 st.markdown("""---""")
 if Tematica=='ADP':
-  st.markdown('**Información de concursos de Alta Dirección Pública **'
+  st.markdown('**Información de concursos de Alta Dirección Pública **')
   col1,col2,col3=st.columns(3,gap='small')
   with col1:
     st.text('Cargos ADP')
