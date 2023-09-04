@@ -22,12 +22,8 @@ plt.rcParams['figure.figsize'] = 8, 8
 
 #-----inicio carga de datos------------------------------------------------
 #@st.cache(ttl=3*60*60, suppress_st_warning=True)
-def get_data():
-    Cargos = pd.read_csv('ADP/Cargos_ADP.csv')
-    Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv')
-    return Cargos, Publicaciones
-
-Cargos, Publicaciones = get_data()
+Cargos = pd.read_csv('ADP/Cargos_ADP.csv')
+Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv')
 #-----fin carga de datos------------------------------------------------
 
 st.markdown('# Descarga de Datasets y Reportes')
@@ -47,7 +43,7 @@ if Tematica=='ADP':
     st.markdown('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
     st.download_button(
           label='Descargar',
-          data=cargos,
+          data=Cargos,
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
