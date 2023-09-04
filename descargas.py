@@ -86,7 +86,7 @@ if Tematica=='ADP':
 else:
    col7,col8=st.columns(2,gap='medium')
    with col7:
-      st.text('Reporte de cumplimiento de norma de Reclutamieno y Selección /n I trimestre 2023')
+      st.markdown('Reporte de cumplimiento de norma de Reclutamieno y Selección /n I trimestre 2023')
       st.download_button(
           label='Descargar',
           data='GestionPersonas/1er-inf-trim-resultados-cumplimiento-norma-RyS_abril2023.pdf',
@@ -94,7 +94,7 @@ else:
           mime='pdf'
           )
    with col8:
-      st.text('Reporte de cumplimiento de norma de Reclutamieno y Selección /n II trimestre 2023')
+      st.markdown('Reporte de cumplimiento de norma de Reclutamieno y Selección /n II trimestre 2023')
       st.download_button(
           label='Descargar',
           data='GestionPersonas/2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023 (1).pdf',
