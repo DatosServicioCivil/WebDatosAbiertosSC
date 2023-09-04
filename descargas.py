@@ -94,7 +94,7 @@ else:
           file_name='1er-inf-trim-resultados-cumplimiento-norma-RyS_abril2023.pdf',
           mime='pdf'
           )
-      st.write('Fecha de emisión: abril 2023')
+      st.write(':blue[Fecha de emisión abril 2023]')
    with col8:
       st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección \n *II trimestre 2023*") 
       st.download_button(
@@ -104,6 +104,5 @@ else:
           mime='pdf'
           )
       st.write(':blue[Fecha de emisión julio 2023]')
-      st.markdown(':grey[Fecha de emisión julio 2023]')
   #st.download_button('Download file', ADP/Nominas_ADP.csv)
 
