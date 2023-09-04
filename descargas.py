@@ -35,8 +35,8 @@ if Tematica=='ADP':
   st.markdown('**Información de concursos de Alta Dirección Pública**')
   col1,col2,col3=st.columns(3,gap='small')
   with col1:
-    st.text('Cargos ADP')
-    st.text('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
+    st.text('**Cargos ADP**')
+    st.markdown('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
     st.download_button(
           label='Descargar',
           data='ADP/Cargos_ADP.csv',
@@ -45,8 +45,8 @@ if Tematica=='ADP':
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col2:
-    st.text('Concursos ADP')
-    st.text('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, N° Concurso')
+    st.text('**Concursos ADP**')
+    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, N° Concurso')
     st.download_button(
           label='Descargar',
           data='ADP/Publicaciones_ADP.csv',
@@ -55,8 +55,8 @@ if Tematica=='ADP':
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col3:
-    st.text('Nóminas ADP')
-    st.text('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes envío nómina, Año envío nómina')
+    st.text('**Nóminas ADP**')
+    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes envío nómina, Año envío nómina')
     st.download_button(
           label='Descargar',
           data='ADP/Nominas_ADP.csv',
@@ -67,8 +67,8 @@ if Tematica=='ADP':
   
   col4,col5,col6=st.columns(3,gap='small')
   with col4:
-    st.text('Nombramientos ADP')
-    st.text('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha Nombramiento, Fecha Inicio de labor, N° Concurso, Sexo')
+    st.text('**Nombramientos ADP**')
+    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha Nombramiento, Fecha Inicio de labor, N° Concurso, Sexo')
     st.download_button(
           label='Descargar',
           data='ADP/Nombramientos_ADP.csv',
@@ -77,8 +77,8 @@ if Tematica=='ADP':
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col5:
-    st.text('Concursos desiertos')
-    st.text('Campos Adscrito, Nivel, N° Concurso, Ministerio, Servicio, Cargo, Fecha Convocatoria, Fecha Envío Nómina, Fecha Desierto, Tipo Desierto')
+    st.text('**Concursos desiertos**')
+    st.markdown('Campos Adscrito, Nivel, N° Concurso, Ministerio, Servicio, Cargo, Fecha Convocatoria, Fecha Envío Nómina, Fecha Desierto, Tipo Desierto')
     st.download_button(
           label='Descargar',
           data='ADP/desiertos_ADP.csv',
@@ -87,8 +87,8 @@ if Tematica=='ADP':
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col6:
-    st.text('Tiempos Concursos ADP')
-    st.text('Campos Año envío nómina, N° Concurso, Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha envío nómina, Fecha Convocatoria, días')
+    st.text('**Tiempos Concursos ADP**')
+    st.markdown('Campos Año envío nómina, N° Concurso, Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha envío nómina, Fecha Convocatoria, días')
     st.download_button(
           label='Descargar',
           data='ADP/Tiempos_ADP.csv',
