@@ -84,6 +84,7 @@ if Tematica=='ADP':
           mime='text/csv'
           )
 else:
+   st.markdown('Informe Trimestral Monitoreo de Resultados reportados referidos a Cumplimiento Norma Reclutamiento y Selección')
    col7,col8=st.columns(2,gap='medium')
    with col7:
       st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección \n *I trimestre 2023*") 
