@@ -22,8 +22,8 @@ plt.rcParams['figure.figsize'] = 8, 8
 
 #-----inicio carga de datos------------------------------------------------
 #@st.cache(ttl=3*60*60, suppress_st_warning=True)
-Cargos = pd.read_csv('ADP/Cargos_ADP.csv')
-Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv')
+Cargos = pd.read_csv('ADP/Cargos_ADP.csv',sep=';')
+Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv',sep=';')
 #-----fin carga de datos------------------------------------------------
 
 st.markdown('# Descarga de Datasets y Reportes')
