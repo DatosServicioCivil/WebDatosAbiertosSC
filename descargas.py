@@ -84,7 +84,7 @@ if Tematica=='ADP':
           mime='text/csv'
           )
 else:
-   col7,col8=st.columns(2,gap='big')
+   col7,col8=st.columns(2,gap='medium')
    with col7:
       st.text('Reporte de cumplimiento de norma de Reclutamieno y Selección - I trimestre 2023')
       st.download_button(
