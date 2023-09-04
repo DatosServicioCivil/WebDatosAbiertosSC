@@ -78,7 +78,7 @@ graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de
 graf4.update_layout(yaxis_tickformat='.0f')
 #----------------------------------------------------------------------------------------------------------------------------
 # grafico Vacantes Concursadas por Año
-graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf5.update_layout(yaxis_tickformat='.0f')
