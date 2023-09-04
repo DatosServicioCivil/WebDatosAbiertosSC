@@ -28,3 +28,17 @@ st.markdown('**Dirección Nacional del Servicio Civil**')
 #st.markdown("## Key COVID-19 Metrics")
 st.markdown("El Servicio Civil pone a disposición una serie de reportes y datasets para descargar.")
 st.markdown('Por información adicional contactanos a traves de nuestro sitio de *Atención Ciudadana y Contacto* (https://www.serviciocivil.cl/contacto)')
+
+st.selectbox('Selecciona un temática', ['ADP', 'Gestión de Personas'],default=['ADP'])
+
+col1,col2,col3:st.columns(3,gap='small')
+with col1:
+  st.text('Cargos ADP')
+  st.download_button('Download file', ADP/Cargos_ADP.csv)
+with col2:
+  st.text('Concursos ADP')
+  st.download_button('Download file', ADP/Publicaciones_ADP.csv)
+with col3:
+  st.text('Nóminas ADP')
+  st.download_button('Download file', ADP/Nominas_ADP.csv)
+
