@@ -29,7 +29,7 @@ st.markdown('**Dirección Nacional del Servicio Civil**')
 st.markdown("El Servicio Civil pone a disposición una serie de reportes y datasets para descargar.")
 st.markdown('Por información adicional contactanos a traves de nuestro sitio de *Atención Ciudadana y Contacto* (https://www.serviciocivil.cl/contacto)')
 
-st.selectbox('Selecciona un temática', ['ADP', 'Gestión de Personas'],default=['ADP'])
+#st.selectbox('Selecciona un temática', ['ADP', 'Gestión de Personas'],default=['ADP'])
 
 col1,col2,col3=st.columns(3,gap='small')
 with col1:
