@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from matplotlib import pyplot as plt
+import matplotlib.style as style
 from datetime import date
 
 today = date.today()
