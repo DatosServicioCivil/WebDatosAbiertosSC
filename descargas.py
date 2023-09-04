@@ -22,7 +22,7 @@ plt.rcParams['figure.figsize'] = 8, 8
 
 st.markdown('# Descarga de Datasets and Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
-st.markdown('**School of Veterinary Medicine   UC Davis**') 
-st.markdown("## Key COVID-19 Metrics")
+st.markdown('**Dirección Nacional del Servicio Civil**') 
+#st.markdown("## Key COVID-19 Metrics")
 st.markdown("El Servicio Civil pone a disposición una serie de reportes y datasets para descargar.")
 st.markdown('Por información adicional contactanos a traves de la  https://www.serviciocivil.cl/contacto')
