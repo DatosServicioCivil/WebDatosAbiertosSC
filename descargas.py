@@ -46,7 +46,7 @@ if Tematica=='ADP':
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col2:
     st.write('**Concursos ADP**')
-    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, N° Concurso')
+    st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
     st.download_button(
           label='Descargar',
           data='ADP/Publicaciones_ADP.csv',
