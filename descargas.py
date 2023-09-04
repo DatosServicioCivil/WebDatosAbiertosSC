@@ -42,6 +42,7 @@ if Tematica=='ADP':
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
   with col2:
     st.text('Concursos ADP')
     st.download_button(
@@ -50,6 +51,7 @@ if Tematica=='ADP':
           file_name='Publicaciones_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
   with col3:
     st.text('Nóminas ADP')
     st.download_button(
@@ -58,6 +60,7 @@ if Tematica=='ADP':
           file_name='Nominas_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
   
   col4,col5,col6=st.columns(3,gap='small')
   with col4:
@@ -68,6 +71,7 @@ if Tematica=='ADP':
           file_name='Nombramientos_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
   with col5:
     st.text('Concursos desiertos')
     st.download_button(
@@ -76,6 +80,7 @@ if Tematica=='ADP':
           file_name='desiertos_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
   with col6:
     st.text('Tiempos Concursos ADP')
     st.download_button(
@@ -84,6 +89,7 @@ if Tematica=='ADP':
           file_name='Tiempos_ADP.csv',
           mime='text/csv'
           )
+    st.write(':blue[Fecha de actualización agosto 2023]')
 else:
    st.markdown('**Informe Trimestral Monitoreo de Resultados reportados referidos a Cumplimiento Norma Reclutamiento y Selección**')
    col7,col8=st.columns(2,gap='medium')
