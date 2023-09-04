@@ -31,7 +31,7 @@ st.markdown('Por información adicional contactanos a traves de nuestro sitio de
 
 st.selectbox('Selecciona un temática', ['ADP', 'Gestión de Personas'],default=['ADP'])
 
-col1,col2,col3:st.columns(3,gap='small')
+col1,col2,col3=st.columns(3,gap='small')
 with col1:
   st.text('Cargos ADP')
   st.download_button('Download file', ADP/Cargos_ADP.csv)
