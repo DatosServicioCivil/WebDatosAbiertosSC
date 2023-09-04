@@ -38,5 +38,11 @@ with col2:
   st.download_button('Download file', ADP/Publicaciones_ADP.csv)
 with col3:
   st.text('Nóminas ADP')
-  st.download_button('Download file', ADP/Nominas_ADP.csv)
+  st.download_button(
+        label='Descargar',
+        data='ADP/Nominas_ADP.csv',
+        file_name='Nominas_ADP.csv',
+        mime='text/csv'
+        )
+  #st.download_button('Download file', ADP/Nominas_ADP.csv)
 
