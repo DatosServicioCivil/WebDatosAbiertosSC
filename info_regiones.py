@@ -34,8 +34,7 @@ with col3:
    if region=='Tarapacá':
       image=Image.open("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg")
       image_tarapaca = image.resize(600, 400)
-      st.image(image, caption='Región de Tarapacá')
-      st.image(image_tarapaca)
+      st.image(image_tarapaca, caption='Región de Tarapacá')
    if region=='Antofagasta':
       image="imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg"
       image_antofagasta = image.resize((600, 400))
