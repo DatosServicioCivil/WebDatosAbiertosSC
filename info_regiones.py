@@ -36,7 +36,9 @@ with col3:
       image_tarapaca = image.resize((600, 400))
       st.image(image_tarapaca)
    if region=='Antofagasta':
-      st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg")
+      image="imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg"
+      image_antofagasta = image.resize((600, 400))
+      st.image(image_antofagasta)
    if region=='Atacama':
       st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg")
    if region=='Coquimbo':
