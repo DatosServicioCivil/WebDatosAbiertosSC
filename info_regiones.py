@@ -13,7 +13,7 @@ col1, col2, col3 = st.columns(3)
 with col1:
    st.markdown("**Conoce la información del Servicio Civil por regiones**.")
    st.markdown("Selecciona zona y región")
-   col_1_1, col_1_2, col_1_3=st.columns(3)
+   col_1_1, col_1_2=st.columns(2,gap='large')
    with col_1_1:
       zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
    with col5:
@@ -26,8 +26,6 @@ with col1:
       if zona=='Austral':
          region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col_1_2:
-   st.markdown("      ")
-with col_1_3:
    st.markdown("*Principales indicadores regionales*.")
 
 with col3:
