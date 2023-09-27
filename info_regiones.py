@@ -2,11 +2,11 @@ import pandas as pd
 import streamlit as st
 import plotly.express as px 
 import plotly.graph_objects as go
+from PIL import Image
 
 st.set_page_config(layout='wide')
 
 st.title('Información Regional', anchor=None, help=None)
-import streamlit as st
 
 col1, col2, col3 = st.columns(3)
 
@@ -32,8 +32,9 @@ with col2:
 with col3:
    # zona norte
    if region=='Tarapacá':
-      image="imagenes/Fotos_Regiones/Iquique_night_skyline.jpg"
-      image_tarapaca = image.resize((600, 400))
+      image=Image.open("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg")
+      image_tarapaca = image.resize(600, 400)
+      st.image(image, caption='Región de Tarapacá')
       st.image(image_tarapaca)
    if region=='Antofagasta':
       image="imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg"
