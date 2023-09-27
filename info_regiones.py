@@ -33,7 +33,7 @@ with col3:
    # zona norte
    if region=='Tarapacá':
       st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Región de Tarapacá')
-   if region=='Antofagasta'
+   if region=='Antofagasta':
       st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg")
    if region=='Atacama':
       st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg")
