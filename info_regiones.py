@@ -26,7 +26,7 @@ with col1:
       if zona=='Austral':
          region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col_1_2:
-   
+   st.markdown("      ")
 with col_1_3:
    st.markdown("*Principales indicadores regionales*.")
 
