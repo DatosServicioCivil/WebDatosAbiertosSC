@@ -32,13 +32,13 @@ with col2:
 with col3:
    # zona norte
    if region=='Tarapacá':
-      st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Región de Tarapacá')
+      st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá')
    if region=='Antofagasta':
-      st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg")
+      st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg", caption='La Mano del Desierto - Región de Antofagasta')
    if region=='Atacama':
-      st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg")
+      st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg", caption='Desierto florido - Región de Atacama')
    if region=='Coquimbo':
-      st.image("imagenes/Fotos_Regiones/la-serena.jpg")
+      st.image("imagenes/Fotos_Regiones/la-serena.jpg",caption='Faro de La Serena - Región de Coquimbo')
    # zona centro
    if region=='Valparaíso':
       st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg")
