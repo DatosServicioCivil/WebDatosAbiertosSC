@@ -4,6 +4,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 from PIL import Image
 
+# https://github.com/mydgd/snowflake-table-catalog/blob/main/snowflake-table-catalog.py
+
 st.set_page_config(layout='wide')
 
 st.title('Información Regional', anchor=None, help=None)
