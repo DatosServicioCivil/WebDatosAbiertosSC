@@ -16,7 +16,7 @@ with col1:
    col_1_1, col_1_2=st.columns(2,gap='large')
    with col_1_1:
       zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
-   with col5:
+   with col_1_2:
       if zona=='Norte':
          region=st.selectbox("Región", ["Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
       if zona=='Centro':
@@ -25,7 +25,7 @@ with col1:
          region=st.selectbox("Región", ["Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
       if zona=='Austral':
          region=st.selectbox("Región", ["Aysén", "Magallanes"])
-with col_1_2:
+with col2:
    st.markdown("*Principales indicadores regionales*.")
 
 with col3:
