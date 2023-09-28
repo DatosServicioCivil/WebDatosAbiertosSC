@@ -40,26 +40,26 @@ with col3:
       st.image("imagenes/Fotos_Regiones/la-serena.jpg",caption='Faro de La Serena - Región de Coquimbo')
    # zona centro
    if region=='Valparaíso':
-      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg")
+      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso')
    if region=='Metropolitana':
-      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg")
+      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución')
    if region=='O’Higgins':
       st.image("imagenes/Fotos_Regiones/ohiggins.jpg")
    if region=='Maule':
       st.image("imagenes/Fotos_Regiones/maule.jpg")
    # zona sur
    if region=='Ñuble':
-      st.image("imagenes/Fotos_Regiones/ñuble.jpg")
+      st.image("imagenes/Fotos_Regiones/ñuble.jpg",caption='Catedral de Chillan')
    if region=='Biobío':
-      st.image("imagenes/Fotos_Regiones/biobio.jpg")
+      st.image("imagenes/Fotos_Regiones/biobio.jpg",caption='Ciudad de Concepción')
    if region=='La Araucanía':
-      st.image("imagenes/Fotos_Regiones/araucania.jpg")
+      st.image("imagenes/Fotos_Regiones/araucania.jpg",caption='Volcan Villarrica')
    if region=='Los Ríos':
-      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg")
+      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg",caption='Rio Calle Calle - ciudad de Valdivia')
    if region=='Los Lagos':
-      st.image("imagenes/Fotos_Regiones/lagos.jpg")
+      st.image("imagenes/Fotos_Regiones/lagos.jpg",caption='Isla de Chiloé')
    # zona Austral
    if region=='Aysén':
-      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg")
+      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg",caption='Caleta Tortel')
    if region=='Magallanes':
-      st.image("imagenes/Fotos_Regiones/torrespaine.jpg")
+      st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine')
