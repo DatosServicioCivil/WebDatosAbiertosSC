@@ -40,26 +40,26 @@ with col3:
       st.image("imagenes/Fotos_Regiones/la-serena.jpg",caption='Faro de La Serena - Región de Coquimbo')
    # zona centro
    if region=='Valparaíso':
-      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso')
+      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso - Región de Valparaíso')
    if region=='Metropolitana':
-      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución')
+      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución - Región Metropolitana')
    if region=='O’Higgins':
-      st.image("imagenes/Fotos_Regiones/ohiggins.jpg")
+      st.image("imagenes/Fotos_Regiones/ohiggins.jpg",caption='Ciudad de Rancagua - Región del Libertador General Bernardo O’Higgins')
    if region=='Maule':
-      st.image("imagenes/Fotos_Regiones/maule.jpg")
+      st.image("imagenes/Fotos_Regiones/maule.jpg",caption='Parque Nacional Radal Siete Tazas - Región del Maule')
    # zona sur
    if region=='Ñuble':
-      st.image("imagenes/Fotos_Regiones/ñuble.jpg",caption='Catedral de Chillan')
+      st.image("imagenes/Fotos_Regiones/ñuble.jpg",caption='Catedral de Chillan - Región de Ñuble')
    if region=='Biobío':
-      st.image("imagenes/Fotos_Regiones/biobio.jpg",caption='Ciudad de Concepción')
+      st.image("imagenes/Fotos_Regiones/biobio.jpg",caption='Ciudad de Concepción - Región del Biobío')
    if region=='La Araucanía':
-      st.image("imagenes/Fotos_Regiones/araucania.jpg",caption='Volcan Villarrica')
+      st.image("imagenes/Fotos_Regiones/araucania.jpg",caption='Volcan Villarrica - Región de la Araucanía')
    if region=='Los Ríos':
-      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg",caption='Rio Calle Calle - ciudad de Valdivia')
+      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg",caption='Rio Calle Calle - Región de los Ríos')
    if region=='Los Lagos':
-      st.image("imagenes/Fotos_Regiones/lagos.jpg",caption='Isla de Chiloé')
+      st.image("imagenes/Fotos_Regiones/lagos.jpg",caption='Isla de Chiloé - Región de Los Lagos ')
    # zona Austral
    if region=='Aysén':
-      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg",caption='Caleta Tortel')
+      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg",caption='Caleta Tortel - Región de Aysén del General Carlos Ibáñez del Campo ')
    if region=='Magallanes':
-      st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine')
+      st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine - Región de Magallanes y de la Antártica Chilena')
