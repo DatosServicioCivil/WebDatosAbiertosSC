@@ -23,16 +23,40 @@ with col1:
    if zona=='Austral':
       region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
-   st.markdown("*Principales indicadores regionales*.")
-   col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
-   with col_2_1:
-      st.markdown('Porcentaje de mujeres nombradas en cargos directivos del Sistema ADP')
-   with col_2_2:
-      st.markdown('Porcentaje de postulaciones de mujeres')
-   with col_2_3:
-      st.markdown('Porcentaje de mujeres seleccionadas en EEPP')
-   with col_2_4:
-      st.markdown('Porcentaje de mujeres nombradas en cargos directivos del Sistema ADP')
+   table_scorecard = """
+      <div class="KPI regionales">
+        <div class="grey statistic">
+          <div class="value">"""+41%+"""</div>
+          <div class="grey label">% mujeres nombradas en cargos ADP</div>
+      </div>
+      <div class="grey statistic">
+          <div class="value">"""+47%+"""</div>
+          <div class="label">% postulaciones de mujeres</div>
+      </div>
+      <div class="KPI regionales">
+        <div class="grey statistic">
+          <div class="value">"""+41%+"""</div>
+          <div class="grey label">% mujeres seleccionadas en EEPP</div>
+      </div>
+      <div class="grey statistic">
+          <div class="value">"""+47%+"""</div>
+          <div class="label">% postulaciones de mujeres</div>
+      </div>
+      <div class="grey statistic">
+          <div class="value">"""+47%+"""</div>
+          <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
+      </div>
+</div>"""    
+   # st.markdown("*Principales indicadores regionales*.")
+   # col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
+   # with col_2_1:
+   #    st.markdown('Porcentaje de mujeres nombradas en cargos directivos del Sistema ADP')
+   # with col_2_2:
+   #    st.markdown('Porcentaje de postulaciones de mujeres')
+   # with col_2_3:
+   #    st.markdown('Porcentaje de mujeres seleccionadas en EEPP')
+   # with col_2_4:
+   #    st.markdown('Porcentaje de mujeres nombradas en cargos de directores/as de Escuelas')
       
 with col3:
    # zona norte
