@@ -13,18 +13,15 @@ col1, col2, col3 = st.columns(3)
 with col1:
    st.markdown("**Conoce la información del Servicio Civil por regiones**.")
    st.markdown("Selecciona zona y región")
-   col_1_1, col_1_2=st.columns(2,gap='large')
-   with col_1_1:
-      zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
-   with col_1_2:
-      if zona=='Norte':
-         region=st.selectbox("Región", ["Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
-      if zona=='Centro':
-         region=st.selectbox("Región", ["Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
-      if zona=='Sur':
-         region=st.selectbox("Región", ["Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
-      if zona=='Austral':
-         region=st.selectbox("Región", ["Aysén", "Magallanes"])
+   zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
+   if zona=='Norte':
+      region=st.selectbox("Región", ["Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
+   if zona=='Centro':
+      region=st.selectbox("Región", ["Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
+   if zona=='Sur':
+      region=st.selectbox("Región", ["Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
+   if zona=='Austral':
+      region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
    st.markdown("*Principales indicadores regionales*.")
    col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
