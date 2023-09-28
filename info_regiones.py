@@ -27,7 +27,16 @@ with col1:
          region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
    st.markdown("*Principales indicadores regionales*.")
-
+   col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4,gap='little')
+   with col_2_1:
+      st.markdown('Porcentaje de mujeres nombradas en cargos directivos del Sistema ADP')
+   with col_2_2:
+      st.markdown('Porcentaje de postulaciones de mujeres')
+   with col_2_3:
+      st.markdown('Porcentaje de mujeres seleccionadas en EEPP')
+   with col_2_4:
+      st.markdown('Porcentaje de mujeres nombradas en cargos directivos del Sistema ADP')
+      
 with col3:
    # zona norte
    if region=='Tarapacá':
