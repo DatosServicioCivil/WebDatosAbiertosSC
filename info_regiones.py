@@ -47,6 +47,8 @@ with col2:
           <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
       </div>
 </div>"""    
+
+table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
    # st.markdown("*Principales indicadores regionales*.")
    # col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
    # with col_2_1:
