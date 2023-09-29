@@ -31,27 +31,27 @@ with col1:
 with col2:
    table_scorecard = """
       <div class="KPI regionales">
-        <div class="grey statistic">
+        <div class="statistic">
           <div class="value">41%</div>
-          <div class="grey label">% mujeres nombradas en cargos ADP</div>
+          <div class="label">% mujeres nombradas en cargos ADP</div>
         </div>
-        <div class="grey statistic">
+        <div class="statistic">
           <div class="value">47%</div>
           <div class="label">% postulaciones de mujeres</div>
         </div>
-        <div class="grey statistic">
+        <div class="statistic">
           <div class="value">35%</div>
-          <div class="grey label">% mujeres seleccionadas en EEPP</div>
+          <div class="label">% mujeres seleccionadas en EEPP</div>
         </div>
-        <div class="grey statistic">
+        <div class="statistic">
           <div class="value">47%</div>
           <div class="label">% postulaciones de mujeres</div>
         </div>
-        <div class="grey statistic">
+        <div class="statistic">
           <div class="value">55%</div>
           <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
         </div>
-</div>"""    
+      </div>"""    
 
 table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
    # st.markdown("*Principales indicadores regionales*.")
