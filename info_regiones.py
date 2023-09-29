@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+import streamlit.components.v1 as components
 import plotly.express as px 
 import plotly.graph_objects as go
 from PIL import Image
@@ -46,7 +47,7 @@ with col2:
           <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
         </div>
       </div>"""
-   st.markdown(table_scorecard+= """<br><br><br><div id="mydiv" class="ui centered cards">""")
+   components.html(table_scorecard)
 
    # st.markdown("*Principales indicadores regionales*.")
    # col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
