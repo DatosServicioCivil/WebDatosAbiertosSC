@@ -29,31 +29,36 @@ with col2:
         <div class="grey statistic">
           <div class="value">41%
           </div>
-          <div class="grey label">% mujeres nombradas en cargos ADP
+          <div class="grey label">
+          % mujeres nombradas en cargos ADP
           </div>
         </div>
         <div class="grey statistic">
           <div class="value">47%
           </div>
-          <div class="grey label">% postulaciones de mujeres
+          <div class="grey label">
+          % postulaciones de mujeres
           </div>
         </div>
         <div class="grey statistic">
           <div class="value">35%
           </div>
-          <div class="grey label">% mujeres seleccionadas en EEPP
+          <div class="grey label">
+          % mujeres seleccionadas en EEPP
           </div>
         </div>
         <div class="grey statistic">
           <div class="value">47%
           </div>
-          <div class="grey label">% postulaciones de mujeres
+          <div class="grey label">
+          % postulaciones de mujeres
           </div>
         </div>
         <div class="grey statistic">
           <div class="value">55%
           </div>
-          <div class="grey label">% mujeres nombradas en cargos de directores/as de Escuelas
+          <div class="grey label">
+          % mujeres nombradas en cargos de directores/as de Escuelas
           </div>
         </div>
       </div>"""
