@@ -5,8 +5,10 @@ import plotly.graph_objects as go
 from PIL import Image
 
 # https://github.com/mydgd/snowflake-table-catalog/blob/main/snowflake-table-catalog.py
-remote_css(
-    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css")
+#remote_css(
+#    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css")
+
+local_css("style.css")
 
 st.set_page_config(layout='wide')
 
