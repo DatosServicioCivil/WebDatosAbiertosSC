@@ -29,16 +29,16 @@ with col2:
         <div class="statistic">
             <div class="value">41%</div>
             <div class="label">% mujeres nombradas en cargos ADP</div>
-        </div>
-        <div class="statistic">
+        # </div>
+        # <div class="statistic">
             <div class="value">47%</div>
             <div class="label">% postulaciones de mujeres</div>
         </div>
         <div class="statistic">
             <div class="value">35%</div>
             <div class="label">% mujeres seleccionadas en EEPP</div>
-        </div>
-        <div class="statistic">
+        # </div>
+        # <div class="statistic">
             <div class="value">47%</div>
             <div class="label">% postulaciones de mujeres</div>
         </div>
