@@ -25,31 +25,68 @@ with col1:
       region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
    html_table = """
-    <head>
-       <link rel="stylesheet" href="style.css">
-    </head>
-   <div class="KPI Regionales">
-      <div class="statistic_1"> 
-         <div class="value">41%</div>
-         <div class="label">% mujeres nombradas en cargos ADP</div> 
-      </div>
-      <div class="statistic_2"> 
-         <div class="value">47%</div>
-         <div class="label">% postulaciones de mujeres</div>
-      </div>
-      <div class="statistic_3"> 
-          <div class="value">35%</div>
-          <div class="label">% mujeres seleccionadas en EEPP</div>
-      </div>
-      <div class="statistic_4"> 
-          <div class="value">47%</div>
-          <div class="label">% postulaciones de mujeres</div>
-      </div>
-      <div class="statistic_5"> 
-          <div class="value">55%</div>
-          <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
-      </div>
-</div>
+   <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
+ style='border-collapse:collapse;border:none;mso-yfti-tbllook:1184;mso-padding-alt:
+ 0cm 5.4pt 0cm 5.4pt;mso-border-insideh:none;mso-border-insidev:none'>
+ <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI1<o:p></o:p></span></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI2<o:p></o:p></span></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI3<o:p></o:p></span></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI4<o:p></o:p></span></p>
+  </td>
+ </tr>
+ <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% mujeres nombradas en cargos ADP<o:p></o:p></span></b></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% postulaciones de mujeres<o:p></o:p></span></b></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% mujeres seleccionadas en EEPP<o:p></o:p></span></b></p>
+  </td>
+  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
+  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
+  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
+  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Texto KPI4<o:p></o:p></span></b></p>
+  </td>
+ </tr>
+</table>
+
+
+
+
+
+
 """
 # <div class="KPI regionales">
 #        <div class="statistic">
