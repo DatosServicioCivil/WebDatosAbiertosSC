@@ -28,29 +28,53 @@ with col2:
     <head>
        <link rel="stylesheet" href="style.css">
     </head>
-    <div class="KPI regionales">
-        <div class="statistic">
-            <div class="value">41%</div>
-            <div class="label">% mujeres nombradas en cargos ADP</div>
-        </div>
-        <div class="statistic">
-            <div class="value">47%</div>
-            <div class="label">% postulaciones de mujeres</div>
-        </div>
-        <div class="statistic">
-            <div class="value">35%</div>
-            <div class="label">% mujeres seleccionadas en EEPP</div>
-        </div>
-        <div class="statistic">
-            <div class="value">47%</div>
-            <div class="label">% postulaciones de mujeres</div>
-        </div>
-        <div class="statistic">
-            <div class="value">55%</div>
-            <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
-        </div>
-    </div>
-    """
+   <div class="KPI Regionales">
+      <div class="statistic_1"> 
+         <div class="value">41%</div>
+         <div class="label">% mujeres nombradas en cargos ADP</div> 
+      </div>
+      <div class="statistic_2"> 
+         <div class="value">47%</div>
+         <div class="label">% postulaciones de mujeres</div>
+      </div>
+      <div class="statistic_3"> 
+          <div class="value">35%</div>
+          <div class="label">% mujeres seleccionadas en EEPP</div>
+      </div>
+      <div class="statistic_4"> 
+          <div class="value">47%</div>
+          <div class="label">% postulaciones de mujeres</div>
+      </div>
+      <div class="statistic_5"> 
+          <div class="value">55%</div>
+          <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
+      </div>
+</div>
+"""
+# <div class="KPI regionales">
+#        <div class="statistic">
+#            <div class="value">41%</div>
+#            <div class="label">% mujeres nombradas en cargos ADP</div>
+#        </div>
+#        <div class="statistic">
+#            <div class="value">47%</div>
+#            <div class="label">% postulaciones de mujeres</div>
+#        </div>
+#        <div class="statistic">
+#            <div class="value">35%</div>
+#            <div class="label">% mujeres seleccionadas en EEPP</div>
+#        </div>
+#        <div class="statistic">
+#            <div class="value">47%</div>
+#            <div class="label">% postulaciones de mujeres</div>
+#        </div>
+#        <div class="statistic">
+#            <div class="value">55%</div>
+#            <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
+#        </div>
+#    </div>
+
+   
    components.html(html_table)
 
    # st.markdown("*Principales indicadores regionales*.")
