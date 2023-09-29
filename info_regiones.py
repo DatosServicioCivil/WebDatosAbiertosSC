@@ -24,45 +24,31 @@ with col1:
    if zona=='Austral':
       region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
-   table_scorecard = """
-      <div class="KPI regionales">
-        <div class="grey statistic">
-          <div class="value">41%
-          </div>
-          <div class="grey label">
-          % mujeres nombradas en cargos ADP
-          </div>
+   html_table = """
+    <div class="KPI regionales">
+        <div class="statistic">
+            <div class="value">41%</div>
+            <div class="label">% mujeres nombradas en cargos ADP</div>
         </div>
-        <div class="grey statistic">
-          <div class="value">47%
-          </div>
-          <div class="grey label">
-          % postulaciones de mujeres
-          </div>
+        <div class="statistic">
+            <div class="value">47%</div>
+            <div class="label">% postulaciones de mujeres</div>
         </div>
-        <div class="grey statistic">
-          <div class="value">35%
-          </div>
-          <div class="grey label">
-          % mujeres seleccionadas en EEPP
-          </div>
+        <div class="statistic">
+            <div class="value">35%</div>
+            <div class="label">% mujeres seleccionadas en EEPP</div>
         </div>
-        <div class="grey statistic">
-          <div class="value">47%
-          </div>
-          <div class="grey label">
-          % postulaciones de mujeres
-          </div>
+        <div class="statistic">
+            <div class="value">47%</div>
+            <div class="label">% postulaciones de mujeres</div>
         </div>
-        <div class="grey statistic">
-          <div class="value">55%
-          </div>
-          <div class="grey label">
-          % mujeres nombradas en cargos de directores/as de Escuelas
-          </div>
+        <div class="statistic">
+            <div class="value">55%</div>
+            <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
         </div>
-      </div>"""
-   components.html(table_scorecard)
+    </div>
+    """
+   components.html(html_table)
 
    # st.markdown("*Principales indicadores regionales*.")
    # col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
