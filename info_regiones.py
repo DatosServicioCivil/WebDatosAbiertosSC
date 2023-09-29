@@ -4,12 +4,6 @@ import plotly.express as px
 import plotly.graph_objects as go
 from PIL import Image
 
-# https://github.com/mydgd/snowflake-table-catalog/blob/main/snowflake-table-catalog.py
-# remote_css(
-#    "https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css")
-
-# local_css("style.css")
-
 st.set_page_config(layout='wide')
 
 st.title('Información Regional', anchor=None, help=None)
@@ -51,9 +45,10 @@ with col2:
           <div class="value">55%</div>
           <div class="label">% mujeres nombradas en cargos de directores/as de Escuelas</div>
         </div>
-      </div>"""    
+      </div>"""
+   st.markdown(table_scorecard)
 
-table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
+ #+= """<br><br><br><div id="mydiv" class="ui centered cards">"""
    # st.markdown("*Principales indicadores regionales*.")
    # col_2_1,col_2_2,col_2_3,col_2_4=st.columns(4)
    # with col_2_1:
