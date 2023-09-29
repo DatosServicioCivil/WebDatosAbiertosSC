@@ -25,20 +25,23 @@ with col1:
       region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
    html_table = """
+    <head>
+       <link rel="stylesheet" href="style.css">
+    </head>
     <div class="KPI regionales">
         <div class="statistic">
             <div class="value">41%</div>
             <div class="label">% mujeres nombradas en cargos ADP</div>
-        # </div>
-        # <div class="statistic">
+        </div>
+        <div class="statistic">
             <div class="value">47%</div>
             <div class="label">% postulaciones de mujeres</div>
         </div>
         <div class="statistic">
             <div class="value">35%</div>
             <div class="label">% mujeres seleccionadas en EEPP</div>
-        # </div>
-        # <div class="statistic">
+        </div>
+        <div class="statistic">
             <div class="value">47%</div>
             <div class="label">% postulaciones de mujeres</div>
         </div>
