@@ -9,6 +9,8 @@ st.set_page_config(layout='wide')
 
 st.title('Información Regional', anchor=None, help=None)
 
+# https://github.com/mydgd/snowflake-table-catalog/blob/main/snowflake-table-catalog.py
+
 col1, col2, col3 = st.columns(spec=[0.2,0.6,0.2],gap='small')
 
 with col1:
