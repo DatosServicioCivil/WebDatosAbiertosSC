@@ -9,7 +9,7 @@ st.set_page_config(layout='wide')
 
 st.title('Información Regional', anchor=None, help=None)
 
-col1, col2, col3 = st.columns(3,spec=[0.2,0.4,0.4],gap='small')
+col1, col2, col3 = st.columns(spec=[0.2,0.4,0.4],gap='small')
 
 with col1:
    st.markdown("**Conoce la información del Servicio Civil por regiones**.")
