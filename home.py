@@ -20,12 +20,12 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="./images/DeltaPacific_Logo.jpg", width=200, height=100)
+my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
 st.sidebar.image(my_logo)
-st.sidebar.subheader("Delta Pacific Beverage Co.")
+st.sidebar.subheader("Servicio Civil.")
 
 # Set Page Header
-st.header("Delta Pacific Beverage Chain Dashboard")
+st.header("Datos Abriertos Servicio Civil")
 # Set custom CSS for hr element
 st.markdown(
     """
