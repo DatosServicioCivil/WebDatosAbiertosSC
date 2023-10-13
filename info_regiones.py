@@ -38,7 +38,7 @@ with col2:
   <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
   color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
   #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>+df_kpi_region[(df_kpi_region['id_kpi'] == 't_1') & (df_kpi_region[(df_kpi_region['id_region'] == '13')]['resultado']+<o:p></o:p></span></p>
+  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>+str(df_kpi_region[(df_kpi_region['id_kpi'] == 't_1') & (df_kpi_region[(df_kpi_region['id_region'] == '13')]['resultado'])+<o:p></o:p></span></p>
   </td>
   <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
   <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
