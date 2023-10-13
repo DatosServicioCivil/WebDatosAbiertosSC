@@ -31,20 +31,20 @@ with col1:
 with col2:
    html_table ="""
    <table class="editorDemoTable">
-<tbody>
-	<tr>
-      <td><strong>% Cargos ADP Nombrados</strong></td>
-      <td><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
-      <td><strong>%Seleccionados PCH en Región de Residencia</strong></td>
-	</tr>
-  <tr>
-    <td>50%</td>
-    <td>40%</td>
-    <td>90%</td>
-  </tr>
-</tbody>
+  <tbody>
+    <tr>
+      <td style="text-align: center; font-family: Arial;"><strong>% Cargos ADP Nombrados</strong></td>
+      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
+      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
+    </tr>
+    <tr>
+      <td style="text-align: center; font-family: Arial;">50%</td>
+      <td style="text-align: center; font-family: Arial;">40%</td>
+      <td style="text-align: center; font-family: Arial;">90%</td>
+    </tr>
+  </tbody>
 </table>
-<p>This is a table you can experiment with.</p>
+<p>Fecha Actualizacion: 30/09/2023</p>
    """
    components.html(html_table)
       
