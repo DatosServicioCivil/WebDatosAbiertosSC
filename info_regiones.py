@@ -29,64 +29,23 @@ with col1:
    if zona=='Austral':
       region=st.selectbox("Región", ["Aysén", "Magallanes"])
 with col2:
-   html_table = """
-   <table class=MsoTableGrid border=0 cellspacing=0 cellpadding=0
- style='border-collapse:collapse;border:none;mso-yfti-tbllook:1184;mso-padding-alt:
- 0cm 5.4pt 0cm 5.4pt;mso-border-insideh:none;mso-border-insidev:none'>
- <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>+str(df_kpi_region[(df_kpi_region['id_kpi'] == 't_1') & (df_kpi_region[(df_kpi_region['id_region'] == '13')]['resultado'])+<o:p></o:p></span></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI2<o:p></o:p></span></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI3<o:p></o:p></span></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Valor KPI4<o:p></o:p></span></p>
-  </td>
- </tr>
- <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% mujeres nombradas en cargos ADP<o:p></o:p></span></b></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% postulaciones de mujeres<o:p></o:p></span></b></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>% mujeres seleccionadas en EEPP<o:p></o:p></span></b></p>
-  </td>
-  <td width=147 valign=top style='width:110.35pt;padding:0cm 5.4pt 0cm 5.4pt'>
-  <p class=MsoNormal><b><span style='font-size:14.0pt;font-family:"Arial",sans-serif;
-  color:#7F7F7F;mso-themecolor:background1;mso-themeshade:128;mso-style-textfill-fill-color:
-  #7F7F7F;mso-style-textfill-fill-themecolor:background1;mso-style-textfill-fill-alpha:
-  100.0%;mso-style-textfill-fill-colortransforms:lumm=50000'>Texto KPI4<o:p></o:p></span></b></p>
-  </td>
- </tr>
+   html_table ="""
+   <table class="editorDemoTable">
+<tbody>
+	<tr>
+      <td><strong>% Cargos ADP Nombrados</strong></td>
+      <td><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
+      <td><strong>%Seleccionados PCH en Región de Residencia</strong></td>
+	</tr>
+  <tr>
+    <td>50%</td>
+    <td>40%</td>
+    <td>90%</td>
+  </tr>
+</tbody>
 </table>
-"""   
+<p>This is a table you can experiment with.</p>
+   """
    components.html(html_table)
       
 with col3:
