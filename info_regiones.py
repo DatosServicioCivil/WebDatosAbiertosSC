@@ -39,7 +39,7 @@ with col2:
       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>+kpi1+</strong></span></td>
+      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi1)+"""</div></strong></span></td>
       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>40%</strong></span></td>
       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>90%</strong></span></td>
     </tr>
