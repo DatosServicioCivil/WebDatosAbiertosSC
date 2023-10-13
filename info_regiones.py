@@ -24,7 +24,7 @@ with col1:
    st.markdown("Selecciona zona y región")
    zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
    if zona=='Norte':
-      region=st.selectbox("Región", ["Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
+      region=st.selectbox("Región", ["Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
    if zona=='Centro':
       region=st.selectbox("Región", ["Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
    if zona=='Sur':
@@ -53,6 +53,8 @@ with col2:
       
 with col3:
    # zona norte
+   if region=='Arica':
+      st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota')
    if region=='Tarapacá':
       st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá')
    if region=='Antofagasta':
