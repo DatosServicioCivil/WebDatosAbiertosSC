@@ -14,7 +14,7 @@ st.title('Información Regional', anchor=None, help=None)
 col1, col2, col3 = st.columns(spec=[0.2,0.6,0.2],gap='small')
 
 df_kpi_region=pd.read_csv('kpi/indicadores_regionales.csv',sep=";",encoding='utf-8')
-kpi1=df_kpi_regional[df_kpi_regional.id=='t_1_1'].resultado.value[0]
+kpi1=df_kpi_region[df_kpi_region.id=='t_1_1'].resultado.value[0]
 # df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8') 
 
 with col1:
