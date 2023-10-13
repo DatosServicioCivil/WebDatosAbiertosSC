@@ -33,9 +33,9 @@ with col2:
    <table class="editorDemoTable">
   <tbody>
     <tr>
-      <td style="text-align: center; font-family: Arial;"><strong>% Cargos ADP Nombrados</strong></td>
-      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
-      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
+      <td style="text-align: center; font-family: Arial;color:#31333f;"><strong>% Cargos ADP Nombrados</strong></td>
+      <td style="text-align: center; font-family: Arial;color:#31333f;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
+      <td style="text-align: center; font-family: Arial;color:#31333f;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
     </tr>
     <tr>
       <td style="text-align: center; font-family: Arial;">50%</td>
