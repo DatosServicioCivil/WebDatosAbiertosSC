@@ -14,6 +14,7 @@ st.title('Información Regional', anchor=None, help=None)
 col1, col2, col3 = st.columns(spec=[0.2,0.6,0.2],gap='small')
 
 df_kpi_region=pd.read_csv('kpi/indicadores_regionales.csv',sep=";")
+kpi1=df_kpi_regional[df_kpi_regional.id=='t_1_1'].resultado.value[0]
 # df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8') 
 
 with col1:
@@ -38,7 +39,7 @@ with col2:
       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
     </tr>
     <tr>
-      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>50%</strong></span></td>
+      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>+kpi1+</strong></span></td>
       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>40%</strong></span></td>
       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong>90%</strong></span></td>
     </tr>
