@@ -47,7 +47,7 @@ with col2:
     </tr>
   </tbody>
 </table>
-<p><td style="text-align: center; font-family: Arial; font-size: 8px;"><span style="color: #999999;">Fecha Actualizacion: 30/09/2023</span></td>.</p>
+<p><span style="color: #999999; font-family: Arial; font-size: 10px;">This is a table you can experiment with</span>.</p>
    """
    components.html(html_table)
       
