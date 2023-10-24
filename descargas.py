@@ -20,6 +20,13 @@ plt.rcParams['xtick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 8, 8
 
+def generate_file_content(df):
+    # Generate the file content (e.g., CSV, JSON, etc.)
+    # In this example, we'll generate a CSV file
+    csv_content = df.to_csv(index=False)
+    return csv_content
+
+
 #-----inicio carga de datos------------------------------------------------
 st.cache(ttl=3*60*60, suppress_st_warning=True)
 def get_data_csv():
