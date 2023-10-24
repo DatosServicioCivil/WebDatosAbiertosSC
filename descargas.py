@@ -30,7 +30,7 @@ def get_data_csv():
         Nombramientos = pd.read_csv('ADP/Nombramientos_ADP.csv', sep=";", encoding='latin1')
         Desiertos = pd.read_csv('ADP/desiertos_ADP.csv', sep=";", encoding='latin1')
         Tiempos = pd.read_csv('ADP/Tiempos_ADP.csv', sep=";", encoding='latin1')
-        return Cargos,Publicaciones,Nominas
+        return Cargos,Publicaciones,Nominas,Nombramientos,Desiertos,Tiempos
     except Exception as e:
         print(f"An error occurred: {e}")
         return None
