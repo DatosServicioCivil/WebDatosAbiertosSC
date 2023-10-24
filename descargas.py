@@ -25,13 +25,13 @@ plt.rcParams['figure.figsize'] = 8, 8
 #def get_data_csv():
 #    try:
 #        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
-#        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
+#        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1'),
 #        return Cargos,Publicaciones
 #    except Exception as e:
 #        print(f"An error occurred: {e}")
 #        return None
-Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
-Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
+#Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+#Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
 #-----fin carga de datos------------------------------------------------
 
 #Cargos, Pubicaciones=get_data_csv()
@@ -54,7 +54,7 @@ if Tematica=='ADP':
     st.download_button(
           label='Descargar',
           #data=Cargos,
-          data=pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+          data=pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1'),
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
@@ -64,7 +64,7 @@ if Tematica=='ADP':
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
     st.download_button(
           label='Descargar',
-          data=pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')  
+          data=pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1'),  
           file_name='Publicaciones_ADP.csv',
           mime='text/csv'
           )
