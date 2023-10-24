@@ -44,7 +44,7 @@ def get_data_csv():
 
 #-----fin carga de datos------------------------------------------------
 
-Cargos, Pubicaciones,Nominas,Nombramientos,Desiertos,Tiempos=get_data_csv()
+Cargos, Publicaciones ,Nominas,Nombramientos,Desiertos,Tiempos=get_data_csv()
 
 st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
