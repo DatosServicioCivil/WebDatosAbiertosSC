@@ -21,20 +21,23 @@ plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 8, 8
 
 #-----inicio carga de datos------------------------------------------------
-#st.cache(ttl=3*60*60, suppress_st_warning=True)
-#def get_data_csv():
-#    try:
-#        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
-#        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1'),
-#        return Cargos,Publicaciones
-#    except Exception as e:
-#        print(f"An error occurred: {e}")
-#        return None
-#Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
-#Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
+st.cache(ttl=3*60*60, suppress_st_warning=True)
+def get_data_csv():
+    try:
+        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
+        Nominas = pd.read_csv('ADP/Nominas_ADP.csv', sep=";", encoding='latin1')
+        Nombramientos = pd.read_csv('ADP/Nombramientos_ADP.csv', sep=";", encoding='latin1')
+        Desiertos = pd.read_csv('ADP/desiertos_ADP.csv', sep=";", encoding='latin1')
+        Tiempos = pd.read_csv('ADP/Tiempos_ADP.csv', sep=";", encoding='latin1')
+        return Cargos,Publicaciones,Nominas
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        return None
+
 #-----fin carga de datos------------------------------------------------
 
-#Cargos, Pubicaciones=get_data_csv()
+Cargos, Pubicaciones,Nominas,Nombramientos,Desiertos,Tiempos=get_data_csv()
 
 st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
@@ -51,10 +54,10 @@ if Tematica=='ADP':
   with col1:
     st.write('**Cargos ADP**')
     st.markdown('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
+    file_content = generate_file_content(Cargos)
     st.download_button(
           label='Descargar',
-          #data=Cargos,
-          data=pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1'),
+          data=file_content,
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
@@ -62,19 +65,21 @@ if Tematica=='ADP':
   with col2:
     st.write('**Concursos ADP**')
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
+    file_content = generate_file_content(Publicaciones)
     st.download_button(
-          label='Descargar',
-          data=pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1'),  
-          file_name='Publicaciones_ADP.csv',
-          mime='text/csv'
-          )
+        label='Descargar',
+        data=file_content,
+        file_name='data.csv',
+        mime='text/csv'
+        )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col3:
     st.write('**Nóminas ADP**')
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes envío nómina, Año envío nómina')
+    file_content = generate_file_content(Nominas)
     st.download_button(
           label='Descargar',
-          data='ADP/Nominas_ADP.csv',
+          data=file_content,
           file_name='Nominas_ADP.csv',
           mime='text/csv'
           )
@@ -84,9 +89,10 @@ if Tematica=='ADP':
   with col4:
     st.write('**Nombramientos ADP**')
     st.markdown('Campos Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha Nombramiento, Fecha Inicio de labor, IdConcurso, Sexo')
+    file_content = generate_file_content(Nombramientos)
     st.download_button(
           label='Descargar',
-          data='ADP/Nombramientos_ADP.csv',
+          data=file_content,
           file_name='Nombramientos_ADP.csv',
           mime='text/csv'
           )
@@ -94,9 +100,10 @@ if Tematica=='ADP':
   with col5:
     st.write('**Concursos desiertos**')
     st.markdown('Campos Adscrito, Nivel, N° Concurso, Ministerio, Servicio, Cargo, Fecha Convocatoria, Fecha Envío Nómina, Fecha Desierto, Tipo Desierto')
+    file_content = generate_file_content(Desiertos)
     st.download_button(
           label='Descargar',
-          data='ADP/desiertos_ADP.csv',
+          data=file_content,
           file_name='desiertos_ADP.csv',
           mime='text/csv'
           )
@@ -104,9 +111,10 @@ if Tematica=='ADP':
   with col6:
     st.write('**Tiempos Concursos ADP**')
     st.markdown('Campos Año envío nómina, N° Concurso, Nivel, Adscrito, Ministerio, Servicio, Cargo, Fecha envío nómina, Fecha Convocatoria, días')
+    file_content = generate_file_content(Tiempos)
     st.download_button(
           label='Descargar',
-          data='ADP/Tiempos_ADP.csv',
+          data=file_content,
           file_name='Tiempos_ADP.csv',
           mime='text/csv'
           )
