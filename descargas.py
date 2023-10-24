@@ -21,18 +21,20 @@ plt.rcParams['ytick.labelsize'] = plt.rcParams['font.size']
 plt.rcParams['figure.figsize'] = 8, 8
 
 #-----inicio carga de datos------------------------------------------------
-st.cache(ttl=3*60*60, suppress_st_warning=True)
-def get_data_csv():
-    try:
-        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
-        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
-        return Cargos,Publicaciones
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
+#st.cache(ttl=3*60*60, suppress_st_warning=True)
+#def get_data_csv():
+#    try:
+#        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+#        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
+#        return Cargos,Publicaciones
+#    except Exception as e:
+#        print(f"An error occurred: {e}")
+#        return None
+Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
 #-----fin carga de datos------------------------------------------------
 
-Cargos, Pubicaciones=get_data_csv()
+#Cargos, Pubicaciones=get_data_csv()
 
 st.markdown('# Descarga de Datasets y Reportes')
 #st.markdown('## **EpiCenter for Disease Dynamics**') 
