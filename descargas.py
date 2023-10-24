@@ -24,8 +24,8 @@ plt.rcParams['figure.figsize'] = 8, 8
 st.cache(ttl=3*60*60, suppress_st_warning=True)
 def get_data_csv():
     try:
-        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";", encoding='latin-1')
-        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin-1')
+        Cargos = pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
+        Publicaciones = pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')
         return Cargos,Publicaciones
     except Exception as e:
         print(f"An error occurred: {e}")
