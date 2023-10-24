@@ -53,7 +53,8 @@ if Tematica=='ADP':
     st.markdown('Campos: IDcargo, RBD, Adscrito, Nivel, Ministerio, Servicio, Entidad, Cargo, Región')
     st.download_button(
           label='Descargar',
-          data=Cargos,
+          #data=Cargos,
+          data=pd.read_csv('ADP/Cargos_ADP.csv', sep=";",encoding='latin1')
           file_name='Cargos_ADP.csv',
           mime='text/csv'
           )
@@ -63,7 +64,7 @@ if Tematica=='ADP':
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
     st.download_button(
           label='Descargar',
-          data=Publicaciones,
+          data=pd.read_csv('ADP/Publicaciones_ADP.csv', sep=";", encoding='latin1')  
           file_name='Publicaciones_ADP.csv',
           mime='text/csv'
           )
