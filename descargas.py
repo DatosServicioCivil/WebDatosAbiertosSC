@@ -72,10 +72,10 @@ if Tematica=='ADP':
   with col2:
     st.write('**Concursos ADP**')
     st.markdown('Campos: Nivel, Adscrito, Ministerio, Servicio, Cargo, Mes de convocatoria, Año de convocatoria, IdConcurso')
-    file_content_2 = generate_file_content(Publicaciones)
+    file_content = generate_file_content(Publicaciones)
     st.download_button(
         label='Descargar',
-        data=file_content_2,
+        data=file_content,
         file_name='data.csv',
         mime='text/csv'
         )
