@@ -9,6 +9,8 @@ import numpy as np
 import time
 # import altair as alt
 import streamlit.components.v1 as components
+import plotly.express as px 
+import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
@@ -109,19 +111,14 @@ if a=='Alta Dirección Pública':
     with st.container:
         # grafico Convocatorias por Año
         graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Evolución de publicaciones ADP por año</b>',color_discrete_sequence=[color_bar]).\
-                update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+                 update_yaxes(visible=visible_y_axis,title_text=None).\
+                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
         
 
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
-
-    import pandas as pd
-    import streamlit as st
-    import plotly.express as px 
-    import plotly.graph_objects as go
     
     df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8')    
     df_postulaciones_sexo=pd.read_csv('EEPP/porcentaje_postulaciones_sexo_e.csv',sep=";")
