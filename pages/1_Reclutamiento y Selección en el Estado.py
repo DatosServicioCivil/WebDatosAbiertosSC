@@ -46,3 +46,7 @@ with st.sidebar:
     st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
 
 
+with st.container():
+   st.radio(["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
+
+
