@@ -43,6 +43,13 @@ st.markdown(
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
 
+# define si se ven los ejes Y
+visible_y_axis=True
+    
+#https://framework.digital.gob.cl/colors.html
+color_line='#2D717C'
+color_bar='#6633CC'
+
 df_concursos_adp=pd.read_csv('ADP/concursos_ADP.csv',sep=';',encoding='utf-8')
 
 unique_niveles = df_concursos_adp['Nivel'].unique()
@@ -89,6 +96,22 @@ if a=='Alta Dirección Pública':
            option_2 = st.selectbox('Región',Region)
         with col3:
            option_3 = st.selectbox('Ministerio',Ministerios)
+
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos':
+        publicaciones=df_publicaciones_ADP.groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos':
+        publicaciones=df_publicaciones_ADP[df_publicaciones_ADP.Nivel==option_1].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos':
+        publicaciones=df_publicaciones_ADP[(df_publicaciones_ADP.Nivel==option_1) & (df_publicaciones_ADP.Region==option_2)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos':
+        publicaciones=df_publicaciones_ADP[(df_publicaciones_ADP.Nivel==option_1) & (df_publicaciones_ADP.Region==option_2) & (df_publicaciones_ADP.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+
+with st.container:
+    # grafico Convocatorias por Año
+    graf1=px.bar(publicaciones,x='Año',y='Year_Convocatoria',title='<b>Evolución de publicaciones ADP por año</b>',color_discrete_sequence=[color_bar]).\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf1.update_layout(yaxis_tickformat='.0f')
         
 
     
@@ -112,12 +135,6 @@ if a=='Empleo Público':
     st.title('Estadísticas Portal Empleos Públicos')
     st.subheader(date)
     
-    # define si se ven los ejes Y
-    visible_y_axis=True
-    
-    #https://framework.digital.gob.cl/colors.html
-    color_line='#2D717C'
-    color_bar='#6633CC'
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Evolución de Postulaciones por Año
     graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
