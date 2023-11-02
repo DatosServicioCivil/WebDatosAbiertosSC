@@ -10,6 +10,7 @@ import time
 # import altair as alt
 import streamlit.components.v1 as components
 
+st.set_page_config(layout='wide')
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
