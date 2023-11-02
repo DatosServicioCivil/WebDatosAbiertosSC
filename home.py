@@ -19,10 +19,10 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
-st.sidebar.image(my_logo)
-st.sidebar.header("Configuration")
-st.sidebar.subheader("Servicio Civil.")
+#my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
+#st.sidebar.image(my_logo)
+#st.sidebar.header("Configuration")
+#st.sidebar.subheader("Servicio Civil.")
 
 # Set Page Header
 st.header("Datos Abriertos Servicio Civil")
