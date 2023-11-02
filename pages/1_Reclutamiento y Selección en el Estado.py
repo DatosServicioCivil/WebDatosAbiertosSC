@@ -58,19 +58,6 @@ nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
 Ministerios = pd.concat([nuevo_registro, Ministerios])
 Ministerios = Ministerios.reset_index(drop=True)
 Ministerios = Ministerios['Ministerio'].tolist()
-Ministerios
-
-
-
-
-# Ministerios=['','Ministerio de Hacienda', 'Ministerio de Educación','Ministerio de Economía, Fomento y Turismo', 'Ministerio de Salud',
-#       'Ministerio del Trabajo y Previsión Social','Ministerio de Agricultura', 'Ministerio del Deporte',
-#       'Ministerio de Minería', 'Ministerio de Energía','Ministerio de Defensa Nacional', 'Ministerio de Obras Públicas',
-#       'Ministerio de Justicia y Derechos Humanos','Ministerio del Interior y Seguridad Pública',
-#       'Ministerio de las Culturas, las artes y el Patrimonio','Ministerio de Desarrollo Social y Familia','Ministerio de Vivienda y Urbanismo',
-#       'Ministerio de Ciencia, Tecnología, Conocimiento e Innovación','Ministerio de Relaciones Exteriores',
-#       'Ministerio del Medio Ambiente','Ministerio de Transportes y Telecomunicaciones','Ministerio de la Mujer y la Equidad de Género',
-#       'Ministerio Secretaría General de Gobierno', 'Autónomo','Administración Central',]
 
 Region=['','Región de Metropolitana de Santiago','Región de Magallanes y de la Antártica Chilena',
        'Región del Libertador General Bernardo OHiggins','Región del Maule', 'Región del Biobío', 'Región de Los Ríos',
