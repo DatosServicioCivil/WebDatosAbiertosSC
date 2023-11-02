@@ -11,8 +11,6 @@ import time
 import streamlit.components.v1 as components
 
 
-st.sidebar.header("Configuration")
-
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
@@ -22,6 +20,7 @@ def add_logo(logo_path, width, height):
 
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
 st.sidebar.image(my_logo)
+st.sidebar.header("Configuration")
 st.sidebar.subheader("Servicio Civil.")
 
 # Set Page Header
