@@ -41,3 +41,6 @@ st.markdown(
 
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
+
+with st.sidebar:
+    st.radio('Seleccionar: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
