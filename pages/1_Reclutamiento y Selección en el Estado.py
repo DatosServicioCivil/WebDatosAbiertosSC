@@ -43,9 +43,18 @@ st.markdown(
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
 
+df_concursos_adp=pd.read_csv('ADP/concursos_ADP.csv',sep=';',encoding='utf-8')
 
-Nivel=['Nivel I', 'Nivel II']
-Ministerios=['Ministerio de Hacienda', 'Ministerio de Educación','Ministerio de Economía, Fomento y Turismo', 'Ministerio de Salud',
+unique_niveles = df_concursos_adp['Nivel'].unique()
+Nivel = pd.DataFrame({'Nivel': unique_niveles})
+nuevo_registro = pd.DataFrame({'Nivel': ['Todos']})
+Nivel = pd.concat([nuevo_registro, Nivel])
+Nivel = Nivel.reset_index(drop=True)
+Nivel = Nivel['Nivel'].tolist()
+
+
+#Nivel=['','Nivel I', 'Nivel II']
+Ministerios=['','Ministerio de Hacienda', 'Ministerio de Educación','Ministerio de Economía, Fomento y Turismo', 'Ministerio de Salud',
        'Ministerio del Trabajo y Previsión Social','Ministerio de Agricultura', 'Ministerio del Deporte',
        'Ministerio de Minería', 'Ministerio de Energía','Ministerio de Defensa Nacional', 'Ministerio de Obras Públicas',
        'Ministerio de Justicia y Derechos Humanos','Ministerio del Interior y Seguridad Pública',
@@ -53,12 +62,13 @@ Ministerios=['Ministerio de Hacienda', 'Ministerio de Educación','Ministerio de
        'Ministerio de Ciencia, Tecnología, Conocimiento e Innovación','Ministerio de Relaciones Exteriores',
        'Ministerio del Medio Ambiente','Ministerio de Transportes y Telecomunicaciones','Ministerio de la Mujer y la Equidad de Género',
        'Ministerio Secretaría General de Gobierno', 'Autónomo','Administración Central',]
-Region=['Región de Metropolitana de Santiago','Región de Magallanes y de la Antártica Chilena',
+Region=['','Región de Metropolitana de Santiago','Región de Magallanes y de la Antártica Chilena',
        'Región del Libertador General Bernardo OHiggins','Región del Maule', 'Región del Biobío', 'Región de Los Ríos',
        'Región de  Valparaíso', 'Región de Los Lagos','Región de Arica y Parinacota', 'Región de la Araucanía',
        'Región de Antofagasta', 'Región de  Atacama','Región de  Coquimbo',
        'Región de Aysén del General Carlos Ibañez del Campo','Región de Tarapacá', 'Región del Ñuble']
 
+df_concursos_adp=pd.read_csv('ADP/concursos_ADP.csv',sep=';',encoding='utf-8')
 
 with st.sidebar:
     a=st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
@@ -75,6 +85,7 @@ if a=='Prácticas Chile':
 
 
 if a=='Alta Dirección Pública':
+    df_publicaciones_ADP = df_concursos.groupby(['Year_Convocatoria', 'Nivel', 'Ministerio', 'Servicio','Region','Estado']).agg({'CD_Concurso': 'count'}).reset_index()
     with st.container():
         col1,col2,col3=st.columns(3,gap="large")
         with col1:
@@ -83,6 +94,11 @@ if a=='Alta Dirección Pública':
            option_2 = st.selectbox('Región',Region)
         with col3:
            option_3 = st.selectbox('Ministerio',Ministerios)
+    if option_1=='' and option_2=='' and option_3=='':
+        df_concursos_adp=df_concursos_adp
+        
+
+    
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
 
