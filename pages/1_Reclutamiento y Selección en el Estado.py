@@ -51,8 +51,43 @@ if a=='Alta Dirección Pública':
 if a=='Empleo Público':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
-if a=='Practicas Chile':
+if a=='Prácticas Chile':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 
+Nivel=['Nivel I', 'Nivel II']
 
+with st.container():
+    col1,col2,col3=st.columns(3,gap="large")
+    with col1:
+       option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+    with col2:
+       option_2 = st.selectbox('Región',('Región de Metropolitana de Santiago',
+       'Región de Magallanes y de la Antártica Chilena',
+       'Región del Libertador General Bernardo OHiggins',
+       'Región del Maule', 'Región del Biobío', 'Región de Los Ríos',
+       'Región de  Valparaíso', 'Región de Los Lagos',
+       'Región de Arica y Parinacota', 'Región de la Araucanía',
+       'Región de Antofagasta', 'Región de  Atacama',
+       'Región de  Coquimbo',
+       'Región de Aysén del General Carlos Ibañez del Campo',
+       'Región de Tarapacá', 'Región del Ñuble'))
+    with col3:
+       option_3 = st.selectbox('Ministerio',('Ministerio de Hacienda', 'Ministerio de Educación',
+       'Ministerio de Economía, Fomento y Turismo', 'Ministerio de Salud',
+       'Ministerio del Trabajo y Previsión Social',
+       'Ministerio de Agricultura', 'Ministerio del Deporte',
+       'Ministerio de Minería', 'Ministerio de Energía',
+       'Ministerio de Defensa Nacional', 'Ministerio de Obras Públicas',
+       'Ministerio de Justicia y Derechos Humanos',
+       'Ministerio del Interior y Seguridad Pública',
+       'Administración Central',
+       'Ministerio de las Culturas, las artes y el Patrimonio',
+       'Ministerio de Desarrollo Social y Familia',
+       'Ministerio de Vivienda y Urbanismo',
+       'Ministerio de Ciencia, Tecnología, Conocimiento e Innovación',
+       'Ministerio de Relaciones Exteriores',
+       'Ministerio del Medio Ambiente',
+       'Ministerio de Transportes y Telecomunicaciones',
+       'Ministerio de la Mujer y la Equidad de Género',
+       'Ministerio Secretaría General de Gobierno', 'Autónomo'))
