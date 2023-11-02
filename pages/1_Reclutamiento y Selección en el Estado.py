@@ -43,10 +43,16 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 with st.sidebar:
-    st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
+    a=st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
 
-
-with st.container():
-   st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
+if a=='Alta Dirección Pública':
+    with st.container():
+       st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
+if a=='Empleo Público':
+    with st.container():
+       st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+if a=='Practicas Chile':
+    with st.container():
+       st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 
 
