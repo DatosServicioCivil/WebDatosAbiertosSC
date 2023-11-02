@@ -113,6 +113,7 @@ if a=='Alta Dirección Pública':
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf1.update_layout(yaxis_tickformat='.0f')
+    st.plotly_chart(graf1,use_container_width=True)
         
 
     
