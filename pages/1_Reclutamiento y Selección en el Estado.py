@@ -59,7 +59,7 @@ Ministerios = pd.concat([nuevo_registro, Ministerios])
 Ministerios = Ministerios.reset_index(drop=True)
 Ministerios = Ministerios['Ministerio'].tolist()
 
-unique_region = df_concursos['Region'].unique()
+unique_region = df_concursos_adp['Region'].unique()
 Region = pd.DataFrame({'Region': unique_region})
 nuevo_registro = pd.DataFrame({'Region': ['Todos']})
 Region = pd.concat([nuevo_registro, Region])
