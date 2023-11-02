@@ -65,20 +65,23 @@ with st.sidebar:
 if a=='Alta Dirección Pública':
     with st.container():
        st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
-    with st.container():
-    col1,col2,col3=st.columns(3,gap="large")
-    with col1:
-       option_1 = st.selectbox('Nivel Jerárquico',Nivel)
-    with col2:
-       option_2 = st.selectbox('Región',Region)
-    with col3:
-       option_3 = st.selectbox('Ministerio',Ministerios)
 if a=='Empleo Público':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 if a=='Prácticas Chile':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+
+
+if a=='Alta Dirección Pública':
+    with st.container():
+        col1,col2,col3=st.columns(3,gap="large")
+        with col1:
+           option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+        with col2:
+           option_2 = st.selectbox('Región',Region)
+        with col3:
+           option_3 = st.selectbox('Ministerio',Ministerios)
 
 
 
