@@ -85,7 +85,6 @@ if a=='Prácticas Chile':
 
 
 if a=='Alta Dirección Pública':
-    df_publicaciones_ADP = df_concursos.groupby(['Year_Convocatoria', 'Nivel', 'Ministerio', 'Servicio','Region','Estado']).agg({'CD_Concurso': 'count'}).reset_index()
     with st.container():
         col1,col2,col3=st.columns(3,gap="large")
         with col1:
@@ -94,8 +93,6 @@ if a=='Alta Dirección Pública':
            option_2 = st.selectbox('Región',Region)
         with col3:
            option_3 = st.selectbox('Ministerio',Ministerios)
-    if option_1=='' and option_2=='' and option_3=='':
-        df_concursos_adp=df_concursos_adp
         
 
     
