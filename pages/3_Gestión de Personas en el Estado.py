@@ -51,3 +51,6 @@ visible_y_axis=True
 #https://framework.digital.gob.cl/colors.html
 color_line='#2D717C'
 color_bar='#6633CC'
+
+with st.sidebar:
+    a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Inclusión Laboral','Prevención de Maltrato y Acoso Laboral'])
