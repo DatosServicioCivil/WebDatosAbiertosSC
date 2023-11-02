@@ -108,11 +108,10 @@ if a=='Alta Dirección Pública':
     if option_1!='Todos' and option_2!='Todos' and option_3!='Todos':
         publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Region==option_2) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
 
-    with st.container:
         # grafico Convocatorias por Año
         graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Evolución de publicaciones ADP por año</b>',color_discrete_sequence=[color_bar]).\
-                 update_yaxes(visible=visible_y_axis,title_text=None).\
-                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+                     update_yaxes(visible=visible_y_axis,title_text=None).\
+                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
         
 
