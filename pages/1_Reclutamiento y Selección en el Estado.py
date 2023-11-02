@@ -47,6 +47,6 @@ with st.sidebar:
 
 
 with st.container():
-   st.radio(["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
+   st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
 
 
