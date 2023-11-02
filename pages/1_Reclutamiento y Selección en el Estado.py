@@ -52,7 +52,7 @@ Nivel = pd.concat([nuevo_registro, Nivel])
 Nivel = Nivel.reset_index(drop=True)
 Nivel = Nivel['Nivel'].tolist()
 
-unique_ministerios = df_concursos['Ministerio'].unique()
+unique_ministerios = df_concursos_adp['Ministerio'].unique()
 Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
 nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
 Ministerios = pd.concat([nuevo_registro, Ministerios])
