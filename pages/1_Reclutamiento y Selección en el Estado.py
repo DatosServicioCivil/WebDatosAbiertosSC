@@ -59,13 +59,12 @@ Ministerios = pd.concat([nuevo_registro, Ministerios])
 Ministerios = Ministerios.reset_index(drop=True)
 Ministerios = Ministerios['Ministerio'].tolist()
 
-Region=['','Región de Metropolitana de Santiago','Región de Magallanes y de la Antártica Chilena',
-       'Región del Libertador General Bernardo OHiggins','Región del Maule', 'Región del Biobío', 'Región de Los Ríos',
-       'Región de  Valparaíso', 'Región de Los Lagos','Región de Arica y Parinacota', 'Región de la Araucanía',
-       'Región de Antofagasta', 'Región de  Atacama','Región de  Coquimbo',
-       'Región de Aysén del General Carlos Ibañez del Campo','Región de Tarapacá', 'Región del Ñuble']
-
-df_concursos_adp=pd.read_csv('ADP/concursos_ADP.csv',sep=';',encoding='utf-8')
+unique_region = df_concursos['Region'].unique()
+Region = pd.DataFrame({'Region': unique_region})
+nuevo_registro = pd.DataFrame({'Region': ['Todos']})
+Region = pd.concat([nuevo_registro, Region])
+Region = Region.reset_index(drop=True)
+Region = Region['Region'].tolist()
 
 with st.sidebar:
     a=st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
