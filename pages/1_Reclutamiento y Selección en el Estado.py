@@ -113,6 +113,8 @@ if a=='Alta Dirección Pública':
         publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Region==option_2) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
     if option_1=='Todos' and option_2=='Todos' and option_3!='Todos':
         publicaciones=df_concursos_adp[(df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos':
+        publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
     
 
     # grafico Convocatorias por Año
