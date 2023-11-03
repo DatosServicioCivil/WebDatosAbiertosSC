@@ -52,23 +52,23 @@ visible_y_axis=True
 color_line='#2D717C'
 color_bar='#6633CC'
 
-df_concursos_adp=pd.read_csv('ADP/concursos_ADP.csv',sep=';',encoding='utf-8')
+df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
 
-unique_niveles = df_concursos_adp['Nivel'].unique()
+unique_niveles = df_concursos['Nivel'].unique()
 Nivel = pd.DataFrame({'Nivel': unique_niveles})
 nuevo_registro = pd.DataFrame({'Nivel': ['Todos']})
 Nivel = pd.concat([nuevo_registro, Nivel])
 Nivel = Nivel.reset_index(drop=True)
 Nivel = Nivel['Nivel'].tolist()
 
-unique_ministerios = df_concursos_adp['Ministerio'].unique()
+unique_ministerios = df_concursos['Ministerio'].unique()
 Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
 nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
 Ministerios = pd.concat([nuevo_registro, Ministerios])
 Ministerios = Ministerios.reset_index(drop=True)
 Ministerios = Ministerios['Ministerio'].tolist()
 
-unique_region = df_concursos_adp['Region'].unique()
+unique_region = df_concursos['Region'].unique()
 Region = pd.DataFrame({'Region': unique_region})
 nuevo_registro = pd.DataFrame({'Region': ['Todos']})
 Region = pd.concat([nuevo_registro, Region])
@@ -100,21 +100,21 @@ if a=='Alta Dirección Pública':
            option_3 = st.selectbox('Ministerio',Ministerios)
 
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos':
-        publicaciones=df_concursos_adp.groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos.groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Region==option_2)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()    
+        publicaciones=df_concursos[(df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Region==option_2) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()    
+        publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
     if option_1!='Todos' and option_2=='Todos' and option_3=='Todos':
-        publicaciones=df_concursos_adp[df_concursos_adp.Nivel==option_1].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos[df_concursos.Nivel==option_1].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3=='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Region==option_2)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3!='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Region==option_2) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1=='Todos' and option_2=='Todos' and option_3!='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3!='Todos':
-        publicaciones=df_concursos_adp[(df_concursos_adp.Nivel==option_1) & (df_concursos_adp.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'Concursos':'sum'}).reset_index()
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     
 
     # grafico Convocatorias por Año
