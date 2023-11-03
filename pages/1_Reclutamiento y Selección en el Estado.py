@@ -115,31 +115,43 @@ if a=='Alta Dirección Pública':
         with col4:
            option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))
 
-    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos':
+    # para 4 variables que toman 2 valores las combinaciones son 16
+
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
         publicaciones=df_concursos.groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos':
+    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
         publicaciones=df_concursos[(df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos':
+    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
         publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos':
-        publicaciones=df_concursos[df_concursos.Nivel==option_1].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos':
+    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #4
+        publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #5
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos': #6
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos':
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #7
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos':
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #8
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #9
         publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
-    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos':
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #10
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_inde
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #11
+        publicaciones=df_concursos[(df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #12
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
+        publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #14
+        publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #15
+        publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #16
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
-        publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
+
     
+    publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
 
     # grafico Convocatorias por Año
     graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Evolución de convocatorias a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
