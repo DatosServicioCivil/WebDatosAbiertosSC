@@ -192,19 +192,19 @@ if a=='Alta Dirección Pública':
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias'})
     
     # grafico Convocatorias por Año
-    graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Evolución de convocatorias a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
+    graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Concursos publicados a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf1.update_layout(yaxis_tickformat='.0f')
 
     # grafico nominas por Año
-    graf2=px.bar(Nominas,x='Year_Nomina',y='Concursos',title='<b>Evolución de nóminas enviadas a la autoridad por concursos a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
+    graf2=px.bar(Nominas,x='Year_Nomina',y='Concursos',title='<b>Nóminas de concursos ADP enviadas a la autoridad por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf2.update_layout(yaxis_tickformat='.0f')
 
     # grafico Evolución de dias_concursos por Año
-    graf3=px.line(dias_concurso,x='Year_Nomina',y='Dias',title='<b>Evolución de dias de proceso de concurso por año</b>').\
+    graf3=px.line(dias_concurso,x='Year_Nomina',y='Dias',title='<b>Evolución de dias de duración de concurso ADP por año</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
