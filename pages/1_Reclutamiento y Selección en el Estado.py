@@ -228,6 +228,10 @@ if a=='Empleo Público':
     df_convocatorias=pd.read_csv('EEPP/Convocatorias_x_año.csv')
     df_vacantes=pd.read_csv('EEPP/Vacantes.csv')
     df_ConvEnLinea=pd.read_csv('EEPP/ConvEnLineaxAño.csv',sep=";")
+
+    df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
+    df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
+    df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
     
     date='31 de Marzo de 2023'
     
