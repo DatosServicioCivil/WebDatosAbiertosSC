@@ -198,7 +198,7 @@ if a=='Alta Dirección Pública':
     graf1.update_layout(yaxis_tickformat='.0f')
 
     # grafico nominas por Año
-    graf2=px.bar(Nominas,x='Year_Nomina',y='Concursos',title='<b>Nóminas de concursos ADP enviadas a la autoridad por año</b>',color_discrete_sequence=[color_bar]).\
+    graf2=px.bar(Nominas,x='Year_Nomina',y='Concursos',title='<b>Nóminas de concursos ADP enviadas por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf2.update_layout(yaxis_tickformat='.0f')
