@@ -75,16 +75,15 @@ Region = pd.concat([nuevo_registro, Region])
 Region = Region.reset_index(drop=True)
 Region = Region['Region'].tolist()
 
-def select_servicio(df_concursos,option_3):
-    duplicados = df_concursos.duplicated(subset=['Ministerio', 'Servicio'], keep=False)
-    filas_unicas = df_concursos[~duplicados]
-    unique_min_serv = filas_unicas[['Ministerio', 'Servicio']]
-    if option_3=='Todos':
-        Servicio=unique_min_serv.Servicio.reset_index()
+def select_servicio(df_concursos, option_3):
+    if option_3 == 'Todos':
+        unique_servicio = df_concursos['Servicio'].unique()
     else:
-        Servicio=unique_min_serv[unique_min_serv.Ministerio==option_3].Servicio.reset_index()
+        unique_servicio = df_concursos.query(f'Ministerio == "{option_3}"')['Servicio'].unique()
+    Servicio = pd.DataFrame({'Servicio': unique_servicio})
     nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
-    Servicio = pd.concat([nuevo_registro, Servicio]).reset_index(drop=True).Servicio.tolist()
+    Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+
     return Servicio
     
 
