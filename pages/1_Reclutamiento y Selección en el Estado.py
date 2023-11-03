@@ -153,7 +153,7 @@ if a=='Alta Dirección Pública':
     if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #12
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
+    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
         publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #14
