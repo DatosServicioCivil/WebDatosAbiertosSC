@@ -49,8 +49,12 @@ st.markdown("<hr>", unsafe_allow_html=True)
 visible_y_axis=True
     
 #https://framework.digital.gob.cl/colors.html
-color_line='#2D717C'
-color_bar='#6633CC'
+color_line='#4A4A4A' # gris oscuro
+color_line_2='#E0701E'
+color_bar='#006FB3'
+color_bar_2='#0A132D'
+# Asignar colores de acuerdo a una paleta de colores a cada sexo
+sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
 
@@ -217,10 +221,6 @@ if a=='Empleo Público':
     df_mujeres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Mujeres']
     df_hombres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Hombres']
     
-    # Asignar colores de acuerdo a una paleta de colores a cada sexo
-    sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
-    
-    
     # Create the line plot using Plotly Express
     graf2 = px.line(
         title='<b>Evolución de postulaciones por año y sexo</b>',
@@ -273,8 +273,6 @@ if a=='Empleo Público':
     graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
     
-    
-    
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
         st.plotly_chart(graf1,use_container_width=True)
@@ -305,12 +303,6 @@ if a=='Prácticas Chile':
     
     st.title('Estadísticas Portal Prácticas Chile')
     st.subheader(date)
-    
-    # define si se ven los ejes Y
-    visible_y_axis=True
-    color_line='#216d41'
-    color_bar='#6633CC'
-    
     # markdown style
     
     st.markdown("""
