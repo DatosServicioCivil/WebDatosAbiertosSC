@@ -98,6 +98,7 @@ with st.sidebar:
 
 if a=='Alta Dirección Pública':
     with st.container():
+       st.title('Estadísticas ADP')
        st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
 if a=='Empleo Público':
     with st.container():
