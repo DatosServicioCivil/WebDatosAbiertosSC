@@ -91,13 +91,21 @@ if a=='Prácticas Chile':
 
 if a=='Alta Dirección Pública':
     with st.container():
-        col1,col2,col3=st.columns(3,gap="large")
+        col1,col2,col3,col4=st.columns(4,gap="large")
         with col1:
            option_1 = st.selectbox('Nivel Jerárquico',Nivel)
         with col2:
            option_2 = st.selectbox('Región',Region)
         with col3:
            option_3 = st.selectbox('Ministerio',Ministerios)
+        with col4:
+            duplicados = df_concursos.duplicated(subset=['Ministerio', 'Servicio'], keep=False)
+            filas_unicas = df_concursos[~duplicados]
+            unique_min_serv = filas_unicas[['Ministerio', 'Servicio']]
+            Servicio=unique_min_serv[unique_min_serv.Ministerio==option_3].Servicio.reset_index()
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).reset_index(drop=True).Servicio.tolist()
+            option_4 = st.selectbox('Servicio',Servicio)
 
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos':
         publicaciones=df_concursos.groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
