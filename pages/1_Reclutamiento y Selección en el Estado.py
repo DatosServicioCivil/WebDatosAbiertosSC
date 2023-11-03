@@ -124,54 +124,71 @@ if a=='Alta Dirección Pública':
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
         publicaciones=df_concursos.groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1').groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1').groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
         publicaciones=df_concursos[(df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
         publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()    
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #4
         publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()    
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()    
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #5
         publicaciones=df_concursos[(df_concursos.Nivel==option_1)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos': #6
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #7
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #8
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #9
         publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #10
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #11
         publicaciones=df_concursos[(df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #12
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
         publicaciones=df_concursos[(df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #14
         publicaciones=df_concursos[(df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #15
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Servicio==option_4)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Servicio==option_4)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #16
         publicaciones=df_concursos[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
+        dias_concurso=df_concursos.query('Nomina==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
 
     publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos'})
+    dias_concurso=dias_concurso.rename(columns={'CD_Concurso': 'Concursos'})
     
     # grafico Convocatorias por Año
     graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Evolución de convocatorias a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
@@ -184,14 +201,22 @@ if a=='Alta Dirección Pública':
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf2.update_layout(yaxis_tickformat='.0f')
-    
+
+    # grafico Evolución de dias_concursos por Año
+    graf3=px.line(dias_concurso,x='Year_Nomina',y='Concursos',title='<b>Evolución de dias de proceso de concurso por año</b>').\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+    graf3.update_layout(yaxis_tickformat='.0f')
 
     with st.container():
-        col1,col2=st.columns(2,gap='small')
+        col1,col2,col3=st.columns(3,gap='small')
         with col1:    
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
+        with col3:
+            st.plotly_chart(graf3,use_container_width=True)
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
