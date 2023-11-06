@@ -384,6 +384,8 @@ if a=='Empleo Público':
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
     
     convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
+    tipo_convocatoria={'Aviso':'orange','Postulacion en linea':'blue'}
+    convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
 
     
     #----------------------------------------------------------------------------------------------------------------------------
@@ -435,6 +437,15 @@ if a=='Empleo Público':
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
+
+
+    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='idConcurso',
+             color='Color',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf7.update_layout(yaxis_tickformat='.0f')
+
+    
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Vacantes Concursadas por Año
     graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -455,7 +466,7 @@ if a=='Empleo Público':
     with col1:
         st.plotly_chart(graf4,use_container_width=True)
     with col2:
-        st.plotly_chart(graf2,use_container_width=True)
+        st.plotly_chart(graf7,use_container_width=True)
     with col3:
         st.plotly_chart(graf1,use_container_width=True)
     
