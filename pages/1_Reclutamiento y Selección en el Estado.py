@@ -363,11 +363,11 @@ if a=='Empleo Público':
     
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
-        st.plotly_chart(graf1,use_container_width=True)
+        st.plotly_chart(graf4,use_container_width=True)
     with col2:
         st.plotly_chart(graf2,use_container_width=True)
     with col3:
-        st.plotly_chart(graf4,use_container_width=True)
+        st.plotly_chart(graf1,use_container_width=True)
     
     
     col4, col5, col6=st.columns(3,gap='small')
