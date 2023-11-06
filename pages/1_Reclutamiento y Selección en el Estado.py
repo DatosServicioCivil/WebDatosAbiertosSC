@@ -301,6 +301,8 @@ if a=='Empleo Público':
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+
+        rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
         
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
@@ -384,6 +386,8 @@ if a=='Empleo Público':
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+
+        rentas=df_concursos_eepp.query('Renta Bruta'!=0)[filtro]
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
@@ -478,6 +482,9 @@ if a=='Empleo Público':
     #graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
     #graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
+    graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
+
+
     
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
@@ -495,7 +502,7 @@ if a=='Empleo Público':
     with col5:
             st.plotly_chart(graf2,use_container_width=True)
     with col6:
-            st.text('gráfico rentas ofrecidas')
+            st.plotly_chart(graf9,use_container_width=True)
 
 #----------------------------------------------------------------------------------------------------------------------
 
