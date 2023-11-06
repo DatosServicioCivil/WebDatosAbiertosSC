@@ -384,7 +384,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
     
     convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
-    tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar'}
+    tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar}
     convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
 
     
