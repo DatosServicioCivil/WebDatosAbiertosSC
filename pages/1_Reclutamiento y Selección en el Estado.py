@@ -237,6 +237,52 @@ if a=='Empleo Público':
     
     st.title('Estadísticas Portal Empleos Públicos')
     st.subheader(date)
+
+    unique_estamento = df_concursos_eepp['Estamento'].unique()
+    Estamento = pd.DataFrame({'Estamento': unique_estamento})
+    nuevo_registro = pd.DataFrame({'Estamento': ['Todos']})
+    Estamento = pd.concat([nuevo_registro, Estamento])
+    Estamento = Estamento.reset_index(drop=True)
+    Estamento = Estamento['Estamento'].tolist()
+
+    unique_calidad = df_concursos_eepp['Tipo de Vacante'].unique()
+    Calidad = pd.DataFrame({'Calidad Jurídica': unique_calidad})
+    nuevo_registro = pd.DataFrame({'Calidad Jurídica': ['Todos']})
+    Calidad = pd.concat([nuevo_registro, Calidad])
+    Calidad = Calidad.reset_index(drop=True)
+    Calidad = Calidad['Calidad Jurídica'].tolist()
+
+    unique_region = df_concursos_eepp['Región'].unique()
+    Region = pd.DataFrame({'Region': unique_region})
+    nuevo_registro = pd.DataFrame({'Region': ['Todos']})
+    Region = pd.concat([nuevo_registro, Region])
+    Region = Region.reset_index(drop=True)
+    Region = Region['Region'].tolist()
+
+    unique_ministerios = df_concursos_eepp['Ministerio'].unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
+    with st.container():
+        col1,col2,col3,col4=st.columns(4,gap="large")
+        with col1:
+            option_1 = st.selectbox('Estamento',Estamento)
+        with col2:
+            option_2 = st.selectbox('Calidad Juridíca',Calidad)
+        with col3:    
+            option_3 = st.selectbox('Región',Region)
+        with col4:
+            option_4 = st.selectbox('Ministerio',Ministerios)
+        with col5:
+            option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp,option_4))
+
+
+
+
+
     
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Evolución de Postulaciones por Año
