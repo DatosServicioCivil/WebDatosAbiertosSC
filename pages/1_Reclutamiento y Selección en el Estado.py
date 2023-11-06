@@ -364,22 +364,22 @@ if a=='Empleo Público':
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
 
-    if option_1=='Todos' and option_2!='Todos' and option_31!='Todos' and option_4!='Todos' and option_5!='Todos': #27
+    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #27
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2=='Todos' and option_31!='Todos' and option_4!='Todos' and option_5!='Todos': #28
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #28
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2!='Todos' and option_31=='Todos' and option_4!='Todos' and option_5!='Todos': #29
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #29
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2!='Todos' and option_31!='Todos' and option_4=='Todos' and option_5!='Todos': #30
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #30
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2!='Todos' and option_31!='Todos' and option_4!='Todos' and option_5=='Todos': #31
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #31
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-    if option_1!='Todos' and option_2!='Todos' and option_31!='Todos' and option_4!='Todos' and option_5!='Todos': #32
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #32
         convocatorias=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
     
