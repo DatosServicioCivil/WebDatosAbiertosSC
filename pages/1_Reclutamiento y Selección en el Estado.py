@@ -326,7 +326,7 @@ if a=='Empleo Público':
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #12
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3)
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #13
-            filtro(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #14
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #15
