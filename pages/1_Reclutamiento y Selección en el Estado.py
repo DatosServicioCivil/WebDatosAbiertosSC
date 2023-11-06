@@ -49,10 +49,10 @@ st.markdown("<hr>", unsafe_allow_html=True)
 visible_y_axis=True
     
 #https://framework.digital.gob.cl/colors.html
-color_line='#4A4A4A' # gris oscuro
-color_line_2='#E0701E'
-color_bar='#006FB3'
-color_bar_2='#0A132D'
+color_line='#4A4A4A' # dark grey
+color_line_2='#E0701E' orange
+color_bar='#006FB3' blue
+color_bar_2='#0A132D' dark blue
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 
@@ -384,7 +384,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
     
     convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
-    tipo_convocatoria={'Aviso':'orange','Postulacion en linea':'blue'}
+    tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar'}
     convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
 
     
