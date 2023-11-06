@@ -49,10 +49,10 @@ st.markdown("<hr>", unsafe_allow_html=True)
 visible_y_axis=True
     
 #https://framework.digital.gob.cl/colors.html
-color_line='#4A4A4A' # dark grey
-color_line_2='#E0701E' orange
-color_bar='#006FB3' blue
-color_bar_2='#0A132D' dark blue
+color_line='#4A4A4A' #dark grey
+color_line_2='#E0701E' #orange
+color_bar='#006FB3' #blue
+color_bar_2='#0A132D' #dark blue
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 
