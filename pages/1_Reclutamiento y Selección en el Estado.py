@@ -429,7 +429,7 @@ if a=='Empleo Público':
     
     # actualiza el eje x para nostrar todas las etiquetas de años
     graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf2.update_layout(yaxis_tickformat='.0f', legend_title_text='Tipo de postulación', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+    graf2.update_layout(yaxis_tickformat='.2f', legend_title_text='Tipo de postulación', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
     
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Postulación Promedio por Año
