@@ -427,14 +427,6 @@ if a=='Empleo Público':
         )
 
     
-    years=convocatorias_x_tipo['Year_Convocatoria'].unique()
-    graf8 = go.Figure(data=[
-        go.Bar(name='Aviso', x=years, y=convocatorias_x_tipo[convocatorias_x_tipo['Tipo postulacion']=='Aviso'].Porcentaje),
-        go.Bar(name='Postulacion en linea', x=years, y=convocatorias_x_tipo[convocatorias_x_tipo['Tipo postulacion']=='Postulacion en linea'].Porcentaje))
-        ])
-    # Change the bar mode
-    graf8.update_layout(barmode='stack')
-    
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Vacantes Concursadas por Año
     graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -458,7 +450,7 @@ if a=='Empleo Público':
     with col2:
         st.plotly_chart(graf7,use_container_width=True)
     with col3:
-        st.plotly_chart(graf8,use_container_width=True)
+        st.plotly_chart(graf1,use_container_width=True)
     
     
     col4, col5, col6=st.columns(3,gap='small')
