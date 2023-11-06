@@ -385,6 +385,9 @@ if a=='Empleo Público':
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
+    convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
+    convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_x_tipo.Vacantes_x_tipo/convocatorias_x_tipo.Convocatorias_x_tipo,2)
+
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
     
@@ -401,28 +404,26 @@ if a=='Empleo Público':
     #----------------------------------------------------------------------------------------------------------------------------
     #grafico 2: Distribución de Postulaciones por Sexo
     # Create separate DataFrames for "Mujeres" and "Hombres"
-    df_mujeres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Mujeres']
-    df_hombres = df_postulaciones_sexo[df_postulaciones_sexo.Sexo == 'Hombres']
+    df_aviso = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Aviso']
+    df_linea = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Postulacion en linea']
     
     # Create the line plot using Plotly Express
     graf2 = px.line(
         title='<b>Evolución de postulaciones por año y sexo</b>',
-        labels={'year': 'Año', 'Porcentaje': 'Porcentaje'},  # Customize axis labels
+        labels={'Year_Convocatoria': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # Customize axis labels
     )
     
     # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
-    graf2.update_layout(yaxis_tickformat='.0%')
+    graf2.update_layout(yaxis_tickformat='.2')
     
     # Add lines for "Mujeres" and "Hombres"
     graf2.add_trace(
-        go.Scatter(x=df_mujeres['year'], y=df_mujeres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Mujeres',line_color=sexo_color_map['Mujeres'])
-    )
-    graf2.add_trace(go.Scatter(x=df_hombres['year'], y=df_hombres['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Hombres',line_color=sexo_color_map['Hombres']))
-    
+        go.Scatter(x=df_aviso['Year_Convocatoria'], y=df_aviso['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Aviso'))#,line_color=sexo_color_map['Mujeres'])
+    graf2.add_trace(go.Scatter(x=df_linea['Year_Convocatoria'], y=df_linea['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Postulacion en linea'))#,line_color=sexo_color_map['Hombres']))
+   
     # Actualizar la ubicación de la leyenda
     graf2.update_layout(
-        legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace')  # Ubicar debajo del eje x en dos columnas
-    )
+        legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace'))  # Ubicar debajo del eje x en dos columnas
     
     # actualiza el eje x para nostrar todas las etiquetas de años
     graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
@@ -489,7 +490,7 @@ if a=='Empleo Público':
     with col4:
             st.plotly_chart(graf5,use_container_width=True)
     with col5:
-            st.text('gráfico desiertos')
+            st.plotly_chart(graf2,use_container_width=True)
     with col6:
             st.text('gráfico rentas ofrecidas')
 
