@@ -301,7 +301,7 @@ if a=='Empleo Público':
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
-
+        
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
             filtro=(df_concursos_eepp.Estamento==option_1)
@@ -386,7 +386,9 @@ if a=='Empleo Público':
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
-    convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_x_tipo.Vacantes_x_tipo/convocatorias_x_tipo.Convocatorias_x_tipo,2)
+    convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
+
+    
 
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
