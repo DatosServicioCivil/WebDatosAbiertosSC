@@ -434,14 +434,14 @@ if a=='Empleo Público':
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf4=px.bar(convocatorias,x='Year_Convocatoria',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
+            update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\  # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
 
 
     graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='idConcurso',
              color='Tipo postulacion',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
-                update_yaxes(visible=visible_y_axis,title_text=None).\
+                update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf7.update_layout(yaxis_tickformat='.0f', legend_title_text='Tipo de Convocatoria', legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
     # Personaliza el eje Y
