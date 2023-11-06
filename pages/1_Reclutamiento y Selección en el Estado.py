@@ -267,7 +267,7 @@ if a=='Empleo Público':
     Ministerios = Ministerios['Ministerio'].tolist()
 
     with st.container():
-        col1,col2,col3,col4=st.columns(4,gap="large")
+        col1,col2,col3,col4,col5=st.columns(5,gap="small")
         with col1:
             option_1 = st.selectbox('Estamento',Estamento)
         with col2:
