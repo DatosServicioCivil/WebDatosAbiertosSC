@@ -411,7 +411,7 @@ if a=='Empleo Público':
     
     # Create the line plot using Plotly Express
     graf2 = px.line(
-        title='<b>Evolución de postulaciones por año y sexo</b>',
+        title='<b>Vacantes promedio por convocatorias</b>',
         labels={'Year_Convocatoria': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # Customize axis labels
     )
     
