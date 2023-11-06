@@ -434,7 +434,7 @@ if a=='Empleo Público':
         dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
         )
     #----------------------------------------------------------------------------------------------------------------------------
-    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje",title='<b>Distribución de tipo de convocatorias por año</b>', color='Tipo postulacion', text_auto=True).\
+    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion', text_auto=True).\
             update_yaxes(visible=False,title_text=None,type='linear').\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
                         update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
