@@ -414,7 +414,7 @@ if a=='Empleo Público':
                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
-
+    #----------------------------------------------------------------------------------------------------------------------------
     graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Distribución de tipo de convocatorias por año</b>',
              color='Tipo postulacion',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
@@ -425,7 +425,10 @@ if a=='Empleo Público':
         type='linear',  # Puedes cambiar 'linear' a 'log' u otro tipo de escala si lo deseas
         dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
         )
-
+    #----------------------------------------------------------------------------------------------------------------------------
+    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje", color='Tipo postulacion', text_auto=True).\
+            update_yaxes(visible=False,title_text=None,type='linear').\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Vacantes Concursadas por Año
@@ -450,7 +453,7 @@ if a=='Empleo Público':
     with col2:
         st.plotly_chart(graf7,use_container_width=True)
     with col3:
-        st.plotly_chart(graf1,use_container_width=True)
+        st.plotly_chart(graf8,use_container_width=True)
     
     
     col4, col5, col6=st.columns(3,gap='small')
