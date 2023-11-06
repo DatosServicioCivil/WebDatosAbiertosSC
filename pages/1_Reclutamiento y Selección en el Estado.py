@@ -423,7 +423,7 @@ if a=='Empleo Público':
     graf4.update_layout(yaxis_tickformat='.0f')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
     #----------------------------------------------------------------------------------------------------------------------------
-    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Distribución de tipo de convocatorias por año</b>',
+    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
              color='Tipo postulacion',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
@@ -434,7 +434,7 @@ if a=='Empleo Público':
         dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
         )
     #----------------------------------------------------------------------------------------------------------------------------
-    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje", color='Tipo postulacion', text_auto=True).\
+    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje",title='<b>Distribución de tipo de convocatorias por año</b>', color='Tipo postulacion', text_auto=True).\
             update_yaxes(visible=False,title_text=None,type='linear').\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
                         update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
