@@ -289,7 +289,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
         
-        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias_x_year,on='Year_Convocatoria',how='left')
+        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
         convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
     else:
@@ -362,7 +362,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
         
-        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias_x_year,on='Year_Convocatoria',how='left')
+        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
         convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
 
