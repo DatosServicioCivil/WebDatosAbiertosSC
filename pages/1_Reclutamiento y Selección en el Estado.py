@@ -277,7 +277,8 @@ if a=='Empleo Público':
         with col4:
             option_4 = st.selectbox('Ministerio',Ministerios)
         with col5:
-            option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp,option_4))
+            columnas=['Ministerio','Institucion']
+            option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
 
 
 
