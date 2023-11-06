@@ -443,7 +443,7 @@ if a=='Empleo Público':
              color='Tipo postulacion',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf7.update_layout(yaxis_tickformat='.0f', legend_title_text='Tipo de Convocatoria', legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
+    graf7.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1))
     # Personaliza el eje Y
     graf7.update_yaxes(
         type='linear',  # Puedes cambiar 'linear' a 'log' u otro tipo de escala si lo deseas
