@@ -292,6 +292,16 @@ if a=='Empleo Público':
         convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
         convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
+        vacantes=df_concursos_eepp.groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
+        vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
+        
+        vacantes_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
+        vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
+        
+        vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
+        
+        vacantes_x_tipo['Porcentaje']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
             filtro=(df_concursos_eepp.Estamento==option_1)
@@ -365,6 +375,15 @@ if a=='Empleo Público':
         convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
         convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
+        vacantes=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
+        vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
+        
+        vacantes_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
+        vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
+        
+        vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
+        
+        vacantes_x_tipo['Porcentaje']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
@@ -440,8 +459,9 @@ if a=='Empleo Público':
                         update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
     
     #----------------------------------------------------------------------------------------------------------------------------
+  
     # grafico Vacantes Concursadas por Año
-    graf5=px.bar(df_vacantes,x='Año',y='Vacantes',title='<b>Evolución de vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf5=px.bar(vacantes,x='Year_Convocatoria',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
@@ -467,11 +487,11 @@ if a=='Empleo Público':
     
     col4, col5, col6=st.columns(3,gap='small')
     with col4:
-            st.plotly_chart(graf3,use_container_width=True)
-    with col5:
             st.plotly_chart(graf5,use_container_width=True)
+    with col5:
+            st.text('gráfico desiertos')
     with col6:
-            st.plotly_chart(graf6,use_container_width=True)
+            st.text('gráfico rentas ofrecidas')
 
 #----------------------------------------------------------------------------------------------------------------------
 
