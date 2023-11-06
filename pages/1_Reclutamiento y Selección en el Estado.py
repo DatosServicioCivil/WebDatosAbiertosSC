@@ -290,7 +290,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
         
         convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
-        convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
+        convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
         vacantes=df_concursos_eepp.groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
         vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
@@ -300,7 +300,7 @@ if a=='Empleo Público':
         
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
         
-        vacantes_x_tipo['Porcentaje']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+        vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
@@ -373,7 +373,7 @@ if a=='Empleo Público':
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
         
         convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
-        convocatorias_x_tipo['Porcentaje']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
+        convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
         vacantes=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
         vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
@@ -383,7 +383,7 @@ if a=='Empleo Público':
         
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
         
-        vacantes_x_tipo['Porcentaje']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+        vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
@@ -453,7 +453,7 @@ if a=='Empleo Público':
         dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
         )
     #----------------------------------------------------------------------------------------------------------------------------
-    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion', text_auto=True).\
+    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje_1",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion', text_auto=True).\
             update_yaxes(visible=False,title_text=None,type='linear').\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
                         update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
@@ -466,13 +466,13 @@ if a=='Empleo Público':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
     #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Porcentaje de Convocatorias en Linea por Año
-    graf6=px.line(df_ConvEnLinea,x='year',y='Porcentaje Convocatorias Postulacion en Linea',title='<b>Evolución de convocatorias en línea por año</b>').\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    
-    graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
-    graf6.update_layout(yaxis_tickformat='.0%')
+    # grafico Porcentaje de convocatorias con postulación en linea por año
+    #graf6=px.line(convocatorias_x_tipo,x='Year_Convocatoria',y='Porcentaje_2',title='<b>Distribución (%) de convocatorias con postulación en línea por año</b>').\
+    #        update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    # 
+    #graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
+    #graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
     
     col1,col2,col3=st.columns(3,gap='small')
