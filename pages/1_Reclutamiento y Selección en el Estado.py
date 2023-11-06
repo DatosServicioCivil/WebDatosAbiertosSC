@@ -232,6 +232,8 @@ if a=='Empleo Público':
     df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
     df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
     df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
+
+    df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
     
     date='31 de Marzo de 2023'
     
@@ -280,9 +282,18 @@ if a=='Empleo Público':
             columnas=['Ministerio','Institucion']
             option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
 
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
+        convocatorias=df_concursos_eepp.groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        convocatorias_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
+        convocatorias=df_concursos_eepp[(df_concursos_eepp.Estamento==option_1)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp.Estamento==option_1)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
+        convocatorias=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2)].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        convocatorias_x_tipo=df_concursos_eepp[(df_concursos_eepp['Tipo de Vacante']==option_2)].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
 
 
-
+    convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
 
     
     #----------------------------------------------------------------------------------------------------------------------------
@@ -330,7 +341,7 @@ if a=='Empleo Público':
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
-    graf4=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+    graf4=px.bar(convocatorias,x='Year_Convocatoria',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
