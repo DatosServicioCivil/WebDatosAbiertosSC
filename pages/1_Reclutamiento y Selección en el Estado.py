@@ -436,7 +436,8 @@ if a=='Empleo Público':
     #----------------------------------------------------------------------------------------------------------------------------
     graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje", color='Tipo postulacion', text_auto=True).\
             update_yaxes(visible=False,title_text=None,type='linear').\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
+                        update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
     
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Vacantes Concursadas por Año
