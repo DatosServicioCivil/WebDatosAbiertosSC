@@ -65,12 +65,14 @@ with col1:
    zona=st.selectbox("Zona", ["Todas","Norte", "Centro", "Sur", "Austral"])
    if zona=='Norte':
       region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
-   if zona=='Centro':
+   elif zona=='Centro':
       region=st.selectbox("Región", ["Todas","Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
-   if zona=='Sur':
+   elif zona=='Sur':
       region=st.selectbox("Región", ["Todas","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
-   if zona=='Austral':
+   elif zona=='Austral':
       region=st.selectbox("Región", ["Todas","Aysén", "Magallanes"])
+   else:
+       region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo","Valparaíso","Metropolitana" ,"O’Higgins", "Maule","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos","Aysén", "Magallanes"])
 with col2:
    html_table ="""
    <table class="editorDemoTable">
