@@ -58,7 +58,7 @@ my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
 st.image(my_logo)
 
 # Set Page Header
-st.title('Información Regional', anchor=None, help=None)
+st.title('Descarga de Datasets y Reportes', anchor=None, help=None)
 # Set custom CSS for hr element
 st.markdown(
     """
@@ -79,7 +79,7 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 # Set Page Header
-st.header('# Descarga de Datasets y Reportes')
+#st.header('# Descarga de Datasets y Reportes')
 
 
 
@@ -88,7 +88,7 @@ st.markdown("El Servicio Civil pone a disposición una serie de reportes y datas
 st.markdown('Por información adicional contactanos a traves de nuestro sitio de *Atención Ciudadana y Contacto* (https://www.serviciocivil.cl/contacto)')
 
 Tematica = st.radio('Selecciona una temática', ['ADP', 'Gestión de Persona en el Estado'],horizontal =True)
-st.markdown("""---""")
+#st.markdown("""---""")
 if Tematica=='ADP':
   st.markdown('**Información de concursos de Alta Dirección Pública**')
   col1,col2,col3=st.columns(3,gap='small')
