@@ -55,8 +55,9 @@ def add_logo(logo_path, width, height):
 
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
 st.image(my_logo)
-st.markdown('**Dirección Nacional del Servicio Civil**') 
 
+# Set Page Header
+st.title('Información Regional', anchor=None, help=None)
 # Set custom CSS for hr element
 st.markdown(
     """
