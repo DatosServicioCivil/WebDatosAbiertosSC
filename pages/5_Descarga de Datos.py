@@ -3,6 +3,7 @@ import pandas as pd
 from matplotlib import pyplot as plt
 import matplotlib.style as style
 from datetime import date
+from PIL import Image
 
 st.set_page_config(layout='wide')
 
