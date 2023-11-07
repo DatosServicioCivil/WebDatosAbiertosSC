@@ -62,15 +62,15 @@ kpi3=df_kpi_region[df_kpi_region.id=='t_5_100'].resultado.values[0]
 with col1:
    st.markdown("**Conoce la información del Servicio Civil por regiones**.")
    st.markdown("Selecciona zona y región")
-   zona=st.selectbox("Zona", ["Norte", "Centro", "Sur", "Austral"])
+   zona=st.selectbox("Zona", ["Todas","Norte", "Centro", "Sur", "Austral"])
    if zona=='Norte':
-      region=st.selectbox("Región", ["Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
+      region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
    if zona=='Centro':
-      region=st.selectbox("Región", ["Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
+      region=st.selectbox("Región", ["Todas","Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
    if zona=='Sur':
-      region=st.selectbox("Región", ["Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
+      region=st.selectbox("Región", ["Todas","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
    if zona=='Austral':
-      region=st.selectbox("Región", ["Aysén", "Magallanes"])
+      region=st.selectbox("Región", ["Todas","Aysén", "Magallanes"])
 with col2:
    html_table ="""
    <table class="editorDemoTable">
