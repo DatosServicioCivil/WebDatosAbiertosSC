@@ -46,10 +46,42 @@ def get_data_csv():
 
 Cargos, Publicaciones ,Nominas,Nombramientos,Desiertos,Tiempos=get_data_csv()
 
-st.markdown('# Descarga de Datasets y Reportes')
-#st.markdown('## **EpiCenter for Disease Dynamics**') 
+# This function sets the logo and company name inside the sidebar
+def add_logo(logo_path, width, height):
+    """Read and return a resized logo"""
+    logo = Image.open(logo_path)
+    modified_logo = logo.resize((width, height))
+    return modified_logo
+
+my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
+st.image(my_logo)
 st.markdown('**Dirección Nacional del Servicio Civil**') 
-#st.markdown("## Key COVID-19 Metrics")
+
+# Set custom CSS for hr element
+st.markdown(
+    """
+        <style>
+            hr {
+                margin-top: 0.0rem;
+                margin-bottom: 0.5rem;
+                height: 3px;
+                background-color: #333;
+                border: none;
+            }
+        </style>
+    """,
+    unsafe_allow_html=True,
+)
+
+# Add horizontal line
+st.markdown("<hr>", unsafe_allow_html=True)
+
+# Set Page Header
+st.header('# Descarga de Datasets y Reportes')
+
+
+
+
 st.markdown("El Servicio Civil pone a disposición una serie de reportes y datasets para descargar.")
 st.markdown('Por información adicional contactanos a traves de nuestro sitio de *Atención Ciudadana y Contacto* (https://www.serviciocivil.cl/contacto)')
 
