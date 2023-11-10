@@ -39,7 +39,7 @@ st.markdown(
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
 
-st.container():
+with st.container():
     col1,col2,col3=st.columns(3,gap='large')
     with col1:
         link_perfiles='https://www.serviciocivil.cl/consejo-alta-direccion-publica/perfiles-vigentes-cargos-adp/'
