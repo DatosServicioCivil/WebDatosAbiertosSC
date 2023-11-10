@@ -43,7 +43,7 @@ with st.container():
     col1,col2,col3=st.columns(3,gap='large')
     with col1:
         link_perfiles='https://www.serviciocivil.cl/consejo-alta-direccion-publica/perfiles-vigentes-cargos-adp/'
-        st.write("<a href=link_perfiles id='my-link'>perfiles</a>", unsafe_allow_html=True)
-        st.write("check out this [link](link_perfiles)")
+        st.write("<a href='https://www.serviciocivil.cl/consejo-alta-direccion-publica/perfiles-vigentes-cargos-adp/' id='my-link'>perfiles</a>", unsafe_allow_html=True)
+        st.write("check out this [link]('https://www.serviciocivil.cl/consejo-alta-direccion-publica/perfiles-vigentes-cargos-adp/')")
 
 
