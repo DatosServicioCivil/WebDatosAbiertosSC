@@ -569,4 +569,101 @@ if a=='Prácticas Chile':
             st.plotly_chart(graf3,use_container_width=True)
     with col4:
             st.text('')
+
+#----------------------------------------------------------------------------------------------------------------------
+if a=='Directores para Chile':
+
+    df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8')        
+    date='02 de Noviembre de 2023'
+
+    def select_comuna(df_DEEM, option_1):
+    if option_1 == 'Todos':
+        unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
+    else:
+        unique_comuna = df_concursos.query(f'Region == "{option_1}"')['Comuna/Ciudad'].unique()
+        Comuna = pd.DataFrame({'Comuna': unique_comuna})
+        nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
+        Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
+
+
+
+    
+    st.title('Estadísticas Portal Directores para Chile')
+    st.subheader(date)
+    # markdown style
+    
+    st.markdown("""
+    <style>
+    .normal-font {
+        font-size:30px;
+        fott-type:roboto
+    }
+    </style>
+    """, unsafe_allow_html=True)
+
+    unique_region = df_DEEM['Region'].unique()
+    Region = pd.DataFrame({'Region': unique_region})
+    nuevo_registro = pd.DataFrame({'Region': ['Todos']})
+    Region = pd.concat([nuevo_registro, Region])
+    Region = Region.reset_index(drop=True)
+    Region = Region['Region'].tolist()
+
+    unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
+    Comuna = pd.DataFrame({'Comuna': unique_region})
+    nuevo_registro = pd.DataFrame({'Region': ['Todos']})
+    Region = pd.concat([nuevo_registro, Region])
+    Region = Region.reset_index(drop=True)
+    Region = Region['Region'].tolist()
+
+    columnas=['Region','Comuna/Ciudad']
+
+    with st.container():
+        col1,col2=st.columns(2,gap="small")
+        with col1:
+            option_1 = st.selectbox('Región',Region)
+        with col2:
+            option_2 = st.selectbox('Servicio',select_comuna(df_DEEM[columnas].rename(columns={'Comuna/Ciudad': 'Comuna'}),option_1))
+    
+    #----------------------------------------------------------------------------------------------------------------------------
+    #df_convocatorias=df_DEEM.group
+    
+    #----------------------------------------------------------------------------------------------------------------------------
+    # grafico Evolución de Postulaciones por Año
+    graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución de postulaciones por año</b>').\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+    graf1.update_layout(yaxis_tickformat='.0f')
+    #----------------------------------------------------------------------------------------------------------------------------
+    
+    # grafico Convocatorias por Año
+    graf2=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    #----------------------------------------------------------------------------------------------------------------------------
+    # grafico Seleccionados por Año
+    # Create the line plot
+    graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
+        .update_yaxes(visible=visible_y_axis, title_text=None)\
+        .update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    
+    graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
+    #----------------------------------------------------------------------------------------------------------------------------
+    
+    
+    #col1,col2,col3=st.columns(3,gap='small')
+    #with col1:
+    #    st.markdown()
+    #with col2:
+    #    st.plotly_chart(graf1,use_container_width=True)
+    #with col3:
+    #    st.plotly_chart(graf2,use_container_width=True)
+    
+    
+    #col4, col5=st.columns(2,gap='small')
+    #with col4:
+    #        st.plotly_chart(graf3,use_container_width=True)
+    #with col4:
+    #        st.text('')
         
+
