@@ -94,7 +94,7 @@ def select_servicio(df_concursos, option_3):
 
 
 with st.sidebar:
-    a=st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Prácticas Chile'])
+    a=st.radio('Reclutamiento y Selección: ',['Alta Dirección Pública','Empleo Público','Directores para Chile','Prácticas Chile'])
 
 if a=='Alta Dirección Pública':
     with st.container():
@@ -104,6 +104,9 @@ if a=='Empleo Público':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 if a=='Prácticas Chile':
+    with st.container():
+       st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+if a=='Directores para Chile':
     with st.container():
        st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 
