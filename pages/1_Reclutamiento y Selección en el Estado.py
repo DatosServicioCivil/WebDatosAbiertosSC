@@ -623,14 +623,27 @@ if a=='Directores para Chile':
             option_2 = st.selectbox('Comuna',select_comuna(df_DEEM[columnas],option_1))
     
     #----------------------------------------------------------------------------------------------------------------------------
-    df_convocatorias=df_DEEM.group('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-    
+    df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
-    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
+    
+    with st.container():
+        col1,col2,col3=st.columns(3,gap='small')
+        with col1:
+            st.plotly_chart(graf2,use_container_width=True)
+        with col2:
+            st.markdown()
+        with col3:
+           st.markdown()
+
+
+    
+    
     # grafico Seleccionados por Año
     # Create the line plot
     #graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
@@ -640,14 +653,7 @@ if a=='Directores para Chile':
     #graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
     
-    
-    #col1,col2,col3=st.columns(3,gap='small')
-    #with col1:
-    #    st.markdown()
-    #with col2:
-    #    st.plotly_chart(graf1,use_container_width=True)
-    #with col3:
-    #    st.plotly_chart(graf2,use_container_width=True)
+
     
     
     #col4, col5=st.columns(2,gap='small')
