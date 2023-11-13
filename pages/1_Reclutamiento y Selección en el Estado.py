@@ -606,14 +606,14 @@ if a=='Directores para Chile':
     Region = Region.reset_index(drop=True)
     Region = Region['Region'].tolist()
 
-    unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
+    unique_comuna = df_DEEM['Comuna'].unique()
     Comuna = pd.DataFrame({'Comuna': unique_comuna})
     nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
     Comuna = pd.concat([nuevo_registro, Comuna])
     Comuna = Comuna.reset_index(drop=True)
     Comuna = Comuna['Comuna'].tolist()
 
-    columnas=['Region','Comuna/Ciudad']
+    columnas=['Region','Comuna']
 
     with st.container():
         col1,col2=st.columns(2,gap="small")
