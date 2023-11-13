@@ -79,3 +79,4 @@ table_scorecard = """
 </div>"""
 
 table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
+st.markdown(table_scorecard, unsafe_allow_html=True)
