@@ -221,6 +221,7 @@ if a=='Alta Dirección Pública':
             st.plotly_chart(graf2,use_container_width=True)
         with col3:
             st.plotly_chart(graf3,use_container_width=True)
+            st.text('Se consideran solo concursos con nómina enviada')
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
