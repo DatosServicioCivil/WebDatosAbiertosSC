@@ -44,3 +44,47 @@ st.markdown(
 
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
+
+table_scorecard = """
+<div class="ui five small statistics">
+  <div class="grey statistic">
+    <div class="value">"""+str(df[df['TABLE_TYPE'] == 'BASE TABLE']['TABLE_ID'].count())+"""
+    </div>
+    <div class="grey label">
+      Tables
+    </div>
+  </div>
+    <div class="grey statistic">
+        <div class="value">"""+str(df[df['TABLE_TYPE'] == 'VIEW']['TABLE_ID'].count())+"""
+        </div>
+        <div class="label">
+        Views
+        </div>
+    </div>
+    <div class="grey statistic">
+        <div class="value">"""+str(df[df['TABLE_TYPE'] == 'MATERIALIZED VIEW']['TABLE_ID'].count())+"""
+        </div>
+        <div class="label">
+        Materialized Views
+        </div>
+    </div>    
+  <div class="grey statistic">
+    <div class="value">
+      """+human_format(df['ROW_COUNT'].sum())+"""
+    </div>
+    <div class="label">
+      Rows
+    </div>
+  </div>
+
+  <div class="grey statistic">
+    <div class="value">
+      """+human_bytes(df['BYTES'].sum())+" "+human_bytes_text(df['BYTES'].sum())+"""
+    </div>
+    <div class="label">
+      Data Size
+    </div>
+  </div>
+</div>"""
+
+table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
