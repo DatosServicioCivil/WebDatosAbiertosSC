@@ -638,7 +638,7 @@ if a=='Directores para Chile':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
     # grafico Desiertos y Anulados por Año
-    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas desiertas o anuladas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf2=px.bar(df_desiertos_anulados,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas desiertas o anuladas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
