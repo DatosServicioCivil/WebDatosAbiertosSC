@@ -46,9 +46,10 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------
-df_eepp_avisos=pd.read_csv('EEPP/df_concursos_eepp_Avisos.csv',sep=';',encoding='utf-8')
-df_eepp_linea=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=';',encoding='utf-8')
-df_eepp=pd.concat([df_eepp_avisos,df_eepp_linea])
+df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
+df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
+df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
+
                            
 
 table_scorecard = """
