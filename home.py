@@ -62,8 +62,8 @@ table_scorecard = """
 <tr>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td>vacantes.iat[0,1]</td>
-<td>&nbsp;</td>
+<td>"""+str(vacantes.iat[0,1])+"""</td>
+<td>"""+str(vacantes.iat[0,1])+"""</td>
 <td>&nbsp;</td>
 </tr>
 <tr>
