@@ -629,10 +629,16 @@ if a=='Directores para Chile':
     
     #----------------------------------------------------------------------------------------------------------------------------
     df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+    df_desiertos_anulados=df_DEEM[(df_DEEM['Estado']=='Desierto') | (df_DEEM['Estado']=='Anulado')].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
 
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
-    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf1=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+
+    # grafico Desiertos y Anulados por Año
+    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias a cargos de directores de escuelas desiertas o anuladas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
@@ -640,9 +646,9 @@ if a=='Directores para Chile':
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:
-            st.plotly_chart(graf2,use_container_width=True)
+            st.plotly_chart(graf1,use_container_width=True)
         with col2:
-            st.markdown('texto prueba')
+            st.plotly_chart(graf2,use_container_width=True)
         with col3:
            st.markdown('texto prueba')
 
