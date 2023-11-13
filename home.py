@@ -64,7 +64,7 @@ table_scorecard = """
 <tbody>
 <tr>
 <td style="width: 436px; text-align: center;">
-<h2>"""+str(df_concursos_eepp['N&uacute;mero Postulaciones'].sum())+"""</h2>
+<h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
 </td>
 <td style="width: 82px; text-align: center;">
 <h2>5000</h2>
