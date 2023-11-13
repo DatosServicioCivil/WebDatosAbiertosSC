@@ -655,7 +655,9 @@ if a=='Directores para Chile':
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
-    graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado", title="Estados")
+    graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado", title="Estados").\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1)   
     #----------------------------------------------------------------------------------------------------------------------------
     
     with st.container():
