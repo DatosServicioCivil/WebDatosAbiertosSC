@@ -12,6 +12,8 @@ import streamlit.components.v1 as components
 
 st.set_page_config(layout='wide')
 
+local_css("style.css")
+
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
