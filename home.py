@@ -72,7 +72,7 @@ table_scorecard = """
 </td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;">
-<h2>"""+str(vacantes.iat[0,1]')+"""</h2>
+<h2>"""+str(vacantes.iat[0,1])+"""</h2>
 </td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;">
