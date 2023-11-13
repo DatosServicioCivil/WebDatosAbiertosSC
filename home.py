@@ -57,37 +57,24 @@ vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
                            
 
 table_scorecard = """
-<div class="ui five small statistics">
-      <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""
-        </div>
-        <div class="grey label">Tables
-        </div>
-      </div>
-          <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""
-        </div>
-        <div class="label">Views
-        </div>
-      </div>
-      <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="label">Materialized Views
-        </div>
-      </div>
-      <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""
-        </div>
-        <div class="label">Rows
-        </div>
-      </div>
-      <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""
-        </div>
-        <div class="label">Data Size
-        </div>
-      </div>
-</div>"""
+<table>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>vacantes.iat[0,1]</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td><span style="color: #808080;"><strong>Postulaciones</strong></span></td>
+<td><span style="color: #808080;"><strong>Concursos ADP</strong></td>
+<td><span style="color: #808080;"><strong>Vacantes Empleos P&uacute;blicos</strong></td>
+<td><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></td>
+<td><span style="color: #808080;"><strong>Directores Seleccionados</strong></td>
+</tr>
+</tbody>
+</table>"""
 
 #table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
 st.markdown(table_scorecard, unsafe_allow_html=True)
