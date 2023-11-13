@@ -572,23 +572,22 @@ if a=='Prácticas Chile':
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
-
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8')        
     date='02 de Noviembre de 2023'
 
     def select_comuna(df_DEEM, option_1):
-    if option_1 == 'Todos':
-        unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
-    else:
-        unique_comuna = df_concursos.query(f'Region == "{option_1}"')['Comuna/Ciudad'].unique()
-        Comuna = pd.DataFrame({'Comuna': unique_comuna})
-        nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
-        Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
+        if option_1 == 'Todos':
+            unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
+        else:
+            unique_comuna = df_concursos.query(f'Region == "{option_1}"')['Comuna/Ciudad'].unique()
+            Comuna = pd.DataFrame({'Comuna': unique_comuna})
+            nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
+            Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
     
     st.title('Estadísticas Portal Directores para Chile')
     st.subheader(date)
-    # markdown style
     
+    # markdown style
     st.markdown("""
     <style>
     .normal-font {
