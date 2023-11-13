@@ -659,7 +659,7 @@ if a=='Directores para Chile':
     graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado_Concurso", title="Estados").\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
-                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.3, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
     #----------------------------------------------------------------------------------------------------------------------------
     
     with st.container():
