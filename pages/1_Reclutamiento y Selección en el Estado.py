@@ -584,9 +584,6 @@ if a=='Directores para Chile':
         Comuna = pd.DataFrame({'Comuna': unique_comuna})
         nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
         Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
-
-
-
     
     st.title('Estadísticas Portal Directores para Chile')
     st.subheader(date)
