@@ -623,29 +623,21 @@ if a=='Directores para Chile':
             option_2 = st.selectbox('Comuna',select_comuna(df_DEEM[columnas],option_1))
     
     #----------------------------------------------------------------------------------------------------------------------------
-    #df_convocatorias=df_DEEM.group
+    df_convocatorias=df_DEEM.group('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
     
     #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Evolución de Postulaciones por Año
-    graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución de postulaciones por año</b>').\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
-    graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
-    graf1.update_layout(yaxis_tickformat='.0f')
-    #----------------------------------------------------------------------------------------------------------------------------
-    
     # grafico Convocatorias por Año
-    graf2=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+    graf2=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Seleccionados por Año
     # Create the line plot
-    graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
-        .update_yaxes(visible=visible_y_axis, title_text=None)\
-        .update_xaxes(title_text=None,tickmode='linear', dtick=1)
-    
-    graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
+    #graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
+    #    .update_yaxes(visible=visible_y_axis, title_text=None)\
+    #    .update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    #
+    #graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
     
     
