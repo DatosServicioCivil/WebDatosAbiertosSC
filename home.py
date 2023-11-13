@@ -12,7 +12,7 @@ import streamlit.components.v1 as components
 
 st.set_page_config(layout='wide')
 
-local_css("style.css")
+#local_css("style.css")
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -59,24 +59,33 @@ vacantes.iat[0,1]
 table_scorecard = """
 <div class="ui five small statistics">
       <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="grey label">Tables</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""
+        </div>
+        <div class="grey label">Tables
+        </div>
       </div>
           <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="label">Views</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""
+        </div>
+        <div class="label">Views
+        </div>
       </div>
       <div class="grey statistic">
         <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="label">Materialized Views</div>
+        <div class="label">Materialized Views
+        </div>
       </div>
       <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="label">Rows</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""
+        </div>
+        <div class="label">Rows
+        </div>
       </div>
       <div class="grey statistic">
-        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
-        <div class="label">Data Size</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""
+        </div>
+        <div class="label">Data Size
+        </div>
       </div>
 </div>"""
 
