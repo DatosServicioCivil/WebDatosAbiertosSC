@@ -575,7 +575,8 @@ if a=='Prácticas Chile':
 if a=='Directores para Chile':
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
     df_DEEM=df_DEEM.rename(columns={'Comuna/Ciudad': 'Comuna'})
-    date='02 de Noviembre de 2023'
+    df_DEEM['Estado_Concurso']=np.where(df_DEEM['Estado']=='Desvinculado','Nombrado',df_DEEM['Estado'])
+    date=max(df_DEEM.FechaCorte)
 
     def select_comuna(df, option_1):
         if option_1 == 'Todos':
@@ -631,19 +632,19 @@ if a=='Directores para Chile':
     if option_1=='Todos' and option_2=='Todos': #1
             df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[(df_DEEM['Estado']=='Desierto') | (df_DEEM['Estado']=='Anulado')].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado'])].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado'])].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
     if option_1!='Todos' and option_2=='Todos': #2
             df_convocatorias=df_DEEM[(df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
     if option_1=='Todos' and option_2!='Todos': #3
             df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
     if option_1!='Todos' and option_2!='Todos': #4
             df_convocatorias=df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf1=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
