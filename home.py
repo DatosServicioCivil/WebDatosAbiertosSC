@@ -52,8 +52,11 @@ df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",e
 df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
 df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
 
+
 vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
 #vacantes.iat[0,1]
+
+postulaciones=df_concursos_eepp['Número Postulaciones'].sum()
                            
 
 table_scorecard = """
@@ -61,7 +64,7 @@ table_scorecard = """
 <tbody>
 <tr>
 <td style="text-align: center;">
-<h2>3000000</h2>
+<h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
 </td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;">
