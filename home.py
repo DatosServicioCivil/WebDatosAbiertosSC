@@ -53,7 +53,7 @@ df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en
 df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
 
 vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
-vacantes.iat[0,1]
+#vacantes.iat[0,1]
                            
 
 table_scorecard = """
