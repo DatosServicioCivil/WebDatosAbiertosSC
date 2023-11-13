@@ -631,15 +631,19 @@ if a=='Directores para Chile':
     if option_1=='Todos' and option_2=='Todos': #1
             df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[(df_DEEM['Estado']=='Desierto') | (df_DEEM['Estado']=='Anulado')].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado'])].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
     if option_1!='Todos' and option_2=='Todos': #2
             df_convocatorias=df_DEEM[(df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
     if option_1=='Todos' and option_2!='Todos': #3
             df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
     if option_1!='Todos' and option_2!='Todos': #4
             df_convocatorias=df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_estados = df_DEEM[~df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2) & (df_DEEM.Region==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado']).agg({'idConcurso': 'count'}).reset_index()
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf1=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -650,6 +654,8 @@ if a=='Directores para Chile':
     graf2=px.bar(df_desiertos_anulados,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias desiertas o anuladas de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+
+    graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado", title="Estados")
     #----------------------------------------------------------------------------------------------------------------------------
     
     with st.container():
@@ -659,7 +665,7 @@ if a=='Directores para Chile':
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
         with col3:
-           st.markdown('texto prueba')
+           st.plotly_chart(graf3,use_container_width=True)
 
 
     
