@@ -60,39 +60,41 @@ postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
                            
 
 table_scorecard = """
-<table style="border: 0;">
+<table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
 <tbody>
 <tr>
-<td style="text-align: center;">
-<h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
+<td style="width: 436px; text-align: center;">
+<h2>"""+str(df_concursos_eepp['N&uacute;mero Postulaciones'].sum())+"""</h2>
 </td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">
+<td style="width: 82px; text-align: center;">
 <h2>5000</h2>
 </td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">
+<td style="width: 100px; text-align: center;">
 <h2>"""+str(vacantes.iat[0,1])+"""</h2>
 </td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">
+<td style="width: 109px; text-align: center;">
 <h2>10000</h2>
 </td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;">
+<td style="width: 109px; text-align: center;">
 <h2>13500</h2>
 </td>
 </tr>
 <tr>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Total Postulaciones Portales</strong></span></td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Concursos ADP</strong></span></td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en \n Empleos P&uacute;blicos</strong></span></td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></td>
-<td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Directores Seleccionados</strong></span></td>
+<td style="width: 436px; text-align: center;">
+<h2><span style="color: #808080;"><strong>Total Postulaciones Portales</strong></span></h2>
+</td>
+<td style="width: 82px; text-align: center;">
+<h2><span style="color: #808080;"><strong>Concursos ADP</strong></span></h2>
+</td>
+<td style="width: 100px; text-align: center;">
+<h2 style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en Empleos P&uacute;blicos</strong></span></h2>
+</td>
+<td style="width: 109px; text-align: center;">
+<h2><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></h2>
+</td>
+<td style="width: 109px; text-align: center;">
+<h2><span style="color: #808080;"><strong>Directores Seleccionados</strong></span></h2>
+</td>
 </tr>
 </tbody>
 </table>"""
