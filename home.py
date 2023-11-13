@@ -60,6 +60,7 @@ postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
                            
 
 table_scorecard = """
+<p><img src="https://reporte.serviciocivil.cl/wp-content/uploads/2019/04/datosabiertos.png" alt="" width="1002" height="424" /></p>
 <table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
 <tbody>
 <tr>
