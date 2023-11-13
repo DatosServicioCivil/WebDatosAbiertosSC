@@ -631,7 +631,7 @@ if a=='Directores para Chile':
     columnas=['Region','Comuna']
 
     with st.container():
-        col1,col2,col3=st.columns(2,gap="small")
+        col1,col2,col3=st.columns(3,gap="small")
         with col1:
             option_1 = st.selectbox('Región',Region)
         with col2:
