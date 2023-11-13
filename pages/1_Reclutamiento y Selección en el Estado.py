@@ -706,7 +706,7 @@ if a=='Directores para Chile':
         with col1:
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
-            st.plotly_chart(graf2,use_container_width=True)
+            st.plotly_chart(graf3,use_container_width=True)
         with col3:
            st.plotly_chart(graf4,use_container_width=True)
 
