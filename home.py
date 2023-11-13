@@ -88,7 +88,7 @@ table_scorecard = """
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;"><span style="color: #808080;"><strong>Concursos ADP</strong></span></td>
 <td style="text-align: center;">&nbsp;</td>
-<td style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en Empleos P&uacute;blicos</strong></span></td>
+<td style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en \n Empleos P&uacute;blicos</strong></span></td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;"><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></td>
 <td style="text-align: center;">&nbsp;</td>
