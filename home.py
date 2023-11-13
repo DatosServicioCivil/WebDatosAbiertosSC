@@ -27,7 +27,7 @@ def add_logo(logo_path, width, height):
 #st.sidebar.subheader("Servicio Civil.")
 
 # Set Page Header
-st.header("Datos Abriertos Servicio Civil")
+st.header("Datos Abiertos Servicio Civil")
 # Set custom CSS for hr element
 st.markdown(
     """
