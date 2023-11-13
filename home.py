@@ -54,9 +54,9 @@ df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulaci
 
 
 vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
-#vacantes.iat[0,1]
-
 postulaciones=df_concursos_eepp['Número Postulaciones'].sum()
+postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
+
                            
 
 table_scorecard = """
@@ -72,7 +72,7 @@ table_scorecard = """
 </td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;">
-<h2>"""+str(vacantes.iat[0,1])+"""</h2>
+<h2>"""+str(vacantes.iat[0,1]')+"""</h2>
 </td>
 <td style="text-align: center;">&nbsp;</td>
 <td style="text-align: center;">
