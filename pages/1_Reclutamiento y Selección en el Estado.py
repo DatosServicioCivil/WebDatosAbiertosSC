@@ -573,16 +573,18 @@ if a=='Prácticas Chile':
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
+    df_DEEM=df_DEEM.rename(columns={'Comuna/Ciudad': 'Comuna'})
     date='02 de Noviembre de 2023'
 
-    def select_comuna(df_DEEM, option_1):
+    def select_comuna(df, option_1):
         if option_1 == 'Todos':
-            unique_comuna = df_DEEM['Comuna/Ciudad'].unique()
+            unique_comuna = df['Comuna'].unique()
         else:
-            unique_comuna = df_concursos.query(f'Region == "{option_1}"')['Comuna/Ciudad'].unique()
+            unique_comuna = df.query(f'Region == "{option_1}"')['Comuna'].unique()
             Comuna = pd.DataFrame({'Comuna': unique_comuna})
             nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
             Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
+        return Comuna
     
     st.title('Estadísticas Portal Directores para Chile')
     st.subheader(date)
@@ -618,7 +620,7 @@ if a=='Directores para Chile':
         with col1:
             option_1 = st.selectbox('Región',Region)
         with col2:
-            option_2 = st.selectbox('Servicio',select_comuna(df_DEEM[columnas].rename(columns={'Comuna/Ciudad': 'Comuna'}),option_1))
+            option_2 = st.selectbox('Comuna',select_comuna(df_DEEM[columnas],option_1))
     
     #----------------------------------------------------------------------------------------------------------------------------
     #df_convocatorias=df_DEEM.group
