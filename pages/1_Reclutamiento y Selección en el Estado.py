@@ -580,11 +580,15 @@ if a=='Directores para Chile':
     def select_comuna(df, option_1):
         if option_1 == 'Todos':
             unique_comuna = df['Comuna'].unique()
+            Comuna = pd.DataFrame({'Comuna': unique_comuna})
+            nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
+            Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
         else:
             unique_comuna = df.query(f'Region == "{option_1}"')['Comuna'].unique()
             Comuna = pd.DataFrame({'Comuna': unique_comuna})
             nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
             Comuna = pd.concat([nuevo_registro, Comuna]).Comuna.tolist()
+        
         return Comuna
     
     st.title('Estadísticas Portal Directores para Chile')
