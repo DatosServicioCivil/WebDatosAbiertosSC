@@ -63,7 +63,7 @@ table_scorecard = """
 <table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
 <tbody>
 <tr>
-<td style="width: 436px; text-align: center;">
+<td style="width: 300px; text-align: center;">
 <h2>"""+str(df_concursos_eepp['N&uacute;mero Postulaciones'].sum())+"""</h2>
 </td>
 <td style="width: 82px; text-align: center;">
@@ -80,7 +80,7 @@ table_scorecard = """
 </td>
 </tr>
 <tr>
-<td style="width: 436px; text-align: center;">
+<td style="width: 300px; text-align: center;">
 <h2><span style="color: #808080;"><strong>Total Postulaciones Portales</strong></span></h2>
 </td>
 <td style="width: 82px; text-align: center;">
