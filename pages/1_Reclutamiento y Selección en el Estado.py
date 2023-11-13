@@ -623,7 +623,7 @@ if a=='Directores para Chile':
         with col1:
             option_1 = st.selectbox('Región',Region)
         with col2:
-            option_2 = st.selectbox('Comuna',select_comuna(df_DEEM[columnas],option_1))
+            option_2 = st.selectbox('Comuna',select_comuna(df_DEEM,option_1))
     
     #----------------------------------------------------------------------------------------------------------------------------
     df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
