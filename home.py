@@ -58,9 +58,8 @@ postulaciones=df_concursos_eepp['Número Postulaciones'].sum()
 postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
 
                            
-
+#<p><img src="./imagenes/datosabiertos.png" alt="" width="1300" height="563" /></p>
 table_scorecard = """
-<p><img src="./imagenes/datosabiertos.png" alt="" width="1300" height="563" /></p>
 <table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
 <tbody>
 <tr>
@@ -99,6 +98,9 @@ table_scorecard = """
 </tr>
 </tbody>
 </table>"""
+ 
+image = Image.open('./images/datosabiertos.png')
+st.image(image, width=1000)
 
 #table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
 st.markdown(table_scorecard, unsafe_allow_html=True)
