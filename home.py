@@ -61,19 +61,19 @@ table_scorecard = """
         <div class="grey label">Tables</div>
       </div>
           <div class="grey statistic">
-        <div class="value">"""+str(df[df['TABLE_TYPE'] == 'VIEW']['TABLE_ID'].count())+"""</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
         <div class="label">Views</div>
       </div>
       <div class="grey statistic">
-        <div class="value">"""+str(df[df['TABLE_TYPE'] == 'MATERIALIZED VIEW']['TABLE_ID'].count())+"""</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
         <div class="label">Materialized Views</div>
       </div>
       <div class="grey statistic">
-        <div class="value">"""+human_format(df['ROW_COUNT'].sum())+"""</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
         <div class="label">Rows</div>
       </div>
       <div class="grey statistic">
-        <div class="value">"""+human_bytes(df['BYTES'].sum())+" "+human_bytes_text(df['BYTES'].sum())+"""</div>
+        <div class="value">"""+str(vacantes.iat[0,1])+"""</div>
         <div class="label">Data Size</div>
       </div>
 </div>"""
