@@ -572,7 +572,7 @@ if a=='Prácticas Chile':
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
-    df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8')        
+    df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
     date='02 de Noviembre de 2023'
 
     def select_comuna(df_DEEM, option_1):
