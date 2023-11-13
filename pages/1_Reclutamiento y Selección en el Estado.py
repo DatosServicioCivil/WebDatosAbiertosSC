@@ -628,9 +628,18 @@ if a=='Directores para Chile':
             option_2 = st.selectbox('Comuna',select_comuna(df_DEEM,option_1))
     
     #----------------------------------------------------------------------------------------------------------------------------
-    df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-    df_desiertos_anulados=df_DEEM[(df_DEEM['Estado']=='Desierto') | (df_DEEM['Estado']=='Anulado')].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-
+    if option_1=='Todos' and option_2=='Todos': #1
+            df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_desiertos_anulados=df_DEEM[(df_DEEM['Estado']=='Desierto') | (df_DEEM['Estado']=='Anulado')].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos': #2
+            df_convocatorias=df_DEEM[(df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos': #3
+            df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos': #4
+            df_convocatorias=df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+            df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf1=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
