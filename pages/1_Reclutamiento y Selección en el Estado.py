@@ -640,9 +640,9 @@ if a=='Directores para Chile':
         with col1:
             st.plotly_chart(graf2,use_container_width=True)
         with col2:
-            st.markdown()
+            st.markdown('texto prueba')
         with col3:
-           st.markdown()
+           st.markdown('texto prueba')
 
 
     
