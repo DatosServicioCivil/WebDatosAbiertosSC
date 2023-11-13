@@ -57,7 +57,7 @@ vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
                            
 
 table_scorecard = """
-<table>
+<table style="border-color: 0;">
 <tbody>
 <tr>
 <td>
