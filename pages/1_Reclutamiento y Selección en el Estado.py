@@ -576,6 +576,8 @@ if a=='Directores para Chile':
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
     df_DEEM=df_DEEM.rename(columns={'Comuna/Ciudad': 'Comuna'})
     df_DEEM['Estado_Concurso']=np.where(df_DEEM['Estado']=='Desvinculado','Nombrado',df_DEEM['Estado'])
+    estados_proceso=['Admisibilidad','Ev.Externa', 'Entrevista', 'Nómina', 'Convocatoria']
+    df_DEEM['Estado_Final']=np.where(df_DEEM['Estado']=='Desvinculado','Nombrado',np.where(df_DEEM['Estado'].isin(estados_proceso),'En Proceso',df_DEEM['Estado']))
     date=max(df_DEEM.FechaCorte)
 
     def select_comuna(df, option_1):
@@ -619,15 +621,23 @@ if a=='Directores para Chile':
     Comuna = Comuna.reset_index(drop=True)
     Comuna = Comuna['Comuna'].tolist()
 
+    unique_estado = df_DEEM['Estado_Concurso'].unique()
+    Estado = pd.DataFrame({'Estado': unique_estado})
+    nuevo_registro = pd.DataFrame({'Estado': ['Todos']})
+    Estado = pd.concat([nuevo_registro, Estado])
+    Estado = Estado.reset_index(drop=True)
+    Estado = Estado['Estado'].tolist()
+
     columnas=['Region','Comuna']
 
     with st.container():
-        col1,col2=st.columns(2,gap="small")
+        col1,col2,col3=st.columns(2,gap="small")
         with col1:
             option_1 = st.selectbox('Región',Region)
         with col2:
             option_2 = st.selectbox('Comuna',select_comuna(df_DEEM,option_1))
-    
+        with col3:
+            option_1 = st.selectbox('Estado',Estado)
     #----------------------------------------------------------------------------------------------------------------------------
     if option_1=='Todos' and option_2=='Todos': #1
             df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
@@ -656,14 +666,18 @@ if a=='Directores para Chile':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
     # grafico Desiertos y Anulados por Año
-    graf2=px.bar(df_desiertos_anulados,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias desiertas o anuladas de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    #graf2=px.bar(df_desiertos_anulados,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias desiertas o anuladas de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
+    #        update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
     graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado_Concurso", title="Estados").\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+    
+    graf4 = px.pie(df_estados_final, values='idConcurso', names='Estado_Final').\
+                update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
+
     #----------------------------------------------------------------------------------------------------------------------------
     
     with st.container():
@@ -673,7 +687,7 @@ if a=='Directores para Chile':
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
         with col3:
-           st.plotly_chart(graf3,use_container_width=True)
+           st.plotly_chart(graf4,use_container_width=True)
 
 
     
