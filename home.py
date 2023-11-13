@@ -99,7 +99,7 @@ table_scorecard = """
 </tbody>
 </table>"""
  
-image = Image.open('./images/datosabiertos.png')
+image = Image.open('./imagenes/datosabiertos.png')
 st.image(image, width=1000)
 
 #table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
