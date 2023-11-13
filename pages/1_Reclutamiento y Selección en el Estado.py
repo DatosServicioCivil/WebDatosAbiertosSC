@@ -696,7 +696,7 @@ if a=='Directores para Chile':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
     
-    graf4 = px.pie(df_estados_final, values='idConcurso', names='Estado_Final').\
+    graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final').\
                 update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
 
     #----------------------------------------------------------------------------------------------------------------------------
