@@ -212,19 +212,6 @@ if a=='Alta Dirección Pública':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf3.update_layout(yaxis_tickformat='.0f')
-
-    graf3.add_annotation(
-    xref="x domain",
-    yref="y domain",
-    # The arrow head will be 25% along the x axis, starting from the left
-    #x=0.25,
-    # The arrow head will be 40% along the y axis, starting from the bottom
-    #y=0.4,
-    text="An annotation referencing the axes",
-    #arrowhead=2,
-)
-    
-
     
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
