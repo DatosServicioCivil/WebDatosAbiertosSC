@@ -11,7 +11,7 @@ import time
 import streamlit.components.v1 as components
 
 st.set_page_config(layout='wide',
-                   initial_sidebar_state="collapsed",
+                   initial_sidebar_state="expanded",                                #collapsed
                    menu_items={
                         'Get Help': 'https://www.extremelycoolapp.com/help',
                         'Report a bug': "https://www.extremelycoolapp.com/bug",
