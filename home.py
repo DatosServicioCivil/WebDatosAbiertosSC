@@ -17,7 +17,8 @@ st.set_page_config(layout='wide',
                         'Report a bug': "https://www.extremelycoolapp.com/bug",
                         'About': "# This is a header. This is an *extremely* cool app!"
                    })
-
+remote_css(
+    "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")
 #local_css("style.css")
 
 # This function sets the logo and company name inside the sidebar
