@@ -217,9 +217,9 @@ if a=='Alta Dirección Pública':
     xref="x domain",
     yref="y domain",
     # The arrow head will be 25% along the x axis, starting from the left
-    x=0.25,
+    #x=0.25,
     # The arrow head will be 40% along the y axis, starting from the bottom
-    y=0.4,
+    #y=0.4,
     text="An annotation referencing the axes",
     #arrowhead=2,
 )
