@@ -17,6 +17,12 @@ st.set_page_config(layout='wide',
                         'Report a bug': "https://www.extremelycoolapp.com/bug",
                         'About': "# This is a header. This is an *extremely* cool app!"
                    })
+
+
+def remote_css(url):
+    st.markdown(f'<link href="{url}" rel="stylesheet">',
+                unsafe_allow_html=True)
+
 remote_css(
     "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")
 #local_css("style.css")
@@ -109,5 +115,5 @@ table_scorecard = """
 image = Image.open('./imagenes/datosabiertos.png')
 st.image(image, width=1000)
 
-table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
+#table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
 st.markdown(table_scorecard, unsafe_allow_html=True)
