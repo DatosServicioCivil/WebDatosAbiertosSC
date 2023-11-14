@@ -216,7 +216,7 @@ if a=='Alta Dirección Pública':
     # Add annotation under the x-axis without arrowhead
     graf3.add_annotation(
     text="Note under X-axis",  # Annotation text
-    x=1,  # X-coordinate where the annotation is placed
+    x=2004,  # X-coordinate where the annotation is placed
     y=0,             # Y-coordinate set to 0 to place the annotation under the x-axis
     showarrow=False  # Do not display an arrowhead
 )
