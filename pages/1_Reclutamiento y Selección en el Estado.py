@@ -211,22 +211,7 @@ if a=='Alta Dirección Pública':
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
-    graf3.update_layout(yaxis_tickformat='.0f',
-    annotations=[
-        dict(
-            text="Nota explicativa al pie",  # Texto de la nota
-            x=2004,  # Coordenada x donde se coloca la nota
-            y=-0.15,  # Coordenada y negativa para colocar la nota debajo del eje x
-            xref="paper",  # Referencia del sistema de coordenadas
-            yref="paper",  # Referencia del sistema de coordenadas
-            showarrow=False  # No mostrar una flecha
-            )
-        ]
-    )
-
-
-
-
+    graf3.update_layout(yaxis_tickformat='.0f')
     
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
