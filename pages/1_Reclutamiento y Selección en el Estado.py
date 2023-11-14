@@ -212,10 +212,7 @@ if a=='Alta Dirección Pública':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf3.update_layout(yaxis_tickformat='.0f')
-    graf3.add_annotation(x=0, y=-1,
-            text="Se consideran solo concursos con envío de nóminas",
-            showarrow=True,
-            arrowhead=1)
+    
 
     
     with st.container():
