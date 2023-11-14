@@ -159,7 +159,7 @@ table_scorecard = """
   </div>
 </div>"""
 
-table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
+#table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
 
 
 
