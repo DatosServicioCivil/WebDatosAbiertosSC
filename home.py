@@ -23,9 +23,13 @@ def remote_css(url):
     st.markdown(f'<link href="{url}" rel="stylesheet">',
                 unsafe_allow_html=True)
 
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 remote_css(
     "https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css")
-#local_css("style.css")
+local_css("style.css")
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
