@@ -221,7 +221,7 @@ if a=='Alta Dirección Pública':
     # The arrow head will be 40% along the y axis, starting from the bottom
     y=0.4,
     text="An annotation referencing the axes",
-    arrowhead=2,
+    #arrowhead=2,
 )
     
 
