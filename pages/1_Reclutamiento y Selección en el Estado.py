@@ -212,6 +212,20 @@ if a=='Alta Dirección Pública':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf3.update_layout(yaxis_tickformat='.0f')
+
+    graf3.add_trace(go.Scatter(x=x_values, y=y_values, mode='lines', name='Line Chart'))
+
+    # Add annotation under the x-axis without arrowhead
+    graf3.add_annotation(
+    text="Note under X-axis",  # Annotation text
+    x=x_values[2],  # X-coordinate where the annotation is placed
+    y=0,             # Y-coordinate set to 0 to place the annotation under the x-axis
+    showarrow=False  # Do not display an arrowhead
+)
+
+
+
+
     
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
