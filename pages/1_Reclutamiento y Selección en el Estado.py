@@ -214,12 +214,12 @@ if a=='Alta Dirección Pública':
     graf3.update_layout(yaxis_tickformat='.0f')
 
     # Add annotation under the x-axis without arrowhead
-    graf3.add_annotation(
-    text="Se consideran solo concursos con nóminas enviadas",  # Annotation text
-    x=2012,  # X-coordinate where the annotation is placed
-    y=-2,             # Y-coordinate set to 0 to place the annotation under the x-axis
-    showarrow=False  # Do not display an arrowhead
-)
+    #graf3.add_annotation(
+    #text="Se consideran solo concursos con nóminas enviadas",  # Annotation text
+    #x=2012,  # X-coordinate where the annotation is placed
+    #y=-2,             # Y-coordinate set to 0 to place the annotation under the x-axis
+    #showarrow=False  # Do not display an arrowhead
+    #)
 
 
 
@@ -233,7 +233,7 @@ if a=='Alta Dirección Pública':
             st.plotly_chart(graf2,use_container_width=True)
         with col3:
             st.plotly_chart(graf3,use_container_width=True)
-            st.text('Se consideran solo concursos con nómina enviada')
+            st.markdown('Se consideran solo concursos con nómina enviada')
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
