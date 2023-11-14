@@ -10,7 +10,13 @@ import time
 # import altair as alt
 import streamlit.components.v1 as components
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide',
+                   initial_sidebar_state="collapsed",
+                   menu_items={
+                        'Get Help': 'https://www.extremelycoolapp.com/help',
+                        'Report a bug': "https://www.extremelycoolapp.com/bug",
+                        'About': "# This is a header. This is an *extremely* cool app!"
+                   })
 
 #local_css("style.css")
 
