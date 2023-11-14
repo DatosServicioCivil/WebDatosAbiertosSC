@@ -76,46 +76,94 @@ postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
 
                            
 #<p><img src="./imagenes/datosabiertos.png" alt="" width="1300" height="563" /></p>
+#table_scorecard = """
+#<table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
+#<tbody>
+#<tr>
+#<td style="width: 436px; text-align: center;">
+#<h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
+#</td>
+#<td style="width: 82px; text-align: center;">
+#<h2>5000</h2>
+#</td>
+#<td style="width: 100px; text-align: center;">
+#<h2>"""+str(vacantes.iat[0,1])+"""</h2>
+#</td>
+#<td style="width: 109px; text-align: center;">
+#<h2>10000</h2>
+#</td>
+#<td style="width: 109px; text-align: center;">
+#<h2>13500</h2>
+#</td>
+#</tr>
+#<tr>
+#<td style="width: 436px; text-align: center;">
+#<h2><span style="color: #808080;"><strong>Total Postulaciones Portales</strong></span></h2>
+#</td>
+#<td style="width: 82px; text-align: center;">
+#<h2><span style="color: #808080;"><strong>Concursos ADP</strong></span></h2>
+#</td>
+#<td style="width: 100px; text-align: center;">
+#<h2 style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en Empleos P&uacute;blicos</strong></span></h2>
+#</td>
+#<td style="width: 109px; text-align: center;">
+#<h2><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></h2>
+#</td>
+#<td style="width: 109px; text-align: center;">
+#<h2><span style="color: #808080;"><strong>Directores Seleccionados</strong></span></h2>
+#</td>
+#</tr>
+#</tbody>
+#</table>"""
+
+
 table_scorecard = """
-<table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
-<tbody>
-<tr>
-<td style="width: 436px; text-align: center;">
-<h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
-</td>
-<td style="width: 82px; text-align: center;">
-<h2>5000</h2>
-</td>
-<td style="width: 100px; text-align: center;">
-<h2>"""+str(vacantes.iat[0,1])+"""</h2>
-</td>
-<td style="width: 109px; text-align: center;">
-<h2>10000</h2>
-</td>
-<td style="width: 109px; text-align: center;">
-<h2>13500</h2>
-</td>
-</tr>
-<tr>
-<td style="width: 436px; text-align: center;">
-<h2><span style="color: #808080;"><strong>Total Postulaciones Portales</strong></span></h2>
-</td>
-<td style="width: 82px; text-align: center;">
-<h2><span style="color: #808080;"><strong>Concursos ADP</strong></span></h2>
-</td>
-<td style="width: 100px; text-align: center;">
-<h2 style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en Empleos P&uacute;blicos</strong></span></h2>
-</td>
-<td style="width: 109px; text-align: center;">
-<h2><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></h2>
-</td>
-<td style="width: 109px; text-align: center;">
-<h2><span style="color: #808080;"><strong>Directores Seleccionados</strong></span></h2>
-</td>
-</tr>
-</tbody>
-</table>"""
- 
+<div class="ui five small statistics">
+  <div class="grey statistic">
+    <div class="value">"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""
+    </div>
+    <div class="grey label">
+      Total Postulaciones Portales SC
+    </div>
+  </div>
+    <div class="grey statistic">
+        <div class="value">"""+str(5000)+"""
+        </div>
+        <div class="label">
+        Concursos ADP
+        </div>
+    </div>
+    <div class="grey statistic">
+        <div class="value">"""+str(vacantes.iat[0,1])+"""
+        </div>
+        <div class="label">
+        Total de Vacantes en Empleos Públicos
+        </div>
+    </div>    
+  <div class="grey statistic">
+    <div class="value">
+      """+str(13800)+"""
+    </div>
+    <div class="label">
+      Seleccionados/as Prácticas Chile 
+    </div>
+  </div>
+
+  <div class="grey statistic">
+    <div class="value">
+      """+str(5000)+"""
+    </div>
+    <div class="label">
+      Directores/as Seleccionados/as
+    </div>
+  </div>
+</div>"""
+
+table_scorecard += """<br><br><br><div id="mydiv" class="ui centered cards">"""
+
+
+
+
 image = Image.open('./imagenes/datosabiertos.png')
 st.image(image, width=1000)
 
