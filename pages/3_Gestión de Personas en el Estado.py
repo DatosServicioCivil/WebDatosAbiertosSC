@@ -68,8 +68,7 @@ def select_servicio(df, option):
 
         return Servicio
 #---------------------------------------------------------------------------------------------------
-if a=='Normas de Gestion de Personas':
-    import glob
+if a=='Normas de Gestión de Personas':
     st.title('Normas de Gestion de Personas en el Estado')
 #---------------------------------------------------------------------------------------------------
 if a=='Capacitación en el Estado':
