@@ -11,6 +11,7 @@ import time
 import streamlit.components.v1 as components
 import plotly.express as px 
 import plotly.graph_objects as go
+import glob # necesario para la unificacion de archivos csv
 
 st.set_page_config(layout='wide')
 
@@ -66,10 +67,12 @@ def select_servicio(df, option):
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
 
         return Servicio
-
-
-if a=='Capacitación en el Estado':
+#---------------------------------------------------------------------------------------------------
+if a=='Normas de Gestion de Personas':
     import glob
+    st.title('Normas de Gestion de Personas en el Estado')
+#---------------------------------------------------------------------------------------------------
+if a=='Capacitación en el Estado':
     st.title('Capacitación en el Estado')
     # consolidar los archivos csv en un solo dataframe
     # Ruta de los archivos CSV (ajusta la ruta según tu directorio)
@@ -146,3 +149,15 @@ if a=='Capacitación en el Estado':
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
 
+#---------------------------------------------------------------------------------------------------
+if a=='Integridad':
+    st.title('Integridad en el Estado')
+#---------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
+if a=='Prevención de Maltrato y Acoso Laboral':
+    st.title('Prevención de Maltrato y Acoso Laboral')
+#---------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
+if a=='Egresos ADP':
+    st.title('Egresos ADP')
+#---------------------------------------------------------------------------------------------------
