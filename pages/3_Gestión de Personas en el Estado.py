@@ -132,7 +132,7 @@ if a=='Capacitación en el Estado':
     Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
     Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
-    Inversion_region=df_actividades_ejecutadas_sispubli.groupby()
+
 
     graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
