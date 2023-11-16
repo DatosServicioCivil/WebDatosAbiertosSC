@@ -58,7 +58,7 @@ with st.sidebar:
 
 def select_servicio(df, option):
         if option == 'Todos':
-            unique_servicio = df['Servicio'].unique()
+            Servicio = df['Servicio'].unique()
         else:
             unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
             Servicio = pd.DataFrame({'Servicio': unique_servicio})
