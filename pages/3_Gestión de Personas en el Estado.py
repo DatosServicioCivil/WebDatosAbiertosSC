@@ -91,7 +91,7 @@ if a=='Capacitación en el Estado':
     df_actividades_ejecutadas_sispubli = pd.concat(dataframes, ignore_index=True)
     df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(
     columns={'Nombre de Servicio': 'Servicio','Número correlativo':'id_actividad'})
-    df_actividades_ejecutadas_sispubli['Modalidad_Compra']=np.where(df_actividades_ejecutadas_sispubli['Modalidad_Compra']=='No Aplica (Sin Costo)','Sin Costo',df_actividades_ejecutadas_sispubli['Modalidad_Compra'])
+    df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=np.where(df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=='No Aplica (Sin Costo)','Sin Costo',df_actividades_ejecutadas_sispubli['Modalidad_de_Compra'])
 
 
     unique_ministerios = df_actividades_ejecutadas_sispubli.Ministerio.unique()
