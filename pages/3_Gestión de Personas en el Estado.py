@@ -55,5 +55,50 @@ color_bar='#6633CC'
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
 
-if a='Capacitación en el Estado':
-    
+def select_servicio(df, option):
+    if option_3 == 'Todos':
+        unique_servicio = df['Servicio'].unique()
+    else:
+        unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
+        Servicio = pd.DataFrame({'Servicio': unique_servicio})
+        nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+        Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+
+    return Servicio
+
+
+
+if a=='Capacitación en el Estado':
+    import glob
+
+    # consolidar los archivos csv en un solo dataframe
+    # Ruta de los archivos CSV (ajusta la ruta según tu directorio)
+    ruta_archivos = 'GestionPersonas/actividades_ejecutadas_sispubli*.csv'
+    # Lista para almacenar los DataFrames de cada archivo
+    dataframes = []
+    # Itera sobre los archivos que coinciden con el patrón
+    for archivo in glob.glob(ruta_archivos):
+        # Lee cada archivo CSV y lo agrega a la lista
+        df = pd.read_csv(archivo, sep=';')
+        dataframes.append(df)
+    # Combina todos los DataFrames en uno solo
+    df_actividades_ejecutadas_sispubli = pd.concat(dataframes, ignore_index=True)
+    df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(columns={'Nombre de Servicio': 'Servicio'})
+
+
+    Ministerio=df_actividades_ejecutadas_sispubli.Ministerio.unique()
+    Modalidad_Compra=df_actividades_ejecutadas_sispubli.Modalidad_de_Compra.unique()
+    Metodologia=df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje.unique()
+
+
+    #filtros
+    with st.container():
+        col1,col2,col3,col4=st.columns(4,gap="large")
+        with col1:
+           option_1 = st.selectbox('Ministerio',Ministerio)
+        with col2:
+           option_2 = st.selectbox('Servicio',select_servicio(df_actividades_ejecutadas_sispubli,option_1))
+        with col3:
+            option_3=st.selectbox('Modalidad de Compra',Modalidad_Compra)
+        with col4:
+            option_4=st.selectbox('Metodología de Aprendizaje',Metodologia)
