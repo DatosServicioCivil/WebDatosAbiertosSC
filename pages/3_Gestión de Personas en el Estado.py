@@ -55,16 +55,7 @@ color_bar='#6633CC'
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
 
-def select_servicio(df, option):
-    if option_3 == 'Todos':
-        unique_servicio = df['Servicio'].unique()
-    else:
-        unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
-        Servicio = pd.DataFrame({'Servicio': unique_servicio})
-        nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
-        Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
 
-    return Servicio
 
 
 
@@ -107,6 +98,16 @@ if a=='Capacitación en el Estado':
     Metodologia = Metodologia.reset_index(drop=True)
     Metodologia = Metodologia['Metodología_de_Aprendizaje'].tolist()
     
+    def select_servicio(df, option):
+        if option == 'Todos':
+            unique_servicio = df['Servicio'].unique()
+        else:
+            unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+
+        return Servicio
 
 
     #filtros
