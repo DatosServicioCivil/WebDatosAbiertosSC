@@ -92,6 +92,11 @@ if a=='Capacitación en el Estado':
     df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(
     columns={'Nombre de Servicio': 'Servicio','Número correlativo':'id_actividad'})
     df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=np.where(df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=='No Aplica (Sin Costo)','Sin costo',df_actividades_ejecutadas_sispubli['Modalidad_de_Compra'])
+    df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Video Conferencia','E-Learning',\
+                                                                              np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='E-Learning/Video Conferencia','E-Learning',\
+                                                                                       np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Presencial/E-Learning','Híbrida',\
+                                                                                                np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Presencial/Video Conferencia','Híbrida',\
+                                                                                                    df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']))))
 
 
     unique_ministerios = df_actividades_ejecutadas_sispubli.Ministerio.unique()
