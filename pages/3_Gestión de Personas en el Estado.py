@@ -83,7 +83,8 @@ if a=='Capacitación en el Estado':
         dataframes.append(df)
     # Combina todos los DataFrames en uno solo
     df_actividades_ejecutadas_sispubli = pd.concat(dataframes, ignore_index=True)
-    df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(columns={'Nombre de Servicio': 'Servicio'})
+    df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(
+    columns={'Nombre de Servicio': 'Servicio','Número correlativo':'id_actividad'})
 
 
     unique_ministerios = df_actividades_ejecutadas_sispubli.Ministerio.unique()
@@ -118,3 +119,30 @@ if a=='Capacitación en el Estado':
             option_3=st.selectbox('Modalidad de Compra',Modalidad_Compra)
         with col4:
             option_4=st.selectbox('Metodología de Aprendizaje',Metodologia)
+
+    
+
+    Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
+    Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
+    Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+    Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
+    
+
+    graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
+                 update_yaxes(visible=visible_y_axis,title_text=None).\
+                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf1.update_layout(yaxis_tickformat='.0f')
+
+    graf2=px.line(Inversion,x='Año',y='Inversion',title='<b>Inversión en capacitación realizadas por año [MM$]</b>').\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+    graf2.update_layout(yaxis_tickformat='.0f')
+
+    with st.container():
+        col1,col2=st.columns(2,gap='small')
+        with col1:    
+            st.plotly_chart(graf1,use_container_width=True)
+        with col2:
+            st.plotly_chart(graf2,use_container_width=True)
+
