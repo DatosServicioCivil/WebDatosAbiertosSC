@@ -54,3 +54,6 @@ color_bar='#6633CC'
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
+
+if a='Capacitación en el Estado':
+    
