@@ -86,16 +86,34 @@ if a=='Capacitación en el Estado':
     df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(columns={'Nombre de Servicio': 'Servicio'})
 
 
-    Ministerio=df_actividades_ejecutadas_sispubli.Ministerio.unique()
-    Modalidad_Compra=df_actividades_ejecutadas_sispubli.Modalidad_de_Compra.unique()
-    Metodologia=df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje.unique()
+    unique_ministerios = df_actividades_ejecutadas_sispubli.Ministerio.unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
+    unique_modalidad = df_actividades_ejecutadas_sispubli.Modalidad_de_Compra.unique()
+    Modalidad_Compra = pd.DataFrame({'Modalidad_Compra': unique_modalidad})
+    nuevo_registro = pd.DataFrame({'Modalidad_Compra': ['Todos']})
+    Modalidad_Compra = pd.concat([nuevo_registro, Modalidad_Compra])
+    Modalidad_Compra = Modalidad_Compra.reset_index(drop=True)
+    Modalidad_Compra = Modalidad_Compra['Modalidad_Compra'].tolist()
+
+    unique_metodologia = df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje.unique()
+    Metodologia = pd.DataFrame({'Metodología_de_Aprendizaje': unique_metodologia})
+    nuevo_registro = pd.DataFrame({'Metodología_de_Aprendizaje': ['Todos']})
+    Metodologia = pd.concat([nuevo_registro, Metodologia])
+    Metodologia = Metodologia.reset_index(drop=True)
+    Metodologia = Metodologia['Metodología_de_Aprendizaje'].tolist()
+    
 
 
     #filtros
     with st.container():
         col1,col2,col3,col4=st.columns(4,gap="large")
         with col1:
-           option_1 = st.selectbox('Ministerio',Ministerio)
+           option_1 = st.selectbox('Ministerio',Ministerios)
         with col2:
            option_2 = st.selectbox('Servicio',select_servicio(df_actividades_ejecutadas_sispubli,option_1))
         with col3:
