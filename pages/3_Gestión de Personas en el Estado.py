@@ -70,7 +70,7 @@ def select_servicio(df, option):
 
 if a=='Capacitación en el Estado':
     import glob
-
+    st.title('Capacitación en el Estado')
     # consolidar los archivos csv en un solo dataframe
     # Ruta de los archivos CSV (ajusta la ruta según tu directorio)
     ruta_archivos = 'GestionPersonas/actividades_ejecutadas_sispubli*.csv'
