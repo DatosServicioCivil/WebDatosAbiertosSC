@@ -50,8 +50,12 @@ st.markdown("<hr>", unsafe_allow_html=True)
 visible_y_axis=True
     
 #https://framework.digital.gob.cl/colors.html
-color_line='#2D717C'
-color_bar='#6633CC'
+color_line='#4A4A4A' #dark grey
+color_line_2='#E0701E' #orange
+color_bar='#006FB3' #blue
+color_bar_2='#0A132D' #dark blue
+# Asignar colores de acuerdo a una paleta de colores a cada sexo
+sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
@@ -128,7 +132,7 @@ if a=='Capacitación en el Estado':
     Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
     Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
-    
+    Inversion_region=df_actividades_ejecutadas_sispubli.groupby()
 
     graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
