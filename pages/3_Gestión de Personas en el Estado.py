@@ -219,7 +219,7 @@ if a=='Capacitación en el Estado':
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf2.update_layout(yaxis_tickformat='.0f')
 
-    graf3=px.bar(Actividades,x='Año',y='Participantes',title='<b>Cantidad total de participantes a capacitaciones por año</b>',color_discrete_sequence=[color_bar_3]).\
+    graf3=px.bar(Participantes,x='Año',y='Participantes',title='<b>Cantidad total de participantes a capacitaciones por año</b>',color_discrete_sequence=[color_bar_3]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_layout(yaxis_tickformat='.0f')
