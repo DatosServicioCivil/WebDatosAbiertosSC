@@ -243,17 +243,14 @@ if a=='Capacitación en el Estado':
     
     graf4 = go.Figure()
     graf4.add_trace(go.Treemap(
-                    ids = df_treemap.Ministerio,
-                    labels = df_treemap.Ministerio,
-                    parents = df_treemap.Ministerio,
-                    maxdepth=2,
-                    root_color="lightgrey",
-                    values=df_treemap.Inversion))
-    graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
+    ids=df_treemap.Ministerio,
+    labels=df_treemap.Ministerio,
+    parents=df_treemap.Todos,  # Usar 'Todos' como el nodo raíz
+    maxdepth=2,
+    root_color="lightgrey",
+    values=df_treemap.Inversion))
 
-
-
-
+    graf4.update_layout(margin=dict(t=50, l=25, r=25, b=25))
 
     #graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
     #graf4.update_traces(root_color="lightgrey")
