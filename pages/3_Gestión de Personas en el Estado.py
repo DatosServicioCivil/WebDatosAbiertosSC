@@ -224,6 +224,33 @@ if a=='Capacitación en el Estado':
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_layout(yaxis_tickformat='.0f')
 
+    inversion_promedio=np.round(Inversion['Inversion'].sum()/Participantes['Participantes'].sum(),0)
+    total_actividades=Actividades['Actividades'].sum()
+    total_participantes=Participantes['Participantes'].sum()
+
+    with st.container():
+        col1,col2,col3,col4=st.columns(4,gap='small')
+        with col1:
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>Entre el 2016 y {df_actividades_ejecutadas_sispubli.Año.max())} la cantidad de capacitaciones realizadas es</h1>", unsafe_allow_html=True)
+        with col2:
+            image = Image.open('imagenes/job_application.jpg')
+            st.image(image)
+            valor_col2=f"{total_actividades:,}".replace(",", ".")
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
+        with col3:
+            image = Image.open('imagenes/job_offer.png')
+            st.image(image)
+            valor_col3=f"{total_participantes:,}".replace(",", ".")
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
+        with col4:
+            valor_col4=f"{inversion_promedio:,}".replace(",", ".")
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
+            st.markdown("<h1 style='text-align: center; color: grey;'>Inversión Promedio</h1>", unsafe_allow_html=True)
+
+
+
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:    
