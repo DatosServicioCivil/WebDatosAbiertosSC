@@ -93,6 +93,8 @@ with st.container():
         st.subheader(f"{concursos_adp:,}".replace(",", "."))
         st.subheader('Total concursos ADP')
     with col4:
+        image = Image.open('imagenes/mannager_selection.png')
+        st.image(image)
         st.subheader(f"{nombrados_adp:,}".replace(",", "."))
         st.subheader('Nombramientos ADP')
     with col5:
