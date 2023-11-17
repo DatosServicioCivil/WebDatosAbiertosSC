@@ -73,7 +73,7 @@ vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
 postulaciones=df_concursos_eepp['Número Postulaciones'].sum()
 postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
 concursos_adp=df_concursos_adp.CD_Concurso.count()
-nombrados_adp=df_concursos_adp.query("Estad=='Nombrado").CD_Concurso.count()
+nombrados_adp=df_concursos_adp.query("Estado=='Nombrado").CD_Concurso.count()
 
 
 
