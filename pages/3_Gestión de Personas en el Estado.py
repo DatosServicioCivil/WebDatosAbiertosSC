@@ -241,10 +241,23 @@ if a=='Capacitación en el Estado':
     df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
     df_treemap['Todos']='Todos'
     
-    graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
-    graf4.update_traces(root_color="lightgrey")
+    graf4 = go.Figure()
+    graf4.add_trace(go.Treemap(
+                    ids = df_treemap.ids,
+                    labels = df_treemap.labels,
+                    parents = df_treemap.parents,
+                    maxdepth=3,
+                    root_color="lightgrey"))
     graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
-    graf4.show()
+
+
+
+
+
+    #graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
+    #graf4.update_traces(root_color="lightgrey")
+    #graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
+    #graf4.show()
 
 
 
