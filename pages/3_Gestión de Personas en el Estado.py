@@ -233,14 +233,10 @@ if a=='Capacitación en el Estado':
         with col1:
             st.markdown(f"<h1 style='text-align: center; color: grey;'>Entre el 2016 y {df_actividades_ejecutadas_sispubli.Año.max()} la cantidad de capacitaciones realizadas es</h1>", unsafe_allow_html=True)
         with col2:
-            image = Image.open('imagenes/job_application.jpg')
-            st.image(image)
             valor_col2=f"{total_actividades:,}".replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
             st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
         with col3:
-            image = Image.open('imagenes/job_offer.png')
-            st.image(image)
             valor_col3=f"{total_participantes:,}".replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
             st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
