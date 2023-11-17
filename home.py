@@ -82,13 +82,13 @@ with st.container():
         st.subheader(f"{postulaciones:,}".replace(",", "."))
         st.subheader('Total postulaciones portal EEEPP')
     with col2:
-        st.subheader(f'{vacantes.iat[0,1]:.0f}')
+        st.subheader(f"{vacantes.iat[0,1]:,}".replace(",", "."))
         st.subheader('Total vacantes ofrecidas EEPP')
     with col3:
-        st.subheader(f'{concursos_adp:.0f}')
+        st.subheader(f"{concursos_adp:,}".replace(",", "."))
         st.subheader('Total concursos ADP')
     with col4:
-        st.subheader(f'{vacantes.iat[0,1]}')
+        st.subheader(f"{nombrados_adp:,}".replace(",", "."))
         st.subheader('Nombramientos ADP')
     with col5:
         st.subheader(f'{vacantes.iat[0,1]}')
