@@ -61,7 +61,14 @@ with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
 
 
-def select_servicio(df, option):
+
+#---------------------------------------------------------------------------------------------------
+if a=='Normas de Gestión de Personas':
+    st.title('Normas de Gestion de Personas en el Estado')
+#---------------------------------------------------------------------------------------------------
+if a=='Capacitación en el Estado':
+
+    def select_servicio(df, option):
         if option == 'Todos':
             Servicio = df['Servicio'].unique()
         else:
@@ -71,11 +78,7 @@ def select_servicio(df, option):
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
 
         return Servicio
-#---------------------------------------------------------------------------------------------------
-if a=='Normas de Gestión de Personas':
-    st.title('Normas de Gestion de Personas en el Estado')
-#---------------------------------------------------------------------------------------------------
-if a=='Capacitación en el Estado':
+
     st.title('Capacitación en el Estado')
     # consolidar los archivos csv en un solo dataframe
     # Ruta de los archivos CSV (ajusta la ruta según tu directorio)
@@ -195,11 +198,11 @@ if a=='Capacitación en el Estado':
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
 
 
-    graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>').\
+    graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf1.update_layout(yaxis_tickformat='.0f')
-    #,color_discrete_sequence=[color_bar]).\
+    
 
     graf2=px.line(Inversion,x='Año',y='Inversion',title='<b>Inversión en capacitación realizadas por año [MM$]</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
@@ -214,7 +217,7 @@ if a=='Capacitación en el Estado':
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
 
-    st.text(df_actividades_ejecutadas_sispubli.Año.unique())
+    #st.text(df_actividades_ejecutadas_sispubli.Año.unique())
 #---------------------------------------------------------------------------------------------------
 if a=='Integridad':
     st.title('Integridad en el Estado')
