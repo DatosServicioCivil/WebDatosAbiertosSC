@@ -84,35 +84,31 @@ with st.container():
         st.image(image)
         valor_col1=f"{postulaciones:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
-        #st.subheader(f"{postulaciones:,}".replace(",", "."))
         st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
     with col2:
         image = Image.open('imagenes/job_offer.png')
         st.image(image)
         valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        #st.subheader(f"{vacantes.iat[0,1]:,}".replace(",", "."))
         st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
-        #st.subheader(f"{concursos_adp:,}".replace(",", "."))
-        #st.subheader('Total concursos ADP')
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Total concursos ADP</h1>", unsafe_allow_html=True)
     with col4:
         image = Image.open('imagenes/mannager_selection.png')
         st.image(image)
         valor_col4=f"{nombrados_adp:,}".replace(",", ".")
-        #st.subheader(f"{nombrados_adp:,}".replace(",", "."))
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-        #st.subheader('Nombramientos ADP')
         st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
     with col5:
-        st.subheader(f'{vacantes.iat[0,1]}')
-        st.subheader('Seleccionados en Practicas Chile')
+        valor_col5=f"{nombrados_adp:,}".replace(",", ".")
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: grey;'>Seleccionados/as en Practicas Chile</h1>", unsafe_allow_html=True)
     with col6:
-        st.subheader(f'{vacantes.iat[0,1]}')
-        st.subheader('Directores/as Seleccionados/as')
+        valor_col6=f"{nombrados_adp:,}".replace(",", ".")
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: grey;'>Directores/as Seleccionados/as</h1>", unsafe_allow_html=True)
                            
 
 
