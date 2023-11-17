@@ -75,13 +75,11 @@ postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
 concursos_adp=df_concursos_adp.CD_Concurso.count()
 nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 
-print('El area es: {:,.2f}'.format(area).replace(",", "@").replace(".", ",").replace("@", "."))
-
 
 with st.container():
     col1,col2,col3,col4,col5,col6=st.columns(6,gap='small')
     with col1:
-        st.subheader(f'{postulaciones:,}'.replace(",", "."))
+        st.subheader(f"{postulaciones:,}".replace(",", "."))
         st.subheader('Total postulaciones portal EEEPP')
     with col2:
         st.subheader(f'{vacantes.iat[0,1]:.0f}')
