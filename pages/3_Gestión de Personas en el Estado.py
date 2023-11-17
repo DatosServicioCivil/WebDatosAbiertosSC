@@ -240,7 +240,7 @@ if a=='Capacitación en el Estado':
     df_treemap=df_actividades_ejecutadas_sispubli.groupby(['Ministerio','Servicio','Modalidad_de_Compra','Metodología_de_Aprendizaje']).agg({'Gasto_monto_Item001':'sum'}).reset_index()
     df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
     
-    graf4 = px.treemap(df_treemap, path=['Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
+    graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
     graf4.update_traces(root_color="lightgrey")
     graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
     graf4.show()
@@ -285,11 +285,8 @@ if a=='Capacitación en el Estado':
             st.plotly_chart(graf3,use_container_width=True)
         with col3:
             st.plotly_chart(graf2,use_container_width=True)
-        col4,col5=st.columns(2,gap='small')
-        with col4:
-            st.plotly_chart(graf4,use_container_width=True)
-        with col5:
-            st.text('pendiente graf5')
+    with st.container():
+        st.plotly_chart(graf4,use_container_width=True)
 
 
 
