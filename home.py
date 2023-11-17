@@ -81,13 +81,13 @@ nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 with st.container():
     col1,col2,col3,col4,col5,col6=st.columns(6,gap='small')
     with col1:
-        st.subheader(f'{postulaciones}')
+        st.subheader(f'{postulaciones:.0f}')
         st.subheader('Total postulaciones portal EEEPP')
     with col2:
-        st.subheader(f'{vacantes.iat[0,1]}')
+        st.subheader(f'{vacantes.iat[0,1]:.0f}')
         st.subheader('Total vacantes ofrecidas EEPP')
     with col3:
-        st.subheader(f'{concursos_adp}')
+        st.subheader(f'{concursos_adp:.0f}')
         st.subheader('Total concursos ADP')
     with col4:
         st.subheader(f'{vacantes.iat[0,1]}')
@@ -99,54 +99,7 @@ with st.container():
         st.subheader(f'{vacantes.iat[0,1]}')
         st.subheader('Directores/as Seleccionados/as')
                            
-#<p><img src="./imagenes/datosabiertos.png" alt="" width="1300" height="563" /></p>
-# table_scorecard = """
-# <table style="border: 0px; width: 800px;" cellspacing="10"><caption>&nbsp;</caption>
-# <tbody>
-# <tr>
-# <td style="width: 436px; text-align: center;">
-# <h2>"""+str(df_concursos_eepp['Número Postulaciones'].sum())+"""</h2>
-# </td>
-# <td style="width: 82px; text-align: center;">
-# <h2>5000</h2>
-# </td>
-# <td style="width: 100px; text-align: center;">
-# <h2>"""+str(vacantes.iat[0,1])+"""</h2>
-# </td>
-# <td style="width: 109px; text-align: center;">
-# <h2>10000</h2>
-# </td>
-# <td style="width: 109px; text-align: center;">
-# <h2>13500</h2>
-# </td>
-# </tr>
-# <tr>
-# <td style="width: 436px; text-align: center;">
-# <h2><span style="color: #808080;"><strong>Total postulaciones recibidas en nuestros portales</strong></span></h2>
-# </td>
-# <td style="width: 82px; text-align: center;">
-# <h2><span style="color: #808080;"><strong>Concursos ADP</strong></span></h2>
-# </td>
-# <td style="width: 100px; text-align: center;">
-# <h2 style="text-align: center;"><span style="color: #808080;"><strong>Total de Vacantes ofrecidas en Empleos P&uacute;blicos</strong></span></h2>
-# </td>
-# <td style="width: 109px; text-align: center;">
-# <h2><span style="color: #808080;"><strong>Seleccionados Practicas Chile</strong></span></h2>
-# </td>
-# <td style="width: 109px; text-align: center;">
-# <h2><span style="color: #808080;"><strong>Directores Seleccionados</strong></span></h2>
-# </td>
-# </tr>
-# </tbody>
-# </table>"""
-
-
-
-
 
 
 image = Image.open('./imagenes/datosabiertos.png')
 st.image(image, width=1000)
-
-#table_scorecard = """<br><br><br><div id="mydiv" class="ui centered cards">"""
-st.markdown(table_scorecard, unsafe_allow_html=True)
