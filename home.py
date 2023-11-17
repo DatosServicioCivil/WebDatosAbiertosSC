@@ -79,7 +79,7 @@ nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 
 
 with st.container():
-    col1,col2,col3,col4,col5,col6=st.columns(6,gap='little')
+    col1,col2,col3,col4,col5,col6=st.columns(6,gap='small')
     with col1:
         st.subheader(f'{postulaciones}')
         st.subheader('Total postulaciones portal EEEPP')
