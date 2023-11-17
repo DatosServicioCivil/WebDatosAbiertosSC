@@ -246,7 +246,7 @@ if a=='Capacitación en el Estado':
                     ids = df_treemap.Ministerio,
                     labels = df_treemap.Ministerio,
                     parents = df_treemap.Ministerio,
-                    maxdepth=3,
+                    maxdepth=2,
                     root_color="lightgrey",
                     values=df_treemap.Inversion))
     graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
