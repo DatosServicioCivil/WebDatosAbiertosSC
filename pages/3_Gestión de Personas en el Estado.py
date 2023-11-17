@@ -52,8 +52,10 @@ visible_y_axis=True
 #https://framework.digital.gob.cl/colors.html
 color_line='#4A4A4A' #dark grey
 color_line_2='#E0701E' #orange
+color_line_3='#006FB3' #blue
 color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
+color_bar_3='#E0701E' #orange
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
 
@@ -150,12 +152,15 @@ if a=='Capacitación en el Estado':
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
         Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
         Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
         Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #4
         Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
@@ -199,6 +204,7 @@ if a=='Capacitación en el Estado':
     
     Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
+    Participantes=Participantes.rename(columns={'Numero_de_Participantes':'Participantes'})
 
 
     graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -213,12 +219,19 @@ if a=='Capacitación en el Estado':
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf2.update_layout(yaxis_tickformat='.0f')
 
+    graf3=px.bar(Actividades,x='Año',y='Participantes',title='<b>Cantidad total de participantes a capacitaciones por año</b>',color_discrete_sequence=[color_bar_3]).\
+                 update_yaxes(visible=visible_y_axis,title_text=None).\
+                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf3.update_layout(yaxis_tickformat='.0f')
+
     with st.container():
-        col1,col2=st.columns(2,gap='small')
+        col1,col2,col3=st.columns(3,gap='small')
         with col1:    
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
+        with col3:
+            st.plotly_chart(graf3,use_container_width=True)
 
     #st.text(df_actividades_ejecutadas_sispubli.Año.unique())
 #---------------------------------------------------------------------------------------------------
