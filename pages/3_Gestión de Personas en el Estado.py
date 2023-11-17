@@ -270,9 +270,9 @@ if a=='Capacitación en el Estado':
         with col1:    
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
-            st.plotly_chart(graf2,use_container_width=True)
-        with col3:
             st.plotly_chart(graf3,use_container_width=True)
+        with col3:
+            st.plotly_chart(graf2,use_container_width=True)
 
     #st.text(df_actividades_ejecutadas_sispubli.Año.unique())
 #---------------------------------------------------------------------------------------------------
