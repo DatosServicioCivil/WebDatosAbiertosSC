@@ -213,7 +213,7 @@ if a=='Capacitación en el Estado':
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
 
-    df_actividades_ejecutadas_sispubli.Año.unique()
+    st.text(df_actividades_ejecutadas_sispubli.Año.unique())
 #---------------------------------------------------------------------------------------------------
 if a=='Integridad':
     st.title('Integridad en el Estado')
