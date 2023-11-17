@@ -88,7 +88,8 @@ with st.container():
         image = Image.open('imagenes/job_offer.png')
         st.image(image)
         st.subheader(f"{vacantes.iat[0,1]:,}".replace(",", "."))
-        st.subheader('Total vacantes ofrecidas EEPP')
+        st.markdown("<h1 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h1>", unsafe_allow_html=True)
+        #st.subheader('Total vacantes ofrecidas EEPP')
     with col3:
         st.subheader(f"{concursos_adp:,}".replace(",", "."))
         st.subheader('Total concursos ADP')
