@@ -70,7 +70,7 @@ if a=='Capacitación en el Estado':
 
     def select_servicio(df, option):
         if option == 'Todos':
-            Servicio = df['Servicio'].unique()
+            unique_servicio = df['Servicio'].unique()
         else:
             unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
             Servicio = pd.DataFrame({'Servicio': unique_servicio})
