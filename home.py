@@ -96,15 +96,15 @@ with st.container():
     with col3:
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
         #st.subheader(f"{concursos_adp:,}".replace(",", "."))
-        st.subheader('Total concursos ADP')
-        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col3}+</h1>", unsafe_allow_html=True)
+        #st.subheader('Total concursos ADP')
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Total concursos ADP</h1>", unsafe_allow_html=True)
     with col4:
         image = Image.open('imagenes/mannager_selection.png')
         st.image(image)
         valor_col4=f"{nombrados_adp:,}".replace(",", ".")
         #st.subheader(f"{nombrados_adp:,}".replace(",", "."))
-        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col4}+</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
         #st.subheader('Nombramientos ADP')
         st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
     with col5:
