@@ -82,8 +82,10 @@ with st.container():
     with col1:
         image = Image.open('imagenes/job_application.jpg')
         st.image(image)
-        st.subheader(f"{postulaciones:,}".replace(",", "."))
-        st.subheader('Total postulaciones portal EEEPP')
+        valor_col1=f"{postulaciones:,}".replace(",", ".")
+        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col1}+</h1>", unsafe_allow_html=True)
+        #st.subheader(f"{postulaciones:,}".replace(",", "."))
+        st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
     with col2:
         image = Image.open('imagenes/job_offer.png')
         st.image(image)
@@ -92,13 +94,19 @@ with st.container():
         #st.subheader(f"{vacantes.iat[0,1]:,}".replace(",", "."))
         st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
     with col3:
-        st.subheader(f"{concursos_adp:,}".replace(",", "."))
+        valor_col3=f"{concursos_adp:,}".replace(",", ".")
+        #st.subheader(f"{concursos_adp:,}".replace(",", "."))
         st.subheader('Total concursos ADP')
+        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col3}+</h1>", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: center; color: grey;'>Total concursos ADP</h1>", unsafe_allow_html=True)
     with col4:
         image = Image.open('imagenes/mannager_selection.png')
         st.image(image)
-        st.subheader(f"{nombrados_adp:,}".replace(",", "."))
-        st.subheader('Nombramientos ADP')
+        valor_col4=f"{nombrados_adp:,}".replace(",", ".")
+        #st.subheader(f"{nombrados_adp:,}".replace(",", "."))
+        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col4}+</h1>", unsafe_allow_html=True)
+        #st.subheader('Nombramientos ADP')
+        st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
     with col5:
         st.subheader(f'{vacantes.iat[0,1]}')
         st.subheader('Seleccionados en Practicas Chile')
