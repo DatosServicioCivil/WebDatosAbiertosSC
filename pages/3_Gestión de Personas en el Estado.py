@@ -246,7 +246,7 @@ if a=='Capacitación en el Estado':
     ids=df_treemap.Ministerio,
     labels=df_treemap.Ministerio,
     parents=df_treemap.Todos,  # Usar 'Todos' como el nodo raíz
-    maxdepth=2,
+    maxdepth=3,
     root_color="lightgrey",
     values=df_treemap.Inversion))
 
