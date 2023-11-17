@@ -85,7 +85,7 @@ with st.container():
         st.subheader(f"{postulaciones:,}".replace(",", "."))
         st.subheader('Total postulaciones portal EEEPP')
     with col2:
-        image = Image.open('imagenes/job_offer.jpg',caption='Icon by manshagraphics')
+        image = Image.open('imagenes/job_offer.jpg')
         st.image(image)
         st.subheader(f"{vacantes.iat[0,1]:,}".replace(",", "."))
         st.subheader('Total vacantes ofrecidas EEPP')
