@@ -195,10 +195,11 @@ if a=='Capacitación en el Estado':
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
 
 
-    graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>').\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf1.update_layout(yaxis_tickformat='.0f')
+    #,color_discrete_sequence=[color_bar]).\
 
     graf2=px.line(Inversion,x='Año',y='Inversion',title='<b>Inversión en capacitación realizadas por año [MM$]</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
