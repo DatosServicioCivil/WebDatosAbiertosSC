@@ -103,7 +103,7 @@ if a=='Capacitación en el Estado':
 
     df_actividades_ejecutadas_sispubli=pd.merge(df_actividades_ejecutadas_sispubli,df_Ministerios,how='left',on='Ministerio')
     df_actividades_ejecutadas_sispubli.drop(columns='Ministerio',inplace=True)
-    df_actividades_ejecutadas_sispubli=df_actividades_ejecutadas_sispubli.rename()
+    #df_actividades_ejecutadas_sispubli=df_actividades_ejecutadas_sispubli.rename()
 
     unique_ministerios = df_actividades_ejecutadas_sispubli.Ministerio.unique()
     Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
