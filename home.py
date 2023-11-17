@@ -114,5 +114,5 @@ with st.container():
                            
 
 
-image = Image.open('./imagenes/datosabiertos.png')
-st.image(image, width=1000)
+#image = Image.open('./imagenes/datosabiertos.png')
+#st.image(image, width=1000)
