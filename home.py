@@ -41,7 +41,7 @@ def add_logo(logo_path, width, height):
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
 # Set Page Header
-st.header("Datos Abiertos Servicio Civil")
+st.title("Datos Abiertos Servicio Civil")
 # Set custom CSS for hr element
 st.markdown(
     """
