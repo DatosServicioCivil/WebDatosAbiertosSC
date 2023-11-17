@@ -49,7 +49,7 @@ potencian y aumentab la presencia laboral y el liderazgo de las mujeres en el Es
 with st.container():
     col1,col2,col3,col4,col5,col6=st.columns(6,gap='small')
     with col1:
-        st.markdown("<h1 style='text-align: center; color: grey;'></h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h1>", unsafe_allow_html=True)
     with col2:
         image = Image.open('imagenes/job_offer.png')
         st.image(image)
