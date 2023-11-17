@@ -83,7 +83,7 @@ with st.container():
         image = Image.open('imagenes/job_application.jpg')
         st.image(image)
         valor_col1=f"{postulaciones:,}".replace(",", ".")
-        st.markdown("<h1 style='text-align: center; color: grey;'>+str{valor_col1}+</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
         #st.subheader(f"{postulaciones:,}".replace(",", "."))
         st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
     with col2:
