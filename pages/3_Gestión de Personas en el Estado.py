@@ -231,7 +231,7 @@ if a=='Capacitación en el Estado':
     with st.container():
         col1,col2,col3,col4=st.columns(4,gap='small')
         with col1:
-            st.markdown(f"<h1 style='text-align: center; color: grey;'>Entre el 2016 y {df_actividades_ejecutadas_sispubli.Año.max())} la cantidad de capacitaciones realizadas es</h1>", unsafe_allow_html=True)
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>Entre el 2016 y {df_actividades_ejecutadas_sispubli.Año.max()} la cantidad de capacitaciones realizadas es</h1>", unsafe_allow_html=True)
         with col2:
             image = Image.open('imagenes/job_application.jpg')
             st.image(image)
