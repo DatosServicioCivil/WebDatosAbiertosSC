@@ -79,7 +79,7 @@ if a=='Capacitación en el Estado':
     st.title('Capacitación en el Estado')
     # consolidar los archivos csv en un solo dataframe
     # Ruta de los archivos CSV (ajusta la ruta según tu directorio)
-    ruta_archivos = 'GestionPersonas/actividades_ejecutadas_sispubli*.csv'
+    ruta_archivos = 'GestionPersonas/actividades_ejecutadas*.csv'
     # Lista para almacenar los DataFrames de cada archivo
     dataframes = []
     # Itera sobre los archivos que coinciden con el patrón
