@@ -71,6 +71,9 @@ if a=='Capacitación en el Estado':
     def select_servicio(df, option):
         if option == 'Todos':
             unique_servicio = df['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
         else:
             unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
             Servicio = pd.DataFrame({'Servicio': unique_servicio})
