@@ -246,14 +246,14 @@ if a=='Capacitación en el Estado':
         col1,col2,col3,col4,col5=st.columns(5,gap='small')
         with col1:
             st.markdown(f"<h2 style='text-align: center; color: grey;'>Entre el 2016 y {df_actividades_ejecutadas_sispubli.Año.max()} la cantidad de capacitaciones realizadas es</h2>", unsafe_allow_html=True)
-        with col3:
-            valor_col2=f"{total_actividades:,}"#.replace(",", ".")
-            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-            st.markdown("<h2 style='text-align: center; color: grey;'>Total actividades de capacitación realizadas</h2>", unsafe_allow_html=True)
         with col2:
             valor_col3=f"{total_participantes:,}"#.replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
             st.markdown("<h2 style='text-align: center; color: grey;'>Total de participantes</h2>", unsafe_allow_html=True)
+        with col3:
+            valor_col2=f"{total_actividades:,}"#.replace(",", ".")
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center; color: grey;'>Total actividades de capacitación realizadas</h2>", unsafe_allow_html=True)
         with col4:
             valor_col4=f"{total_inversion:,}"#.replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
