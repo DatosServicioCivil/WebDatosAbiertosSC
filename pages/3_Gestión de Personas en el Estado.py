@@ -240,7 +240,7 @@ if a=='Capacitación en el Estado':
     inversion_promedio=np.round(Inversion['Inversion'].sum()/Participantes['Participantes'].sum(),0)
     total_actividades=Actividades['Actividades'].sum()
     total_participantes=Participantes['Participantes'].sum()
-    total_inversion=np.round(Inversion['Inversion'].sum(),0)
+    total_inversion=np.round(Inversion['Inversion'].sum()/1_000_000,0)
 
     with st.container():
         col1,col2,col3,col4,col5=st.columns(5,gap='small')
@@ -258,7 +258,7 @@ if a=='Capacitación en el Estado':
         with col4:
             valor_col4=f"{total_inversion:,}"#.replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-            st.markdown("<h2 style='text-align: center; color: grey;'>Total inversión en capacitación</h2>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center; color: grey;'>Total inversión en capacitación [$MM]</h2>", unsafe_allow_html=True)
         with col5:
             valor_col5=f"{inversion_promedio:,}"#.replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
