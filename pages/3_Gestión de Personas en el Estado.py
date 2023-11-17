@@ -235,7 +235,7 @@ if a=='Capacitación en el Estado':
         with col2:
             valor_col2=f"{total_actividades:,}".replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-            st.markdown("<h1 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h1>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h2>", unsafe_allow_html=True)
         with col3:
             valor_col3=f"{total_participantes:,}".replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
@@ -243,7 +243,7 @@ if a=='Capacitación en el Estado':
         with col4:
             valor_col4=f"{inversion_promedio:,}".replace(",", ".")
             st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-            st.markdown("<h1 style='text-align: center; color: grey;'>Inversión Promedio</h1>", unsafe_allow_html=True)
+            st.markdown("<h2 style='text-align: center; color: grey;'>Inversión Promedio</h2>", unsafe_allow_html=True)
 
 
 
