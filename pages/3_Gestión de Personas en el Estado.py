@@ -151,13 +151,13 @@ if a=='Capacitación en el Estado':
         def filtros(op1, op2, op3, op4):
             filtro = ""
             if op1 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Ministerio=={op1}) & "
+                filtro += f"(df_actividades_ejecutadas_sispubli.Ministerio=='{op1}') & "
             if op2 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Servicio=={op2}) & "
+                filtro += f"(df_actividades_ejecutadas_sispubli.Servicio=='{op2}') & "
             if op3 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra=={op3}) & "
+                filtro += f"(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra=='{op3}') & "
             if op4 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje=={op4})"
+                filtro += f"(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje=='{op4}')"
             # Eliminar el último "&" si está presente
             if filtro.endswith(" & "):
                 filtro = filtro[:-3]
