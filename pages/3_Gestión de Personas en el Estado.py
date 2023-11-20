@@ -179,6 +179,7 @@ if a=='Capacitación en el Estado':
         Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
         Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
 
+    df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería') & (df_actividades_ejecutadas_sispubli.Servicio=='Secretaría y Administración General del Ministerio de Minería')]
     # para 4 variables que toman 2 valores las combinaciones son 16
 
     # if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
