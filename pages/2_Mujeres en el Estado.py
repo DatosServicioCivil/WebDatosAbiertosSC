@@ -48,6 +48,7 @@ potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estad
 valor_col2=0.5
 valor_col3=0.31
 valor_col4=0.7
+valor_col5=0.5
 with st.container():
     col1,col2,col3,col4=st.columns(4,gap='small')
     with col1:
@@ -57,15 +58,21 @@ with st.container():
         #st.image(image)
         valor_col2=f"{valor_col2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h2>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos II nivel ADP</h2>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/mannager_selection.png')
         #st.image(image)
         valor_col4=f"{valor_col4:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total nombramientos ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos Jefaturas</h2>", unsafe_allow_html=True)
+    with col5:
+        #image = Image.open('imagenes/mannager_selection.png')
+        #st.image(image)
+        valor_col5=f"{valor_col5:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h2>", unsafe_allow_html=True)
                            
