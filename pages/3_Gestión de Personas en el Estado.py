@@ -220,6 +220,7 @@ if a=='Capacitación en el Estado':
     Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
     Participantes=Participantes.rename(columns={'Numero_de_Participantes':'Participantes'})
+    Metodologia_Actividades=Metodologia_Actividades.rename(columns={'id_actividad':'Actividades'})
 
 
     graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -239,7 +240,7 @@ if a=='Capacitación en el Estado':
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_layout(yaxis_tickformat='.0f')
 
-    df_treemap=df_actividades_ejecutadas_sispubli.groupby(['Ministerio','Servicio','Modalidad_de_Compra','Metodología_de_Aprendizaje']).agg({'Gasto_monto_Item001':'sum'}).reset_index()
+    df_treemap=df_actividades_ejecutadas_sispubli.groupby(['Ministerio','Servicio','Modalidad_de_Compra','Metodologia_de_Aprendizaje']).agg({'Gasto_monto_Item001':'sum'}).reset_index()
     df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
     df_treemap['Todos']='Todos'
     
