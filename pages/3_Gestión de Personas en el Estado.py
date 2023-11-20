@@ -12,6 +12,7 @@ import streamlit.components.v1 as components
 import plotly.express as px 
 import plotly.graph_objects as go
 import glob # necesario para la unificacion de archivos csv
+import seaborn as sns
 
 st.set_page_config(layout='wide')
 
@@ -241,16 +242,20 @@ if a=='Capacitación en el Estado':
     df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
     df_treemap['Todos']='Todos'
     
-    graf4 = go.Figure()
-    graf4.add_trace(go.Treemap(
-    ids=df_treemap.Ministerio,
-    labels=df_treemap.Ministerio,   
-    parents=df_treemap.Todos,  # Usar 'Todos' como el nodo raíz
-    maxdepth=-1,
-    root_color="lightgrey",
-    values=df_treemap.Inversion))
 
-    graf4.update_layout(margin=dict(t=50, l=25, r=25, b=25))
+    graf4=sns.treemap(df_treemap, values='Inversion', path=["Minsiterio", "Servicio"]) 
+
+
+    #graf4 = go.Figure()
+    #graf4.add_trace(go.Treemap(
+    #ids=df_treemap.Ministerio,
+    #labels=df_treemap.Ministerio,   
+    #parents=df_treemap.Todos,  # Usar 'Todos' como el nodo raíz
+    #maxdepth=-1,
+    #root_color="lightgrey",
+    #values=df_treemap.Inversion))
+
+    #graf4.update_layout(margin=dict(t=50, l=25, r=25, b=25))
 
     #graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
     #graf4.update_traces(root_color="lightgrey")
