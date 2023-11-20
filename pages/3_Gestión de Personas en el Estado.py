@@ -240,9 +240,9 @@ if a=='Capacitación en el Estado':
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf3.update_layout(yaxis_tickformat='.0f')
 
-    df_treemap=df_actividades_ejecutadas_sispubli.groupby(['Ministerio','Servicio','Modalidad_de_Compra','Metodologia_de_Aprendizaje']).agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
-    df_treemap['Todos']='Todos'
+    #df_treemap=df_actividades_ejecutadas_sispubli.groupby(['Ministerio','Servicio','Modalidad_de_Compra','Metodologia_de_Aprendizaje']).agg({'Gasto_monto_Item001':'sum'}).reset_index()
+    #df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
+    #df_treemap['Todos']='Todos'
     
 
     graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
