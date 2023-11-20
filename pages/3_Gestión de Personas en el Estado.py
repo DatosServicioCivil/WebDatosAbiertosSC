@@ -242,7 +242,7 @@ if a=='Capacitación en el Estado':
     df_treemap=df_treemap.rename(columns={'Gasto_monto_Item001':'Inversion'})
     df_treemap['Todos']='Todos'
     
-
+    Actividades = px.data.Actividades()
     graf4 = px.bar(Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
     graf4.show()
 
