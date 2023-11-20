@@ -148,39 +148,23 @@ if a=='Capacitación en el Estado':
             option_4=st.selectbox('Metodología de Aprendizaje',Metodologia)
 
     
-        def filtros(op1, op2, op3, op4):
-            filtro = ""
-            if op1 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Ministerio=='{op1}') & "
-            if op2 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Servicio=='{op2}') & "
-            if op3 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra=='{op3}') & "
-            if op4 != "Todos":
-                filtro += f"(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje=='{op4}')"
-            # Eliminar el último "&" si está presente
-            if filtro.endswith(" & "):
-                filtro = filtro[:-3]
+        # def filtros(op1, op2, op3, op4):
+        #     filtro = ""
+        #     if op1 != "Todos":
+        #         filtro += f"(df_actividades_ejecutadas_sispubli.Ministerio=='{op1}') & "
+        #     if op2 != "Todos":
+        #         filtro += f"(df_actividades_ejecutadas_sispubli.Servicio=='{op2}') & "
+        #     if op3 != "Todos":
+        #         filtro += f"(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra=='{op3}') & "
+        #     if op4 != "Todos":
+        #         filtro += f"(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje=='{op4}')"
+        #     # Eliminar el último "&" si está presente
+        #     if filtro.endswith(" & "):
+        #         filtro = filtro[:-3]
 
-            return filtro
-        filtro=filtros(option_1,option_2,option_3,option_4)    
-        st.text(f"{filtro}")
-
-    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
-        Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
-        Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-        Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-        Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
-        Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-    else:
-        Actividades=df_actividades_ejecutadas_sispubli[filtro].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-        Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
-        Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-        df_actividades_ejecutadas_sispubli[filtro]
-
-    # para 4 variables que toman 2 valores las combinaciones son 16
+        #     return filtro
+        # filtro=filtros(option_1,option_2,option_3,option_4)    
+        # st.text(f"{filtro}")
 
     # if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
     #     Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
@@ -188,66 +172,82 @@ if a=='Capacitación en el Estado':
     #     Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
     #     Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
     #     Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #4
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #5
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos': #6
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #7
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #8
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #9
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #10
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #11
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #12
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #14
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #15
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #16
-    #     Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    # else:
+    #     Actividades=df_actividades_ejecutadas_sispubli[filtro].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    #     Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
+    #     Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
+    #     df_actividades_ejecutadas_sispubli[filtro]
+
+    # para 4 variables que toman 2 valores las combinaciones son 16
+
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
+        Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+        Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
+        Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #4
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #5
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos': #6
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #7
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos': #8
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #9
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos': #10
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #11
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #12
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #13
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos': #14
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos': #15
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje==option_4)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+    if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos': #16
+        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
+        Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio==option_1) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
 
     
     Actividades=Actividades.rename(columns={'id_actividad':'Actividades'})
