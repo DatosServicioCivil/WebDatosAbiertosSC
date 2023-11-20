@@ -50,7 +50,7 @@ valor_col3=0.31
 valor_col4=0.7
 valor_col5=0.5
 with st.container():
-    col1,col2,col3,col4=st.columns(4,gap='small')
+    col1,col2,col3,col4,col5=st.columns(5,gap='small')
     with col1:
         st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h2>", unsafe_allow_html=True)
     with col2:
