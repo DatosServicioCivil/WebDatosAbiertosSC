@@ -55,17 +55,17 @@ with st.container():
     with col2:
         #image = Image.open('imagenes/job_offer.png')
         #st.image(image)
-        valor_col2=f"{valor_col2}"
+        valor_col2=f"{valor_col2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
     with col3:
-        valor_col3=f"{valor_col3}"
+        valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos ADP</h2>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/mannager_selection.png')
         #st.image(image)
-        valor_col4=f"{valor_col4}"
+        valor_col4=f"{valor_col4:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Total nombramientos ADP</h2>", unsafe_allow_html=True)
                            
