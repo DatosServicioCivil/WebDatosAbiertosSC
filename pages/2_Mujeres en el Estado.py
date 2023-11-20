@@ -45,33 +45,27 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 texto_mas_mujeres="""Mas Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentab la presencia laboral y el liderazgo de las mujeres en el Estado"""
-
+valor_col2=0.5
+valor_col3=0.31
+valor_col4=0.7
 with st.container():
-    col1,col2,col3,col4,col5,col6=st.columns(6,gap='small')
+    col1,col2,col3,col4=st.columns(4,gap='small')
     with col1:
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h1>", unsafe_allow_html=True)
     with col2:
-        image = Image.open('imagenes/job_offer.png')
-        st.image(image)
-        valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
+        #image = Image.open('imagenes/job_offer.png')
+        #st.image(image)
+        valor_col2=f"{valor_col2}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
     with col3:
-        valor_col3=f"{concursos_adp:,}".replace(",", ".")
+        valor_col3=f"{valor_col3}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Total concursos ADP</h1>", unsafe_allow_html=True)
     with col4:
-        image = Image.open('imagenes/mannager_selection.png')
-        st.image(image)
-        valor_col4=f"{nombrados_adp:,}".replace(",", ".")
+        #image = Image.open('imagenes/mannager_selection.png')
+        #st.image(image)
+        valor_col4=f"{valor_col4}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
-    with col5:
-        valor_col5=f"{nombrados_adp:,}".replace(",", ".")
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Seleccionados/as en Practicas Chile</h1>", unsafe_allow_html=True)
-    with col6:
-        valor_col6=f"{nombrados_adp:,}".replace(",", ".")
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Directores/as Seleccionados/as</h1>", unsafe_allow_html=True)
                            
