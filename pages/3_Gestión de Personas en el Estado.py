@@ -173,14 +173,11 @@ if a=='Capacitación en el Estado':
         Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
         Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
     else:
-        Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'id_actividad':'count'}).reset_index()
+        Actividades=df_actividades_ejecutadas_sispubli[filtro].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
         Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
         Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
         Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-
-    (df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')
-    
 
     # para 4 variables que toman 2 valores las combinaciones son 16
 
