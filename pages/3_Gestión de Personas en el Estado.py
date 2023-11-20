@@ -244,7 +244,6 @@ if a=='Capacitación en el Estado':
     
 
     graf4 = px.bar(Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
-    graf4.show()
 
     #graf4 = go.Figure()
     #graf4.add_trace(go.Treemap(
