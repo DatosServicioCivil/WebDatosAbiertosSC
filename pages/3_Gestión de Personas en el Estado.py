@@ -243,8 +243,8 @@ if a=='Capacitación en el Estado':
     df_treemap['Todos']='Todos'
     
 
-    graf4=sns.treemap(df_treemap, values='Inversion', path=["Minsiterio", "Servicio"]) 
-
+    graf4 = px.bar(df_treemap, x="Año", y="Inversion", color="Metodologia", title="Long-Form Input")
+    graf4.show()
 
     #graf4 = go.Figure()
     #graf4.add_trace(go.Treemap(
