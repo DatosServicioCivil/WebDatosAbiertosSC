@@ -243,7 +243,7 @@ if a=='Capacitación en el Estado':
     df_treemap['Todos']='Todos'
     
 
-    graf4 = px.bar(Inversion, x="Año", y="Inversion", color="Metodologia", title="Long-Form Input")
+    graf4 = px.bar(Inversion, x="Año", y="Inversion", color="Metodología_de_Aprendizaje", title="Long-Form Input")
     graf4.show()
 
     #graf4 = go.Figure()
