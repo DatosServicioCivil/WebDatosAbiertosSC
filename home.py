@@ -106,10 +106,14 @@ with st.container():
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
     with col5:
+        image = Image.open('imagenes/Directores.png')
+        st.image(image)
         valor_col5=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Seleccionados/as en Practicas Chile</h1>", unsafe_allow_html=True)
     with col6:
+        image = Image.open('imagenes/trainee.PNG')
+        st.image(image)
         valor_col6=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
         st.markdown("<h1 style='text-align: center; color: grey;'>Directores/as Seleccionados/as</h1>", unsafe_allow_html=True)
