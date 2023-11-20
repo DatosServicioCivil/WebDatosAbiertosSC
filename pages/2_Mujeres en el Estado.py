@@ -44,14 +44,14 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 texto_mas_mujeres="""Mas Mujeres: Conoce los principales indicadores del Servicio Civil que 
-potencian y aumentab la presencia laboral y el liderazgo de las mujeres en el Estado"""
+potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
 valor_col2=0.5
 valor_col3=0.31
 valor_col4=0.7
 with st.container():
     col1,col2,col3,col4=st.columns(4,gap='small')
     with col1:
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h1>", unsafe_allow_html=True)
+        st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h2>", unsafe_allow_html=True)
     with col2:
         #image = Image.open('imagenes/job_offer.png')
         #st.image(image)
