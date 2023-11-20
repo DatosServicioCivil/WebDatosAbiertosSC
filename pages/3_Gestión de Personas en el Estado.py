@@ -163,8 +163,8 @@ if a=='Capacitación en el Estado':
                 filtro = filtro[:-3]
 
             return filtro
-    filtro=filtros(option_1,option_2,option_3,option_4)    
-    st.text(f"{filtro}")
+        filtro=filtros(option_1,option_2,option_3,option_4)    
+        st.text(f"{filtro}")
 
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
         Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
@@ -178,8 +178,8 @@ if a=='Capacitación en el Estado':
         Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
         Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
         Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
+        df_actividades_ejecutadas_sispubli[filtro]
 
-    df_actividades_ejecutadas_sispubli[filtro]
     # para 4 variables que toman 2 valores las combinaciones son 16
 
     # if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
