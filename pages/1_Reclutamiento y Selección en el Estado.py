@@ -680,9 +680,12 @@ if a=='Directores para Chile':
             #df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_estados = df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
             df_estados_finales = df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+    
+    df_convocatorias=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
+    df_estados=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
-    graf1=px.bar(df_convocatorias,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf1=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
@@ -691,7 +694,7 @@ if a=='Directores para Chile':
     #        update_yaxes(visible=visible_y_axis,title_text=None).\
     #                update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
-    graf3=px.bar(df_estados, x="AgnoFechaInicioConvocatoria", y="idConcurso", color="Estado_Concurso", title="Estados").\
+    graf3=px.bar(df_estados, x="Año", y="Convocatorias", color="Estado_Concurso", title="Estados").\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
