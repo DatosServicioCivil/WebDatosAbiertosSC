@@ -693,8 +693,8 @@ if a=='Directores para Chile':
     #graf2=px.bar(df_desiertos_anulados,x='AgnoFechaInicioConvocatoria',y='idConcurso',title='<b>Convocatorias desiertas o anuladas de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
     #        update_yaxes(visible=visible_y_axis,title_text=None).\
     #                update_xaxes(title_text=None,tickmode='linear', dtick=1)
-
-    graf3=px.bar(df_estados, x="Año", y="Convocatorias", color="Estado_Concurso", title="Estados").\
+    # , color="Estado_Concurso"
+    graf3=px.bar(df_estados, x="Año", y="Convocatorias", title="Estados").\    
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
