@@ -670,11 +670,11 @@ if a=='Directores para Chile':
             #df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             df_estados = df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
             df_estados_finales = df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
-    if option_1=='Todos' and option_2!='Todos' and option_3=='Todos': #7
-            df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2) ].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+    if option_1=='Todos' and option_2=='Todos' and option_3!='Todos': #7
+            df_convocatorias=df_DEEM[(df_DEEM.Estado==option_3) ].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             #df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
-            df_estados_finales = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados = df_DEEM[(df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
+            df_estados_finales = df_DEEM[(df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
     if option_1!='Todos' and option_2=='Todos' and option_3!='Todos': #8
             df_convocatorias=df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Estado==option_3)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
             #df_desiertos_anulados=df_DEEM[df_DEEM['Estado'].isin(['Desierto', 'Anulado']) & (df_DEEM.Region==option_1) & (df_DEEM.Comuna==option_2) & (df_DEEM.Estado==option_3)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
