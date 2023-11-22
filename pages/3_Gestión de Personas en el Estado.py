@@ -285,6 +285,9 @@ if a=='Capacitación en el Estado':
     graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
 
     graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5)])    
+    graf5.update_layout(title_text="Cantidad de capacitaciones por modalidad de compra")
+
+
 
     #graf4 = go.Figure()
     #graf4.add_trace(go.Treemap(
