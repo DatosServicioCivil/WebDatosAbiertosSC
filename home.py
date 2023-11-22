@@ -98,25 +98,25 @@ with st.container():
         st.image(image)
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Total concursos ADP</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos ADP</h2>", unsafe_allow_html=True)
     with col4:
         image = Image.open('imagenes/adp_nombrado.PNG')
         st.image(image)
         valor_col4=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Total nombramientos ADP</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total nombramientos ADP</h2>", unsafe_allow_html=True)
     with col5:
         image = Image.open('imagenes/Directores.png')
         st.image(image)
         valor_col5=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Personas seleccionadas en Prácticas Chile</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Prácticas Chile</h2>", unsafe_allow_html=True)
     with col6:
         image = Image.open('imagenes/trainee.PNG')
         st.image(image)
         valor_col6=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
-        st.markdown("<h1 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h1>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h2>", unsafe_allow_html=True)
                            
 
 
