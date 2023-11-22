@@ -188,10 +188,13 @@ if a=='Capacitación en el Estado':
         Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
         Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
         Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
+        Modalidad_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Modalidad_de_Compra']).agg({'id_actividad':'sum'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
         Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
         Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
+        Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
+        Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2)].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos': #3
         Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'id_actividad':'count'}).reset_index()
         Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Servicio==option_2) & (df_actividades_ejecutadas_sispubli.Modalidad_de_Compra==option_3)].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
@@ -254,6 +257,7 @@ if a=='Capacitación en el Estado':
     Inversion=Inversion.rename(columns={'Gasto_monto_Item001':'Inversion'})
     Participantes=Participantes.rename(columns={'Numero_de_Participantes':'Participantes'})
     Metodologia_Actividades=Metodologia_Actividades.rename(columns={'id_actividad':'Actividades'})
+    Modalidad_Actividades=Modalidad_Actividades.rename(columns={'id_actividad':'Actividades'})
 
 
     graf1=px.bar(Actividades,x='Año',y='Actividades',title='<b>Cantidad de capacitaciones realizadas por año</b>',color_discrete_sequence=[color_bar]).\
@@ -279,7 +283,8 @@ if a=='Capacitación en el Estado':
     
 
     graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
-    
+
+    graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=)])    
 
     #graf4 = go.Figure()
     #graf4.add_trace(go.Treemap(
@@ -338,7 +343,12 @@ if a=='Capacitación en el Estado':
         with col3:
             st.plotly_chart(graf2,use_container_width=True)
     with st.container():
-        st.plotly_chart(graf4,use_container_width=True)
+        col4,col5=st.columns(2,gap='small')
+        with col4:
+            st.plotly_chart(graf4,use_container_width=True)
+        with col5:
+            st.plotly_chart(graf5,use_container_width=True)
+
 
 
 
