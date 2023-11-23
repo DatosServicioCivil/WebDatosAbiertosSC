@@ -310,6 +310,8 @@ if a=='Empleo Público':
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
         rentas=df_rentas
+        rentas_x_min=df_rentas.groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
+
         
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
