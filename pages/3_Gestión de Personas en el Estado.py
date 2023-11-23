@@ -60,7 +60,7 @@ color_bar_3='#E0701E' #orange
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
 metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencial':'#983300','Otra':'#7000D1'}# Mapeo de colores por tipo de metodologia
-modo_compra_color_map={'Sin costo': '#19D100', 'Convenio Marco': '#004EB4','Contratación Directa':'#FA0695','Licitación Pública/Privada':'#D18800','Compra Ágil':'#942201','Compra Coordinada':'#009964'}# Mapeo de colores por tipo de metodologia
+modo_compra_color_map={'Sin costo': '#19D100', 'Convenio Marco': '#004EB4','Contratación Directa':'#FA0695','Licitación Pública/ Privada':'#D18800','Compra Ágil':'#942201','Compra Coordinada':'#009964'}# Mapeo de colores por tipo de metodologia
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
