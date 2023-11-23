@@ -59,7 +59,7 @@ color_bar_2='#0A132D' #dark blue
 color_bar_3='#E0701E' #orange
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
-metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencial':'#D14600','Otra':'#7000D1'}# Mapeo de colores por tipo de metodologia
+metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencial':'#983300','Otra':'#7000D1'}# Mapeo de colores por tipo de metodologia
 #modo_compra_color_map={'Sin costo': '#00D1C4', 'Convenio Marco': '#C5D100','Contratación Directa':'#7000D1','Licitación Pública/Privada':'#D14600','Compra Ágil':'','Compra Coordinada':''}# Mapeo de colores por tipo de metodologia
 
 with st.sidebar:
