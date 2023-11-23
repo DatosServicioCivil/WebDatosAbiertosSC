@@ -518,7 +518,7 @@ if a=='Empleo Público':
     #graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
     graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
-    graf10=px.line(rentas, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
+    #graf10=px.line(rentas, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
 
 
     
@@ -538,9 +538,9 @@ if a=='Empleo Público':
     with col5:
             st.plotly_chart(graf2,use_container_width=True)
     with col6:
-            st.plotly_chart(graf10,use_container_width=True)
+            st.plotly_chart(graf9,use_container_width=True)
 
-#st.dataframe(rentas)
+st.dataframe(rentas)
 
 #----------------------------------------------------------------------------------------------------------------------
 
