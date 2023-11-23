@@ -510,7 +510,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-st.dataframe(rentas)
+st.dataframe(rentas.groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index())
 #----------------------------------------------------------------------------------------------------------------------
 
 if a=='Prácticas Chile':
