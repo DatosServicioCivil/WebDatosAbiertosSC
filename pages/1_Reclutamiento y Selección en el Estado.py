@@ -392,7 +392,8 @@ if a=='Empleo Público':
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0][filtro]
+        rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
+        rentas=rentas[filtro]
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
