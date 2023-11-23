@@ -52,11 +52,13 @@ visible_y_axis=True
 color_line='#4A4A4A' #dark grey
 color_line_2='#E0701E' #orange
 color_line_3='#006FB3' #blue
+color_line_4='#A7ED74' #verde montaña
 color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
+tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
 
@@ -314,6 +316,7 @@ if a=='Empleo Público':
 
         rentas=df_rentas
         rentas_x_min=df_rentas.groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
+        rentas_x_estamento=df_rentas.groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
 
         
     else:
@@ -429,6 +432,7 @@ if a=='Empleo Público':
 
         rentas=df_rentas[filtro_rentas].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
         rentas_x_min=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
+        rentas_x_estamento=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
@@ -525,6 +529,9 @@ if a=='Empleo Público':
     graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
     graf10.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
 
+    graf11=px.line(rentas_x_estamento, x="Year_Convocatoria", y="Renta Bruta", color='Estamento',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
+    graf11.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+
 
     
     col1,col2,col3=st.columns(3,gap='small')
@@ -543,7 +550,7 @@ if a=='Empleo Público':
     with col5:
             st.plotly_chart(graf2,use_container_width=True)
     with col6:
-            st.plotly_chart(graf10,use_container_width=True)
+            st.plotly_chart(graf11,use_container_width=True)
 
 #st.dataframe(rentas)
 
