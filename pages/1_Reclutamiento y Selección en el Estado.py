@@ -314,73 +314,103 @@ if a=='Empleo Público':
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
             filtro=(df_concursos_eepp.Estamento==option_1)
+            filtro_rentas=(df_rentas.Estamento==option_1)
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2)
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #4
             filtro=(df_concursos_eepp['Región']==option_3)
+            filtro_rentas=(df_rentas['Región']==option_3)
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #5
             filtro=(df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Ministerio']==option_4)
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #6
             filtro=(df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #7
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #8
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Región']==option_3)
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #9
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4)
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #10
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #11
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #12
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3)
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #13
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #14
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Región']==option_3) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #15
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #16
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4)
         if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #17
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4)
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #18
             filtro=(df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #19
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #20
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #21
             filtro=(df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #22
             filtro=(df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Región']==option_3) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #23
             filtro=(df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4)
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #24
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
         if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #25
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3)
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #26
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Institucion']==option_5)
         if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #27
             filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #28
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #29
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #30
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Institucion']==option_5)
         if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #31
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4)
         if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #32
             filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Región']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Región']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
         
         convocatorias=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
              
         convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
-        
         convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
         convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
@@ -389,13 +419,10 @@ if a=='Empleo Público':
         
         vacantes_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
         vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
-        
         vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
-        
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        rentas=df_rentas[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
-        #rentas=rentas[filtro]
+        rentas=df_rentas[filtro_rentas].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
@@ -512,7 +539,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-st.dataframe(df_rentas)
+st.dataframe(rentas)
 
 #----------------------------------------------------------------------------------------------------------------------
 
