@@ -539,7 +539,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-st.dataframe(rentas)
+#st.dataframe(rentas)
 
 #----------------------------------------------------------------------------------------------------------------------
 
