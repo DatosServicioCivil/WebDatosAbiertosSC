@@ -423,6 +423,7 @@ if a=='Empleo Público':
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
         rentas=df_rentas[filtro_rentas].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
+        rentas_x_min=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
@@ -518,7 +519,7 @@ if a=='Empleo Público':
     #graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
     graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
-    #graf10=px.line(rentas, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
+    graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
 
 
     
@@ -538,7 +539,7 @@ if a=='Empleo Público':
     with col5:
             st.plotly_chart(graf2,use_container_width=True)
     with col6:
-            st.plotly_chart(graf9,use_container_width=True)
+            st.plotly_chart(graf10,use_container_width=True)
 
 st.dataframe(rentas)
 
