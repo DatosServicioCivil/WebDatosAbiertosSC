@@ -60,7 +60,7 @@ color_bar_3='#E0701E' #orange
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
 metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencial':'#983300','Otra':'#7000D1'}# Mapeo de colores por tipo de metodologia
-#modo_compra_color_map={'Sin costo': '#00D1C4', 'Convenio Marco': '#C5D100','Contratación Directa':'#7000D1','Licitación Pública/Privada':'#D14600','Compra Ágil':'','Compra Coordinada':''}# Mapeo de colores por tipo de metodologia
+modo_compra_color_map={'Sin costo': '#19D100', 'Convenio Marco': '#004EB4','Contratación Directa':'#FA0695','Licitación Pública/Privada':'#D18800','Compra Ágil':'#942201','Compra Coordinada':'#009964'}# Mapeo de colores por tipo de metodologia
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
@@ -287,7 +287,8 @@ if a=='Capacitación en el Estado':
 
     graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje',color_discrete_map=metodologia_color_map, title="Cantidad de capacitaciones por metodología de aprendizaje")
 
-    graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5)])    
+    graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5,color='Modalidad_de_Compra',color_discrete_map=modo_compra_color_map)])    
+    
     graf5.update_layout(title_text="Distribución de capacitaciones por modalidad de compra")
 
     inversion_promedio=np.round(Inversion['Inversion'].sum()/Participantes['Participantes'].sum(),0)
