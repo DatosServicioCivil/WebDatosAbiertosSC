@@ -56,6 +56,9 @@ color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
+tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
+#estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
+
 
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
 
@@ -242,8 +245,6 @@ if a=='Empleo Público':
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
     
-    color_discrete_map_tipo_postulacion={'Aviso': 'orange', 'Postulacion en linea': 'blue'}
-
     date='31 de Marzo de 2023'
     
     st.title('Estadísticas Portal Empleos Públicos')
@@ -432,8 +433,6 @@ if a=='Empleo Público':
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
 
-    
-
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
     
@@ -490,7 +489,7 @@ if a=='Empleo Público':
     graf4.update_layout(yaxis_tickformat='.0f')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
     #----------------------------------------------------------------------------------------------------------------------------
-    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',color=color_discrete_map_tipo_postulacion,labels={'idConcurso': 'Cantidad de Convocatorias'}).\
+    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',color='tipo_postulacion_color_map',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf7.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
