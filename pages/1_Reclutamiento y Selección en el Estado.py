@@ -521,7 +521,7 @@ if a=='Empleo Público':
     #graf6.update_layout(yaxis_tickformat='.0%')
     #----------------------------------------------------------------------------------------------------------------------------
     graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
-    graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',marker='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
+    graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
     graf10.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
 
 
