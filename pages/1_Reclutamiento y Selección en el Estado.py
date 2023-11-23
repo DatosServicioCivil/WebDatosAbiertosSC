@@ -392,7 +392,7 @@ if a=='Empleo Público':
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
+        rentas=df_concursos_eepp.query("'Renta Bruta'!=0")[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
         #rentas=rentas[filtro]
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
@@ -510,8 +510,8 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-rentas=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
 st.dataframe(rentas)
+
 #----------------------------------------------------------------------------------------------------------------------
 
 if a=='Prácticas Chile':
