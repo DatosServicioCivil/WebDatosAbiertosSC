@@ -59,6 +59,8 @@ color_bar_2='#0A132D' #dark blue
 color_bar_3='#E0701E' #orange
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'} 
+metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencial':'#7000D1','Otra':'#D14600'}# Mapeo de colores por tipo de metodologia
+#modo_compra_color_map={'Sin costo': '#00D1C4', 'Convenio Marco': '#C5D100','Contratación Directa':'#7000D1','Licitación Pública/Privada':'#D14600','Compra Ágil':'','Compra Coordinada':''}# Mapeo de colores por tipo de metodologia
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
@@ -101,11 +103,12 @@ if a=='Capacitación en el Estado':
     df_actividades_ejecutadas_sispubli = df_actividades_ejecutadas_sispubli.rename(
     columns={'Nombre de Servicio': 'Servicio','Número correlativo':'id_actividad'})
     df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=np.where(df_actividades_ejecutadas_sispubli['Modalidad_de_Compra']=='No Aplica (Sin Costo)','Sin costo',df_actividades_ejecutadas_sispubli['Modalidad_de_Compra'])
-    df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Video Conferencia','E-Learning',\
-                                                                              np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='E-Learning/Video Conferencia','E-Learning',\
-                                                                                       np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Presencial/E-Learning','Híbrida',\
-                                                                                                np.where(df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']=='Presencial/Video Conferencia','Híbrida',\
-                                                                                                    df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje']))))
+    
+    Metodología_de_Aprendizaje_mapping = {'Video Conferencia':'E-Learning',
+        'E-Learning/Video Conferencia':'E-Learning',
+        'Presencial/E-Learning':'Híbrida',
+        'Presencial/Video Conferencia':'Híbrida'}
+    df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje'] = df_actividades_ejecutadas_sispubli['Metodología_de_Aprendizaje'].replace(Metodología_de_Aprendizaje_mapping)
 
 
     df_Ministerios=pd.read_excel('GestionPersonas/Minsiterios_Homologados.xlsx')
@@ -282,31 +285,10 @@ if a=='Capacitación en el Estado':
     #df_treemap['Todos']='Todos'
     
 
-    graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje', title="Cantidad de capacitaciones por metodología de aprendizaje")
+    graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje',color_discrete_map=metodologia_color_map, title="Cantidad de capacitaciones por metodología de aprendizaje")
 
     graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5)])    
-    graf5.update_layout(title_text="Cantidad de capacitaciones por modalidad de compra")
-
-
-
-    #graf4 = go.Figure()
-    #graf4.add_trace(go.Treemap(
-    #ids=df_treemap.Ministerio,
-    #labels=df_treemap.Ministerio,   
-    #parents=df_treemap.Todos,  # Usar 'Todos' como el nodo raíz
-    #maxdepth=-1,
-    #root_color="lightgrey",
-    #values=df_treemap.Inversion))
-
-    #graf4.update_layout(margin=dict(t=50, l=25, r=25, b=25))
-
-    #graf4 = px.treemap(df_treemap, path=['Todos','Ministerio', 'Servicio', 'Modalidad_de_Compra','Metodología_de_Aprendizaje'], values='Inversion')
-    #graf4.update_traces(root_color="lightgrey")
-    #graf4.update_layout(margin = dict(t=50, l=25, r=25, b=25))
-    #graf4.show()
-
-
-
+    graf5.update_layout(title_text="Distribución de capacitaciones por modalidad de compra")
 
     inversion_promedio=np.round(Inversion['Inversion'].sum()/Participantes['Participantes'].sum(),0)
     total_actividades=Actividades['Actividades'].sum()
