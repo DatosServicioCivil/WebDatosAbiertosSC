@@ -532,6 +532,8 @@ if a=='Empleo Público':
 
     graf11=px.line(rentas_x_estamento, x="Year_Convocatoria", y="Renta Bruta", color='Estamento',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
     graf11.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.5, xanchor="right", x=1))
+    graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 
 
     
