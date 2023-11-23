@@ -510,7 +510,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-rentas=rentas[rentas['Renta Bruta']!=0].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
+rentas=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
 st.dataframe(rentas)
 #----------------------------------------------------------------------------------------------------------------------
 
