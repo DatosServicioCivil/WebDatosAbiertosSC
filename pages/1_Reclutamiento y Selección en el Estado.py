@@ -246,6 +246,7 @@ if a=='Empleo Público':
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
+    df_rentas['Estamento']=np.where(df_rentas['Estamento']=='Directiva','Directivos',df_rentas['Estamento'])
     
     date='31 de Marzo de 2023'
     
