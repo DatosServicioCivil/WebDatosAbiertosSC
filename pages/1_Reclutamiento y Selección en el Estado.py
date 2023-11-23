@@ -447,24 +447,24 @@ if a=='Empleo Público':
     graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf1.update_layout(yaxis_tickformat='.0f')
     #----------------------------------------------------------------------------------------------------------------------------
-    #grafico 2: Distribución de Postulaciones por Sexo
-    # Create separate DataFrames for "Mujeres" and "Hombres"
+    #grafico 2: Distribución de Postulaciones por tipo de aviso
+    # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
     df_aviso = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Aviso']
     df_linea = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Postulacion en linea']
     
-    # Create the line plot using Plotly Express
+    # crea line plot usando plotly express
     graf2 = px.line(
         title='<b>Vacantes promedio por convocatorias</b>',
-        labels={'Year_Convocatoria': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # Customize axis labels
+        labels={'Year_Convocatoria': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # cambia etiquetas de ejes
     )
     
     # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
     graf2.update_layout(yaxis_tickformat='.2')
     
-    # Add lines for "Mujeres" and "Hombres"
+    # agrega lineas para categoria "Aviso" y "postulacion en linea"
     graf2.add_trace(
-        go.Scatter(x=df_aviso['Year_Convocatoria'], y=df_aviso['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Aviso'))#,line_color=sexo_color_map['Mujeres'])
-    graf2.add_trace(go.Scatter(x=df_linea['Year_Convocatoria'], y=df_linea['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8), name='Postulacion en linea'))#,line_color=sexo_color_map['Hombres']))
+        go.Scatter(x=df_aviso['Year_Convocatoria'], y=df_aviso['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Aviso']), name='Aviso'))#,line_color=sexo_color_map['Mujeres'])
+    graf2.add_trace(go.Scatter(x=df_linea['Year_Convocatoria'], y=df_linea['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Postulacion en linea']), name='Postulacion en linea'))#,line_color=sexo_color_map['Hombres']))
    
     # Actualizar la ubicación de la leyenda
     graf2.update_layout(
