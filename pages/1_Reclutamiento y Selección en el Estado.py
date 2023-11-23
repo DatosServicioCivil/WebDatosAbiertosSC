@@ -239,6 +239,8 @@ if a=='Empleo Público':
     df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
 
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
+
+    df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
     
     date='31 de Marzo de 2023'
     
@@ -307,7 +309,7 @@ if a=='Empleo Público':
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
+        rentas=df_rentas
         
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
@@ -392,7 +394,7 @@ if a=='Empleo Público':
         
         vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        rentas=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
+        rentas=df_rentas[filtro].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
         #rentas=rentas[filtro]
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
@@ -510,7 +512,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf9,use_container_width=True)
 
-st.dataframe(rentas)
+st.dataframe(df_rentas)
 
 #----------------------------------------------------------------------------------------------------------------------
 
