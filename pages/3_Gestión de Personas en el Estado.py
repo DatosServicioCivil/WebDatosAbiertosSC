@@ -287,8 +287,19 @@ if a=='Capacitación en el Estado':
 
     graf4 = px.bar(Metodologia_Actividades, x="Año", y="Actividades",color='Metodología_de_Aprendizaje',color_discrete_map=metodologia_color_map, title="Cantidad de capacitaciones por metodología de aprendizaje")
 
-    graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5,color='Modalidad_de_Compra',color_discrete_map=modo_compra_color_map)])    
+    #graf5=go.Figure(data=[go.Pie(labels=Modalidad_Actividades.Modalidad_de_Compra,values=Modalidad_Actividades.Actividades,hole=0.5,color='Modalidad_de_Compra',color_discrete_map=modo_compra_color_map)])    
     
+    graf5 = go.Figure(data=[
+    go.Pie(
+        labels=Modalidad_Actividades['Modalidad_de_Compra'],
+        values=Modalidad_Actividades['Actividades'],
+        hole=0.5,
+        marker_colors=[modo_compra_color_map[modalidad] for modalidad in Modalidad_Actividades['Modalidad_de_Compra']]
+    )
+])
+
+
+
     graf5.update_layout(title_text="Distribución de capacitaciones por modalidad de compra")
 
     inversion_promedio=np.round(Inversion['Inversion'].sum()/Participantes['Participantes'].sum(),0)
