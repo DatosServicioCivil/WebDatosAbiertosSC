@@ -246,9 +246,17 @@ if a=='Empleo Público':
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
-    df_concursos_eepp['Estamento']=np.where(df_concursos_eepp['Estamento']=='Directiva','Directivos',
-                                            np.where(df_concursos_eepp['Estamento']=='Profesional Ley 15.076/19.664','Profesionales',
-                                                    np.where(df_concursos_eepp['Estamento'].isna(),'Otros', df_concursos_eepp['Estamento'])))
+    
+    estamento_mapping = {
+    'Directiva': 'Directivos',
+    'Profesional Ley 15.076/19.664': 'Profesionales'}
+    df_concursos_eepp['Estamento'] = df_concursos_eepp['Estamento'].replace(estamento_mapping)
+    df_concursos_eepp['Estamento'].fillna('Otros', inplace=True)
+
+    
+    #df_concursos_eepp['Estamento']=np.where(df_concursos_eepp['Estamento']=='Directiva','Directivos',
+    #                                        np.where(df_concursos_eepp['Estamento']=='Profesional Ley 15.076/19.664','Profesionales',
+    #                                                np.where(df_concursos_eepp['Estamento'].isna(),'Otros', df_concursos_eepp['Estamento'])))
     
     date='31 de Marzo de 2023'
     
