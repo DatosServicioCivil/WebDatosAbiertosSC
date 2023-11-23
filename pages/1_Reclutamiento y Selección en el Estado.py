@@ -508,7 +508,7 @@ if a=='Empleo Público':
     #----------------------------------------------------------------------------------------------------------------------------
   
     # grafico Vacantes Concursadas por Año
-    graf5=px.bar(vacantes,x='Year_Convocatoria',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar]).\
+    graf5=px.bar(vacantes,x='Year_Convocatoria',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar_2]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
