@@ -242,6 +242,8 @@ if a=='Empleo Público':
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
     
+    color_discrete_map_tipo_postulacion={'Aviso': 'orange', 'Postulacion en linea': 'blue'}
+
     date='31 de Marzo de 2023'
     
     st.title('Estadísticas Portal Empleos Públicos')
@@ -489,7 +491,7 @@ if a=='Empleo Público':
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
     #----------------------------------------------------------------------------------------------------------------------------
     graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
-             color='Tipo postulacion',labels={'idConcurso': 'Cantidad de Convocatorias'}).\
+             color=color_discrete_map_tipo_postulacion,labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf7.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
