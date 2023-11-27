@@ -277,6 +277,7 @@ if a=='Alta Dirección Pública':
 
     finalizados=pd.merge(finalizados,desiertos, how='left', on='Año')
     finalizados=finalizados.rename(columns={'Concursos_x': 'Finalizados','Concursos_y':'Desiertos'})
+    finalizados['Porcentaje']=finalizados['Desiertos']/finalizados['Finalizados']
 
     # gráfico Convocatorias por Año
     graf1=px.bar(publicaciones,x='Año',y='Concursos',title='<b>Concursos publicados a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
