@@ -112,6 +112,8 @@ def Fecha_Finalizado (Finalizado,Estado, Fecha_Nombramiento, Fecha_Desierto):
         return None
 
 df_concursos['Finalizado']=df_concursos['Estado'].apply(finalizado) 
+df_concursos['Fecha_Finalizado']=df_concursos.apply(lambda x: Fecha_Finalizado(x['Finalizado'],x['Estado'],x['Fecha_Nombramiento'],x['Fecha_Desierto']),axis=1)  
+
 
 
 with st.sidebar:
@@ -271,6 +273,7 @@ if a=='Alta Dirección Pública':
         with col4:
             st.plotly_chart(graf4,use_container_width=True)
     
+    st.dataframe(df_concursos)
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
