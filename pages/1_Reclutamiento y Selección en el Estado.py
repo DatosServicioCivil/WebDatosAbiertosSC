@@ -262,9 +262,9 @@ if a=='Alta Dirección Pública':
         finalizados=df_concursos.query('Finalizado==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Finalizado').agg({'CD_Concurso':'count'}).reset_index()
         nombramientos=df_concursos.query('Nombrado==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Nombramiento').agg({'CD_Concurso':'count'}).reset_index()
 
-    #desiertos = pd.merge(desiertos, finalizados, how='left', on=['Year_Desierto', 'Year_Finalizado'])
-    #desiertos=desiertos.rename(columns={'CD_Concurso_x': 'Desiertos','CD_Concurso_y':'Finalizados'})
-    #desiertos['Porcentaje']=desiertos['Desiertos']/desiertos['Finalizados']
+    finalizados = pd.merge(finalizados,desiertos, how='left', on=['Year_Finalizado','Year_Desierto'])
+    finalizados=finalizados.rename(columns={'CD_Concurso_x': 'Finalizados','CD_Concurso_y':'Desiertos'})
+    finalizados['Porcentaje']=finalizados['Desiertos']/finalizados['Finalizados']
     
     publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos','Year_Convocatoria':'Año'})
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos','Year_Nomina':'Año'})
@@ -320,7 +320,7 @@ if a=='Alta Dirección Pública':
             st.plotly_chart(graf4,use_container_width=True)
         with col5:
             st.plotly_chart(graf5,use_container_width=True)
-    st.dataframe(df_concursos)
+    st.dataframe(finalizados)
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
