@@ -56,11 +56,12 @@ color_line_4='#A7ED74' #verde montaña
 color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
 color_5="#B2FFFF" #celeste
-color_6="#7CB2B2"
+color_6="#7CB2B2" #celeste orcuro
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
+estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
 
@@ -865,9 +866,9 @@ if a=='Directores para Chile':
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
     
-    graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final').\
+    graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final',color='Estado_Concurso',color_discrete_map=estados_edu_color_map).\
                 update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
-
+    #estados_edu_color_map
     #----------------------------------------------------------------------------------------------------------------------------
     
     with st.container():
