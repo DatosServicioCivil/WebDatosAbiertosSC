@@ -275,7 +275,8 @@ if a=='Alta Dirección Pública':
     finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos','Year_Finalizado':'Año'})
     nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos','Year_Nombramiento':'Año'})
 
-
+    finalizados=pd.merge(finalizados,desiertos, how='left', on=['Año'])
+    finalizados=finalizados.rename(columns={'CD_Concurso_x': 'Finalizados','CD_Concurso_y':'Desiertos'})
 
     # gráfico Convocatorias por Año
     graf1=px.bar(publicaciones,x='Año',y='Concursos',title='<b>Concursos publicados a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
@@ -331,7 +332,7 @@ if a=='Alta Dirección Pública':
         with col6:
             st.plotly_chart(graf6,use_container_width=True)
     
-    st.dataframe(pd.merge(finalizados,desiertos, how='left', on=['Año']))
+    st.dataframe(finalizados)
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
