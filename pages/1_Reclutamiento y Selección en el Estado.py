@@ -336,11 +336,15 @@ if a=='Alta Dirección Pública':
         with col4:
             st.plotly_chart(graf5,use_container_width=True)
         with col5:
-            st.plotly_chart(graf7,use_container_width=True)
+            sel_col5=st.radio('Seleccione',('Gráfico','Tabla'))
+            if sel_col5=='Gráfico':
+                st.plotly_chart(graf7,use_container_width=True)
+            else:
+                st.dataframe(finalizados)
         with col6:
             st.plotly_chart(graf6,use_container_width=True)
     
-    st.dataframe(finalizados)
+    
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
