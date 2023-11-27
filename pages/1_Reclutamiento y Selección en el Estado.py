@@ -222,10 +222,10 @@ if a=='Alta Dirección Pública':
     graf3.update_layout(yaxis_tickformat='.0f')
     
 
-    graf4=px.bar(desiertos,x='Año',y='Concursos',title='<b>Concursos desietos por año</b>',color_discrete_sequence=[color_bar]).\
+    graf4=px.bar(desiertos,x='Año',y='Concursos',title='<b>Concursos desietos por año</b>',color_discrete_sequence=[color_line_4]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf1.update_layout(yaxis_tickformat='.0f')
+    graf4.update_layout(yaxis_tickformat='.0f')
 
 
     with st.container():
