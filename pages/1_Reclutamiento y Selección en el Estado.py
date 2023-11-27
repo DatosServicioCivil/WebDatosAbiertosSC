@@ -269,7 +269,7 @@ if a=='Alta Dirección Pública':
     publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos','Year_Convocatoria':'Año'})
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos','Year_Nomina':'Año'})
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias','Year_Nomina':'Año'})
-    desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos'})
+    desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos','Year_Desierto':'Año'})
     finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos','Year_Finalizado':'Año'})
     nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos'})
     
@@ -295,7 +295,7 @@ if a=='Alta Dirección Pública':
     graf3.update_layout(yaxis_tickformat='.0f')
     
     # gráfico concursos desiertos por año
-    graf4=px.bar(desiertos,x='Year_Desierto',y='Concursos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+    graf4=px.bar(desiertos,x='Año',y='Concursos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
