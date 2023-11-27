@@ -304,7 +304,7 @@ if a=='Alta Dirección Pública':
     graf4.update_layout(yaxis_tickformat='.0f')
 
     # gráfico concursos desiertos por año
-    graf5=px.bar(finalizados,x='Año',y='Concursos',title='<b>Concursos finalizados por año</b>',color_discrete_sequence=[color_line_2]).\
+    graf5=px.bar(finalizados,x='Año',y='Finalizados',title='<b>Concursos finalizados por año</b>',color_discrete_sequence=[color_line_2]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
