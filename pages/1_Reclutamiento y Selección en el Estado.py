@@ -262,9 +262,10 @@ if a=='Alta Dirección Pública':
         finalizados=df_concursos.query('Finalizado==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Finalizado').agg({'CD_Concurso':'count'}).reset_index()
         nombramientos=df_concursos.query('Nombrado==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Nombramiento').agg({'CD_Concurso':'count'}).reset_index()
 
-    desiertos=pd.merge(desiertos,finalizados,how='left',on=['Year_Desierto,Year_Finalizado'])
+    desiertos = pd.merge(desiertos, finalizados, how='left', on=['Year_Desierto', 'Year_Finalizado'])
     desiertos=desiertos.rename(columns={'CD_Concurso_x': 'Desiertos','CD_Concurso_y':'Finalizados'})
     desiertos['Porcentaje']=desiertos['Desiertos']/desiertos['Finalizados']
+    
     publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos','Year_Convocatoria':'Año'})
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos','Year_Nomina':'Año'})
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias','Year_Nomina':'Año'})
