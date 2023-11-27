@@ -316,6 +316,13 @@ if a=='Alta Dirección Pública':
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf6.update_layout(yaxis_tickformat='.0f')
 
+    # gráfico Evolución de dias_concursos por Año
+    graf7=px.line(finalizados,x='Año',y='Porcentaje',title='<b>Porcentaje concurso ADP desiertos por año</b>').\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf7.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
+    graf7.update_layout(yaxis_tickformat='.0f')
+
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:    
@@ -327,9 +334,9 @@ if a=='Alta Dirección Pública':
             st.markdown('Se consideran solo concursos con nómina enviada')
         col4,col5,col6=st.columns(3,gap='small')
         with col4:
-            st.plotly_chart(graf4,use_container_width=True)
-        with col5:
             st.plotly_chart(graf5,use_container_width=True)
+        with col5:
+            st.plotly_chart(graf7,use_container_width=True)
         with col6:
             st.plotly_chart(graf6,use_container_width=True)
     
