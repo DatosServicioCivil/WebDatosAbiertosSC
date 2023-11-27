@@ -55,6 +55,7 @@ color_line_3='#006FB3' #blue
 color_line_4='#A7ED74' #verde montaña
 color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
+color_5="#B2FFFF"
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
@@ -307,7 +308,7 @@ if a=='Alta Dirección Pública':
     graf5.update_layout(yaxis_tickformat='.0f')
 
     # gráfico nombramientos por año
-    graf6=px.bar(nombramientos,x='Año',y='Concursos',title='<b>Concursos finalizados por año</b>',color_discrete_sequence=[color_line_2]).\
+    graf6=px.bar(nombramientos,x='Año',y='Concursos',title='<b>Concursos nombrados por año</b>',color_discrete_sequence=[color_5]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf6.update_layout(yaxis_tickformat='.0f')
