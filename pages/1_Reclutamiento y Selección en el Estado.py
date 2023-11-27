@@ -321,7 +321,7 @@ if a=='Alta Dirección Pública':
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf7.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
-    graf7.update_layout(yaxis_tickformat='.0f')
+    graf7.update_layout(yaxis_tickformat='.2%')
 
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
