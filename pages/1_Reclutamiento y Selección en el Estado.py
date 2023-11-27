@@ -336,7 +336,7 @@ if a=='Alta Dirección Pública':
         with col4:
             st.plotly_chart(graf5,use_container_width=True)
         with col5:
-            sel_col5='Grafico'
+            sel_col5='Gráfico'
             if sel_col5=='Gráfico':
                 st.plotly_chart(graf7,use_container_width=True)
             else:
