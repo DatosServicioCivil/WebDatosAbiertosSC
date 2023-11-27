@@ -270,7 +270,7 @@ if a=='Alta Dirección Pública':
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos','Year_Nomina':'Año'})
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias','Year_Nomina':'Año'})
     desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos'})
-    finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos'})
+    finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos','Year_Finalizado':'Año'})
     nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos'})
     
 
