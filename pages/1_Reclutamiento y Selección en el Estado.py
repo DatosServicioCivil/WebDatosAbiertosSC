@@ -860,10 +860,10 @@ if a=='Directores para Chile':
 
     # grafico Desiertos y Anulados por Año
     
-    graf3=px.bar(df_estados[df_estados['Estado_Concurso'].isin('Desierto','Anulado')], x="Año", y="Convocatorias",color='Estado_Concurso' ,title="Concursos Desiertos o Anulados").\
-             update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1).\
-                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+    #graf3=px.bar(df_estados[df_estados['Estado_Concurso'].isin('Desierto','Anulado')], x="Año", y="Convocatorias",color='Estado_Concurso' ,title="Concursos Desiertos o Anulados").\
+    #         update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                update_xaxes(title_text=None,tickmode='linear', dtick=1).\
+    #                    update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
     
     graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final').\
                 update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
@@ -875,9 +875,9 @@ if a=='Directores para Chile':
         with col1:
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
-            st.plotly_chart(graf3,use_container_width=True)
-            #st.markdown('gráfico 3')
-            #st.dataframe(df_estados)
+            #st.plotly_chart(graf3,use_container_width=True)
+            st.markdown('gráfico 3')
+            st.dataframe(df_estados)
         with col3:
            st.plotly_chart(graf4,use_container_width=True)
 
