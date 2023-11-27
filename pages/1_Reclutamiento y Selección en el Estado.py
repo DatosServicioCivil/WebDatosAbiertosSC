@@ -877,7 +877,7 @@ if a=='Directores para Chile':
         with col2:
             #st.plotly_chart(graf3,use_container_width=True)
             st.markdown('gráfico 3')
-            st.dataframe(df_estados)
+            st.dataframe(df_estados[df_estados['Estado_Concurso'].isin(['Desierto','Anulado'])])
         with col3:
            st.plotly_chart(graf4,use_container_width=True)
 
