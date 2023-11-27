@@ -336,11 +336,12 @@ if a=='Alta Dirección Pública':
         with col4:
             st.plotly_chart(graf5,use_container_width=True)
         with col5:
-            sel_col5=st.radio('Seleccione',('Gráfico','Tabla'),horizontal=True)
+            sel_col5='Grafico'
             if sel_col5=='Gráfico':
                 st.plotly_chart(graf7,use_container_width=True)
             else:
                 st.dataframe(finalizados)
+            sel_col5=st.radio('Seleccione',('Gráfico','Tabla'),horizontal=True)
         with col6:
             st.plotly_chart(graf6,use_container_width=True)
     
