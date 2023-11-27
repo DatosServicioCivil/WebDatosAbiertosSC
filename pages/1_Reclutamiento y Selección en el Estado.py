@@ -851,7 +851,7 @@ if a=='Directores para Chile':
             df_estados_finales = df_DEEM[(df_DEEM.Region==option_1) & (df_DEEM.Estado==option_3)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
     
     df_convocatorias=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
-    df_estados=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
+    df_estados=df_estados.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf1=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
