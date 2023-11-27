@@ -97,6 +97,21 @@ def select_servicio(df_concursos, option_3):
     return Servicio
     
 
+def finalizado(Estado):
+    if  Estado=='Nombrado' or Estado=='Desierto':
+        return 1  
+    else:
+        return 0
+    
+def Fecha_Finalizado (Finalizado,Estado, Fecha_Nombramiento, Fecha_Desierto):
+    if Finalizado==1 and Estado=='Nombrado':
+        return Fecha_Nombramiento
+    elif Finalizado==1 and Estado=='Desierto':
+        return Fecha_Desierto
+    else:
+        return None
+
+df_concursos['Finalizado']=df_concursos['Estado'].apply(finalizado) 
 
 
 with st.sidebar:
