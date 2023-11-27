@@ -272,8 +272,7 @@ if a=='Alta Dirección Pública':
     desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos','Year_Desierto':'Año'})
     finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos','Year_Finalizado':'Año'})
     nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos'})
-    
-    finalizados = pd.merge(finalizados,desiertos, how='left', on=['Año'])
+
 
 
     # gráfico Convocatorias por Año
@@ -321,7 +320,8 @@ if a=='Alta Dirección Pública':
             st.plotly_chart(graf4,use_container_width=True)
         with col5:
             st.plotly_chart(graf5,use_container_width=True)
-    st.dataframe(finalizados)
+    
+    st.dataframe(pd.merge(finalizados,desiertos, how='left', on=['Año']))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
