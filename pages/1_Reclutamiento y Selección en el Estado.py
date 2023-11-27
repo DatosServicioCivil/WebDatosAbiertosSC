@@ -295,7 +295,7 @@ if a=='Alta Dirección Pública':
     graf3.update_layout(yaxis_tickformat='.0f')
     
     # gráfico concursos desiertos por año
-    graf4=px.bar(desiertos,x='Year_Convocatoria',y='Concursos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+    graf4=px.bar(desiertos,x='Year_Desierto',y='Concursos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
                  update_yaxes(visible=visible_y_axis,title_text=None).\
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
