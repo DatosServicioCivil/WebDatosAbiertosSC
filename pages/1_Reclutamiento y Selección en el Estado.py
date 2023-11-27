@@ -135,6 +135,7 @@ if a=='Alta Dirección Pública':
         publicaciones=df_concursos.groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1').groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
         dias_concurso=df_concursos.query('Nomina==1').groupby('Year_Nomina').agg({'Duracion_Concurso':'mean'}).reset_index()
+        desiertos=df_concursos.query('Desierto==1').groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
     if option_1=='Todos' and option_2!='Todos' and option_3=='Todos'and option_4=='Todos': #2
         publicaciones=df_concursos[(df_concursos.Region==option_2)].groupby('Year_Convocatoria').agg({'CD_Concurso':'count'}).reset_index()
         Nominas=df_concursos.query('Nomina==1')[(df_concursos.Region==option_2)].groupby('Year_Nomina').agg({'CD_Concurso':'count'}).reset_index()
@@ -199,6 +200,7 @@ if a=='Alta Dirección Pública':
     publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos'})
     Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos'})
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias'})
+    desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos','Year_Convocatoria':'Año'})
     
     # grafico Convocatorias por Año
     graf1=px.bar(publicaciones,x='Year_Convocatoria',y='Concursos',title='<b>Concursos publicados a cargos ADP por año</b>',color_discrete_sequence=[color_bar]).\
@@ -219,6 +221,13 @@ if a=='Alta Dirección Pública':
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     graf3.update_layout(yaxis_tickformat='.0f')
     
+
+    graf4=px.bar(desiertos,x='Año',y='Concursos',title='<b>Concursos desietos por año</b>',color_discrete_sequence=[color_bar]).\
+                 update_yaxes(visible=visible_y_axis,title_text=None).\
+                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf1.update_layout(yaxis_tickformat='.0f')
+
+
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:    
@@ -228,6 +237,9 @@ if a=='Alta Dirección Pública':
         with col3:
             st.plotly_chart(graf3,use_container_width=True)
             st.markdown('Se consideran solo concursos con nómina enviada')
+        col4,col5=st.columns(2,gap='small')
+        with col4:
+            st.plotly_chart(graf4,use_container_width=True)
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
