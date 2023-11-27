@@ -271,7 +271,7 @@ if a=='Alta Dirección Pública':
     dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias','Year_Nomina':'Año'})
     desiertos=desiertos.rename(columns={'CD_Concurso': 'Concursos','Year_Desierto':'Año'})
     finalizados=finalizados.rename(columns={'CD_Concurso': 'Concursos','Year_Finalizado':'Año'})
-    nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos'})
+    nombramientos=nombramientos.rename(columns={'CD_Concurso': 'Concursos','Year_Nombramiento':'Año'})
 
 
 
@@ -306,6 +306,12 @@ if a=='Alta Dirección Pública':
                       update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
 
+    # gráfico nombramientos por año
+    graf6=px.bar(nombramientos,x='Año',y='Concursos',title='<b>Concursos finalizados por año</b>',color_discrete_sequence=[color_line_2]).\
+                 update_yaxes(visible=visible_y_axis,title_text=None).\
+                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf6.update_layout(yaxis_tickformat='.0f')
+
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:    
@@ -315,11 +321,13 @@ if a=='Alta Dirección Pública':
         with col3:
             st.plotly_chart(graf3,use_container_width=True)
             st.markdown('Se consideran solo concursos con nómina enviada')
-        col4,col5=st.columns(2,gap='small')
+        col4,col5,col6=st.columns(3,gap='small')
         with col4:
             st.plotly_chart(graf4,use_container_width=True)
         with col5:
             st.plotly_chart(graf5,use_container_width=True)
+        with col6:
+            st.plotly_chart(graf6,use_container_width=True)
     
     st.dataframe(pd.merge(finalizados,desiertos, how='left', on=['Año']))
 #----------------------------------------------------------------------------------------------------------------------
