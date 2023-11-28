@@ -576,6 +576,10 @@ if a=='Empleo Público':
     vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
     vacantes=vacantes.rename(columns={'Year_Convocatoria': 'Año'})
 
+    #----------------------------------------------------------------------------------------------------------------------------
+    desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
+    
+
 
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
@@ -685,7 +689,7 @@ if a=='Empleo Público':
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
         st.plotly_chart(graf4,use_container_width=True)
-        st.markdown('<b>Nota: Solo se consideran convocatorias efectuadas en portal de EEPP</b>')
+        st.markdown('Nota: Solo se consideran convocatorias efectuadas en portal de EEPP')
     with col2:
         st.plotly_chart(graf8,use_container_width=True)
     with col3:
@@ -700,7 +704,6 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf11,use_container_width=True)
 
-    #st.text(df_concursos_eepp.Estado.unique())
 st.dataframe(desiertos)
 
 #----------------------------------------------------------------------------------------------------------------------
