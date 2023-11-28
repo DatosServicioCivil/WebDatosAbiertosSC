@@ -538,6 +538,11 @@ if a=='Empleo Público':
         
         convocatorias=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
         convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
+
+        df_desiertos=df_concursos_eepp[filtro]
+        desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos'})
+
              
         convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
         convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
@@ -559,7 +564,6 @@ if a=='Empleo Público':
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
 
-    desiertos=df_concursos_eepp[df_concursos_eepp.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
 
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
@@ -658,7 +662,7 @@ if a=='Empleo Público':
     graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     #----------------------------------------------------------------------------------------------------------------------------
-    graf12=px.bar(desiertos,x='Year_Convocatoria',y='idConcurso',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_bar_2]).\
+    graf12=px.bar(desiertos,x='Year_Convocatoria',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf12.update_layout(yaxis_tickformat='.0f')
