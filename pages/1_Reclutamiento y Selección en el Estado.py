@@ -663,9 +663,9 @@ if a=='Empleo Público':
         st.plotly_chart(graf4,use_container_width=True)
         st.markdown('Nota: Solo se consideran convocatorias efectuadas en portal de EEPP')
     with col2:
-        st.plotly_chart(graf7,use_container_width=True)
-    with col3:
         st.plotly_chart(graf8,use_container_width=True)
+    with col3:
+        st.plotly_chart(graf7,use_container_width=True)
     
     
     col4, col5, col6=st.columns(3,gap='small')
