@@ -676,7 +676,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf11,use_container_width=True)
 
-df_concursos_eepp.Estados.unique()
+#df_concursos_eepp.Estados.unique()
 st.dataframe(df_concursos_eepp)
 
 #----------------------------------------------------------------------------------------------------------------------
