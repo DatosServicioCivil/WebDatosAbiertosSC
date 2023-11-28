@@ -689,7 +689,7 @@ if a=='Empleo Público':
             st.plotly_chart(graf11,use_container_width=True)
 
     #st.text(df_concursos_eepp.Estado.unique())
-    st.dataframe(desiertos)
+    st.dataframe(df_desiertos)
 
 #----------------------------------------------------------------------------------------------------------------------
 
