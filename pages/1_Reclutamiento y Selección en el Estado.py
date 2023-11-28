@@ -559,9 +559,11 @@ if a=='Empleo Público':
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
 
+    desiertos=df_concursos_eepp[df_concursos_eepp.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+
     # fin del else
     #----------------------------------------------------------------------------------------------------------------------------
-    
+
     tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar}
     convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
 
@@ -655,7 +657,13 @@ if a=='Empleo Público':
     graf11.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.5, xanchor="right", x=1))
     graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-
+    #----------------------------------------------------------------------------------------------------------------------------
+    graf12=px.bar(desiertos,x='Year_Convocatoria',y='idConcurso',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_bar_2]).\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf12.update_layout(yaxis_tickformat='.0f')
+    
+    #----------------------------------------------------------------------------------------------------------------------------
 
     
     col1,col2,col3=st.columns(3,gap='small')
@@ -665,7 +673,7 @@ if a=='Empleo Público':
     with col2:
         st.plotly_chart(graf8,use_container_width=True)
     with col3:
-        st.plotly_chart(graf7,use_container_width=True)
+        st.plotly_chart(graf12,use_container_width=True)
     
     
     col4, col5, col6=st.columns(3,gap='small')
