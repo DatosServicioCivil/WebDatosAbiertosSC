@@ -578,7 +578,7 @@ if a=='Empleo Público':
 
     #----------------------------------------------------------------------------------------------------------------------------
     desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
-    desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)
+    desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)*100
     
 
 
@@ -679,11 +679,20 @@ if a=='Empleo Público':
     graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     #----------------------------------------------------------------------------------------------------------------------------
-    graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+    #graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+    #        update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    #graf12.update_layout(yaxis_tickformat='.0f')
+    
+    #gráfico desiertos EEPP
+    graf12=px.line(desiertos,x='Año',y='Porcentaje',title='<b>Porcentaje convocatorias desiertos en EEPP</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf12.update_layout(yaxis_tickformat='.0f')
-    
+    graf12.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
+    graf12.update_layout(yaxis_tickformat='.2%')
+
+
+
     #----------------------------------------------------------------------------------------------------------------------------
 
     
