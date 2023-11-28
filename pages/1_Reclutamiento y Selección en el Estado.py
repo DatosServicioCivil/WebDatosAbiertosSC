@@ -440,6 +440,10 @@ if a=='Empleo Público':
         rentas_x_min=df_rentas.groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
         rentas_x_estamento=df_rentas.groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
 
+        df_desiertos=df_concursos_eepp
+        desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
+
         
     else:
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
@@ -689,7 +693,7 @@ if a=='Empleo Público':
             st.plotly_chart(graf11,use_container_width=True)
 
     #st.text(df_concursos_eepp.Estado.unique())
-st.dataframe(df_desiertos)
+st.dataframe(desiertos)
 
 #----------------------------------------------------------------------------------------------------------------------
 
