@@ -714,7 +714,7 @@ if a=='Empleo Público':
     with col6:
             st.plotly_chart(graf11,use_container_width=True)
 
-st.dataframe(desiertos)
+
 
 #----------------------------------------------------------------------------------------------------------------------
 
