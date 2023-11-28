@@ -578,6 +578,7 @@ if a=='Empleo Público':
 
     #----------------------------------------------------------------------------------------------------------------------------
     desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
+    desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)
     
 
 
