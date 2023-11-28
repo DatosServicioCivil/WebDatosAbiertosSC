@@ -666,7 +666,7 @@ if a=='Empleo Público':
     graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     #----------------------------------------------------------------------------------------------------------------------------
-    graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color=color_line_4).\
+    graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf12.update_layout(yaxis_tickformat='.0f')
