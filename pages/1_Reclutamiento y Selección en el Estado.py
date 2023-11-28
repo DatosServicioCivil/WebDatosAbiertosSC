@@ -545,7 +545,7 @@ if a=='Empleo Público':
 
         df_desiertos=df_concursos_eepp[filtro]
         desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
-        desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
+        
 
              
         convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
@@ -567,6 +567,14 @@ if a=='Empleo Público':
 
     convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
     convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
+    
+    # cambio nombre year_convocatoria x Año
+    convocatorias_vacantes=convocatorias_vacantes.rename(columns={'Year_Convocatoria': 'Año'})
+    convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
+    convocatorias=convocatorias.rename(columns={'Year_Convocatoria': 'Año'})
+    desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
+    vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
+    vacantes=vacantes.rename(columns={'Year_Convocatoria': 'Año'})
 
 
     # fin del else
@@ -619,13 +627,13 @@ if a=='Empleo Público':
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
-    graf4=px.bar(convocatorias,x='Year_Convocatoria',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+    graf4=px.bar(convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
             update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf4.update_layout(yaxis_tickformat='.0f')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
     #----------------------------------------------------------------------------------------------------------------------------
-    graf7=px.bar(convocatorias_x_tipo, x='Year_Convocatoria', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
+    graf7=px.bar(convocatorias_x_tipo, x='Año', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
                  color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map,labels={'idConcurso': 'Cantidad de Convocatorias'}).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
@@ -636,7 +644,7 @@ if a=='Empleo Público':
         dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
         )
     #----------------------------------------------------------------------------------------------------------------------------
-    graf8= px.bar(convocatorias_x_tipo, x="Year_Convocatoria", y="Porcentaje_1",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map, text_auto=True).\
+    graf8= px.bar(convocatorias_x_tipo, x="Año", y="Porcentaje_1",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map, text_auto=True).\
             update_yaxes(visible=False,title_text=None,type='linear').\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
                         update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
@@ -644,7 +652,7 @@ if a=='Empleo Público':
     #----------------------------------------------------------------------------------------------------------------------------
   
     # grafico Vacantes Concursadas por Año
-    graf5=px.bar(vacantes,x='Year_Convocatoria',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar_2]).\
+    graf5=px.bar(vacantes,x='Año',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar_2]).\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf5.update_layout(yaxis_tickformat='.0f')
