@@ -541,7 +541,7 @@ if a=='Empleo Público':
 
         df_desiertos=df_concursos_eepp[filtro]
         desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
-        desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos'})
+        desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
 
              
         convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
@@ -662,7 +662,7 @@ if a=='Empleo Público':
     graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     #----------------------------------------------------------------------------------------------------------------------------
-    graf12=px.bar(desiertos,x='Year_Convocatoria',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+    graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf12.update_layout(yaxis_tickformat='.0f')
