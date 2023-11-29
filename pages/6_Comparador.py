@@ -31,20 +31,11 @@ def reg():
     region=df["Región"].unique()
     return region
 
-def graf1(año,region1,region2):
+def df():
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
     df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
     df=pd.concat([df1,df2],axis=0)
-    df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
-    df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-    df=df[(df["Año"]==año) & (df["Región"].isin([region1,region2]))]
-    df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
-    df=df.rename(columns={"idConcurso":"Convocatorias"})
-    fig1 = px.bar(df, x="Mes", y="Convocatorias",
-             color='Región', barmode='group',
-             height=400)
-    fig1.show()
-    return fig1
+    return df
 
 
 # This function sets the logo and company name inside the sidebar
@@ -113,7 +104,16 @@ with st.container():
             grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
         if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
-            st.pyplot(graf1(Año,select_region1,select_region2))
+            df=df()
+            df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
+            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            graf1 = px.bar(df, x="Mes", y="Convocatorias",
+                color='Región', barmode='group',
+                height=400)
+            st.plotly_chart(graf1,use_container_width=True)
             
 
     if seleccion=="Por organismo":
