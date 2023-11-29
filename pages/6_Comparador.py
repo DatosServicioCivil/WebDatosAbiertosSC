@@ -114,6 +114,7 @@ with st.container():
 
         if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
             graf1(Año,select_region1,select_region2)
+            graf1.show()
 
     if seleccion=="Por organismo":
         
