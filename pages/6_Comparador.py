@@ -41,7 +41,7 @@ def graf1(año,region1,region2):
     df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
     df=df.rename(columns={"idConcurso":"Convocatorias"})
     fig1 = px.bar(df, x="Mes", y="Convocatorias",
-             color='Region', barmode='group',
+             color='Región', barmode='group',
              height=400)
     fig1.show()
     return fig1
