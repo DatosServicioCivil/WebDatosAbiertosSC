@@ -50,19 +50,20 @@ visible_y_axis=True
 
 with st.container():
     seleccion=st.selectbox("Selecciona el tipo de información a comparar",["Por región","Por organismo"])
+    regiones=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
 
     if seleccion=="Por región":
         st.subheader("Región N°1")
         col1,col2=st.columns(2)
         with col1:
             st.write("Selecciona región N°1")
-            region1=st.selectbox("Región 1",["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"])
+            region1=st.selectbox("Región 1",regiones)
         with col2:
             st.subheader("Selecciona región N°2")
-            region2=st.selectbox("Región 1",["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"])
-        if region1==region2:
-            st.error("No se pueden seleccionar dos regiones iguales")
-            st.stop()
+            region2=st.selectbox("Región 1",regiones)
+    if region1==region2:
+        st.error("No se pueden seleccionar dos regiones iguales")
+        st.stop()
         
         # st.write("Selecciona el tipo de información a comparar")
         # tipo=st.selectbox("Tipo de información",["Casos nuevos","Casos totales","Casos activos","Fallecidos","Casos recuperados","Casos nuevos con sintomas","Casos nuevos sin sintomas","Casos nuevos sin notificar","Casos nuevos con sintomas por 100 mil habitantes","Casos nuevos sin sintomas por 100 mil habitantes","Casos nuevos sin notificar por 100 mil habitantes","Casos totales por 100 mil habitantes","Casos activos por 100 mil habitantes","Fallecidos por 100 mil habitantes","Casos recuperados por 100 mil habitantes"])
