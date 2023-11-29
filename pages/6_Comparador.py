@@ -64,18 +64,18 @@ with st.container():
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
         
-        st.write("Selecciona el tipo de información a comparar")
-        tipo=st.selectbox("Tipo de información",["Casos nuevos","Casos totales","Casos activos","Fallecidos","Casos recuperados","Casos nuevos con sintomas","Casos nuevos sin sintomas","Casos nuevos sin notificar","Casos nuevos con sintomas por 100 mil habitantes","Casos nuevos sin sintomas por 100 mil habitantes","Casos nuevos sin notificar por 100 mil habitantes","Casos totales por 100 mil habitantes","Casos activos por 100 mil habitantes","Fallecidos por 100 mil habitantes","Casos recuperados por 100 mil habitantes"])
+        # st.write("Selecciona el tipo de información a comparar")
+        # tipo=st.selectbox("Tipo de información",["Casos nuevos","Casos totales","Casos activos","Fallecidos","Casos recuperados","Casos nuevos con sintomas","Casos nuevos sin sintomas","Casos nuevos sin notificar","Casos nuevos con sintomas por 100 mil habitantes","Casos nuevos sin sintomas por 100 mil habitantes","Casos nuevos sin notificar por 100 mil habitantes","Casos totales por 100 mil habitantes","Casos activos por 100 mil habitantes","Fallecidos por 100 mil habitantes","Casos recuperados por 100 mil habitantes"])
 
-        st.write("Selecciona el rango de fechas a comparar")
-        fecha1=st.date_input("Fecha 1",value=pd.to_datetime("2020-03-03"))
-        fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
+        # st.write("Selecciona el rango de fechas a comparar")
+        # fecha1=st.date_input("Fecha 1",value=pd.to_datetime("2020-03-03"))
+        # fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
 
-        st.write("Selecciona el tipo de gráfico a mostrar")
-        grafico=st.selectbox("Tipo de gráfico",["Gráfico de líneas","Gráfico de barras"])
+        # st.write("Selecciona el tipo de gráfico a mostrar")
+        # grafico=st.selectbox("Tipo de gráfico",["Gráfico de líneas","Gráfico de barras"])
 
-        st.write("Selecciona el tipo de datos a mostrar")
-        datos=st.selectbox("Tipo de datos",["Datos absolutos","Datos por 100 mil habitantes"])
+        # st.write("Selecciona el tipo de datos a mostrar")
+        # datos=st.selectbox("Tipo de datos",["Datos absolutos","Datos por 100 mil habitantes"])
 
-        st.write("Selecciona el tipo de eje Y a mostrar")
-        eje=st.selectbox("Tipo de eje Y",["Eje Y por región","Eje Y global"])
+        # st.write("Selecciona el tipo de eje Y a mostrar")
+        # eje=st.selectbox("Tipo de eje Y",["Eje Y por región","Eje Y global"])
