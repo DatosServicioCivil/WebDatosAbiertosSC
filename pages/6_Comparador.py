@@ -50,18 +50,19 @@ visible_y_axis=True
 
 with st.container():
     seleccion=st.selectbox("Selecciona el tipo de información a comparar",["Por región","Por organismo"])
-    regiones=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
+    region1=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
+    region2=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
 
     if seleccion=="Por región":
         st.subheader("Región N°1")
         col1,col2=st.columns(2)
         with col1:
             st.write("Selecciona región N°1")
-            region1=st.selectbox("Región 1",regiones)
+            select_region1=st.selectbox("Región 1",region1)
         with col2:
             st.subheader("Selecciona región N°2")
-            region2=st.selectbox("Región 1",regiones)
-    if region1==region2:
+            select_region2=st.selectbox("Región 1",region2)
+    if select_region1==select_region2:
         st.error("No se pueden seleccionar dos regiones iguales")
         st.stop()
         
