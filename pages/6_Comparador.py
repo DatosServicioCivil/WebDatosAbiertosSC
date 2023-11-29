@@ -14,6 +14,16 @@ import plotly.graph_objects as go
 
 st.set_page_config(layout='wide')
 
+# carga de archivos CSV
+#------------------------------------------------------------------------------------------
+df_empleo_aviso = pd.read_csv("./EEPP/df_concursos_EEPP_Aviso.csv", sep=";", encoding="utf-8")
+df_empleo_postulacion = pd.read_csv("./EEPP/df_concursos_EEPP_Postulacion en linea.csv", sep=";", encoding="utf-8")
+df_empleo=pd.concat([df_empleo_aviso,df_empleo_postulacion],axis=0)
+organismos=df_empleo["Organismo"].unique()
+#------------------------------------------------------------------------------------------
+
+
+
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
@@ -84,10 +94,10 @@ with st.container():
         st.subheader("Seleccionar organismos a comparar")
         col1,col2=st.columns(2)
         with col1:
-            select_region1=st.selectbox("Selecciona organismo N°1",region)
+            select_organismo1=st.selectbox("Selecciona organismo N°1",organismos)
         with col2:
-            select_region2=st.selectbox("Selecciona organismo N°2",region)
-        if select_region1==select_region2:
+            select_organismo2=st.selectbox("Selecciona organismo N°2",organismos)
+        if select_organismo1==select_organismo2:
             st.error("No se pueden seleccionar dos organismos iguales")
             st.stop()
         
