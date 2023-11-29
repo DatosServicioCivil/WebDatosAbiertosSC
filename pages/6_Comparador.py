@@ -16,12 +16,13 @@ st.set_page_config(layout='wide')
 
 # carga de archivos CSV
 #------------------------------------------------------------------------------------------
-df_empleo_aviso = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
-df_empleo_postulacion = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
-df_empleo=pd.concat([df_empleo_aviso,df_empleo_postulacion],axis=0)
-organismos=df_empleo["Institucion"].unique()
-#------------------------------------------------------------------------------------------
-
+@st.cache_data
+def org(df1,df2):
+    df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
+    df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
+    df=pd.concat([df1,df2],axis=0)
+    organismos=df["Institucion"].unique()
+    return organismos
 
 
 # This function sets the logo and company name inside the sidebar
