@@ -69,15 +69,15 @@ with st.container():
         
         col1,col2,col3=st.columns(3)
         with col1:
-            st.write("Selecciona el tipo de información a comparar")
-            tipo=st.selectbox("Tipo de información",tipo_info)
+            #st.write("Selecciona el tipo de información a comparar")
+            tipo=st.selectbox("Selecciona el tipo de información a comparar",tipo_info)
         with col2:
-            st.write("Selecciona año")
-            Año=st.selectbox("Año",periodo_años)
+            #st.write("Selecciona año")
+            Año=st.selectbox("Selecciona año",periodo_años)
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
         with col3:
-            st.write("Selecciona como quieres ver el dato")
-            grafico=st.selectbox("Tipo",["Gráfico","Tabla"])
+            #st.write("Selecciona como quieres ver el dato")
+            grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
     
     if seleccion=="Por organismo":
         
