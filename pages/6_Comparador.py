@@ -23,6 +23,13 @@ def org():
     df=pd.concat([df1,df2],axis=0)
     organismos=df["Institucion"].unique()
     return organismos
+@st.cache_data
+def reg():
+    df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
+    df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
+    df=pd.concat([df1,df2],axis=0)
+    region=df["Región"].unique()
+    return region
 
 def graf1(año,region1,region2):
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
@@ -30,8 +37,8 @@ def graf1(año,region1,region2):
     df=pd.concat([df1,df2],axis=0)
     df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
     df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-    df=df[(df["Año"]==año) & (df["Region"].isin([region1,region2]))]
-    df=df.groupby(["Region","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+    df=df[(df["Año"]==año) & (df["Región"].isin([region1,region2]))]
+    df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
     df=df.rename(columns={"idConcurso":"Convocatorias"})
     fig1 = px.bar(df, x="Mes", y="Convocatorias",
              color='Region', barmode='group',
@@ -86,9 +93,9 @@ with st.container():
         st.subheader("Seleccionar regiones a comparar")
         col1,col2=st.columns(2)
         with col1:
-            select_region1=st.selectbox("Selecciona región N°1",region)
+            select_region1=st.selectbox("Selecciona región N°1",reg())
         with col2:
-            select_region2=st.selectbox("Selecciona región N°2",region,placeholder="Seleccionar región")
+            select_region2=st.selectbox("Selecciona región N°2",reg(),placeholder="Seleccionar región")
         if select_region1==select_region2:
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
