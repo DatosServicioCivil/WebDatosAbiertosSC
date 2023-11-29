@@ -53,6 +53,7 @@ with st.container():
     region=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
 
     tipo_info=["Convocatorias EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Postulaciones Prácticas Chile","Convocatorias Directores Escuelas","Postulaciones Directores Escuelas","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
+    tipo_info_organismos=["Convocatorias EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Postulaciones Prácticas Chile","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
     periodo_años=range(2014,2025)
     if seleccion=="Por región":
         
@@ -93,7 +94,7 @@ with st.container():
         col1,col2,col3=st.columns(3)
         with col1:
             st.write("Selecciona el tipo de información a comparar")
-            tipo=st.selectbox("Tipo de información",tipo_info)
+            tipo=st.selectbox("Tipo de información",tipo_info_organismos)
         with col2:
             st.write("Selecciona año")
             Año=st.selectbox("Año",periodo_años)
