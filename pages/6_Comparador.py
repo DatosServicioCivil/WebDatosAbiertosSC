@@ -30,7 +30,7 @@ def graf1(año,region1,region2):
     df=pd.concat([df1,df2],axis=0)
     df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
     df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-    df=df[(df["Año"]==año) & df["Region"].isin([region1,region2])]
+    df=df[(df["Año"]==año) & (df["Region"].isin([region1,region2]))]
     df=df.groupby(["Region","Mes"]).agg({"idConcurso":"count"}).reset_index()    
     df=df.rename(columns={"idConcurso":"Convocatorias"})
     fig1 = px.bar(df, x="Mes", y="Convocatorias",
