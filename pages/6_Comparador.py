@@ -19,7 +19,7 @@ st.set_page_config(layout='wide')
 df_empleo_aviso = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
 df_empleo_postulacion = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
 df_empleo=pd.concat([df_empleo_aviso,df_empleo_postulacion],axis=0)
-organismos=df_empleo["Organismo"].unique()
+organismos=df_empleo["Institucion"].unique()
 #------------------------------------------------------------------------------------------
 
 
