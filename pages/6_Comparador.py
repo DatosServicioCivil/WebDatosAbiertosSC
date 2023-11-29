@@ -17,7 +17,7 @@ st.set_page_config(layout='wide')
 # carga de archivos CSV
 #------------------------------------------------------------------------------------------
 @st.cache_data
-def org(df1,df2):
+def org():
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
     df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
     df=pd.concat([df1,df2],axis=0)
@@ -95,9 +95,9 @@ with st.container():
         st.subheader("Seleccionar organismos a comparar")
         col1,col2=st.columns(2)
         with col1:
-            select_organismo1=st.selectbox("Selecciona organismo N°1",organismos)
+            select_organismo1=st.selectbox("Selecciona organismo N°1",org())
         with col2:
-            select_organismo2=st.selectbox("Selecciona organismo N°2",organismos)
+            select_organismo2=st.selectbox("Selecciona organismo N°2",org())
         if select_organismo1==select_organismo2:
             st.error("No se pueden seleccionar dos organismos iguales")
             st.stop()
