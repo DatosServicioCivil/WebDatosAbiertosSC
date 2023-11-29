@@ -52,29 +52,26 @@ with st.container():
     seleccion=st.selectbox("Selecciona el tipo de información a comparar",["Por región","Por organismo"])
     region=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
 
+    tipo_info=["Convocatorias EEPP","Vacantes EEPP Ofrecidas","Seleccionados EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Seleccionados Prácticas Chile","Postulaciones Prácticas Chile","Convocatorias Directores Escuelas","Nombramientos Directores Escuelas","Postulaciones Directores Escuelas","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
+
     if seleccion=="Por región":
+        
         st.subheader("Seleccionar regiones a comparar")
         col1,col2=st.columns(2)
         with col1:
             select_region1=st.selectbox("Selecciona región N°1",region)
         with col2:
             select_region2=st.selectbox("Selecciona región N°2",region)
-    if select_region1==select_region2:
-        st.error("No se pueden seleccionar dos regiones iguales")
-        st.stop()
+        if select_region1==select_region2:
+            st.error("No se pueden seleccionar dos regiones iguales")
+            st.stop()
         
-    st.write("Selecciona el tipo de información a comparar")
-    tipo=st.selectbox("Tipo de información",["Casos nuevos","Casos totales","Casos activos","Fallecidos","Casos recuperados","Casos nuevos con sintomas","Casos nuevos sin sintomas","Casos nuevos sin notificar","Casos nuevos con sintomas por 100 mil habitantes","Casos nuevos sin sintomas por 100 mil habitantes","Casos nuevos sin notificar por 100 mil habitantes","Casos totales por 100 mil habitantes","Casos activos por 100 mil habitantes","Fallecidos por 100 mil habitantes","Casos recuperados por 100 mil habitantes"])
+        st.write("Selecciona el tipo de información a comparar")
+        tipo=st.selectbox("Tipo de información",tipo_info)
 
-    st.write("Selecciona el rango de fechas a comparar")
-    fecha1=st.date_input("Fecha 1",value=pd.to_datetime("2020-03-03"))
-    fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
+        st.write("Selecciona año")
+        Año=st.selectbox("Año",value=range(2014,2024),index=11)
+        #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
 
-    st.write("Selecciona el tipo de gráfico a mostrar")
-    grafico=st.selectbox("Tipo de gráfico",["Gráfico de líneas","Gráfico de barras"])
-
-    st.write("Selecciona el tipo de datos a mostrar")
-    datos=st.selectbox("Tipo de datos",["Datos absolutos","Datos por 100 mil habitantes"])
-
-    st.write("Selecciona el tipo de eje Y a mostrar")
-    eje=st.selectbox("Tipo de eje Y",["Eje Y por región","Eje Y global"])
+        st.write("Selecciona como quieres ver el dato")
+        grafico=st.selectbox("Tipo",["Gráfico","Tabla"])
