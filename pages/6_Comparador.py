@@ -53,7 +53,7 @@ with st.container():
     region=["Arica y Parinacota","Tarapacá","Antofagasta","Atacama","Coquimbo","Valparaíso","Metropolitana","O’Higgins","Maule","Ñuble","Biobío","Araucanía","Los Ríos","Los Lagos","Aysén","Magallanes"]
 
     tipo_info=["Convocatorias EEPP","Vacantes EEPP Ofrecidas","Seleccionados EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Seleccionados Prácticas Chile","Postulaciones Prácticas Chile","Convocatorias Directores Escuelas","Nombramientos Directores Escuelas","Postulaciones Directores Escuelas","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
-    periodo_años=range(2014,2024)
+    periodo_años=range(2014,2025)
     if seleccion=="Por región":
         
         st.subheader("Seleccionar regiones a comparar")
@@ -61,7 +61,7 @@ with st.container():
         with col1:
             select_region1=st.selectbox("Selecciona región N°1",region)
         with col2:
-            select_region2=st.selectbox("Selecciona región N°2",region)
+            select_region2=st.selectbox("Selecciona región N°2",region,placeholder="Selecciona región N°2")
         if select_region1==select_region2:
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
