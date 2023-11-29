@@ -24,6 +24,21 @@ def org():
     organismos=df["Institucion"].unique()
     return organismos
 
+def graf1(año,region1,region2):
+    df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
+    df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
+    df=pd.concat([df1,df2],axis=0)
+    df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
+    df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
+    df=df[(df["Año"]==año) & df["Region"].isin([region1,region2])]
+    df=df.groupby(["Region","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+    df=df.rename(columns={"idConcurso":"Convocatorias"})
+    fig1 = px.bar(df, x="Mes", y="Convocatorias",
+             color='Region', barmode='group',
+             height=400)
+    fig1.show()
+    return fig1
+
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -89,7 +104,10 @@ with st.container():
         with col3:
             #st.write("Selecciona como quieres ver el dato")
             grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
-    
+
+        if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
+            graf1(Año,select_region1,select_region2)
+
     if seleccion=="Por organismo":
         
         st.subheader("Seleccionar organismos a comparar")
