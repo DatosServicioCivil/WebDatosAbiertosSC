@@ -113,8 +113,8 @@ with st.container():
             grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
         if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
-            graf1(Año,select_region1,select_region2)
-            graf1.show()
+            st.pyplot(graf1(Año,select_region1,select_region2))
+            
 
     if seleccion=="Por organismo":
         
