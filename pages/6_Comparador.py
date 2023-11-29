@@ -47,3 +47,6 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 # define si se ven los ejes Y
 visible_y_axis=True
+
+with st.container():
+    seleccion=st.selectbox("Selecciona el tipo de información a comparar",["Por región","Por organismo"])
