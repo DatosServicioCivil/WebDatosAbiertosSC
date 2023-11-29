@@ -110,9 +110,10 @@ with st.container():
             df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
             df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
             df=df.rename(columns={"idConcurso":"Convocatorias"})
-            graf1 = px.bar(df, x="Mes", y="Convocatorias",
+            graf1 = px.bar(df, x="Mes", y="Convocatorias",title=f'<b>Convocatoria EEPP {Año}</b>',
                 color='Región', barmode='group',
                 height=400)
+            graf1.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf1,use_container_width=True)
             
 
