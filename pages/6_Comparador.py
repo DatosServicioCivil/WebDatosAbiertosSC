@@ -61,7 +61,7 @@ with st.container():
         with col1:
             select_region1=st.selectbox("Selecciona región N°1",region)
         with col2:
-            select_region2=st.selectbox("Selecciona región N°2",region,placeholder="Selecciona región N°2")
+            select_region2=st.selectbox("Selecciona región N°2",region,placeholder="Seleccionar región")
         if select_region1==select_region2:
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
