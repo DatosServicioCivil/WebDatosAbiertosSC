@@ -23,6 +23,7 @@ def org():
     df=pd.concat([df1,df2],axis=0)
     organismos=df["Institucion"].unique()
     return organismos
+
 @st.cache_data
 def reg():
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
@@ -31,7 +32,8 @@ def reg():
     region=df["Región"].unique()
     return region
 
-def df():
+@st.cache_data
+def df_eepp():
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
     df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
     df=pd.concat([df1,df2],axis=0)
@@ -104,7 +106,7 @@ with st.container():
             grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
         if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
-            df=df()
+            df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
             df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
@@ -115,6 +117,14 @@ with st.container():
                 height=400)
             graf1.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf1,use_container_width=True)
+        elif tipo=="Convocatorias EEPP" and grafico=="Tabla":
+            df=df_eepp()
+            df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
+            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            st.dataframe(df)
             
 
     if seleccion=="Por organismo":
