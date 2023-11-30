@@ -119,7 +119,7 @@ with st.container():
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
             df=df[(df["Año"]==Año) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.groupby(["Region_Homologada","Mes"]).agg({"idConcurso":"count"}).reset_index()    
             df=df.rename(columns={"idConcurso":"Convocatorias","Region_Homologada":"Región"})
             graf1 = px.bar(df, x="Mes", y="Convocatorias",title=f'<b>Convocatoria EEPP {Año}</b>',
                 color='Región', barmode='group',
@@ -186,7 +186,7 @@ with st.container():
         elif grafico_3=="Tabla":
             df_adp=df_adp_concursos()
             df_adp["Mes"] = pd.to_datetime(df_adp["Fecha_Convocatoria"], format="%Y-%m-%d").dt.month
-            df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df_adp["Region_Homologada"].isin([select_region1,select_region2]))]
             df_adp=df_adp.groupby(["Region_Homologada","Mes","Nivel"]).agg({"CD_Concurso":"count"}).reset_index()    
             df_adp=df_adp.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
             st.dataframe(df_adp,hide_index=True,width=600)
