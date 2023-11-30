@@ -619,12 +619,12 @@ if a=='Empleo Público':
     graf2.update_layout(yaxis_tickformat='.2f', legend_title_text='Tipo de postulación', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
     
     #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Postulación Promedio por Año
-    graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    # # grafico Postulación Promedio por Año
+    # graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
+    #         update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     
-    graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+    # graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
     # grafico Convocatorias por Año
     graf4=px.bar(convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
