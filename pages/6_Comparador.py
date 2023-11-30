@@ -81,6 +81,7 @@ with st.container():
     tipo_info=["Convocatorias EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Postulaciones Prácticas Chile","Convocatorias Directores Escuelas","Postulaciones Directores Escuelas","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
     tipo_info_organismos=["Convocatorias EEPP","Postulaciones EEPP","Concursos ADP","Nombramientos ADP","Postulaciones ADP","Prácticas Ofrecidas","Postulaciones Prácticas Chile","Capacitaciones","Postulaciones de Mujeres en ADP","Postulaciones Mujeres n EEPP"]
     periodo_años=range(2014,2025)
+    
     if seleccion=="Por región":
         
         st.subheader("Seleccionar regiones a comparar")
@@ -125,7 +126,7 @@ with st.container():
             st.dataframe(df,hide_index=True,width=600)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
 
-        st.subheader("Convocatorias EEPP")
+        st.subheader("Postulaciones EEPP")
         col1,col2=st.columns(2)
         with col1:
             #st.write("Selecciona año")
@@ -151,8 +152,8 @@ with st.container():
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
             df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
-            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            df=df.groupby(["Año","Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
+            df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
             st.dataframe(df,hide_index=True,width=600)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
             
