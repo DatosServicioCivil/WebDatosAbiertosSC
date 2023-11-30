@@ -125,6 +125,7 @@ with st.container():
             df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
             df=df.rename(columns={"idConcurso":"Convocatorias"})
             st.dataframe(df,hide_index=True,width=600)
+            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
             
 
     if seleccion=="Por organismo":
