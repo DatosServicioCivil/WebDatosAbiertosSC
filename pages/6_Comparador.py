@@ -176,6 +176,8 @@ with st.container():
         if select_organismo1==select_organismo2:
             st.error("No se pueden seleccionar dos organismos iguales")
             st.stop()
+        # Add horizontal line
+        st.markdown("<hr>", unsafe_allow_html=True)
         
         col1,col2,col3=st.columns(3)
         with col1:
