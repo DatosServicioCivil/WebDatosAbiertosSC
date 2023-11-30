@@ -130,7 +130,7 @@ with st.container():
         col1,col2=st.columns(2)
         with col1:
             #st.write("Selecciona año")
-            Año_2=st.selectbox("Selecciona año",periodo_años)
+            Año_2=st.selectbox("Selecciona año",periodo_años,key="2")
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
         with col2:
             #st.write("Selecciona como quieres ver el dato")
