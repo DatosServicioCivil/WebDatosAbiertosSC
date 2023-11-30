@@ -172,23 +172,23 @@ with st.container():
             grafico_3=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="5")
 
         if grafico_3=="Gráfico":
-            df=df_adp_concursos()
-            df=df[(df["Year_Convocatoria"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Region_Homologada","Mes"]).agg({"CD_Concurso":"count"}).reset_index()    
-            df=df.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
-            graf3 = px.bar(df, x="Mes", y="Concursos",title=f'<b>Concursos ADP {Año}</b>',
+            df_adp=df_adp_concursos()
+            df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df_adp["Region_Homologada"].isin([select_region1,select_region2]))]
+            df_adp=df_adp.groupby(["Region_Homologada","Mes"]).agg({"CD_Concurso":"count"}).reset_index()    
+            df_adp=df_adp.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
+            graf3 = px.bar(df_adp, x="Mes", y="Concursos",title=f'<b>Concursos ADP {Año}</b>',
                 color='Región', barmode='group',
                 height=400)
             graf3.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf3,use_container_width=True)
  
         elif grafico_3=="Tabla":
-            df=df_adp_concursos()
-            df["Mes"] = pd.to_datetime(df["Fecha_Convocatoria"], format="%Y-%m-%d").dt.month
-            df=df[(df["Year_Convocatoria"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Region_Homologada","Mes","Nivel"]).agg({"CD_Concurso":"count"}).reset_index()    
-            df=df.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
-            st.dataframe(df,hide_index=True,width=600)
+            df_adp=df_adp_concursos()
+            df_adp["Mes"] = pd.to_datetime(df_adp["Fecha_Convocatoria"], format="%Y-%m-%d").dt.month
+            df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df_adp=df_adp.groupby(["Region_Homologada","Mes","Nivel"]).agg({"CD_Concurso":"count"}).reset_index()    
+            df_adp=df_adp.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
+            st.dataframe(df_adp,hide_index=True,width=600)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Concursos ADP {Año_2}.csv",mime="text/csv")
             
 
