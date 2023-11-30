@@ -41,6 +41,13 @@ def df_eepp():
     df=pd.merge(df,df_reg,left_on="Región",right_on="Region",how="left")
     return df
 
+@st.cache_data
+def df_adp_concursos():
+    df = pd.read_csv("ADP/df_concursos.csv", sep=";", encoding="utf-8")
+    df_reg=pd.read_excel("Regiones/all_region_values.xlsx",sheet_name="Sheet1")
+    df=pd.merge(df,df_reg,on="Region",how="left")
+    return df_adp_concursos
+
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -153,16 +160,39 @@ with st.container():
             graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
             st.plotly_chart(graf2,use_container_width=True)
-        
-        elif grafico_2=="Tabla":
-            df=df_eepp()
-            df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
-            df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año_2) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Año","Region_Homologada","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
-            df=df.rename(columns={"Número Postulaciones":"Postulaciones","Region_Homologada":"Región"})
+
+
+        st.subheader("Concursos ADP")
+        col1,col2=st.columns(2)
+        with col1:
+            Año_3=st.selectbox("Selecciona año",periodo_años,key="4")
+        #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
+        with col2:
+            #st.write("Selecciona como quieres ver el dato")
+            grafico_3=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="5")
+
+        if grafico_3=="Gráfico":
+            df=df_adp_concursos()
+            df["Año"]=pd.DatetimeIndex(df["Fecha_Convocatoria"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha_Convocatoria"]).month
+            df=df[(df["Año"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Region_Homologada","Mes"]).agg({"CD_Concurso":"count"}).reset_index()    
+            df=df.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región"})
+            graf3 = px.bar(df, x="Mes", y="Concursos",title=f'<b>Concursos ADP {Año}</b>',
+                color='Región', barmode='group',
+                height=400)
+            graf3.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
+            st.plotly_chart(graf3,use_container_width=True)
+ 
+        elif grafico_3=="Tabla":
+            df=df_adp_concursos()
+            df["Año"]=pd.DatetimeIndex(df["Fecha_Convocatoria"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha_Convocatoria"]).month
+            df=df[(df["Año"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Region_Homologada","Mes","Nivel"]).agg({"CD_Concurso":"count"}).reset_index()    
+            df=df.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región"})
             st.dataframe(df,hide_index=True,width=600)
-            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Postulaciones EEPP {Año_2}.csv",mime="text/csv")
+            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Concursos ADP {Año_2}.csv",mime="text/csv")
             
 
     if seleccion=="Por organismo":
@@ -178,7 +208,7 @@ with st.container():
             st.stop()
         # Add horizontal line
         st.markdown("<hr>", unsafe_allow_html=True)
-        
+
         col1,col2,col3=st.columns(3)
         with col1:
             tipo=st.selectbox("Selecciona el tipo de información a comparar",tipo_info_organismos)
