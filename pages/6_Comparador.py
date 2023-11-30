@@ -189,7 +189,7 @@ with st.container():
             df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df_adp["Region_Homologada"].isin([select_region1,select_region2]))]
             df_adp=df_adp.groupby(["Region_Homologada","Mes","Nivel","Ministerio","Servicio"]).agg({"CD_Concurso":"count"}).reset_index()    
             df_adp=df_adp.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
-            st.dataframe(df_adp,hide_index=True,width=600)
+            st.dataframe(df_adp,hide_index=True,width=1000)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Concursos ADP {Año_2}.csv",mime="text/csv")
             
 
