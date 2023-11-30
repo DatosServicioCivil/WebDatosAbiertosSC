@@ -130,7 +130,7 @@ with st.container():
         col1,col2=st.columns(2)
         with col1:
             #st.write("Selecciona año")
-            Año=st.selectbox("Selecciona año",periodo_años)
+            Año_2=st.selectbox("Selecciona año",periodo_años)
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
         with col2:
             #st.write("Selecciona como quieres ver el dato")
@@ -140,10 +140,10 @@ with st.container():
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df[(df["Año"]==Año_2) & (df["Región"].isin([select_region1,select_region2]))]
             df=df.groupby(["Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
             df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
-            graf2 = px.line(df, x="Mes", y="Postulaciones",title=f'<b>Convocatoria EEPP {Año}</b>',
+            graf2 = px.line(df, x="Mes", y="Postulaciones",title=f'<b>Convocatoria EEPP {Año_2}</b>',
                 color='Región')
             graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf2,use_container_width=True)
@@ -151,11 +151,11 @@ with st.container():
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df[(df["Año"]==Año_2) & (df["Región"].isin([select_region1,select_region2]))]
             df=df.groupby(["Año","Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
             df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
             st.dataframe(df,hide_index=True,width=600)
-            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
+            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Postulaciones EEPP {Año_2}.csv",mime="text/csv")
             
 
     if seleccion=="Por organismo":
