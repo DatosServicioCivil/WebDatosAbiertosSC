@@ -173,6 +173,7 @@ with st.container():
 
         if grafico_3=="Gráfico":
             df_adp=df_adp_concursos()
+            df_adp["Mes"] = pd.to_datetime(df_adp["Fecha_Convocatoria"], format="%Y-%m-%d").dt.month
             df_adp=df_adp[(df_adp["Year_Convocatoria"]==Año_3) & (df_adp["Region_Homologada"].isin([select_region1,select_region2]))]
             df_adp=df_adp.groupby(["Region_Homologada","Mes"]).agg({"CD_Concurso":"count"}).reset_index()    
             df_adp=df_adp.rename(columns={"CD_Concurso":"Concursos","Region_Homologada":"Región","Year_Convocatoria":"Año"})
