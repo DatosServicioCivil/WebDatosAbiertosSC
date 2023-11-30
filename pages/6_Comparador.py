@@ -124,7 +124,7 @@ with st.container():
             df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
             df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
             df=df.rename(columns={"idConcurso":"Convocatorias"})
-            st.dataframe(df,hide_index=True,width=1000)
+            st.dataframe(df,hide_index=True,width=600)
             
 
     if seleccion=="Por organismo":
