@@ -173,6 +173,7 @@ with st.container():
 
         if grafico_3=="Gráfico":
             df=df_adp_concursos()
+            st.dataframe(df.head())
             df["Año"] = pd.to_datetime(df["Fecha_Convocatoria"], format="%Y-%m-%d").dt.year
             df["Mes"] = pd.to_datetime(df["Fecha_Convocatoria"], format="%Y-%m-%d").dt.month
             df=df[(df["Año"]==Año_3) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
