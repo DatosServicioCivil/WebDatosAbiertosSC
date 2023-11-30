@@ -122,7 +122,7 @@ with st.container():
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
             df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
             df=df.rename(columns={"idConcurso":"Convocatorias"})
             st.dataframe(df)
             
