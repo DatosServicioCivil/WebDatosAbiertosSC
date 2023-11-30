@@ -134,7 +134,7 @@ with st.container():
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
         with col2:
             #st.write("Selecciona como quieres ver el dato")
-            grafico_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="2")
+            grafico_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="3")
 
         if grafico_2=="Gráfico":
             df=df_eepp()
