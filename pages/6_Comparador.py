@@ -134,9 +134,9 @@ with st.container():
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
         with col2:
             #st.write("Selecciona como quieres ver el dato")
-            grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="2")
+            grafico_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="2")
 
-        if grafico=="Gráfico":
+        if grafico_2=="Gráfico":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
@@ -147,7 +147,7 @@ with st.container():
                 color='Región')
             graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf2,use_container_width=True)
-        elif grafico=="Tabla":
+        elif grafico_2=="Tabla":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
