@@ -95,7 +95,8 @@ with st.container():
         if select_region1==select_region2:
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
-        
+        # Add horizontal line
+        st.markdown("<hr>", unsafe_allow_html=True)
         st.subheader("Convocatorias EEPP")
         col1,col2=st.columns(2)
         with col1:
