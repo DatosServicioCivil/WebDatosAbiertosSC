@@ -351,7 +351,7 @@ if a=='Empleo Público':
     df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
 
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
-    df_concursos_eepp=pd.merge(df_concursos_eepp,all_region,how='left',left_on='Region',right_on='Region')
+    df_concursos_eepp=pd.merge(df_concursos_eepp,all_region,how='left',left_on='Región',right_on='Region')
 
     
     
