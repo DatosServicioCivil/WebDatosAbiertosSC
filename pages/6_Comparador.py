@@ -43,10 +43,10 @@ def df_eepp():
 
 @st.cache_data
 def df_adp_concursos():
-    df = pd.read_csv("ADP/df_concursos.csv", sep=";", encoding="utf-8")
+    df_adp = pd.read_csv("ADP/df_concursos.csv", sep=";", encoding="utf-8")
     df_reg=pd.read_excel("Regiones/all_region_values.xlsx",sheet_name="Sheet1")
-    df=pd.merge(df,df_reg,on="Region",how="left")
-    return df_adp_concursos
+    df_adp=pd.merge(df_adp,df_reg,on="Region",how="left")
+    return df_adp
 
 
 # This function sets the logo and company name inside the sidebar
