@@ -143,9 +143,11 @@ with st.container():
             df=df[(df["Año"]==Año_2) & (df["Región"].isin([select_region1,select_region2]))]
             df=df.groupby(["Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
             df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
-            graf2 = px.line(df, x="Mes", y="Postulaciones",title=f'<b>Postulaciones EEPP {Año_2}</b>',
-                color='Región',marker='o',markers=True)
+            graf2 = px.line(df, x="Mes", y="Postulaciones",
+                            title=f'<b>Postulaciones EEPP {Año_2}</b>',
+                            color='Región')
             graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
+            graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
             st.plotly_chart(graf2,use_container_width=True)
         elif grafico_2=="Tabla":
             df=df_eepp()
