@@ -24,12 +24,12 @@ def org():
     organismos=df["Institucion"].unique()
     return organismos
 
+
+
 @st.cache_data
 def reg():
-    df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
-    df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
-    df=pd.concat([df1,df2],axis=0)
-    region=df["Región"].unique()
+    df_reg=pd.read_excel("Regiones/all_region_values.xlsx",sheet_name="Sheet1")
+    region=df_reg["Region_Homologada"].unique()
     return region
 
 @st.cache_data
@@ -37,6 +37,8 @@ def df_eepp():
     df1 = pd.read_csv("EEPP/df_concursos_eepp_Aviso.csv", sep=";", encoding="utf-8")
     df2 = pd.read_csv("EEPP/df_concursos_eepp_Postulacion en linea.csv", sep=";", encoding="utf-8")
     df=pd.concat([df1,df2],axis=0)
+    df_reg=pd.read_excel("Regiones/all_region_values.xlsx",sheet_name="Sheet1")
+    df=pd.merge(df,df_reg,left_on="Región",right_on="Region",how="left")
     return df
 
 
@@ -108,21 +110,22 @@ with st.container():
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df[(df["Año"]==Año) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
             df=df.groupby(["Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
-            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            df=df.rename(columns={"idConcurso":"Convocatorias","Region_Homologada":"Región"})
             graf1 = px.bar(df, x="Mes", y="Convocatorias",title=f'<b>Convocatoria EEPP {Año}</b>',
                 color='Región', barmode='group',
                 height=400)
             graf1.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf1,use_container_width=True)
+        
         elif grafico=="Tabla":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
-            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            df=df[(df["Año"]==Año) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Año","Region_Homologada","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.rename(columns={"idConcurso":"Convocatorias","Region_Homologada":"Región"})
             st.dataframe(df,hide_index=True,width=600)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
 
@@ -140,22 +143,23 @@ with st.container():
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año_2) & (df["Región"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
-            df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
+            df=df[(df["Año"]==Año_2) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Region_Homologada","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
+            df=df.rename(columns={"Número Postulaciones":"Postulaciones","Region_Homologada":"Región"})
             graf2 = px.line(df, x="Mes", y="Postulaciones",
                             title=f'<b>Postulaciones EEPP {Año_2}</b>',
                             color='Región')
             graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
             st.plotly_chart(graf2,use_container_width=True)
+        
         elif grafico_2=="Tabla":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
-            df=df[(df["Año"]==Año_2) & (df["Región"].isin([select_region1,select_region2]))]
-            df=df.groupby(["Año","Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
-            df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
+            df=df[(df["Año"]==Año_2) & (df["Region_Homologada"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Año","Region_Homologada","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
+            df=df.rename(columns={"Número Postulaciones":"Postulaciones","Region_Homologada":"Región"})
             st.dataframe(df,hide_index=True,width=600)
             st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Postulaciones EEPP {Año_2}.csv",mime="text/csv")
             
