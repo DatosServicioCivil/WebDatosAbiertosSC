@@ -93,19 +93,17 @@ with st.container():
             st.error("No se pueden seleccionar dos regiones iguales")
             st.stop()
         
-        col1,col2,col3=st.columns(3)
+        st.subheader("Convocatorias EEPP")
+        col1,col2=st.columns(2)
         with col1:
-            #st.write("Selecciona el tipo de información a comparar")
-            tipo=st.selectbox("Selecciona el tipo de información a comparar",tipo_info)
-        with col2:
             #st.write("Selecciona año")
             Año=st.selectbox("Selecciona año",periodo_años)
         #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
-        with col3:
+        with col2:
             #st.write("Selecciona como quieres ver el dato")
             grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
-        if tipo=="Convocatorias EEPP" and grafico=="Gráfico":
+        if grafico=="Gráfico":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
@@ -117,7 +115,38 @@ with st.container():
                 height=400)
             graf1.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
             st.plotly_chart(graf1,use_container_width=True)
-        elif tipo=="Convocatorias EEPP" and grafico=="Tabla":
+        elif grafico=="Tabla":
+            df=df_eepp()
+            df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
+            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Año","Región","Mes"]).agg({"idConcurso":"count"}).reset_index()    
+            df=df.rename(columns={"idConcurso":"Convocatorias"})
+            st.dataframe(df,hide_index=True,width=600)
+            st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Convocatorias EEPP {Año}.csv",mime="text/csv")
+
+        st.subheader("Convocatorias EEPP")
+        col1,col2=st.columns(2)
+        with col1:
+            #st.write("Selecciona año")
+            Año=st.selectbox("Selecciona año",periodo_años)
+        #fecha2=st.date_input("Fecha 2",value=pd.to_datetime("2021-09-01"))
+        with col2:
+            #st.write("Selecciona como quieres ver el dato")
+            grafico=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
+
+        if grafico=="Gráfico":
+            df=df_eepp()
+            df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
+            df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
+            df=df[(df["Año"]==Año) & (df["Región"].isin([select_region1,select_region2]))]
+            df=df.groupby(["Región","Mes"]).agg({"Número Postulaciones":"sum"}).reset_index()    
+            df=df.rename(columns={"Número Postulaciones":"Postulaciones"})
+            graf2 = px.line(df, x="Mes", y="Postulaciones",title=f'<b>Convocatoria EEPP {Año}</b>',
+                color='Región')
+            graf2.update_xaxes(title_text='Mes',tickmode='linear', dtick=1)
+            st.plotly_chart(graf2,use_container_width=True)
+        elif grafico=="Tabla":
             df=df_eepp()
             df["Año"]=pd.DatetimeIndex(df["Fecha Inicio"]).year
             df['Mes']=pd.DatetimeIndex(df["Fecha Inicio"]).month
