@@ -379,8 +379,29 @@ if a=='Integridad':
         return Servicio
     
     #-------------------------------------------------------------------------------------------------------
-    # grafico difusion codigos de etica
-    respuestas_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].Respuesta.unique()
+    # datos difusión codigos de etica
+
+    df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
+    respuestas_difusion=df_difusion.Respuesta.unique()
+    ministerios_difusion=df_difusion.Ministerio.unique()
+    
+    resp_1=[]
+    resp_2=[]
+    resp_3=[]
+    
+    graf1 = go.Figure(data=[
+    go.Pie(
+        labels=df_difusion['Respuesta'],
+        values=df_difusion['Respuesta'],
+        hole=0.5,
+        #marker_colors=[modo_compra_color_map[modalidad] for modalidad in Modalidad_Actividades['Modalidad_de_Compra']]
+        )
+    ])  
+
+
+
+
+
     st.text(respuestas_difusion)
     difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].groupby(['Ministerio','Servicio']).agg({'Respuesta':'count'}).reset_index()
     st.dataframe(difusion)
@@ -400,6 +421,7 @@ if a=='Integridad':
             st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que tienen Códigos de Ética</h3>", unsafe_allow_html=True)
         with col2:
             st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que difunden su Código de Ética</h3>", unsafe_allow_html=True)
+            st.plotly_chart(graf1,use_container_width=True)
                 
 
 #---------------------------------------------------------------------------------------------------
