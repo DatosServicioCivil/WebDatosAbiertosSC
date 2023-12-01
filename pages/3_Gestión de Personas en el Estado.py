@@ -418,6 +418,10 @@ if a=='Integridad':
         marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
         )
     ])
+    graf1.update_layout(title_text="Distribución de difusión de códigos de ética")
+
+    graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',color_discrete_map=respuestas_difusion_color_map,title="Distribución de difusión de códigos de ética por Ministerio")
+
      #-------------------------------------------------------------------------------------------------------
     with st.container():
         st.subheader("Codigos de Ética")
@@ -427,7 +431,7 @@ if a=='Integridad':
         st.subheader("Instituciones que difunden su Código de Ética")
         grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
         if grafico_1=="Gráfico":
-            st.plotly_chart(graf1,use_container_width=True)
+            st.plotly_chart(graf2,use_container_width=True)
         else:
             st.dataframe(df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'],width=1300)
             st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
