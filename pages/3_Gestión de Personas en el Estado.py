@@ -426,7 +426,7 @@ if a=='Integridad':
                 st.plotly_chart(graf1,use_container_width=True)
             else:
                 st.dataframe(tabla_difusion_melted,width=1300)
-                st.download_button(label="Descargar datos",data=df.to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
+                st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
                 
 
 #---------------------------------------------------------------------------------------------------
