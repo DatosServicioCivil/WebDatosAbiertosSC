@@ -389,8 +389,9 @@ if a=='Integridad':
     df_difusion['Resp_3']=np.where(df_difusion.Respuesta=='Sin Respuesta',1,0)
 
     tabla_difusion=df_difusion.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
+    tabla_difusion_melted = pd.melt(tabla_difusion, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
 
-    st.dataframe(tabla_difusion)
+    st.dataframe(tabla_difusion_melted)
     #-------------------------------------------------------------------------------------------------------
 
     with st.container():
