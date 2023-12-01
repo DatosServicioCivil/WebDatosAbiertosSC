@@ -391,7 +391,21 @@ if a=='Integridad':
     tabla_difusion=df_difusion.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
     tabla_difusion_melted = pd.melt(tabla_difusion, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
 
+    tabla_difusion_melted['Respuesta']=np.where(tabla_difusion_melted.Respuesta=='Resp_1','Si Realiza algún tipo de Difusión de Código',
+                                                np.where(df_difusion.Respuesta=='Resp_2','No Realiza algún tipo de Difusión de Código',
+                                                        'Sin Respuesta'))
+
     st.dataframe(tabla_difusion_melted)
+
+    graf1 = go.Figure(data=[
+    go.Pie(
+        labels=tabla_difusion_melted['Respuesta'],
+        values=tabla_difusion_melted['Valor'],
+        hole=0.5,
+        marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
+        )
+    ])
+
     #-------------------------------------------------------------------------------------------------------
 
     with st.container():
