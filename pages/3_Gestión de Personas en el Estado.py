@@ -380,7 +380,7 @@ if a=='Integridad':
     
     #-------------------------------------------------------------------------------------------------------
     # grafico difusion codigos de etica
-    respuestas_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].unique()
+    respuestas_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].Respuesta.unique()
     st.text(respuestas_difusion)
     difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].groupby(['Ministerio','Servicio']).agg({'Respuesta':'count'}).reset_index()
     st.dataframe(difusion)
