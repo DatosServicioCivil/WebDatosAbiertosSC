@@ -382,8 +382,11 @@ if a=='Integridad':
     
     #-------------------------------------------------------------------------------------------------------
     # datos difusión codigos de etica y grafico
+    if option_1=='Todos':
+        df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
+    else:
+        df_difusion=df_integridad[(df_integridad['Pregunta']=='Difusión de Código de Etica') & (df_integridad['Ministerio']==option_1)]
 
-    df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
     df_difusion['Resp_1']=np.where(df_difusion.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
     df_difusion['Resp_2']=np.where(df_difusion.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
     df_difusion['Resp_3']=np.where(df_difusion.Respuesta=='Sin Respuesta',1,0)
