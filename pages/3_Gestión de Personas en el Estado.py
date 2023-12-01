@@ -420,7 +420,9 @@ if a=='Integridad':
     ])
     graf1.update_layout(title_text="Distribución de difusión de códigos de ética")
 
-    graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',color_discrete_map=respuestas_difusion_color_map,title="Distribución de difusión de códigos de ética por Ministerio")
+    graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',
+                 color_discrete_map=respuestas_difusion_color_map,
+                 title="Servicios que difunden sus códigos de ética por Ministerio")
 
      #-------------------------------------------------------------------------------------------------------
     with st.container():
