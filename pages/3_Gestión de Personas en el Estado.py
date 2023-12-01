@@ -355,6 +355,8 @@ if a=='Integridad':
     st.title('Integridad en el Estado')
 
     df_integridad=pd.read_csv('GestionPersonas/bbdd_integridad.csv',sep=',')
+    #mt_organismos_integridad=pd.read_excel('GestionPersonas/mt_organismos_integridad.xlsx',sheet_name='Hoja1')   
+    #df_integridad=pd.merge(df_integridad,mt_organismos_integridad,how='left',left_on='Servicio',right_on='INSTITUCIÓN')
 
     unique_ministerios = df_integridad['Ministerio'].unique()
     Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
@@ -376,6 +378,11 @@ if a=='Integridad':
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
         return Servicio
     
+    #-------------------------------------------------------------------------------------------------------
+    # grafico difusion codigos de etica
+    difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].groupby(['Ministerio','Servicio']).agg({'Respuesta':'count'}).reset_index()
+    st.dataframe(difusion)
+    #-------------------------------------------------------------------------------------------------------
 
     with st.container():
         col1,col2=st.columns(2,gap="large")
@@ -383,6 +390,16 @@ if a=='Integridad':
            option_1 = st.selectbox('Ministerio',Ministerios)
         with col2:
            option_2 = st.selectbox('Servicio',select_servicio(df_integridad,option_1))
+    
+    with st.container():
+        st.subheader("Codigos de Ética")
+        col1,col2,col3=st.columns(3,gap="small")
+        with col1:
+            st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que tienen Códigos de Ética</h3>", unsafe_allow_html=True)
+        with col2:
+            st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que difunden su Código de Ética</h3>", unsafe_allow_html=True)
+                
+
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
