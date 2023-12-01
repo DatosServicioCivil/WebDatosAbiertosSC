@@ -388,8 +388,9 @@ if a=='Integridad':
     df_difusion['Resp_2']=np.where(df_difusion.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
     df_difusion['Resp_3']=np.where(df_difusion.Respuesta=='Sin Respuesta',1,0)
 
-     
-    st.dataframe(df_difusion)
+    tabla_difusion=df_difusion.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
+
+    st.dataframe(tabla_difusion)
     #-------------------------------------------------------------------------------------------------------
 
     with st.container():
