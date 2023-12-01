@@ -353,6 +353,33 @@ if a=='Capacitación en el Estado':
 #---------------------------------------------------------------------------------------------------
 if a=='Integridad':
     st.title('Integridad en el Estado')
+
+    df_integridad=pd.read_excel('GestionPersonas/Integridad.csv',sep=',')
+
+    unique_ministerios = df_integridad['Ministerio'].unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
+    def select_servicio(df, option_2):
+        if option_2 == 'Todos':
+            unique_servicio = df['Servicio'].unique()
+        else:
+            unique_servicio = df.query(f'Ministerio == "{option_2}"')['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+        return Servicio
+    
+
+    with st.container():
+        col1,col2=st.columns(2,gap="large")
+        with col1:
+           option_1 = st.selectbox('Ministerio',Ministerios)
+        with col2:
+           option_2 = st.selectbox('Servicio',select_servicio(df_integridad,option_1))
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
