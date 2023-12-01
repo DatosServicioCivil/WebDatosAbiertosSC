@@ -381,7 +381,7 @@ if a=='Integridad':
         return Servicio
     
     #-------------------------------------------------------------------------------------------------------
-    # datos difusión codigos de etica
+    # datos difusión codigos de etica y grafico
 
     df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
     df_difusion['Resp_1']=np.where(df_difusion.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
@@ -394,11 +394,8 @@ if a=='Integridad':
     tabla_difusion_melted['Respuesta'] = np.where(
     tabla_difusion_melted['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
     np.where(tabla_difusion_melted['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
-)
-
-
-    st.dataframe(tabla_difusion_melted)
-
+    )
+    
     graf1 = go.Figure(data=[
     go.Pie(
         labels=tabla_difusion_melted['Respuesta'],
@@ -415,16 +412,20 @@ if a=='Integridad':
         with col1:
            option_1 = st.selectbox('Ministerio',Ministerios)
         with col2:
-           option_2 = st.selectbox('Servicio',select_servicio(df_integridad,option_1))
+            grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
+
     
     with st.container():
         st.subheader("Codigos de Ética")
         col1,col2,col3=st.columns(3,gap="small")
         with col1:
-            st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que tienen Códigos de Ética</h3>", unsafe_allow_html=True)
+            st.markdown("Instituciones que tienen Códigos de Ética")
         with col2:
-            st.markdown("<h3 style='text-align: center; color: grey;'>Instituciones que difunden su Código de Ética</h3>", unsafe_allow_html=True)
-            st.plotly_chart(graf1,use_container_width=True)
+            st.markdown("Instituciones que difunden su Código de Ética")
+            if grafico_1=="Gráfico":
+                st.plotly_chart(graf1,use_container_width=True)
+            else:
+                st.dataframe(tabla_difusion_melted)
                 
 
 #---------------------------------------------------------------------------------------------------
