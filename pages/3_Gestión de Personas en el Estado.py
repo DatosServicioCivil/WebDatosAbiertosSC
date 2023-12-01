@@ -380,6 +380,16 @@ if a=='Integridad':
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
         return Servicio
     
+
+
+    #-------------------------------------------------------------------------------------------------------
+
+    with st.container():
+        col1,col2=st.columns(2,gap="large")
+        with col1:
+           option_1 = st.selectbox('Ministerio',Ministerios)
+        with col2:
+            grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
     #-------------------------------------------------------------------------------------------------------
     # datos difusión codigos de etica y grafico
     if option_1=='Todos':
@@ -407,17 +417,7 @@ if a=='Integridad':
         marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
         )
     ])
-
-    #-------------------------------------------------------------------------------------------------------
-
-    with st.container():
-        col1,col2=st.columns(2,gap="large")
-        with col1:
-           option_1 = st.selectbox('Ministerio',Ministerios)
-        with col2:
-            grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
-
-    
+     #-------------------------------------------------------------------------------------------------------
     with st.container():
         st.subheader("Codigos de Ética")
     with st.container():
