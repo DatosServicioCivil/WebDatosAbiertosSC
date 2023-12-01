@@ -394,7 +394,7 @@ if a=='Integridad':
     graf1 = go.Figure(data=[
     go.Pie(
         labels=df_difusion['Respuesta'],
-        values=df_difusion['Respuesta'],
+        values=df_difusion['Respuesta'].value_counts,
         hole=0.5,
         marker_colors=[respuestas_difusion_color_map[respuesta] for respuesta in df_difusion['Respuesta']]
         )
