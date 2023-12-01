@@ -354,7 +354,7 @@ if a=='Capacitación en el Estado':
 if a=='Integridad':
     st.title('Integridad en el Estado')
 
-    df_integridad=pd.read_csv('GestionPersonas/Integridad.csv',sep=',')
+    df_integridad=pd.read_csv('GestionPersonas/bbdd_integridad.csv',sep=',')
 
     unique_ministerios = df_integridad['Ministerio'].unique()
     Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
