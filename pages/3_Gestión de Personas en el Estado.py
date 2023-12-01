@@ -417,16 +417,15 @@ if a=='Integridad':
     
     with st.container():
         st.subheader("Codigos de Ética")
-        col1,col2,col3=st.columns(3,gap="small")
-        with col1:
-            st.markdown("Instituciones que tienen Códigos de Ética")
-        with col2:
-            st.markdown("Instituciones que difunden su Código de Ética")
-            if grafico_1=="Gráfico":
-                st.plotly_chart(graf1,use_container_width=True)
-            else:
-                st.dataframe(df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'],width=1300)
-                st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
+    with st.container():
+        st.markdown("Instituciones que tienen Códigos de Ética")
+    with st.container():
+        st.markdown("Instituciones que difunden su Código de Ética")
+        if grafico_1=="Gráfico":
+            st.plotly_chart(graf1,use_container_width=True)
+        else:
+            st.dataframe(df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'],width=1300)
+            st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
                 
 
 #---------------------------------------------------------------------------------------------------
