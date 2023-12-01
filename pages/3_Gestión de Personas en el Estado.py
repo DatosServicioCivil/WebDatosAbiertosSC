@@ -363,11 +363,14 @@ if a=='Integridad':
     Ministerios = Ministerios.reset_index(drop=True)
     Ministerios = Ministerios['Ministerio'].tolist()
 
-    def select_servicio(df, option_2):
-        if option_2 == 'Todos':
+    def select_servicio(df, option):
+        if option == 'Todos':
             unique_servicio = df['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
         else:
-            unique_servicio = df.query(f'Ministerio == "{option_2}"')['Servicio'].unique()
+            unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
             Servicio = pd.DataFrame({'Servicio': unique_servicio})
             nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
