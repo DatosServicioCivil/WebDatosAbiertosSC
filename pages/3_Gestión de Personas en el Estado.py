@@ -392,8 +392,8 @@ if a=='Integridad':
     tabla_difusion_melted = pd.melt(tabla_difusion, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
   
     tabla_difusion_melted['Respuesta'] = np.where(
-    tabla_difusion_melted['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
-    np.where(tabla_difusion_melted['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
+        tabla_difusion_melted['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
+        np.where(tabla_difusion_melted['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
     
     graf1 = go.Figure(data=[
