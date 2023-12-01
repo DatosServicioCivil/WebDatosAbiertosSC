@@ -385,11 +385,12 @@ if a=='Integridad':
     #-------------------------------------------------------------------------------------------------------
 
     with st.container():
-        col1,col2=st.columns(2,gap="large")
-        with col1:
-           option_1 = st.selectbox('Ministerio',Ministerios)
-        with col2:
-            grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
+        option_1 = st.selectbox('Ministerio',Ministerios)
+        # col1,col2=st.columns(2,gap="large")
+        # with col1:
+        #    option_1 = st.selectbox('Ministerio',Ministerios)
+        # with col2:
+        #     grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
     #-------------------------------------------------------------------------------------------------------
     # datos difusión codigos de etica y grafico
     if option_1=='Todos':
@@ -424,6 +425,7 @@ if a=='Integridad':
         st.subheader("Instituciones que tienen Códigos de Ética")
     with st.container():
         st.subheader("Instituciones que difunden su Código de Ética")
+        grafico_1=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
         if grafico_1=="Gráfico":
             st.plotly_chart(graf1,use_container_width=True)
         else:
