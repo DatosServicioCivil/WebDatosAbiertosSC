@@ -384,29 +384,12 @@ if a=='Integridad':
     # datos difusión codigos de etica
 
     df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
-    respuestas_difusion=df_difusion.Respuesta.unique()
-    ministerios_difusion=df_difusion.Ministerio.unique()
-    
-    resp_1=[]
-    resp_2=[]
-    resp_3=[]
-    
-    graf1 = go.Figure(data=[
-    go.Pie(
-        labels=df_difusion['Respuesta'],
-        values=df_difusion['Respuesta'].value_counts,
-        hole=0.5,
-        marker_colors=[respuestas_difusion_color_map[respuesta] for respuesta in df_difusion['Respuesta']]
-        )
-    ])  
+    df_difusion['Resp_1']=np.where(df_difusion.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
+    df_difusion['Resp_2']=np.where(df_difusion.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
+    df_difusion['Resp_3']=np.where(df_difusion.Respuesta=='Sin Respuesta',1,0)
 
-
-
-
-
-    st.text(respuestas_difusion)
-    difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].groupby(['Ministerio','Servicio']).agg({'Respuesta':'count'}).reset_index()
-    st.dataframe(difusion)
+     
+    st.dataframe(df_difusion)
     #-------------------------------------------------------------------------------------------------------
 
     with st.container():
