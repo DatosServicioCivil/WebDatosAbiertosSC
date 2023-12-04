@@ -429,7 +429,7 @@ if a=='Integridad':
     #graf2.update_layout(yaxis_tickformat='.0f',legend=dict(orientation="h"),
     #                    xaxis_title="Ministerio",yaxis_title="Valor",title_x=0.5,
     #                    margin=dict(l=0, r=0, b=0, t=40))
-    graf2.update_layout(showlegend=False,visible_x_axis=False)
+    graf2.update_layout(showlegend=False,xlabel=None)
 
     #-------------------------------------------------------------------------------------------------------
     with st.container():
