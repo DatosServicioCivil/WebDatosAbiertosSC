@@ -397,7 +397,7 @@ if a=='Integridad':
         df_difusion=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
     else:
         df_difusion=df_integridad[(df_integridad['Pregunta']=='Difusión de Código de Etica') & (df_integridad['Ministerio']==option_1)]
-
+    
     df_difusion['Resp_1']=np.where(df_difusion.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
     df_difusion['Resp_2']=np.where(df_difusion.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
     df_difusion['Resp_3']=np.where(df_difusion.Respuesta=='Sin Respuesta',1,0)
@@ -410,18 +410,33 @@ if a=='Integridad':
         np.where(tabla_difusion_melted['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
     
+    df_difusion_all=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
+    df_difusion_all['Resp_1']=np.where(df_difusion_all.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
+    df_difusion_all['Resp_2']=np.where(df_difusion_all.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
+    df_difusion_all['Resp_3']=np.where(df_difusion_all.Respuesta=='Sin Respuesta',1,0)
+
+    tabla_difusion_all=df_difusion_all.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
+    tabla_difusion_melted_all = pd.melt(tabla_difusion_all, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
+  
+    tabla_difusion_melted_all['Respuesta'] = np.where(
+        tabla_difusion_melted_all['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
+        np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
+    )
+
+
     graf1 = go.Figure(data=[
     go.Pie(
-        labels=tabla_difusion_melted['Respuesta'],
-        values=tabla_difusion_melted['Valor'],
+        labels=tabla_difusion_all['Respuesta'],
+        values=tabla_difusion_all['Valor'],
         hole=0.5,
-        marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
+        marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_all['Respuesta']]
         )
     ])
     graf1.update_layout(
     title_text="Distribución de difusión de códigos de ética",
     legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=0.7)
-)
+    )
+
 
     graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',
                  color_discrete_map=respuestas_difusion_color_map,
