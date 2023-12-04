@@ -410,18 +410,18 @@ if a=='Integridad':
         np.where(tabla_difusion_melted['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
     
-    df_difusion_all=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
-    df_difusion_all['Resp_1']=np.where(df_difusion_all.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
-    df_difusion_all['Resp_2']=np.where(df_difusion_all.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
-    df_difusion_all['Resp_3']=np.where(df_difusion_all.Respuesta=='Sin Respuesta',1,0)
+    # df_difusion_all=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica']
+    # df_difusion_all['Resp_1']=np.where(df_difusion_all.Respuesta=='Si Realiza algún tipo de Difusión de Código',1,0)
+    # df_difusion_all['Resp_2']=np.where(df_difusion_all.Respuesta=='No Realiza algún tipo de Difusión de Código',1,0)
+    # df_difusion_all['Resp_3']=np.where(df_difusion_all.Respuesta=='Sin Respuesta',1,0)
 
-    tabla_difusion_all=df_difusion_all.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
-    tabla_difusion_melted_all = pd.melt(tabla_difusion_all, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
+    # tabla_difusion_all=df_difusion_all.groupby(['Ministerio']).agg({'Resp_1':'sum','Resp_2':'sum','Resp_3':'sum'}).reset_index()
+    # tabla_difusion_melted_all = pd.melt(tabla_difusion_all, id_vars=['Ministerio'], value_vars=['Resp_1', 'Resp_2', 'Resp_3'], var_name='Respuesta', value_name='Valor')
   
-    tabla_difusion_melted_all['Respuesta'] = np.where(
-        tabla_difusion_melted_all['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
-        np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
-    )
+    # tabla_difusion_melted_all['Respuesta'] = np.where(
+    #     tabla_difusion_melted_all['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
+    #     np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
+    # )
 
 
     graf1 = go.Figure(data=[
