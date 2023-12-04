@@ -418,7 +418,10 @@ if a=='Integridad':
         marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
         )
     ])
-    graf1.update_layout(title_text="Distribución de difusión de códigos de ética")
+    graf1.update_layout(
+    title_text="Distribución de difusión de códigos de ética",
+    legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+)
 
     graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',
                  color_discrete_map=respuestas_difusion_color_map,
