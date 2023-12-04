@@ -426,10 +426,10 @@ if a=='Integridad':
 
     graf1 = go.Figure(data=[
     go.Pie(
-        labels=tabla_difusion['Respuesta'],
-        values=tabla_difusion['Valor'],
+        labels=tabla_difusion_melted['Respuesta'],
+        values=tabla_difusion_melted['Valor'],
         hole=0.5,
-        marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion['Respuesta']]
+        marker_colors=[respuestas_difusion_color_map[Respuesta] for Respuesta in tabla_difusion_melted['Respuesta']]
         )
     ])
     graf1.update_layout(
