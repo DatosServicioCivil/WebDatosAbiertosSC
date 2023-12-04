@@ -431,7 +431,7 @@ if a=='Integridad':
         st.subheader("Instituciones que tienen Códigos de Ética")
     with st.container():
         st.subheader("Instituciones que difunden su Código de Ética")
-        col1,col2=st.columns(2,gap="large")
+        col1,col2=st.columns([0.3, 0.7])
         with col1:
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
