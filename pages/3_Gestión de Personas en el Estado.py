@@ -426,7 +426,13 @@ if a=='Integridad':
     graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',
                  color_discrete_map=respuestas_difusion_color_map,
                  title="Servicios que difunden sus códigos de ética por Ministerio")
-    graf2.update_layout(yaxis_tickformat='.0f',loc='lower center',legend=dict(orientation="h"))
+    graf2.update_layout(
+    yaxis_tickformat='.0f',
+    legend=dict(orientation="h"),
+    xaxis_title="Ministerio",
+    yaxis_title="Valor",
+    title_x=0.5,  # Center the title
+    margin=dict(l=0, r=0, b=0, t=40) 
 
      #-------------------------------------------------------------------------------------------------------
     with st.container():
