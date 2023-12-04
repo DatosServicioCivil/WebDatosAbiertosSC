@@ -420,7 +420,7 @@ if a=='Integridad':
     ])
     graf1.update_layout(
     title_text="Distribución de difusión de códigos de ética",
-    legend=dict(orientation="h", yanchor="bottom", y=0, xanchor="right", x=1)
+    legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1)
 )
 
     graf2=px.bar(tabla_difusion_melted,x='Ministerio',y='Valor',color='Respuesta',
