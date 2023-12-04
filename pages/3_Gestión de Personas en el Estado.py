@@ -433,7 +433,7 @@ if a=='Integridad':
         st.subheader("Instituciones que difunden su Código de Ética")
         col1,col2=st.columns(2,gap="large")
         with col1:
-            st.plotly_chart(graf2,use_container_width=True)
+            st.plotly_chart(graf1,use_container_width=True)
         with col2:
             grafico_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key="1")
             if grafico_2=="Gráfico":
