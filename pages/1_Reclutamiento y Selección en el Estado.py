@@ -413,7 +413,7 @@ if a=='Alta Dirección Pública':
         graf1.update_layout(yaxis_tickformat='.0f')
 
         st.plotly_chart(graf1,use_container_width=True)
-        st.text(dtype(df_postulaciones_adp['ID_Region']))
+        
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
 
     #----------------------------------------------------------------------------------------------------------------------
