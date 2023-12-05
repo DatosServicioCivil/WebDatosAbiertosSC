@@ -383,7 +383,7 @@ if a=='Alta Dirección Pública':
         df_postulaciones_adp=df_post_adp()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
+        #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
 
     #----------------------------------------------------------------------------------------------------------------------
     # filtro nombramientos ADP
