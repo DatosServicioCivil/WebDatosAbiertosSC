@@ -158,7 +158,7 @@ if a=='Alta Dirección Pública':
     date=df_concursos.FechaActualizacion.max()#.strftime('%d/%m/%Y')
     with st.container():
         st.title('Estadísticas ADP')
-        st.subheader(f'Fecha Actualización: {date}')
+        st.text(f'Fecha Actualización: {date}')
         #st.subheader(date)
         seleccion_adp=st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
 if a=='Empleo Público':
@@ -456,7 +456,7 @@ if a=='Empleo Público':
     date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
     
     st.title('Estadísticas Portal Empleos Públicos')
-    st.subheader(f'Fecha Actualización: {date}')
+    st.text(f'Fecha Actualización: {date}')
 
     unique_estamento = df_concursos_eepp['Estamento'].unique()
     Estamento = pd.DataFrame({'Estamento': unique_estamento})
