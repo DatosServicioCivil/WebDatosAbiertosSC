@@ -450,7 +450,7 @@ if a=='Empleo Público':
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
     
     
-    date=df_concursos_eepp.FechaActualizacion.max()
+    date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
     
     st.title('Estadísticas Portal Empleos Públicos')
     st.subheader(date)
