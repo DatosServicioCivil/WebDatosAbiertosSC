@@ -27,13 +27,16 @@ remote_css(
 local_css("style.css")
 
 # This function sets the logo and company name inside the sidebar
+
+# This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
     logo = Image.open(logo_path)
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-#my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
+my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
+st.image(my_logo)
 #st.sidebar.image(my_logo)
 #st.sidebar.header("Configuration")
 #st.sidebar.subheader("Servicio Civil.")
