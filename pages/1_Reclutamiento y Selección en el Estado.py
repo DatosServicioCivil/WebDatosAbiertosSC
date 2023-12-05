@@ -383,8 +383,10 @@ if a=='Alta Dirección Pública':
         df_postulaciones_adp=df_post_adp()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
-        
+        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
+            postulaciones=df_postulaciones_adp[df_postulaciones_adp.Genero==option_5].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+
+        postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
                 update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
