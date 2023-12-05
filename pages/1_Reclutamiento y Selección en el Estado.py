@@ -58,13 +58,13 @@ color_bar_2='#0A132D' #dark blue
 color_5="#B2FFFF" #celeste
 color_6="#7CB2B2" #celeste orcuro
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
-sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue'}  # Mapeo de colores por sexo
+sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
 estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
-sexo_list = ['Mujeres', 'Hombres']  # Lista de sexos
+sexo_list = ['Todos','Mujeres','Hombres']  # Lista de sexos
 
 all_region=pd.read_excel('Regiones/all_region_values.xlsx',sheet_name='Sheet1')
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
