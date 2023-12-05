@@ -89,6 +89,13 @@ def df_post_adp():
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
     return df_postulaciones_adp
 
+@st.cache_data
+def df_conc_ep():
+    df_1=pq.read_table('EEPP/df_concursos_eepp_Aviso.parquet').to_pandas()
+    df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
+    df_conc_ep=pd.concat([df_1,df_2])
+    return df_conc_ep
+
 
 
 unique_niveles = df_concursos['Nivel'].unique()
@@ -425,13 +432,13 @@ if a=='Alta Dirección Pública':
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
-    df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
-    df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
-    df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
-
+    #df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
+    #df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
+    #df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
+    df_concursos_eepp=df_conc_ep()
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
-    df_concursos_eepp=pd.merge(df_concursos_eepp,all_region,how='left',left_on='Región',right_on='Region')
-
+    #df_concursos_eepp=pd.merge(df_concursos_eepp,all_region,how='left',left_on='Región',right_on='Region')
+    
     
     
     estamento_mapping = {
@@ -443,7 +450,7 @@ if a=='Empleo Público':
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
     
     
-    date='31 de Marzo de 2023'
+    date=df_concursos_eepp.FechaActualizacion.max()
     
     st.title('Estadísticas Portal Empleos Públicos')
     st.subheader(date)
