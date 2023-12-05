@@ -387,19 +387,19 @@ if a=='Alta Dirección Pública':
 
     #----------------------------------------------------------------------------------------------------------------------
     # filtro nombramientos ADP
-    if seleccion_adp=='Nombramientos':
-        with st.container():
-            col1,col2,col3,col4,col5=st.columns(5,gap="large")
-            with col1:
-                option_1 = st.selectbox('Nivel Jerárquico',Nivel)
-            with col2:
-                option_2 = st.selectbox('Región',Region)
-            with col3:
-                option_3 = st.selectbox('Ministerio',Ministerios)
-            with col4:
-                option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
-            with col5:
-                option_5 = st.selectbox('Sexo ADP',sexo_list) 
+    #if seleccion_adp=='Nombramientos':
+    #    with st.container():
+    #        col1,col2,col3,col4,col5=st.columns(5,gap="large")
+    #        with col1:
+    #            option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+    #        with col2:
+    #            option_2 = st.selectbox('Región',Region)
+    #        with col3:
+    #            option_3 = st.selectbox('Ministerio',Ministerios)
+    #        with col4:
+    #            option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
+    #        with col5:
+    #            option_5 = st.selectbox('Sexo ADP',sexo_list) 
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
