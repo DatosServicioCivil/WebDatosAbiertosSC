@@ -11,6 +11,7 @@ import time
 import streamlit.components.v1 as components
 import plotly.express as px 
 import plotly.graph_objects as go
+import pyarrow.parquet as pq
 
 st.set_page_config(layout='wide')
 
@@ -21,7 +22,7 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=100)
+my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=300)
 st.image(my_logo)
 
 # Set Page Header
@@ -67,8 +68,27 @@ estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'
 sexo_list = ['Todos','Mujeres','Hombres']  # Lista de sexos
 
 all_region=pd.read_excel('Regiones/all_region_values.xlsx',sheet_name='Sheet1')
+
+#-------------------------------------------------------------------------------------------------------------
+# carga datos adp
+#-------------------------------------------------------------------------------------------------------------
+#-----------------concursos adp
+#-------------------------------------------------------------------------------------------------------------
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
 df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
+#-------------------------------------------------------------------------------------------------------------
+#-----------------postulaciones adp
+#-------------------------------------------------------------------------------------------------------------
+
+@st.cache_data
+def df_post_adp():
+    df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
+    df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
+    df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
+    df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
+    df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+    return df_postulaciones_adp
+
 
 unique_niveles = df_concursos['Nivel'].unique()
 Nivel = pd.DataFrame({'Nivel': unique_niveles})
@@ -358,7 +378,13 @@ if a=='Alta Dirección Pública':
             with col4:
                 option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
             with col5:
-                option_5 = st.selectbox('Sexo Postulantes',sexo_list) 
+                option_5 = st.selectbox('Sexo Postulantes',sexo_list)
+        
+        df_postulaciones_adp=df_post_adp()
+        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
+            postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
+
     #----------------------------------------------------------------------------------------------------------------------
     # filtro nombramientos ADP
     if seleccion_adp=='Nombramientos':
@@ -373,7 +399,7 @@ if a=='Alta Dirección Pública':
             with col4:
                 option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
             with col5:
-                option_5 = st.selectbox('Sexo Postulantes',sexo_list) 
+                option_5 = st.selectbox('Sexo ADP',sexo_list) 
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
