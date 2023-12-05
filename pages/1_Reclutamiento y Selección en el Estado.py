@@ -344,7 +344,24 @@ if a=='Alta Dirección Pública':
                 st.plotly_chart(graf7,use_container_width=True)
             with col6:
                 st.plotly_chart(graf6,use_container_width=True)
+    #----------------------------------------------------------------------------------------------------------------------
+    # filtro postulaciones ADP
     if seleccion_adp=='Postulaciones':
+        with st.container():
+            col1,col2,col3,col4,col5=st.columns(5,gap="large")
+            with col1:
+                option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+            with col2:
+                option_2 = st.selectbox('Región',Region)
+            with col3:
+                option_3 = st.selectbox('Ministerio',Ministerios)
+            with col4:
+                option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
+            with col5:
+                option_5 = st.selectbox('Sexo Postulantes',sexo_list) 
+    #----------------------------------------------------------------------------------------------------------------------
+    # filtro nombramientos ADP
+    if seleccion_adp=='Nombramientos':
         with st.container():
             col1,col2,col3,col4,col5=st.columns(5,gap="large")
             with col1:
