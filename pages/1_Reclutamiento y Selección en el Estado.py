@@ -64,6 +64,8 @@ tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}#
 estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
+sexo_list = ['Mujeres', 'Hombres']  # Lista de sexos
+
 all_region=pd.read_excel('Regiones/all_region_values.xlsx',sheet_name='Sheet1')
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
 df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
@@ -342,7 +344,19 @@ if a=='Alta Dirección Pública':
                 st.plotly_chart(graf7,use_container_width=True)
             with col6:
                 st.plotly_chart(graf6,use_container_width=True)
-        
+    if seleccion_adp=='Postulaciones':
+        with st.container():
+            col1,col2,col3,col4,col5=st.columns(5,gap="large")
+            with col1:
+                option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+            with col2:
+                option_2 = st.selectbox('Región',Region)
+            with col3:
+                option_3 = st.selectbox('Ministerio',Ministerios)
+            with col4:
+                option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
+            with col5:
+                option_5 = st.selectbox('Sexo Postulantes',sexo_list) 
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
