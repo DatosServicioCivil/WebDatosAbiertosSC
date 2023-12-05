@@ -88,7 +88,7 @@ def df_post_adp():
     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
     sexo_map = {'Mujeres':'F','Hombres':'M'}
-    df_postulaciones_adp['Sexo'] = df_postulaciones_adp['Genero'].replace(sexo_map)
+    df_postulaciones_adp['Sexo'] = df_postulaciones_adp['GENERO'].replace(sexo_map)
     return df_postulaciones_adp
 
 
@@ -384,6 +384,7 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo Postulantes',sexo_list)
         
         df_postulaciones_adp=df_post_adp()
+
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
