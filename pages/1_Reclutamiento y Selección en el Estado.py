@@ -158,8 +158,8 @@ if a=='Alta Dirección Pública':
     date=df_concursos.FechaActualizacion.max()#.strftime('%d/%m/%Y')
     with st.container():
         st.title('Estadísticas ADP')
-        #st.subheader(f'Fecha Actualización: {date}')
-        st.subheader(date)
+        st.subheader(f'Fecha Actualización: {date}')
+        #st.subheader(date)
         seleccion_adp=st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
 if a=='Empleo Público':
     with st.container():
