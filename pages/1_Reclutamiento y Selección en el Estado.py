@@ -373,7 +373,7 @@ if a=='Alta Dirección Pública':
             with col1:
                 option_1 = st.selectbox('Nivel Jerárquico',Nivel)
             with col2:
-                option_2 = st.selectbox('Región',Region)
+                option_2 = st.selectbox('Región Postulantes',Region)
             with col3:
                 option_3 = st.selectbox('Ministerio',Ministerios)
             with col4:
@@ -383,11 +383,16 @@ if a=='Alta Dirección Pública':
         
         df_postulaciones_adp=df_post_adp()
         df_postulaciones_adp['GENERO']=np.where(df_postulaciones_adp['GENERO']=='M','Hombre','Mujer')
+        df_postulaciones_adp['Año']=pd.merge(df_postulaciones_adp,all_region,how='left',on='ID_Region')['Año']
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
 
         postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
