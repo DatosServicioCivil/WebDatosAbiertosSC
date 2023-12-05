@@ -453,7 +453,7 @@ if a=='Empleo Público':
     date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
     
     st.title('Estadísticas Portal Empleos Públicos')
-    st.subheader(date)
+    st.subheader(f'Fecha Actualización: {date}')
 
     unique_estamento = df_concursos_eepp['Estamento'].unique()
     Estamento = pd.DataFrame({'Estamento': unique_estamento})
