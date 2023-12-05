@@ -383,8 +383,16 @@ if a=='Alta Dirección Pública':
         df_postulaciones_adp=df_post_adp()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
         
-        st.dataframe(postulaciones.head(10))
+        graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+        graf1.update_layout(yaxis_tickformat='.0f')
+
+        st.plotly_chart(graf1,use_container_width=True)
+        #st.dataframe(postulaciones.head(10))
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
 
     #----------------------------------------------------------------------------------------------------------------------
