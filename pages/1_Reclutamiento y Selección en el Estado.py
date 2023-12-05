@@ -87,7 +87,10 @@ def df_post_adp():
     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+    sexo_map = {'Mujeres':'F','Hombres':'M'}
+    df_postulaciones_adp['Sexo'] = df_postulaciones_adp['Genero'].replace(sexo_map)
     return df_postulaciones_adp
+
 
 
 unique_niveles = df_concursos['Nivel'].unique()
@@ -384,7 +387,7 @@ if a=='Alta Dirección Pública':
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
-            postulaciones=df_postulaciones_adp[df_postulaciones_adp.Genero==option_5].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones=df_postulaciones_adp[df_postulaciones_adp.Sexo==option_5].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
 
         postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
