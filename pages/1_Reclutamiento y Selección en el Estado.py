@@ -22,7 +22,7 @@ def add_logo(logo_path, width, height):
     modified_logo = logo.resize((width, height))
     return modified_logo
 
-my_logo = add_logo(logo_path="./imagenes/logo.png", width=200, height=200)
+my_logo = add_logo(logo_path="./imagenes/logo.png", width=100, height=100)
 st.image(my_logo)
 
 # Set Page Header
