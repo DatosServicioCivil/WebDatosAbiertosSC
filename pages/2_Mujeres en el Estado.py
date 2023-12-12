@@ -52,7 +52,7 @@ valor_col5=0.5
 with st.container():
     col1,col2,col3,col4,col5=st.columns(5,gap='small')
     with col1:
-        st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h2>", unsafe_allow_html=True)
+        st.markdown(f"<h3 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h3>", unsafe_allow_html=True)
     with col2:
         #image = Image.open('imagenes/job_offer.png')
         #st.image(image)
