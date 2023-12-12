@@ -58,21 +58,21 @@ with st.container():
         #st.image(image)
         valor_col2=f"{valor_col2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos II nivel ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos II nivel ADP</h3>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/mannager_selection.png')
         #st.image(image)
         valor_col4=f"{valor_col4:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos Jefaturas</h2>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos Jefaturas</h3>", unsafe_allow_html=True)
     with col5:
         #image = Image.open('imagenes/mannager_selection.png')
         #st.image(image)
         valor_col5=f"{valor_col5:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h2>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
                            
