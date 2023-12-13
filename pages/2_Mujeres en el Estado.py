@@ -61,6 +61,13 @@ df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso'
 Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['SeleccionadoMujeres'].sum()\
     /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Seleccionados'].sum()
 
+Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado')\
+                                                & (df_tabla_deem['SexoNombrado']!='Femenino')]['idConcurso'].count()\
+                                                /df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado')\
+                                                & (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem')\
+                                                & (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
+                                                
+
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -98,7 +105,7 @@ potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estad
 valor_col2=Porcentaje_Mujeres_Nombradas_ADP_I_N
 valor_col3=Porcentaje_Mujeres_Nombradas_ADP_II_N
 valor_col4=Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP
-valor_col5=0.5
+valor_col5=Porcentaje_Mujeres_Nombradas_DEEM
 with st.container():
     col1,col2,col3,col4,col5=st.columns(5,gap='small')
     with col1:
