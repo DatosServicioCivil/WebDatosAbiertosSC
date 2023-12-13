@@ -168,7 +168,7 @@ if option_1=='EEPP':
     tb_postulaciones_sexo_año = tb_postulaciones_sexo_año[tb_postulaciones_sexo_año['portal']=='EEPP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 
 #gráfico postulaciones por año y sexo segun seleccion portal
-graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=[sexo_color_map]).\
+graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
                     update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf1.update_layout(yaxis_tickformat='.0f')
