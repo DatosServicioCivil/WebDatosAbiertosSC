@@ -151,11 +151,12 @@ with st.container():
 # grafico 1: postulaciones por año y sexo
 
 
-graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>',color_discrete_sequence=[sexo_color_map]).\
-        update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
-        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>').\
+            update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
+            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf1.update_layout(yaxis_tickformat='.0f')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
+    #color_discrete_sequence=[sexo_color_map]).\
 
 
 
@@ -168,7 +169,7 @@ with st.container():
         st.text()
     with col3:
         st.text()
-        
+
 st.dataframe(df_concursos.head(10))
 st.markdown("<hr>", unsafe_allow_html=True)
 st.dataframe(df_postulaciones_adp.head(10))
