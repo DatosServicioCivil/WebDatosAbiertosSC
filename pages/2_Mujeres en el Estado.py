@@ -25,11 +25,11 @@ def df_post_adp():
 df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 #df_cargos_adp=pd.read_table('ADP/df_cargos_adp.parquet').to_pandas()
 
-df_post_adp=pd.merge(df_post_adp,df_concursos,how='left',on='CD_Concurso')
+#df_post_adp=pd.merge(df_post_adp,df_concursos,how='left',on='CD_Concurso')
 #df_post_adp=pd.merge(df_post_adp,df_cargos_adp,how='left',left_on='ID_Cargo',right_on='id Cargo')
 
-Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()\
-    /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()
+#Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()\
+#    /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()
 
 
 
@@ -68,7 +68,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 texto_mas_mujeres="""Mas Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
-valor_col2=Porcentaje_Mujeres_Nombradas_ADP_I_N
+valor_col2=0.4#Porcentaje_Mujeres_Nombradas_ADP_I_N
 valor_col3=0.31
 valor_col4=0.7
 valor_col5=0.5
@@ -99,4 +99,6 @@ with st.container():
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
                            
-#st.dataframe(df_concursos.head(10))
+st.dataframe(df_concursos.head(10))
+st.markdown("<hr>", unsafe_allow_html=True)
+st.dataframe(df_post_adp.head(10))
