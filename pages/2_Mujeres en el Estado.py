@@ -152,7 +152,7 @@ with st.container():
 
 
 with st.container():
-    col1,col2
+    col1,col2=st.columns(2,gap='small')
     with col1:    
         option_1 = st.selectbox('Tipo de oferta laboral', ['Todas','ADP', 'DEEM', 'EEPP'])
     with col2:
