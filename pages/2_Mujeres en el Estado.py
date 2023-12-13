@@ -74,6 +74,12 @@ df_tabla_deem=df_tabla_deem()
 Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']=='Femenino')]['idConcurso'].count()\
                                                 / df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem') & (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
 
+# tablas de postulaciones y porcentajes por sexo
+tb_postulaciones=tabla_postulaciones()
+tb_postulaciones_sexo=tb_postulaciones[tb_postulaciones.Sexo.isin(['Hombre','Mujer'])].groupby(['Año','Sexo','portal'])['postulaciones'].sum().reset_index()
+
+
+
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
     """Read and return a resized logo"""
@@ -83,6 +89,9 @@ def add_logo(logo_path, width, height):
 
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
 st.image(my_logo)
+
+sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
+visible_y_axis=False
 
 # Set Page Header
 st.header("Mujeres en el Estado")
@@ -104,6 +113,7 @@ st.markdown(
 
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
+
 
 texto_mas_mujeres="""Más Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
@@ -137,7 +147,28 @@ with st.container():
         valor_col5=f"{valor_col5:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
-                           
+
+# grafico 1: postulaciones por año y sexo
+
+
+graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>',color_discrete_sequence=[sexo_color_map]).\
+        update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
+        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf1.update_layout(yaxis_tickformat='.0f')
+    # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
+
+
+
+with st.container():
+    col1,col2,col3=st.columns(3,gap='small')
+    with col1:
+        st.markdown("<h3 style='text-align: center; color: grey;'>Postulaciones por año y sexo</h3>", unsafe_allow_html=True)
+        st.pyplot(graf1)
+    with col2:
+        st.text()
+    with col3:
+        st.text()
+        
 st.dataframe(df_concursos.head(10))
 st.markdown("<hr>", unsafe_allow_html=True)
 st.dataframe(df_postulaciones_adp.head(10))
