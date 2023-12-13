@@ -22,8 +22,8 @@ def df_post_adp():
     return df_postulaciones_adp
 
 # se asocia concursos, cargos, nivel a postulaciones
-df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
-df_cargos_adp=pd.read_csv('ADP/Cargos_ADP.csv',sep=';')
+df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+df_cargos_adp=pd.read_table('ADP/df_cargos_adp.parquet').to_pandas()
 
 #df_post_adp=pd.merge(df_post_adp,df_concursos,how='left',on='CD_Concurso')
 #df_post_adp=pd.merge(df_post_adp,df_cargos_adp,how='left',left_on='ID_Cargo',right_on='id Cargo')
