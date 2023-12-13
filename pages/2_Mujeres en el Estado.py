@@ -158,14 +158,9 @@ graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulac
 
 
 with st.container():
-    col1,col2,col3=st.columns(3,gap='small')
-    with col1:
-        st.markdown("<h3 style='text-align: center; color: grey;'>Postulaciones por año y sexo</h3>", unsafe_allow_html=True)
-        st.plotly_chart(graf1,use_container_width=True)
-    with col2:
-        st.text()
-    with col3:
-        st.text()
+    st.markdown("<h3 style='text-align: center; color: grey;'>Postulaciones por año y sexo</h3>", unsafe_allow_html=True)
+    st.plotly_chart(graf1,use_container_width=True)
+
 
 st.dataframe(df_concursos.head(10))
 st.markdown("<hr>", unsafe_allow_html=True)
