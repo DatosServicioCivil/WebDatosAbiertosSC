@@ -76,7 +76,7 @@ Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombr
 
 # tablas de postulaciones y porcentajes por sexo
 tb_postulaciones=tabla_postulaciones()
-tb_postulaciones_sexo=tb_postulaciones[tb_postulaciones.Sexo.isin(['Hombre','Mujer'])].groupby(['Año','Sexo','portal'])['postulaciones'].sum().reset_index()
+tb_postulaciones_sexo_año=tb_postulaciones[tb_postulaciones.Sexo.isin(['Hombre','Mujer'])].groupby(['Año','Sexo','portal'])['postulaciones'].sum().reset_index()
 
 
 
@@ -148,18 +148,34 @@ with st.container():
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
 
-# grafico 1: postulaciones por año y sexo
-
-
-graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>')
-    # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
-    #color_discrete_sequence=[sexo_color_map]).\
 
 
 
 with st.container():
-    st.markdown("<h3 style='text-align: center; color: grey;'>Postulaciones por año y sexo</h3>", unsafe_allow_html=True)
+    col1,col2
+    with col1:    
+        option_1 = st.selectbox('Tipo de oferta laboral', ['Todas','ADP', 'DEEM', 'EEPP'])
+    with col2:
+        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
+
+if option_1:
+    tb_postulaciones_sexo_año=tb_postulaciones_sexo_año.groupby(['Año','Sexo']).agg('postulaciones':'sum').reset_index()
+if option_1=='ADP':
+    tb_postulaciones_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones_sexo_año['portal']=='ADP'].groupby(['Año','Sexo']).agg('postulaciones':'sum').reset_index()
+if option_1=='DEEM':
+    tb_postulaciones_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones_sexo_año['portal']=='DEEM'].groupby(['Año','Sexo']).agg('postulaciones':'sum').reset_index()
+if option_1=='EEPP':
+    tb_postulaciones_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones_sexo_año['portal']=='EEPP'].groupby(['Año','Sexo']).agg('postulaciones':'sum').reset_index()
+
+#gráfico postulaciones por año y sexo segun seleccion portal
+graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color_discrete_sequence=[sexo_color_map]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf1.update_layout(yaxis_tickformat='.0f')
+
+with st.container():
     st.plotly_chart(graf1,use_container_width=True)
+
 
 
 st.dataframe(df_concursos.head(10))
