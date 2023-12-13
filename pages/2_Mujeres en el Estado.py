@@ -10,6 +10,7 @@ import pyarrow.parquet as pq
 
 st.set_page_config(layout='wide')
 
+# carga archivos parquet postulaciones ADP
 @st.cache_data
 def df_post_adp():
     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
@@ -19,11 +20,26 @@ def df_post_adp():
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
     return df_postulaciones_adp
 
+# carga archivos parquet concursos EEPP
 @st.cache_data
 def df_conc_ep():
     df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
     df_conc_ep=df_2
     return df_conc_ep
+
+# carga archivos parquet concursos DEEM
+@st.cache_data
+def df_post_deem():
+    df=pq.read_table('DEEM/df_postulaciones_dee.parquet').to_pandas()
+    df_post_deem=df
+    return df_post_deem
+
+# carga archivos parquet concursos DEEM
+@st.cache_data
+def df_tabla_deem():
+    df=pq.read_table('DEEM/df_concursos_dee.parquet').to_pandas()
+    df_tabla_deem=df
+    return df_tabla_deem
 
 # se asocia concursos, cargos, nivel a postulaciones
 df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
