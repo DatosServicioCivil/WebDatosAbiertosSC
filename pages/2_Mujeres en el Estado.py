@@ -23,7 +23,7 @@ def df_post_adp():
 
 # se asocia concursos, cargos, nivel a postulaciones
 df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
-df_cargos_adp=pd.read_table('ADP/df_cargos_adp.parquet').to_pandas()
+#df_cargos_adp=pd.read_table('ADP/df_cargos_adp.parquet').to_pandas()
 
 #df_post_adp=pd.merge(df_post_adp,df_concursos,how='left',on='CD_Concurso')
 #df_post_adp=pd.merge(df_post_adp,df_cargos_adp,how='left',left_on='ID_Cargo',right_on='id Cargo')
@@ -101,4 +101,4 @@ with st.container():
                            
 st.dataframe(df_concursos.head(10))
 st.markdown("<hr>", unsafe_allow_html=True)
-st.dataframe(df_cargos_adp.head(10))
+#st.dataframe(df_cargos_adp.head(10))
