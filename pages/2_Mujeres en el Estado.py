@@ -19,22 +19,31 @@ def df_post_adp():
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
     return df_postulaciones_adp
 
+@st.cache_data
+def df_conc_ep():
+    df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
+    df_conc_ep=df_2
+    return df_conc_ep
+
 # se asocia concursos, cargos, nivel a postulaciones
 df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 df_postulaciones_adp=df_post_adp()
-#df_cargos_adp=pd.read_table('ADP/df_cargos_adp.parquet').to_pandas()
 
 df_post_adp=pd.merge(df_postulaciones_adp,df_concursos,how='left',on='CD_Concurso')
-#df_post_adp=pd.merge(df_post_adp,df_cargos_adp,how='left',left_on='ID_Cargo',right_on='id Cargo')
 
+# Camculo porcentajes mujeres nombradas en ADP
 Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()\
     /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()
 
 Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='II')]['ID_Postulacion'].count()\
     /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='II')]['ID_Postulacion'].count()
 
+# informacion de convocatorias de EEPP
+df_concursos_eepp=df_conc_ep()
+df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso']).dt.year
 
-
+Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['SeleccionadoMujeres'].sum()\
+    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Seleccionados'].sum()
 
 
 # This function sets the logo and company name inside the sidebar
@@ -68,11 +77,11 @@ st.markdown(
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
 
-texto_mas_mujeres="""Mas Mujeres: Conoce los principales indicadores del Servicio Civil que 
+texto_mas_mujeres="""Más Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
 valor_col2=Porcentaje_Mujeres_Nombradas_ADP_I_N
 valor_col3=Porcentaje_Mujeres_Nombradas_ADP_II_N
-valor_col4=0.7
+valor_col4=Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP
 valor_col5=0.5
 with st.container():
     col1,col2,col3,col4,col5=st.columns(5,gap='small')
