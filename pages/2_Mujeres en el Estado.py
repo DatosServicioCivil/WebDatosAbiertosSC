@@ -41,6 +41,14 @@ def df_tabla_deem():
     df_tab_deem=df
     return df_tab_deem
 
+@st.cache_data
+def tabla_postulaciones():
+    tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    tb_2=pq.read_table('DEEM/tb_postulaciones_dee.parquet').to_pandas()
+    tb_3=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
+    tb_postulaciones=pd.concat([tb_1,tb_2,tb_3])
+    return tb_postulaciones
+
 # se asocia concursos, cargos, nivel a postulaciones
 df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 df_postulaciones_adp=df_post_adp()
