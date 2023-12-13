@@ -175,7 +175,7 @@ graf1.update_layout(yaxis_tickformat='.0f')
 
 with st.container():
     st.plotly_chart(graf1,use_container_width=True)
-    st.dataframe(tb_postulaciones_sexo_año.T)
+    st.dataframe(tb_postulaciones.T)
 
 
 
