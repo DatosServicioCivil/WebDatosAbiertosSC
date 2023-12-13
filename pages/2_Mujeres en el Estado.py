@@ -1,16 +1,14 @@
 import streamlit as st
 from streamlit_option_menu import option_menu
-# import snowflake.connector
 import pandas as pd
 from PIL import Image
 import plotly.express as px
 import numpy as np
-# import base64
 import time
-# import altair as alt
 import streamlit.components.v1 as components
 import pyarrow.parquet as pq
 
+st.set_page_config(layout='wide')
 
 @st.cache_data
 def df_post_adp():
@@ -34,7 +32,7 @@ df_postulaciones_adp=df_post_adp()
 
 
 
-st.set_page_config(layout='wide')
+
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
