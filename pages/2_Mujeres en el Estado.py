@@ -23,7 +23,7 @@ def df_post_adp():
 
 # se asocia concursos, cargos, nivel a postulaciones
 df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
-#df_cargos_adp=pd.read_csv('ADP/df_cargos_adp.csv',sep=';')
+df_cargos_adp=pd.read_csv('ADP/df_cargos_adp.csv',sep=';',encoding='utf-8')
 
 #df_post_adp=pd.merge(df_post_adp,df_concursos,how='left',on='CD_Concurso')
 #df_post_adp=pd.merge(df_post_adp,df_cargos_adp,how='left',left_on='ID_Cargo',right_on='id Cargo')
@@ -100,3 +100,5 @@ with st.container():
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
                            
 st.dataframe(df_concursos.head(10))
+st.markdown("<hr>", unsafe_allow_html=True)
+st.dataframe(df_cargos_adp.head(10))
