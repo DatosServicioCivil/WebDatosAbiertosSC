@@ -90,7 +90,7 @@ def add_logo(logo_path, width, height):
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
 st.image(my_logo)
 
-sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
+sexo_color_map = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
 visible_y_axis=False
 
 # Set Page Header
