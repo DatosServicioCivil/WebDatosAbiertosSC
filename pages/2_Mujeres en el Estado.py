@@ -151,10 +151,7 @@ with st.container():
 # grafico 1: postulaciones por año y sexo
 
 
-graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>').\
-            update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
-            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-graf1.update_layout(yaxis_tickformat='.0f')
+graf1=px.bar(tb_postulaciones_sexo,x='Año',y='postulaciones',title='<b>Postulaciones por año y sexo</b>')
     # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
     #color_discrete_sequence=[sexo_color_map]).\
 
@@ -164,7 +161,7 @@ with st.container():
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
         st.markdown("<h3 style='text-align: center; color: grey;'>Postulaciones por año y sexo</h3>", unsafe_allow_html=True)
-        st.pyplot(graf1)
+        st.plotly_chart(graf1,use_container_width=True)
     with col2:
         st.text()
     with col3:
