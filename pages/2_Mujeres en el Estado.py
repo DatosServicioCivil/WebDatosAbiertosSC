@@ -61,13 +61,10 @@ df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso'
 Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['SeleccionadoMujeres'].sum()\
     /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Seleccionados'].sum()
 
+#Calculo porcentaje mujeres nombradas deem
 df_tabla_deem=df_tabla_deem()
-#Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']=='Femenino')]['idConcurso'].count()
-#                                                #/df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado')\
-#                                                #& (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem')\
-#                                                #& (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
-                                                
-Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem') & (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
+Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']=='Femenino')]['idConcurso'].count()\
+                                                / df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem') & (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
