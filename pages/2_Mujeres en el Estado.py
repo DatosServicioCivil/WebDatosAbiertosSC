@@ -101,4 +101,4 @@ with st.container():
                            
 st.dataframe(df_concursos.head(10))
 st.markdown("<hr>", unsafe_allow_html=True)
-st.dataframe(df_post_adp.head(10))
+st.dataframe(df_postulaciones_adp.head(10))
