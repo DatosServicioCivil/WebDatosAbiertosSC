@@ -31,7 +31,7 @@ df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 #Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()\
 #    /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()
 
-
+df_postulaciones_adp=df_post_adp()
 
 st.set_page_config(layout='wide')
 
