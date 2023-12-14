@@ -64,19 +64,20 @@ def tabla_postulaciones():
     tb_3=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
     tb_postulaciones=pd.concat([tb_1,tb_2,tb_3])
     return tb_postulaciones
-
+#--------------------------------------------------------------------------------------------------
 # se asocia concursos, cargos, nivel a postulaciones
-df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
-df_postulaciones_adp=df_post_adp()
+#df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+df_post_adp=df_post_adp()
 
-df_post_adp=pd.merge(df_postulaciones_adp,df_concursos,how='left',on='CD_Concurso')
+#--------------------------------------------------------------------------------------------------
+#df_post_adp=pd.merge(df_postulaciones_adp,df_concursos,how='left',on='CD_Concurso')
 
 # Camculo porcentajes mujeres nombradas en ADP
-Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()\
-    /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='I')]['ID_Postulacion'].count()
+Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()\
+    /df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()
 
-Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['GENERO']=='F') & (df_post_adp['Nivel']=='II')]['ID_Postulacion'].count()\
-    /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='II')]['ID_Postulacion'].count()
+Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='F') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()\
+    /df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()
 
 # informacion de convocatorias de EEPP
 df_concursos_eepp=df_conc_eepp()
