@@ -114,7 +114,8 @@ with st.container():
         #image = Image.open('imagenes/job_offer.png')
         image=add_logo(logo_path="./imagenes/job_offer.png", width=150, height=150)
         st.image(image)
-        valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
+        #valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
+        valor_col2=f"{vacantes:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
     with col3:
