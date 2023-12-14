@@ -67,8 +67,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 #--------------------------------------------------------------------------------------------
 @st.cache_data
 def df_conc_eepp():
-    df=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
-    df_conc_eepp=df
+    df_conc_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
     return df_conc_eepp
 
 
