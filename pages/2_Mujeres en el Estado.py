@@ -75,8 +75,7 @@ df_post_adp=df_post_adp()
 # Camculo porcentajes mujeres nombradas en ADP
 Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()\
     /df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()
-
-Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='F') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()\
+Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()\
     /df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()
 
 # informacion de convocatorias de EEPP
