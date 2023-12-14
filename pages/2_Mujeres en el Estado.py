@@ -213,11 +213,11 @@ if option_1=='Todos':
     tb_postulaciones_sexo_año = tb_postulaciones.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
     tb_porcentajes_sexo_año=tb_postulaciones_sexo_año.groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index()
     #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
-    tb_postulaciones_sexo_año=pd.concat([tb_porcentajes_sexo_año,tb_postulaciones_sexo_año],axis=1)
+    #tb_postulaciones_sexo_año=pd.concat([tb_porcentajes_sexo_año,tb_postulaciones_sexo_año],axis=1)
 else:
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']==option_1].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
     tb_porcentajes_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones['portal']==option_1].groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index()
-    tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
+    #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
 
 
 # cambio de nombre de columnas
