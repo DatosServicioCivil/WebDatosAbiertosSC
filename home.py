@@ -109,7 +109,7 @@ with st.container():
         st.image(image)
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total   concursos de Alta Dirección Pública</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total \nconcursos de Alta Dirección Pública</h2>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/adp_nombrado.PNG')
         image=add_logo(logo_path="./imagenes/adp_nombrado.PNG", width=150, height=150)
