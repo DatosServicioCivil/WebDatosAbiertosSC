@@ -94,7 +94,7 @@ with st.container():
         st.image(image)
         valor_col1=f"{postulaciones:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total postulaciones en portal Empleos Públicos</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total postulaciones portal Empleos Públicos</h2>", unsafe_allow_html=True)
     with col2:
         #image = Image.open('imagenes/job_offer.png')
         image=add_logo(logo_path="./imagenes/job_offer.png", width=150, height=150)
@@ -102,14 +102,14 @@ with st.container():
         #valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
         valor_col2=f"{vacantes:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas en portal Empleos Públicos</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas portal Empleos Públicos</h2>", unsafe_allow_html=True)
     with col3:
         #image = Image.open('imagenes/mannager_selection.png')
         image=add_logo(logo_path="./imagenes/mannager_selection.png", width=150, height=150)
         st.image(image)
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total \nconcursos de Alta Dirección Pública</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos de Alta Dirección Pública</h2>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/adp_nombrado.PNG')
         image=add_logo(logo_path="./imagenes/adp_nombrado.PNG", width=150, height=150)
