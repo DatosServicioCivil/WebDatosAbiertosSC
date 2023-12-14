@@ -205,7 +205,7 @@ with st.container():
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
-        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEEM', 'EEPP'])
+        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEE', 'EEPP'])
     with col2:
         option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
@@ -214,7 +214,7 @@ if option_1=='Todos':
 if option_1=='ADP':
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='ADP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 if option_1=='DEEM':
-    tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='DEEM'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='DEE'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 if option_1=='EEPP':
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='EEPP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 
