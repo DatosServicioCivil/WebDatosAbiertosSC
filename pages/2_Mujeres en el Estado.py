@@ -12,13 +12,18 @@ st.set_page_config(layout='wide')
 
 # carga archivos parquet postulaciones ADP
 #--------------------------------------------------------------------------------------------------
+# @st.cache_data
+# def df_post_adp():
+#     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
+#     df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
+#     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
+#     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
+#     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+#     return df_postulaciones_adp
+
 @st.cache_data
 def df_post_adp():
-    df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
-    df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
-    df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
-    df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
-    df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+    df_postulaciones_adp = pd.read_parquet('ADP/tb_postulaciones_adp.parquet')
     return df_postulaciones_adp
 
 # carga archivos parquet concursos EEPP
