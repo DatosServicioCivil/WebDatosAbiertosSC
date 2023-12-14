@@ -38,15 +38,12 @@ def add_logo(logo_path, width, height):
 
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
 st.image(my_logo)
-#st.sidebar.image(my_logo)
-#st.sidebar.header("Configuration")
-#st.sidebar.subheader("Servicio Civil.")
+
 
 # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
 # Set Page Header
 st.header("Datos Abiertos Servicio Civil")
-#st.markdown("<h1 style='text-align: center; '><strong>Datos Abiertos Servicio Civil</strong></h1>", unsafe_allow_html=True)
 
 # Set custom CSS for hr element
 st.markdown(
@@ -69,10 +66,8 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------
 @st.cache_data
-def df_conc_ep():
-    df_concursos_eepp_Postulacion=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
-    df_concursos_eepp_aviso=pd.read_table('EEPP/df_concursos_eepp_Aviso.parquet').to_pandas()
-    df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
+def df_conc_eepp():
+    df_concursos_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
     df_conc_ep=df_concursos_eepp
     return df_conc_ep
 
@@ -84,13 +79,13 @@ def df_con_adp():
     return df_conc_adp
 
 
-df_concursos_eepp=df_conc_ep()
+df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_con_adp()
 
 
-vacantes = df_concursos_eepp.agg({'Nº de Vacantes':'sum'}).reset_index()
-postulaciones=df_concursos_eepp['Número Postulaciones'].sum()
-postulaciones_laborales=df_concursos_eepp['Número Postulaciones'].sum()
+vacantes = df_concursos_eepp['Vacantes'].sum()
+postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
+postulaciones_laborales=df_concursos_eepp['Total_Postulaciones'].sum()
 concursos_adp=df_concursos_adp.CD_Concurso.count()
 nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 
