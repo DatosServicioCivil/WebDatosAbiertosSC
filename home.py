@@ -65,10 +65,6 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------
-#@st.cache_data
-#def df_conc_eepp():
-#df_conc_ep=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
-#    return df_conc_ep
 
 @st.cache_data
 def df_conc_eepp():
@@ -80,23 +76,12 @@ def df_conc_adp():
     df_conc = pd.read_parquet('ADP/df_concursos.parquet')
     return df_conc
 
-#@st.cache_data
-#def df_con_adp():
-#    df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
-#    df_conc_adp=df_concursos_adp
-#    return df_conc_adp
-
-
-#df_concursos_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
-#df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
-
 df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_conc_adp()
 
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
-postulaciones_laborales=df_concursos_eepp['Total_Postulaciones'].sum()
 concursos_adp=df_concursos_adp.CD_Concurso.count()
 nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 
@@ -109,7 +94,7 @@ with st.container():
         st.image(image)
         valor_col1=f"{postulaciones:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total postulaciones portal EEEPP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total postulaciones en portal EEEPP</h2>", unsafe_allow_html=True)
     with col2:
         #image = Image.open('imagenes/job_offer.png')
         image=add_logo(logo_path="./imagenes/job_offer.png", width=150, height=150)
@@ -117,7 +102,7 @@ with st.container():
         #valor_col2=f"{vacantes.iat[0,1]:,}".replace(",", ".")
         valor_col2=f"{vacantes:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas EEPP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total vacantes ofrecidas en portal EEPP</h2>", unsafe_allow_html=True)
     with col3:
         #image = Image.open('imagenes/mannager_selection.png')
         image=add_logo(logo_path="./imagenes/mannager_selection.png", width=150, height=150)
