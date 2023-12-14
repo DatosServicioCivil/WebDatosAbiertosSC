@@ -97,20 +97,20 @@ tb_postulaciones = tabla_postulaciones()
 # Filtrar por Sexo
 tb_postulaciones = tb_postulaciones[tb_postulaciones['Sexo'].isin(['Hombre', 'Mujer'])]
 # Calcular postulaciones por año, sexo y portal
-tb_postulaciones_sexo = (
-    tb_postulaciones.groupby(['Año', 'Sexo', 'portal'])['postulaciones']
-    .sum()
-    .reset_index()
-)
-# Calcular porcentaje de postulaciones por sexo y portal
-tb_porcentaje_postulaciones_sexo = (
-    tb_postulaciones_sexo.groupby(['Año', 'portal'])['postulaciones']
-    .apply(lambda x: 100 * x / x.sum())
-    .reset_index()
-    .rename(columns={'postulaciones': 'Porcentaje'})
-)
+# tb_postulaciones_sexo = (
+#     tb_postulaciones.groupby(['Año', 'Sexo', 'portal'])['postulaciones']
+#     .sum()
+#     .reset_index()
+# )
+# # Calcular porcentaje de postulaciones por sexo y portal
+# tb_porcentaje_postulaciones_sexo = (
+#     tb_postulaciones_sexo.groupby(['Año', 'portal'])['postulaciones']
+#     .apply(lambda x: 100 * x / x.sum())
+#     .reset_index()
+#     .rename(columns={'postulaciones': 'Porcentaje'})
+#)
 # Combinar DataFrames
-tb_postulaciones_sexo = pd.concat([tb_porcentaje_postulaciones_sexo, tb_postulaciones_sexo], axis=1)
+#tb_postulaciones_sexo = pd.concat([tb_porcentaje_postulaciones_sexo, tb_postulaciones_sexo], axis=1)
 
 # Calcular postulaciones por año y sexo
 #tabla_sexo = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
@@ -210,13 +210,13 @@ with st.container():
         option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
 if option_1=='Todos':
-    tb_postulaciones_sexo_año = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_postulaciones_sexo_año = tb_postulaciones.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 if option_1=='ADP':
-    tb_postulaciones_sexo_año = tb_postulaciones_sexo[tb_postulaciones_sexo_año['portal']=='ADP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='ADP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 if option_1=='DEEM':
-    tb_postulaciones_sexo_año = tb_postulaciones_sexo[tb_postulaciones_sexo_año['portal']=='DEEM'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='DEEM'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 if option_1=='EEPP':
-    tb_postulaciones_sexo_año = tb_postulaciones_sexo[tb_postulaciones_sexo_año['portal']=='EEPP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']=='EEPP'].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 
 #gráfico postulaciones por año y sexo segun seleccion portal
 graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
