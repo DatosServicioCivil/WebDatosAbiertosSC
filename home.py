@@ -65,21 +65,24 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------
-@st.cache_data
-def df_conc_eepp():
-    df_conc_ep=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
-    return df_conc_ep
+#@st.cache_data
+#def df_conc_eepp():
+#df_conc_ep=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
+#    return df_conc_ep
 
 
-@st.cache_data
-def df_con_adp():
-    df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
-    df_conc_adp=df_concursos_adp
-    return df_conc_adp
+#@st.cache_data
+#def df_con_adp():
+#    df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+#    df_conc_adp=df_concursos_adp
+#    return df_conc_adp
 
 
-df_concursos_eepp=df_conc_eepp()
-df_concursos_adp=df_con_adp()
+df_concursos_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
+df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+
+#df_concursos_eepp=df_conc_eepp()
+#df_concursos_adp=df_con_adp()
 
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
