@@ -220,7 +220,7 @@ else:
 
 
 # cambio de nombre de columnas
-#tb_postulaciones_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
+tb_3=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 #tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
 #-------------------------------------------------------------------------------------------------------------
@@ -242,6 +242,7 @@ with st.container():
     #st.plotly_chart(graf2,use_container_width=True)
     st.dataframe(tb_postulaciones_sexo_año.head(10))
     st.dataframe(tb_porcentajes_sexo_año.head(10))
+    st.dataframe(tb_3.head(10))
     
 
 
