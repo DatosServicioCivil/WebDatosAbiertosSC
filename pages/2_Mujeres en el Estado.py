@@ -113,7 +113,7 @@ tb_porcentaje_postulaciones_sexo = (
 tb_postulaciones_sexo = pd.concat([tb_porcentaje_postulaciones_sexo, tb_postulaciones_sexo], axis=1)
 
 # Calcular postulaciones por año y sexo
-tabla_sexo = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+#tabla_sexo = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 # # Calcular porcentaje de postulaciones por sexo
 # tabla_porcentaje_sexo = (
 #     tabla_sexo.groupby(['Año'])['postulaciones']
