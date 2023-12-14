@@ -70,6 +70,11 @@ st.markdown("<hr>", unsafe_allow_html=True)
 #df_conc_ep=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
 #    return df_conc_ep
 
+@st.cache_data
+def df_conc_eepp():
+    df_conc_ep = pd.read_parquet('EEPP/df_concursos_eepp.parquet')
+    return df_conc_ep
+
 
 #@st.cache_data
 #def df_con_adp():
@@ -78,10 +83,10 @@ st.markdown("<hr>", unsafe_allow_html=True)
 #    return df_conc_adp
 
 
-df_concursos_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
+#df_concursos_eepp=pd.read_table('EEPP/df_concursos_eepp.parquet').to_pandas()
 df_concursos_adp=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 
-#df_concursos_eepp=df_conc_eepp()
+df_concursos_eepp=df_conc_eepp()
 #df_concursos_adp=df_con_adp()
 
 
