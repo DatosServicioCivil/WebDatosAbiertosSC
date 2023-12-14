@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 st.set_page_config(layout='wide')
 
 # carga archivos parquet postulaciones ADP
+#--------------------------------------------------------------------------------------------------
 @st.cache_data
 def df_post_adp():
     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
@@ -21,13 +22,21 @@ def df_post_adp():
     return df_postulaciones_adp
 
 # carga archivos parquet concursos EEPP
+#--------------------------------------------------------------------------------------------------
+# @st.cache_data
+# def df_conc_ep():
+#     df_2=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
+#     df_conc_ep=df_2
+#     return df_conc_ep
+
 @st.cache_data
-def df_conc_ep():
-    df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
-    df_conc_ep=df_2
+def df_conc_eepp():
+    df_conc_ep = pd.read_parquet('EEPP/df_concursos_eepp.parquet')
     return df_conc_ep
 
-# carga archivos parquet concursos DEEM
+# carga archivos parquet DEEM
+#--------------------------------------------------------------------------------------------------
+# carga archivos parquet postulaciones DEEM
 @st.cache_data
 def df_post_deem():
     df=pq.read_table('DEEM/df_postulaciones_dee.parquet').to_pandas()
@@ -41,6 +50,8 @@ def df_tabla_deem():
     df_tab_deem=df
     return df_tab_deem
 
+# union postulaciones
+#--------------------------------------------------------------------------------------------------
 @st.cache_data
 def tabla_postulaciones():
     tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
@@ -63,11 +74,11 @@ Porcentaje_Mujeres_Nombradas_ADP_II_N=df_post_adp[(df_post_adp['NOMBRADO']=='SI'
     /df_post_adp[(df_post_adp['NOMBRADO']=='SI') & (df_post_adp['Nivel']=='II')]['ID_Postulacion'].count()
 
 # informacion de convocatorias de EEPP
-df_concursos_eepp=df_conc_ep()
-df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso']).dt.year
+df_concursos_eepp=df_conc_eepp()
+#df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso']).dt.year
 
-Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['SeleccionadoMujeres'].sum()\
-    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Seleccionados'].sum()
+Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['selec_Mujeres'].sum()\
+    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Total_Seleccionados'].sum()
 
 #Calculo porcentaje mujeres nombradas deem
 df_tabla_deem=df_tabla_deem()
