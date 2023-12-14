@@ -96,40 +96,7 @@ Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombr
 tb_postulaciones = tabla_postulaciones()
 # Filtrar por Sexo
 tb_postulaciones = tb_postulaciones[tb_postulaciones['Sexo'].isin(['Hombre', 'Mujer'])]
-# Calcular postulaciones por año, sexo y portal
-# tb_postulaciones_sexo = (
-#     tb_postulaciones.groupby(['Año', 'Sexo', 'portal'])['postulaciones']
-#     .sum()
-#     .reset_index()
-# )
-# # Calcular porcentaje de postulaciones por sexo y portal
-# tb_porcentaje_postulaciones_sexo = (
-#     tb_postulaciones_sexo.groupby(['Año', 'portal'])['postulaciones']
-#     .apply(lambda x: 100 * x / x.sum())
-#     .reset_index()
-#     .rename(columns={'postulaciones': 'Porcentaje'})
-#)
-# Combinar DataFrames
-#tb_postulaciones_sexo = pd.concat([tb_porcentaje_postulaciones_sexo, tb_postulaciones_sexo], axis=1)
-
-# Calcular postulaciones por año y sexo
-#tabla_sexo = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
-# # Calcular porcentaje de postulaciones por sexo
-# tabla_porcentaje_sexo = (
-#     tabla_sexo.groupby(['Año'])['postulaciones']
-#     .apply(lambda x: 100 * x / x.sum())
-#     .reset_index()
-#     .rename(columns={'postulaciones': 'Porcentaje'})
-# )
-# # Combinar DataFrames
-# tabla_sexo = pd.concat([tabla_sexo, tabla_porcentaje_sexo], axis=1)
 #------------------------------------------------------------------------------------------------
-
-
-#tb_postulaciones=tabla_postulaciones()
-#tb_postulaciones_sexo_año=tb_postulaciones[tb_postulaciones.Sexo.isin(['Hombre','Mujer'])].groupby(['Año','Sexo','portal'])['postulaciones'].sum().reset_index()
-
-
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -141,9 +108,11 @@ def add_logo(logo_path, width, height):
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
 st.image(my_logo)
 
+# se define color para sexo
+#------------------------------------------------------------------------------------------------
 sexo_color_map = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
 visible_y_axis=False
-
+#------------------------------------------------------------------------------------------------
 # Set Page Header
 st.header("Mujeres en el Estado")
 # Set custom CSS for hr element
@@ -164,7 +133,7 @@ st.markdown(
 
 # Add horizontal line
 st.markdown("<hr>", unsafe_allow_html=True)
-
+#------------------------------------------------------------------------------------------------
 
 texto_mas_mujeres="""Más Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
@@ -199,7 +168,7 @@ with st.container():
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
 
-
+#------------------------------------------------------------------------------------------------
 
 
 with st.container():
@@ -212,11 +181,9 @@ with st.container():
 if option_1=='Todos':
     tb_postulaciones_sexo_año = tb_postulaciones.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
     tb_porcentajes_sexo_año=tb_postulaciones_sexo_año.groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index()
-    #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
 else:
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']==option_1].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
     tb_porcentajes_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones['portal']==option_1].groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index()
-    #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
 
 
 # cambio de nombre de columnas
