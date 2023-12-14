@@ -221,7 +221,7 @@ else:
 
 # cambio de nombre de columnas
 #tb_postulaciones_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
-tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
+#tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 #tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
@@ -240,7 +240,9 @@ graf1.update_layout(yaxis_tickformat='.0f')
 with st.container():
     st.plotly_chart(graf1,use_container_width=True)
     #st.plotly_chart(graf2,use_container_width=True)
+    st.dataframe(tb_postulaciones_sexo_año.head(10))
     st.dataframe(tb_porcentajes_sexo_año.head(10))
+    
 
 
 
