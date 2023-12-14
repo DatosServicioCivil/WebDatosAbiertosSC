@@ -211,19 +211,30 @@ with st.container():
 
 if option_1=='Todos':
     tb_postulaciones_sexo_año = tb_postulaciones.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_porcentajes_sexo_año=tb_postulaciones_sexo_año.groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index().rename(columns={'postulaciones': 'Porcentaje'})
 else:
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']==option_1].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    tb_porcentajes_sexo_año=tb_postulaciones_sexo_año[tb_postulaciones['portal']==option_1].groupby(['Año'])['postulaciones'].apply(lambda x: 100 * x / x.sum()).reset_index().rename(columns={'postulaciones': 'Porcentaje'})
 
-
+# cambio de nombre de columnas
+tb_porcentajes_sexo_año=tb_porcentajes_sexo_año.rename(columns={'Porcentaje':'postulaciones'})
+#-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
 graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
                     update_yaxes(visible=True,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf1.update_layout(yaxis_tickformat='.0f')
 
+#gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+graf2=px.line(tb_porcentajes_sexo_año,x='Año',y='Porcentajes',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                    update_yaxes(visible=True,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf2.update_layout(yaxis_tickformat='.0%')
+
+
 with st.container():
     st.plotly_chart(graf1,use_container_width=True)
-    st.dataframe(tb_postulaciones.T)
+    st.plotly_chart(graf2,use_container_width=True)
 
 
 
