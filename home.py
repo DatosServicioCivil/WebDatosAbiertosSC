@@ -109,14 +109,14 @@ with st.container():
         st.image(image)
         valor_col3=f"{concursos_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total concursos de Alta Dirección Pública</h2>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/adp_nombrado.PNG')
         image=add_logo(logo_path="./imagenes/adp_nombrado.PNG", width=150, height=150)
         st.image(image)
         valor_col4=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
-        st.markdown("<h2 style='text-align: center; color: grey;'>Total nombramientos ADP</h2>", unsafe_allow_html=True)
+        st.markdown("<h2 style='text-align: center; color: grey;'>Total nombramientos en Alta Dirección Pública</h2>", unsafe_allow_html=True)
     with col5:
         #image = Image.open('imagenes/Directores.png')
         image=add_logo(logo_path="./imagenes/Directores.png", width=150, height=150)
