@@ -111,6 +111,7 @@ tb_porcentaje_postulaciones_sexo = (
 )
 # Combinar DataFrames
 tb_postulaciones_sexo = pd.concat([tb_porcentaje_postulaciones_sexo, tb_postulaciones_sexo], axis=1)
+st.dataframe(tb_postulaciones_sexo.head(10))
 # Calcular postulaciones por año y sexo
 # tabla_sexo = tb_postulaciones_sexo.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
 # # Calcular porcentaje de postulaciones por sexo
