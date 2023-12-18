@@ -197,7 +197,7 @@ tb_postulaciones_año=tb_postulaciones_año.rename(columns={'postulaciones':'Tot
 tb_postulaciones_sexo_año=tb_postulaciones_sexo_año.rename(columns={'postulaciones':'Postulaciones'})
 # union de tablas por left join 
 tb_postulaciones_sexo_año=pd.merge(tb_postulaciones_sexo_año,tb_postulaciones_año,how='left',on='Año')
-tb_postulaciones_sexo_año['Porcentaje']=tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones']
+tb_postulaciones_sexo_año['Porcentaje']=100*(tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones'])
 
 # tb_3=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 # posicion_columna = 2
@@ -213,15 +213,15 @@ tb_postulaciones_sexo_año['Porcentaje']=tb_postulaciones_sexo_año['Postulacion
 # graf1.update_layout(yaxis_tickformat='.0f')
 
 #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-# graf2=px.line(tb_porcentajes_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
-#                     update_yaxes(visible=True,title_text=None).\
-#                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-# graf2.update_layout(yaxis_tickformat='.0%')
+graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                     update_yaxes(visible=True,title_text=None).\
+                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf2.update_layout(yaxis_tickformat='.0%')
 
 
 with st.container():
     #st.plotly_chart(graf1,use_container_width=True)
-    #st.plotly_chart(graf2,use_container_width=True)
+    st.plotly_chart(graf2,use_container_width=True)
     st.dataframe(tb_postulaciones_año.head(10))
     st.dataframe(tb_postulaciones_sexo_año.head(10))
     
