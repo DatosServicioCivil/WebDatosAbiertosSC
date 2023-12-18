@@ -167,7 +167,7 @@ with st.container():
         valor_col5=f"{valor_col5:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
-
+st.markdown("<hr>", unsafe_allow_html=True)
 #------------------------------------------------------------------------------------------------
 
 
