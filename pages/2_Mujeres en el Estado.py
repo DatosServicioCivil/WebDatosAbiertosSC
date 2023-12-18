@@ -211,7 +211,7 @@ graf2.update_layout(yaxis_tickformat='.0%')
 with st.container():
     #st.plotly_chart(graf1,use_container_width=True)
     st.plotly_chart(graf2,use_container_width=True)
-    st.text(tb_postulaciones.Sexo.unique())
+    st.text(tb_postulaciones.portal.unique())
     st.dataframe(tb_postulaciones_año.head(10))
     st.dataframe(tb_postulaciones_sexo_año.head(10))
     
