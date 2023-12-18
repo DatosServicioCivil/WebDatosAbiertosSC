@@ -12,15 +12,6 @@ st.set_page_config(layout='wide')
 
 # carga archivos parquet postulaciones ADP
 #--------------------------------------------------------------------------------------------------
-# @st.cache_data
-# def df_post_adp():
-#     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
-#     df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
-#     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
-#     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
-#     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
-#     return df_postulaciones_adp
-
 @st.cache_data
 def df_post_adp():
     df_postulaciones_adp = pd.read_parquet('ADP/tb_postulaciones_adp.parquet')
@@ -28,11 +19,6 @@ def df_post_adp():
 
 # carga archivos parquet concursos EEPP
 #--------------------------------------------------------------------------------------------------
-# @st.cache_data
-# def df_conc_ep():
-#     df_2=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
-#     df_conc_ep=df_2
-#     return df_conc_ep
 
 @st.cache_data
 def df_conc_eepp():
@@ -65,13 +51,8 @@ def tabla_postulaciones():
     tb_postulaciones=pd.concat([tb_1,tb_2,tb_3])
     return tb_postulaciones
 #--------------------------------------------------------------------------------------------------
-# se asocia concursos, cargos, nivel a postulaciones
-#df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+
 df_post_adp=df_post_adp()
-
-#--------------------------------------------------------------------------------------------------
-#df_post_adp=pd.merge(df_postulaciones_adp,df_concursos,how='left',on='CD_Concurso')
-
 # Camculo porcentajes mujeres nombradas en ADP
 Porcentaje_Mujeres_Nombradas_ADP_I_N=df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()\
     /df_post_adp[(df_post_adp['Estado']=='SI') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()
@@ -98,6 +79,12 @@ Porcentaje_Postulaciones_Mujeres_ADP_I_N=df_post_adp[(df_post_adp['Sexo']=='Muje
 
 Porcentaje_Postulaciones_Mujeres_ADP_II_N=df_post_adp[(df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()\
     /df_post_adp[(df_post_adp['Nivel']=='II')]['postulaciones'].sum()
+
+Porcentaje_Postulaciones_Mujeres_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento') & (df_concursos_eepp.Sexo=='Mujer')]['postulaciones'].sum()\
+    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['postulaciones'].sum()
+
+Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Sexo']=='Mujer')]['postulaciones'].sum()\
+                                                / df_tabla_deem['postulaciones'].sum()
 
 # tablas de postulaciones y porcentajes por sexo
 #------------------------------------------------------------------------------------------------
@@ -151,6 +138,7 @@ valor_col_2_2=Porcentaje_Postulaciones_Mujeres_ADP_I_N
 valor_col3=Porcentaje_Mujeres_Nombradas_ADP_II_N
 valor_col_3_2=Porcentaje_Postulaciones_Mujeres_ADP_II_N
 valor_col4=Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP
+valor_col_4_2=Porcentaje_Postulaciones_Mujeres_EEPP
 valor_col5=Porcentaje_Mujeres_Nombradas_DEEM
 with st.container():
     col1,col2,col3,col4,col5=st.columns(5,gap='small')
@@ -162,23 +150,26 @@ with st.container():
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
         valor_col_2_2=f"{valor_col_2_2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_2_2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos II nivel ADP</h3>", unsafe_allow_html=True)
         valor_col_3_2=f"{valor_col_3_2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_3_2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos II nivel ADP</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de mujeres a cargos II nivel ADP</h3>", unsafe_allow_html=True)
     with col4:
-        #image = Image.open('imagenes/mannager_selection.png')
-        #st.image(image)
         valor_col4=f"{valor_col4:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos Jefaturas</h3>", unsafe_allow_html=True)
+        valor_col_4_2=f"{valor_col_4_2:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_4_2}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos Jefaturas</h3>", unsafe_allow_html=True)
     with col5:
-        #image = Image.open('imagenes/mannager_selection.png')
-        #st.image(image)
+        valor_col5=f"{valor_col5:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
+
         valor_col5=f"{valor_col5:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
