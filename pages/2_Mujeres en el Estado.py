@@ -174,7 +174,7 @@ with st.container():
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
-        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEEM', 'EEPP'])
+        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEE', 'EEPP'])
     with col2:
         option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
 
