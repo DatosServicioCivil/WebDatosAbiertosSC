@@ -155,15 +155,12 @@ with st.container():
     with col1:
         st.markdown(f"<h3 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h3>", unsafe_allow_html=True)
     with col2:
-        col2_1,col2_2=st.columns(2,gap='small')
-        with col2_1:
-            valor_col2=f"{valor_col2:.2%}"
-            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-            st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
-        with col2_2:
-            valor_col2_2=f"{valor_col_2_2:.2%}"
-            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_2_2}</h1>", unsafe_allow_html=True)
-            st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
+        valor_col2=f"{valor_col2:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
+        valor_col2_2=f"{valor_col_2_2:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_2_2}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
