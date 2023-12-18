@@ -197,6 +197,7 @@ tb_postulaciones_año=tb_postulaciones_año.rename(columns={'postulaciones':'Tot
 tb_postulaciones_sexo_año=tb_postulaciones_sexo_año.rename(columns={'postulaciones':'Postulaciones'})
 # union de tablas por left join 
 tb_postulaciones_sexo_año=pd.merge(tb_postulaciones_sexo_año,tb_postulaciones_año,how='left',on='Año')
+tb_postulaciones_sexo_año['Porcentaje']=tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones']
 
 # tb_3=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 # posicion_columna = 2
