@@ -204,6 +204,7 @@ tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulacio
 graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
                      update_yaxes(visible=True,title_text=None).\
                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
 
