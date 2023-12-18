@@ -215,7 +215,7 @@ with st.container():
     #st.plotly_chart(graf2,use_container_width=True)
     st.dataframe(tb_postulaciones_sexo_año.head(10))
     st.dataframe(tb_porcentajes_sexo_año.head(10))
-    st.dataframe(tb_3.head(10))
+    st.dataframe(t3.head(10))
     
 
 
