@@ -194,7 +194,7 @@ tb_3=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 posicion_columna = 2
 nombre_actual = tb_porcentajes_sexo_año.columns[posicion_columna]
 tb_porcentajes_sexo_año.rename(columns={nombre_actual: 'Porcentaje'}, inplace=True)
-#tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
+tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
 graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
