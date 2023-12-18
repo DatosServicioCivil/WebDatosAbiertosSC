@@ -195,10 +195,10 @@ tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulacio
 
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
-# graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
-#                     update_yaxes(visible=True,title_text=None).\
-#                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-# graf1.update_layout(yaxis_tickformat='.0f')
+graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                     update_yaxes(visible=True,title_text=None).\
+                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf1.update_layout(yaxis_tickformat='.0f')
 
 #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
 graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
@@ -209,11 +209,14 @@ graf2.update_layout(yaxis_tickformat='.0%')
 
 
 with st.container():
-    #st.plotly_chart(graf1,use_container_width=True)
-    st.plotly_chart(graf2,use_container_width=True)
-    st.text(tb_postulaciones.portal.unique())
-    st.dataframe(tb_postulaciones_año.head(10))
-    st.dataframe(tb_postulaciones_sexo_año.head(10))
+    col1,col2=st.columns(2,gap='small')
+    with col1:
+        st.plotly_chart(graf2,use_container_width=True)
+    with col2:
+        st.plotly_chart(graf1,use_container_width=True)
+    #st.text(tb_postulaciones.portal.unique())
+    #st.dataframe(tb_postulaciones_año.head(10))
+    #st.dataframe(tb_postulaciones_sexo_año.head(10))
     
 
 
