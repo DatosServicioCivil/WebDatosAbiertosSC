@@ -195,7 +195,7 @@ tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulacio
 
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
-graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='Postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
                      update_yaxes(visible=True,title_text=None).\
                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf1.update_layout(yaxis_tickformat='.0f')
