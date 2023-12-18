@@ -90,6 +90,14 @@ df_tabla_deem=df_tabla_deem()
 Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']=='Femenino')]['idConcurso'].count()\
                                                 / df_tabla_deem[(df_tabla_deem['Estado']=='Nombrado') & (df_tabla_deem['SexoNombrado']!='Sin Inform Portal-GeeDem') & (df_tabla_deem['SexoNombrado']!='')]['idConcurso'].count()
 
+
+# Porcentajes de Postulaciones de Mujeres
+#------------------------------------------------------------------------------------------------
+Porcentaje_Postulaciones_Mujeres_ADP_I_N=df_post_adp[(df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()\
+    /df_post_adp[(df_post_adp['Nivel']=='I')]['postulaciones'].sum()
+
+
+
 # tablas de postulaciones y porcentajes por sexo
 #------------------------------------------------------------------------------------------------
 # Concatenar DataFrames
@@ -138,6 +146,7 @@ st.markdown("<hr>", unsafe_allow_html=True)
 texto_mas_mujeres="""Más Mujeres: Conoce los principales indicadores del Servicio Civil que 
 potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estado"""
 valor_col2=Porcentaje_Mujeres_Nombradas_ADP_I_N
+valor_col_2_2=Porcentaje_Postulaciones_Mujeres_ADP_I_N
 valor_col3=Porcentaje_Mujeres_Nombradas_ADP_II_N
 valor_col4=Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP
 valor_col5=Porcentaje_Mujeres_Nombradas_DEEM
@@ -146,11 +155,15 @@ with st.container():
     with col1:
         st.markdown(f"<h3 style='text-align: center; color: grey;'>{texto_mas_mujeres}</h3>", unsafe_allow_html=True)
     with col2:
-        #image = Image.open('imagenes/job_offer.png')
-        #st.image(image)
-        valor_col2=f"{valor_col2:.2%}"
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
+        col2_1,col2_2=st.columns(2,gap='small')
+        with col2_1:
+            valor_col2=f"{valor_col2:.2%}"
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+            st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
+        with col2_2:
+            valor_col2_2=f"{valor_col_2_2:.2%}"
+            st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_2_2}</h1>", unsafe_allow_html=True)
+            st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
@@ -167,7 +180,7 @@ with st.container():
         valor_col5=f"{valor_col5:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos DEEM</h3>", unsafe_allow_html=True)
-    st.markdown("<hr>", unsafe_allow_html=True)
+    
 #------------------------------------------------------------------------------------------------
 
 
