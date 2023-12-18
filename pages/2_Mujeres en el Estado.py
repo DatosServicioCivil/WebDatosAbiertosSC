@@ -96,7 +96,8 @@ Porcentaje_Mujeres_Nombradas_DEEM=df_tabla_deem[(df_tabla_deem['Estado']=='Nombr
 Porcentaje_Postulaciones_Mujeres_ADP_I_N=df_post_adp[(df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='I')]['postulaciones'].sum()\
     /df_post_adp[(df_post_adp['Nivel']=='I')]['postulaciones'].sum()
 
-
+Porcentaje_Postulaciones_Mujeres_ADP_II_N=df_post_adp[(df_post_adp['Sexo']=='Mujer') & (df_post_adp['Nivel']=='II')]['postulaciones'].sum()\
+    /df_post_adp[(df_post_adp['Nivel']=='II')]['postulaciones'].sum()
 
 # tablas de postulaciones y porcentajes por sexo
 #------------------------------------------------------------------------------------------------
@@ -148,6 +149,7 @@ potencian y aumentan el liderazgo y presencia laboral de las mujeres en el Estad
 valor_col2=Porcentaje_Mujeres_Nombradas_ADP_I_N
 valor_col_2_2=Porcentaje_Postulaciones_Mujeres_ADP_I_N
 valor_col3=Porcentaje_Mujeres_Nombradas_ADP_II_N
+valor_col_3_2=Porcentaje_Postulaciones_Mujeres_ADP_II_N
 valor_col4=Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP
 valor_col5=Porcentaje_Mujeres_Nombradas_DEEM
 with st.container():
@@ -158,13 +160,16 @@ with st.container():
         valor_col2=f"{valor_col2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos I nivel ADP</h3>", unsafe_allow_html=True)
-        valor_col2_2=f"{valor_col_2_2:.2%}"
+        valor_col_2_2=f"{valor_col_2_2:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_2_2}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos I nivel ADP</h3>", unsafe_allow_html=True)
     with col3:
         valor_col3=f"{valor_col3:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Mujeres seleccionadas cargos II nivel ADP</h3>", unsafe_allow_html=True)
+        valor_col_3_2=f"{valor_col_3_2:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col_3_2}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de Mujeres a cargos II nivel ADP</h3>", unsafe_allow_html=True)
     with col4:
         #image = Image.open('imagenes/mannager_selection.png')
         #st.image(image)
