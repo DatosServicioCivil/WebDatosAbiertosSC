@@ -191,7 +191,7 @@ else:
 
 # cambio de nombre de columnas
 tb_3=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
-posicion_columna = 3
+posicion_columna = 2
 nombre_actual = tb_porcentajes_sexo_año.columns[posicion_columna]
 tb_porcentajes_sexo_año.rename(columns={nombre_actual: 'Porcentaje'}, inplace=True)
 #tb_porcentajes_sexo_año=pd.concat([tb_postulaciones_sexo_año,tb_porcentajes_sexo_año],axis=1)
