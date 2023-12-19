@@ -80,14 +80,21 @@ df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
 #-----------------postulaciones adp
 #-------------------------------------------------------------------------------------------------------------
 
+# @st.cache_data
+# def df_post_adp():
+#     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
+#     df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
+#     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
+#     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
+#     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+#     return df_postulaciones_adp
+
 @st.cache_data
 def df_post_adp():
-    df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
-    df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
-    df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
-    df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
-    df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
-    return df_postulaciones_adp
+    tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    tb_postulaciones_adp=tb_1
+    return tb_postulaciones_adp
+
 
 @st.cache_data
 def df_conc_ep():
@@ -418,19 +425,19 @@ if a=='Alta Dirección Pública':
 
     #----------------------------------------------------------------------------------------------------------------------
     # filtro nombramientos ADP
-    #if seleccion_adp=='Nombramientos':
-    #    with st.container():
-    #        col1,col2,col3,col4,col5=st.columns(5,gap="large")
-    #        with col1:
-    #            option_1 = st.selectbox('Nivel Jerárquico',Nivel)
-    #        with col2:
-    #            option_2 = st.selectbox('Región',Region)
-    #        with col3:
-    #            option_3 = st.selectbox('Ministerio',Ministerios)
-    #        with col4:
-    #            option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
-    #        with col5:
-    #            option_5 = st.selectbox('Sexo ADP',sexo_list) 
+    if seleccion_adp=='Nombramientos':
+        with st.container():
+            col1,col2,col3,col4,col5=st.columns(5,gap="large")
+            with col1:
+                option_1 = st.selectbox('Nivel Jerárquico',Nivel)
+            with col2:
+                option_2 = st.selectbox('Región',Region)
+            with col3:
+                option_3 = st.selectbox('Ministerio',Ministerios)
+            with col4:
+                option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
+            with col5:
+                option_5 = st.selectbox('Sexo ADP',sexo_list) 
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
