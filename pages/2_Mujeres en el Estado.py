@@ -254,6 +254,7 @@ Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/df_postulaciones['postula
 with st.container():
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
+        Postulaciones_Mujeres=f"{Postulaciones_Mujeres:,}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
         Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
