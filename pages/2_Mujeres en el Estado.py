@@ -20,26 +20,26 @@ st.set_page_config(layout='wide')
 # # carga archivos parquet concursos EEPP
 # #--------------------------------------------------------------------------------------------------
 
-# @st.cache_data
-# def df_conc_eepp():
-#     df_conc_ep = pd.read_parquet('EEPP/df_concursos_eepp.parquet')
-#     return df_conc_ep
+@st.cache_data
+def df_conc_eepp():
+    df_conc_ep = pd.read_parquet('EEPP/df_concursos_eepp.parquet')
+    return df_conc_ep
 
 # # carga archivos parquet DEEM
 # #--------------------------------------------------------------------------------------------------
-# # carga archivos parquet postulaciones DEEM
-# @st.cache_data
-# def df_post_deem():
-#     df=pq.read_table('DEEM/df_postulaciones_dee.parquet').to_pandas()
-#     df_post_deem=df
-#     return df_post_deem
+# carga archivos parquet postulaciones DEEM
+@st.cache_data
+def df_post_deem():
+    df=pq.read_table('DEEM/df_postulaciones_dee.parquet').to_pandas()
+    df_post_deem=df
+    return df_post_deem
 
-# # carga archivos parquet concursos DEEM
-# @st.cache_data
-# def df_tabla_deem():
-#     df=pq.read_table('DEEM/df_concursos_dee.parquet').to_pandas()
-#     df_tab_deem=df
-#     return df_tab_deem
+# carga archivos parquet concursos DEEM
+@st.cache_data
+def df_tabla_deem():
+    df=pq.read_table('DEEM/df_concursos_dee.parquet').to_pandas()
+    df_tab_deem=df
+    return df_tab_deem
 
 # union postulaciones
 #--------------------------------------------------------------------------------------------------
@@ -72,22 +72,25 @@ def tabla_postulaciones_dee():
 
 #--------------------------------------------------------------------------------------------------
 
+
+# carga datos de postulaciones en ADP
 tb_postulaciones_adp=tabla_postulaciones_adp()
-# Camculo porcentajes mujeres nombradas en ADP
+# Calculo porcentajes mujeres nombradas en ADP
 Porcentaje_Mujeres_Nombradas_ADP_I_N=tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Sexo']=='Mujer') & (tb_postulaciones_adp['Nivel']=='I')]['postulaciones'].sum()\
     /tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Nivel']=='I')]['postulaciones'].sum()
 Porcentaje_Mujeres_Nombradas_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Sexo']=='Mujer') & (tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()\
     /tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()
 
-# informacion de convocatorias de EEPP
+# carga datos de postulaciones en EEPP
 tb_postulaciones_eepp=tabla_postulaciones_eepp()
-#df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso']).dt.year
 
 Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()\
     /tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()
 
-#Calculo porcentaje mujeres nombradas deem
+
+# carga datos de postulaciones en ADP
 tb_postulaciones_dee=tabla_postulaciones_dee()
+#Calculo porcentaje mujeres nombradas deem
 Porcentaje_Mujeres_Nombradas_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].count()\
                                                 / tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']!='Otro')]['postulaciones'].count()
 
