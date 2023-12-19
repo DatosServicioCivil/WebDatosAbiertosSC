@@ -440,7 +440,7 @@ if a=='Alta Dirección Pública':
             with col5:
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
         
-        st.texto(nombramiento_adp.Estado.unique())
+        st.text(nombramiento_adp.Estado.unique())
 
         st.dataframe(nombramiento_adp.head())
     
