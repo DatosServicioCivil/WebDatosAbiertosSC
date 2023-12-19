@@ -90,10 +90,14 @@ Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_
 
 
 # carga datos de postulaciones en ADP
+df_concursos_dee=df_tabla_deem()
 tb_postulaciones_dee=tabla_postulaciones_dee()
 #Calculo porcentaje mujeres nombradas deem
-Porcentaje_Mujeres_Nombradas_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].count()\
-                                                / tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']!='Otro')]['postulaciones'].count()
+#Porcentaje_Mujeres_Nombradas_DEEM=df_concursos_dee[(df_concursos_dee['Estado']=='Nombrado') & (df_concursos_dee['SexoNombrado']=='Mujer')]['postulaciones'].count()\
+#                                                / df_concursos_dee[(df_concursos_dee['Estado']=='Nombrado') & ((df_concursos_dee['SexoNombrado']!='Sin Inform Portal-GeeDem') | (df_concursos_dee['SexoNombrado']!='Sin Inform Portal-GeeDem'))]['postulaciones'].count()
+Porcentaje_Mujeres_Nombradas_DEEM=df_concursos_dee[(df_concursos_dee['Estado']=='Nombrado') & (df_concursos_dee['Cargo']=='Director(a)') & (df_concursos_dee['SexoNombrado']=='Femenino')]['idConcurso'].count()\
+                                                / df_concursos_dee[(df_concursos_dee['Estado']=='Nombrado') & (df_concursos_dee['SexoNombrado']!='Sin Inform Portal-GeeDem') & (df_concursos_dee['SexoNombrado']!='')]\
+                                                ['idConcurso'].count()
 
 
 # Porcentajes de Postulaciones de Mujeres
@@ -107,8 +111,11 @@ Porcentaje_Postulaciones_Mujeres_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones
 Porcentaje_Postulaciones_Mujeres_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Post_Mujeres'].sum()\
     /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Total_Postulaciones'].sum()
 
-Porcentaje_Postulaciones_Mujeres_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].sum()\
-                                                / tb_postulaciones_dee['postulaciones'].sum()
+#Porcentaje_Postulaciones_Mujeres_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].sum()\
+#                                                / tb_postulaciones_dee['postulaciones'].sum()
+
+Porcentaje_Postulaciones_Mujeres_DEEM=df_concursos_dee[(df_concursos_dee['Cargo']=='Director(a)')]['NumMujeres'].sum()\
+                                                / df_concursos_dee[(df_concursos_dee['Cargo']=='Director(a)')]['Número Postulaciones'].sum()\
 
 
 
