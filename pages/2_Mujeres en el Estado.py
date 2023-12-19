@@ -247,12 +247,21 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
+df_postulaciones=tabla_postulaciones()
+Postulaciones_Mujeres=df_postulaciones[df_postulaciones['Sexo']=='Mujer']['postulaciones'].sum()
+Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/df_postulaciones['postulaciones'].sum()
 
 with st.container():
-    col1,col2=st.columns(2,gap='small')
+    col1,col2,col3=st.columns(3,gap='small')
     with col1:
-        st.plotly_chart(graf2,use_container_width=True)
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
+        Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
     with col2:
+        st.plotly_chart(graf2,use_container_width=True)
+    with col3:
         st.plotly_chart(graf1,use_container_width=True)
     #st.text(tb_postulaciones.portal.unique())
     #st.dataframe(tb_postulaciones_año.head(10))
