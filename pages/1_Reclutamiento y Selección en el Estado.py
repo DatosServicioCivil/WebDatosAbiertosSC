@@ -426,6 +426,7 @@ if a=='Alta Dirección Pública':
     #----------------------------------------------------------------------------------------------------------------------
     # filtro nombramientos ADP
     if seleccion_adp=='Nombramientos':
+        nombramiento_adp=tabla_nombramientos_adp()
         with st.container():
             col1,col2,col3,col4,col5=st.columns(5,gap="large")
             with col1:
@@ -439,7 +440,9 @@ if a=='Alta Dirección Pública':
             with col5:
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
         
-        st.dataframe(tabla_nombramientos_adp().head())
+        st.texto(nombramiento_adp.Estado.unique())
+
+        st.dataframe(nombramiento_adp.head())
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
