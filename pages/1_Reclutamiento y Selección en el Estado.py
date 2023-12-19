@@ -92,7 +92,8 @@ def df_post_adp():
 @st.cache_data
 def tabla_nombramientos_adp():
     tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
-    tb_nombramientos_adp=tb_1[tb_1['Estado']=='Nombrado']
+    #tb_nombramientos_adp=tb_1[tb_1['Estado']=='Nombrado']
+    tb_nombramientos_adp=tb_1
     return tb_nombramientos_adp
 
 @st.cache_data
