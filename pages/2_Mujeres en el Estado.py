@@ -82,10 +82,11 @@ Porcentaje_Mujeres_Nombradas_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones_adp
     /tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()
 
 # carga datos de postulaciones en EEPP
+df_concursos_eepp=df_conc_eepp()
 tb_postulaciones_eepp=tabla_postulaciones_eepp()
 
-Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()\
-    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()
+Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['selec_Mujeres'].sum()\
+    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Total_Seleccionados'].sum()
 
 
 # carga datos de postulaciones en ADP
@@ -103,8 +104,8 @@ Porcentaje_Postulaciones_Mujeres_ADP_I_N=tb_postulaciones_adp[(tb_postulaciones_
 Porcentaje_Postulaciones_Mujeres_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones_adp['Sexo']=='Mujer') & (tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()\
     /tb_postulaciones_adp[(tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()
 
-Porcentaje_Postulaciones_Mujeres_EEPP=tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento') & (tb_postulaciones_eepp['Sexo']=='Mujer')]['postulaciones'].sum()\
-    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()
+Porcentaje_Postulaciones_Mujeres_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Post_Mujeres'].sum()\
+    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Tipo Base']=='Jefe Departamento')]['Total_Postulaciones'].sum()
 
 Porcentaje_Postulaciones_Mujeres_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].sum()\
                                                 / tb_postulaciones_dee['postulaciones'].sum()
