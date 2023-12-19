@@ -105,7 +105,7 @@ Porcentaje_Postulaciones_Mujeres_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones
     /tb_postulaciones_adp[(tb_postulaciones_adp['Nivel']=='II')]['postulaciones'].sum()
 
 Porcentaje_Postulaciones_Mujeres_EEPP=df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Post_Mujeres'].sum()\
-    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Tipo Base']=='Jefe Departamento')]['Total_Postulaciones'].sum()
+    /df_concursos_eepp[(df_concursos_eepp['Tipo Base']=='Jefe Departamento')]['Total_Postulaciones'].sum()
 
 Porcentaje_Postulaciones_Mujeres_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].sum()\
                                                 / tb_postulaciones_dee['postulaciones'].sum()
