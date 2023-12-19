@@ -88,8 +88,8 @@ Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=tb_postulaciones_eepp[(tb_postul
 
 #Calculo porcentaje mujeres nombradas deem
 tb_postulaciones_dee=tabla_postulaciones_dee()
-Porcentaje_Mujeres_Nombradas_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Estado']=='Nombrado') & (tb_postulaciones_dee['SexoNombrado']=='Femenino')]['idConcurso'].count()\
-                                                / tb_postulaciones_dee[(tb_postulaciones_dee['Estado']=='Nombrado') & (tb_postulaciones_dee['SexoNombrado']!='Sin Inform Portal-GeeDem') & (tb_postulaciones_dee['SexoNombrado']!='')]['idConcurso'].count()
+Porcentaje_Mujeres_Nombradas_DEEM=tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']=='Mujer')]['postulaciones'].count()\
+                                                / tb_postulaciones_dee[(tb_postulaciones_dee['Estado']==2) & (tb_postulaciones_dee['Sexo']!='Otro')]['postulaciones'].count()
 
 
 # Porcentajes de Postulaciones de Mujeres
