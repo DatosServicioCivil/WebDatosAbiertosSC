@@ -80,20 +80,15 @@ df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
 #-----------------postulaciones adp
 #-------------------------------------------------------------------------------------------------------------
 
-# @st.cache_data
-# def df_post_adp():
-#     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
-#     df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
-#     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
-#     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
-#     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
-#     return df_postulaciones_adp
-
 @st.cache_data
 def df_post_adp():
-    tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
-    tb_postulaciones_adp=tb_1
-    return tb_postulaciones_adp
+    df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
+    df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
+    df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
+    df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
+    df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+    return df_postulaciones_adp
+
 
 
 @st.cache_data
