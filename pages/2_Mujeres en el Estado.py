@@ -83,8 +83,8 @@ Porcentaje_Mujeres_Nombradas_ADP_II_N=tb_postulaciones_adp[(tb_postulaciones_adp
 tb_postulaciones_eepp=tabla_postulaciones_eepp()
 #df_concursos_eepp['Año']=pd.to_datetime(df_concursos_eepp['Fecha Final Proceso']).dt.year
 
-Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=tb_postulaciones_eepp[(tb_postulaciones_eepp['Tipo Base']=='Jefe Departamento')]['selec_Mujeres'].sum()\
-    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Tipo Base']=='Jefe Departamento')]['Total_Seleccionados'].sum()
+Porcentaje_Mujeres_Seleccionadas_Jefaturas_EEPP=tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()\
+    /tb_postulaciones_eepp[(tb_postulaciones_eepp['Nivel']=='Jefe Departamento')]['postulaciones'].sum()
 
 #Calculo porcentaje mujeres nombradas deem
 tb_postulaciones_dee=tabla_postulaciones_dee()
