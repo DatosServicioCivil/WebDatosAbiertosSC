@@ -89,7 +89,11 @@ def df_post_adp():
     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
     return df_postulaciones_adp
 
-
+@st.cache_data
+def tabla_nombramientos_adp():
+    tb_1=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    tb_nombramientos_adp=tb_1[tb_1['Estado']=='Nombrado']
+    return tb_nombramientos_adp
 
 @st.cache_data
 def df_conc_ep():
@@ -433,6 +437,8 @@ if a=='Alta Dirección Pública':
                 option_4 = st.selectbox('Servicio',select_servicio(df_concursos,option_3))   
             with col5:
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
+        
+        st.dataframe(tabla_nombramientos_adp().head())
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
