@@ -210,7 +210,6 @@ with st.container():
     
 #------------------------------------------------------------------------------------------------
 
-
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
@@ -221,9 +220,13 @@ with st.container():
 if option_1=='Todos':
     tb_postulaciones_año = tb_postulaciones.groupby(['Año'])['postulaciones'].sum().reset_index()
     tb_postulaciones_sexo_año = tb_postulaciones.groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    Postulaciones_Mujeres=tb_postulaciones[tb_postulaciones['Sexo']=='Mujer']['postulaciones'].sum()
+    Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/tb_postulaciones['postulaciones'].sum()
 else:
     tb_postulaciones_año = tb_postulaciones[tb_postulaciones['portal']==option_1].groupby(['Año'])['postulaciones'].sum().reset_index()
     tb_postulaciones_sexo_año = tb_postulaciones[tb_postulaciones['portal']==option_1].groupby(['Año', 'Sexo'])['postulaciones'].sum().reset_index()
+    Postulaciones_Mujeres=tb_postulaciones[(tb_postulaciones['Sexo']=='Mujer') & (tb_postulaciones['portal']==option_1)]['postulaciones'].sum()
+    Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/tb_postulaciones[(tb_postulaciones['portal']==option_1)]['postulaciones'].sum()
 
 
 # cambio de nombre de columnas
@@ -247,9 +250,9 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
-df_postulaciones=tabla_postulaciones()
-Postulaciones_Mujeres=df_postulaciones[df_postulaciones['Sexo']=='Mujer']['postulaciones'].sum()
-Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/df_postulaciones['postulaciones'].sum()
+# df_postulaciones=tabla_postulaciones()
+# Postulaciones_Mujeres=df_postulaciones[df_postulaciones['Sexo']=='Mujer']['postulaciones'].sum()
+# Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/df_postulaciones['postulaciones'].sum()
 
 with st.container():
     col1,col2,col3=st.columns(3,gap='small')
