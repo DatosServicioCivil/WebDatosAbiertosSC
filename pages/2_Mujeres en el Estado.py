@@ -250,9 +250,6 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
-# df_postulaciones=tabla_postulaciones()
-# Postulaciones_Mujeres=df_postulaciones[df_postulaciones['Sexo']=='Mujer']['postulaciones'].sum()
-# Porcentaje_Postulaciones_Mujeres=Postulaciones_Mujeres/df_postulaciones['postulaciones'].sum()
 
 with st.container():
     col1,col2,col3=st.columns(3,gap='small')
@@ -267,13 +264,6 @@ with st.container():
         st.plotly_chart(graf2,use_container_width=True)
     with col3:
         st.plotly_chart(graf1,use_container_width=True)
-    #st.text(tb_postulaciones.portal.unique())
-    #st.dataframe(tb_postulaciones_año.head(10))
-    #st.dataframe(tb_postulaciones_sexo_año.head(10))
+
     
 
-
-
-#st.dataframe(df_concursos.head(10))
-#st.markdown("<hr>", unsafe_allow_html=True)
-#st.dataframe(df_postulaciones_adp.head(10))
