@@ -386,7 +386,7 @@ if a=='Alta Dirección Pública':
     # filtro postulaciones ADP
     if seleccion_adp=='Postulaciones':
         df_postulaciones_adp=df_post_adp()
-        st.dataframe(df_postulaciones_adp.head(10))
+        
         with st.container():
             col1,col2,col3,col4,col5=st.columns(5,gap="large")
             with col1:
@@ -401,24 +401,24 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo Postulantes',sexo_list)
         
 
-        Postulaciones_ADP=df_postulaciones_adp['ID_Postulacion'].count()
-        Postulaciones_ADP_I_N=df_postulaciones_adp[df_postulaciones_adp.Nivel=='I']['ID_Postulacion'].count()
-        Postulaciones_ADP_II_N=df_postulaciones_adp[df_postulaciones_adp.Nivel=='II']['ID_Postulacion'].count()
+        # Postulaciones_ADP=df_postulaciones_adp['ID_Postulacion'].count()
+        # Postulaciones_ADP_I_N=df_postulaciones_adp[df_postulaciones_adp.Nivel=='I']['ID_Postulacion'].count()
+        # Postulaciones_ADP_II_N=df_postulaciones_adp[df_postulaciones_adp.Nivel=='II']['ID_Postulacion'].count()
 
-        with st.container():
-            col1,col2,col3=st.columns(5,gap='small')
-            with col1:
-                valor_col1=f"{Postulaciones_ADP:,}"
-                st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
-                st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de I y II nivel ADP</h3>", unsafe_allow_html=True)
-            with col2:
-                valor_col2=f"{Postulaciones_ADP_I_N:,}"
-                st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
-                st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de I nivel ADP</h3>", unsafe_allow_html=True)
-            with col3:
-                valor_col3=f"{Postulaciones_ADP_II_N:,}"
-                st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
-                st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de II nivel ADP</h3>", unsafe_allow_html=True)
+        # with st.container():
+        #     col1,col2,col3=st.columns(5,gap='small')
+        #     with col1:
+        #         valor_col1=f"{Postulaciones_ADP:,}"
+        #         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col1}</h1>", unsafe_allow_html=True)
+        #         st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de I y II nivel ADP</h3>", unsafe_allow_html=True)
+        #     with col2:
+        #         valor_col2=f"{Postulaciones_ADP_I_N:,}"
+        #         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+        #         st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de I nivel ADP</h3>", unsafe_allow_html=True)
+        #     with col3:
+        #         valor_col3=f"{Postulaciones_ADP_II_N:,}"
+        #         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
+        #         st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones a concursos para cargos de II nivel ADP</h3>", unsafe_allow_html=True)
 
         
         df_postulaciones_adp['GENERO']=np.where(df_postulaciones_adp['GENERO']=='M','Hombre','Mujer')
