@@ -73,25 +73,43 @@ with col1:
       region=st.selectbox("Región", ["Todas","Aysén", "Magallanes"])
    else:
        region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo","Valparaíso","Metropolitana" ,"O’Higgins", "Maule","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos","Aysén", "Magallanes"])
+
 with col2:
-   html_table ="""
-   <table class="editorDemoTable">
-  <tbody>
-    <tr>
-      <td style="text-align: center; font-family: Arial;"><strong>% Cargos ADP Nombrados</strong></td>
-      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
-      <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
-    </tr>
-    <tr>
-      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi1)+"""</div></strong></span></td>
-      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi2)+"""</div></strong></span></td>
-      <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi3)+"""</div></strong></span></td>
-    </tr>
-  </tbody>
-</table>
-<p><span style="color: #999999; font-family: Arial; font-size: 10px;">Fecha Actuización: 30/09/2023</span>.</p>
-   """
-   components.html(html_table)
+      col21,col22,col23=st.columns(spec=[1,1,1,1],gap='small')
+      with col21:
+         valor_col2=f"{kpi1:.2%}"
+         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
+         st.markdown("<h3 style='text-align: center; color: grey;'>% Cargos ADP Nombrados</h3>", unsafe_allow_html=True)
+      with col22:
+         valor_col3=f"{kpi2:.2%}"
+         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
+         st.markdown("<h3 style='text-align: center; color: grey;'>% Seleccionados EEPP en Región de Residencia</h3>", unsafe_allow_html=True)
+      with col23:
+         valor_col4=f"{kpi3:.2%}"
+         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
+         st.markdown("<h3 style='text-align: center; color: grey;'>% Seleccionados PCH en Región de Residencia</h3>", unsafe_allow_html=True)
+
+
+
+# with col2:
+#    html_table ="""
+#    <table class="editorDemoTable">
+#   <tbody>
+#     <tr>
+#       <td style="text-align: center; font-family: Arial;"><strong>% Cargos ADP Nombrados</strong></td>
+#       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
+#       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
+#     </tr>
+#     <tr>
+#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi1)+"""</div></strong></span></td>
+#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi2)+"""</div></strong></span></td>
+#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi3)+"""</div></strong></span></td>
+#     </tr>
+#   </tbody>
+# </table>
+# <p><span style="color: #999999; font-family: Arial; font-size: 10px;">Fecha Actuización: 30/09/2023</span>.</p>
+#    """
+#   components.html(html_table)
       
 with col3:
    # zona norte
