@@ -61,6 +61,12 @@ kpi3=df_kpi_region[df_kpi_region.id=='t_5_100'].resultado.values[0]
 kpi1 = kpi1.replace(',', '.')
 kpi1 = float(kpi1)
 
+kpi2 = kpi2.replace(',', '.')
+kpi2 = float(kpi2)
+
+kpi3 = kpi3.replace(',', '.')
+kpi3 = float(kpi3)
+
 st.text(type(kpi1))
 # df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8') 
 
@@ -86,11 +92,11 @@ with col2:
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
          st.markdown("<h3 style='text-align: center; color: grey;'>% Cargos ADP Nombrados</h3>", unsafe_allow_html=True)
       with col22:
-         valor_col3=f"{kpi2}"
+         valor_col3=f"{kpi2:.2%}"
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col3}</h1>", unsafe_allow_html=True)
          st.markdown("<h3 style='text-align: center; color: grey;'>% Seleccionados EEPP en Región de Residencia</h3>", unsafe_allow_html=True)
       with col23:
-         valor_col4=f"{kpi3}"
+         valor_col4=f"{kpi3:.2%}"
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
          st.markdown("<h3 style='text-align: center; color: grey;'>% Seleccionados PCH en Región de Residencia</h3>", unsafe_allow_html=True)
 #   components.html(html_table)
