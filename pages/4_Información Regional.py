@@ -109,35 +109,35 @@ with col3:
    if region=='Arica':
       st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota',width=500)
    if region=='Tarapacá':
-      st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá')
+      st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá',width=500)
    if region=='Antofagasta':
-      st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg", caption='La Mano del Desierto - Región de Antofagasta')
+      st.image("imagenes/Fotos_Regiones/Mano_del_desierto_07.jpg", caption='La Mano del Desierto - Región de Antofagasta',width=500)
    if region=='Atacama':
-      st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg", caption='Desierto florido - Región de Atacama')
+      st.image("imagenes/Fotos_Regiones/Desierto_florido.jpg", caption='Desierto florido - Región de Atacama',width=500)
    if region=='Coquimbo':
-      st.image("imagenes/Fotos_Regiones/la-serena.jpg",caption='Faro de La Serena - Región de Coquimbo')
+      st.image("imagenes/Fotos_Regiones/la-serena.jpg",caption='Faro de La Serena - Región de Coquimbo',width=500)
    # zona centro
    if region=='Valparaíso':
-      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso - Región de Valparaíso')
+      st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso - Región de Valparaíso',width=500)
    if region=='Metropolitana':
-      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución - Región Metropolitana')
+      st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución - Región Metropolitana',width=500)
    if region=='O’Higgins':
-      st.image("imagenes/Fotos_Regiones/ohiggins.jpg",caption='Ciudad de Rancagua - Región del Libertador General Bernardo O’Higgins')
+      st.image("imagenes/Fotos_Regiones/ohiggins.jpg",caption='Ciudad de Rancagua - Región del Libertador General Bernardo O’Higgins',width=500)
    if region=='Maule':
-      st.image("imagenes/Fotos_Regiones/maule.jpg",caption='Parque Nacional Radal Siete Tazas - Región del Maule')
+      st.image("imagenes/Fotos_Regiones/maule.jpg",caption='Parque Nacional Radal Siete Tazas - Región del Maule',width=500)
    # zona sur
    if region=='Ñuble':
-      st.image("imagenes/Fotos_Regiones/ñuble.jpg",caption='Catedral de Chillan - Región de Ñuble')
+      st.image("imagenes/Fotos_Regiones/ñuble.jpg",caption='Catedral de Chillan - Región de Ñuble',width=500)
    if region=='Biobío':
-      st.image("imagenes/Fotos_Regiones/biobio.jpg",caption='Ciudad de Concepción - Región del Biobío')
+      st.image("imagenes/Fotos_Regiones/biobio.jpg",caption='Ciudad de Concepción - Región del Biobío',width=500)
    if region=='La Araucanía':
-      st.image("imagenes/Fotos_Regiones/araucania.jpg",caption='Volcan Villarrica - Región de la Araucanía')
+      st.image("imagenes/Fotos_Regiones/araucania.jpg",caption='Volcan Villarrica - Región de la Araucanía',width=500)
    if region=='Los Ríos':
-      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg",caption='Rio Calle Calle - Región de los Ríos')
+      st.image("imagenes/Fotos_Regiones/800px-Valdivia_y_su_río.jpg",caption='Rio Calle Calle - Región de los Ríos',width=500)
    if region=='Los Lagos':
-      st.image("imagenes/Fotos_Regiones/lagos.jpg",caption='Isla de Chiloé - Región de Los Lagos ')
+      st.image("imagenes/Fotos_Regiones/lagos.jpg",caption='Isla de Chiloé - Región de Los Lagos',width=500)
    # zona Austral
    if region=='Aysén':
-      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg",caption='Caleta Tortel - Región de Aysén del General Carlos Ibáñez del Campo ')
+      st.image("imagenes/Fotos_Regiones/caleta_tortel_2012-10.jpg",caption='Caleta Tortel - Región de Aysén del General Carlos Ibáñez del Campo',width=500)
    if region=='Magallanes':
-      st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine - Región de Magallanes y de la Antártica Chilena')
+      st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine - Región de Magallanes y de la Antártica Chilena',width=500)
