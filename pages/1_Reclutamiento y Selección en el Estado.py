@@ -386,7 +386,7 @@ if a=='Alta Dirección Pública':
     # filtro postulaciones ADP
     if seleccion_adp=='Postulaciones':
         df_postulaciones_adp=df_post_adp()
-
+        st.dataframe(df_postulaciones_adp.head(10))
         with st.container():
             col1,col2,col3,col4,col5=st.columns(5,gap="large")
             with col1:
