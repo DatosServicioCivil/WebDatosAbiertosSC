@@ -88,27 +88,6 @@ with col2:
          valor_col4=f"{kpi3}"
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col4}</h1>", unsafe_allow_html=True)
          st.markdown("<h3 style='text-align: center; color: grey;'>% Seleccionados PCH en Región de Residencia</h3>", unsafe_allow_html=True)
-
-
-
-# with col2:
-#    html_table ="""
-#    <table class="editorDemoTable">
-#   <tbody>
-#     <tr>
-#       <td style="text-align: center; font-family: Arial;"><strong>% Cargos ADP Nombrados</strong></td>
-#       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados EEPP en Región de Residencia</strong></td>
-#       <td style="text-align: center; font-family: Arial;"><strong>% Seleccionados PCH en Región de Residencia</strong></td>
-#     </tr>
-#     <tr>
-#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi1)+"""</div></strong></span></td>
-#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi2)+"""</div></strong></span></td>
-#       <td style="text-align: center; font-family: Arial; font-size: 18px;"><span style="color: #999999;"><strong><div class="value">"""+str(kpi3)+"""</div></strong></span></td>
-#     </tr>
-#   </tbody>
-# </table>
-# <p><span style="color: #999999; font-family: Arial; font-size: 10px;">Fecha Actuización: 30/09/2023</span>.</p>
-#    """
 #   components.html(html_table)
       
 with col3:
