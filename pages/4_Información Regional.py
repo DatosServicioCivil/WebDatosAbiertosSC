@@ -82,7 +82,7 @@ with col1:
 with col2:
       col21,col22,col23=st.columns(spec=[1,1,1],gap='small')
       with col21:
-         valor_col2=f"{kpi1:.2f}"
+         valor_col2=f"{kpi1:.2%}"
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
          st.markdown("<h3 style='text-align: center; color: grey;'>% Cargos ADP Nombrados</h3>", unsafe_allow_html=True)
       with col22:
