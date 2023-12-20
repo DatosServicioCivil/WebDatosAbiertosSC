@@ -75,7 +75,7 @@ with col1:
        region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo","Valparaíso","Metropolitana" ,"O’Higgins", "Maule","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos","Aysén", "Magallanes"])
 
 with col2:
-      col21,col22,col23=st.columns(spec=[1,1,1,1],gap='small')
+      col21,col22,col23=st.columns(spec=[1,1,1],gap='small')
       with col21:
          valor_col2=f"{kpi1:.2%}"
          st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col2}</h1>", unsafe_allow_html=True)
