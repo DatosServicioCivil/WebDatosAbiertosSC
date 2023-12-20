@@ -54,9 +54,9 @@ color_bar='#6633CC'
 col1, col2, col3 = st.columns(spec=[0.2,0.6,0.2],gap='small')
 
 df_kpi_region=pd.read_csv('kpi/indicadores_regionales.csv',sep=";")
-kpi1=df_kpi_region[df_kpi_region.id=='t_2_100'].resultado.values[0].astype(float)
-kpi2=df_kpi_region[df_kpi_region.id=='t_1_100'].resultado.values[0].astype(float)
-kpi3=df_kpi_region[df_kpi_region.id=='t_5_100'].resultado.values[0].astype(float)
+kpi1=df_kpi_region[df_kpi_region.id=='t_2_100'].resultado.values[0].astype(int)
+kpi2=df_kpi_region[df_kpi_region.id=='t_1_100'].resultado.values[0].astype(int)
+kpi3=df_kpi_region[df_kpi_region.id=='t_5_100'].resultado.values[0].astype(int)
 # df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8') 
 
 with col1:
