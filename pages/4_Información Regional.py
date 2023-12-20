@@ -107,7 +107,7 @@ with col2:
 with col3:
    # zona norte
    if region=='Arica':
-      st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota',width=250)
+      st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota',width=400)
    if region=='Tarapacá':
       st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá')
    if region=='Antofagasta':
