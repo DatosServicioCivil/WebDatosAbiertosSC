@@ -54,10 +54,14 @@ color_bar='#6633CC'
 col1, col2, col3 = st.columns(spec=[0.2,0.5,0.3],gap='small')
 
 df_kpi_region=pd.read_csv('kpi/indicadores_regionales.csv',sep=";")
+# muestra kpi regionales
+#-----------------------------------------------------------
 kpi1=df_kpi_region[df_kpi_region.id=='t_2_100'].resultado.values[0]
 kpi2=df_kpi_region[df_kpi_region.id=='t_1_100'].resultado.values[0]
 kpi3=df_kpi_region[df_kpi_region.id=='t_5_100'].resultado.values[0]
 
+# cambio formato de str a float
+#-----------------------------------------------------------
 kpi1 = kpi1.replace(',', '.')
 kpi1 = float(kpi1)
 
@@ -67,7 +71,6 @@ kpi2 = float(kpi2)
 kpi3 = kpi3.replace(',', '.')
 kpi3 = float(kpi3)
 
-st.text(type(kpi1))
 # df_postulaciones=pd.read_csv('EEPP/postulaciones_x_año.csv',encoding='utf-8') 
 
 with col1:
@@ -104,7 +107,7 @@ with col2:
 with col3:
    # zona norte
    if region=='Arica':
-      st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota')
+      st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota',width=150)
    if region=='Tarapacá':
       st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá')
    if region=='Antofagasta':
