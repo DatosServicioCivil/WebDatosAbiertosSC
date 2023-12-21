@@ -442,7 +442,7 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
 
 
-        st.dataframe(nombramiento_adp.head(10))
+        #st.dataframe(nombramiento_adp.head(10))
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
             nombramiento_adp=nombramiento_adp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()   
@@ -453,7 +453,7 @@ if a=='Alta Dirección Pública':
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos':#2
             nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
 
-        st.dataframe(nombramiento_adp.head(10))
+        st.dataframe(nombramiento_adp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
