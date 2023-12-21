@@ -463,7 +463,7 @@ if a=='Alta Dirección Pública':
         
         st.plotly_chart(graf1,use_container_width=True)
 
-        st.dataframe(tb_nombramiento_adp.head(20))
+        st.dataframe(tb_nombramiento_adp)
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
