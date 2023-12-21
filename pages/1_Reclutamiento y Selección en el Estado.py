@@ -463,7 +463,7 @@ if a=='Alta Dirección Pública':
         
         st.text(nombramiento_adp.Estado.unique())
 
-        st.dataframe(nombramiento_adp[nombramiento_adp.Estado=='SI'].head())
+        st.dataframe(nombramiento_adp.head(10))
     
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
