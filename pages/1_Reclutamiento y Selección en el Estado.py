@@ -447,14 +447,17 @@ if a=='Alta Dirección Pública':
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
             tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
+            tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
             tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
             tb_nombramiento_sexo_ministerio=nombramiento_adp[nombramiento_adp.Sexo=='Mujer'].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()   
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
+            tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
             tb_nombramiento_sexo=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
             tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['RegionCargo']==option_2)].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
+            tb_nombramiento_adp_ministerio=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['RegionCargo']==option_2)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
             tb_nombramiento_sexo=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['RegionCargo']==option_2)].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
             tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Region']==option_2)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos':#2
@@ -507,9 +510,15 @@ if a=='Alta Dirección Pública':
             with col2:
                 st.plotly_chart(graf2,use_container_width=True)
         
+        with st.container():
+            col1,col2=st.columns(2,gap='small')
+            with col1:
+                st.dataframe(tb_nombramiento_sexo_ministerio)
+            with col2:
+                st.dataframe(tb_nombramiento_adp_ministerio)
 
-
-        st.dataframe(tb_nombramiento_sexo_ministerio)
+        
+        
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
