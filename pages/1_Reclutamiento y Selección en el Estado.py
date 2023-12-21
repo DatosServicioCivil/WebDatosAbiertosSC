@@ -445,7 +445,8 @@ if a=='Alta Dirección Pública':
         #st.dataframe(nombramiento_adp.head(10))
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
-            tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()   
+            tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
+            tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','GENERO']).agg({'postulaciones':'sum'}).reset_index()   
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
@@ -463,7 +464,7 @@ if a=='Alta Dirección Pública':
         
         st.plotly_chart(graf1,use_container_width=True)
 
-        st.dataframe(tb_nombramiento_adp)
+        st.dataframe(nombramiento_adp.head(10))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
