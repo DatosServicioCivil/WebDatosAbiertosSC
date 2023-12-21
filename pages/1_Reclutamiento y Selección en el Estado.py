@@ -467,6 +467,14 @@ if a=='Alta Dirección Pública':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
         
+        graf2=px.line(tb_nombramiento_sexo,x='Año',y='Porcentaje',title='<b>Porcentaje nombramientos ADP desagregado por sexo</b>').\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
+        graf2.update_layout(yaxis_tickformat='.2%')
+
+
+
         st.plotly_chart(graf1,use_container_width=True)
 
         st.dataframe(tb_nombramiento_sexo)
