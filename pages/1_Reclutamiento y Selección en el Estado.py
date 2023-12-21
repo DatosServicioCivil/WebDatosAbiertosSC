@@ -470,6 +470,7 @@ if a=='Alta Dirección Pública':
         tb_nombramiento_sexo=pd.merge(tb_nombramiento_sexo,tb_nombramiento_adp,how='left',on='Año')
         tb_nombramiento_sexo['Porcentaje']=tb_nombramiento_sexo['postulaciones']/tb_nombramiento_sexo['Nombramientos']
         tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
+        tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['postulaciones']/tb_nombramiento_sexo_ministerio['Total Nombramientos']
 
 
 
