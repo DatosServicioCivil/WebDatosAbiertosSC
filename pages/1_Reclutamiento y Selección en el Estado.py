@@ -455,6 +455,7 @@ if a=='Alta Dirección Pública':
 
         tb_nombramiento_adp=tb_nombramiento_adp.rename(columns={'postulaciones': 'Nombramientos'})
 
+
         graf1=px.bar(tb_nombramiento_adp,x='Año',y='Nombramientos',title='<b>Nombramientos a cargos ADP por año</b>',color_discrete_sequence=[color_6]).\
                     update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
@@ -462,7 +463,7 @@ if a=='Alta Dirección Pública':
         
         st.plotly_chart(graf1,use_container_width=True)
 
-        st.dataframe(nombramiento_adp.head(20))
+        st.dataframe(tb_nombramiento_adp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
     
