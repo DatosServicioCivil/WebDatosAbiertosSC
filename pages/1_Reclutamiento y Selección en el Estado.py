@@ -518,15 +518,15 @@ if a=='Alta Dirección Pública':
                 st.plotly_chart(graf1,use_container_width=True)
             with col2:
                 st.plotly_chart(graf2,use_container_width=True)
-            
+
         st.plotly_chart(graf3,use_container_width=True)
         
-        with st.container():
-            col1,col2=st.columns(2,gap='small')
-            with col1:
-                st.dataframe(tb_nombramiento_sexo_ministerio)
-            with col2:
-                st.dataframe(tb_nombramiento_adp_ministerio)
+        # with st.container():
+        #     col1,col2=st.columns(2,gap='small')
+        #     with col1:
+        #         st.dataframe(tb_nombramiento_sexo_ministerio)
+        #     with col2:
+        #         st.dataframe(tb_nombramiento_adp_ministerio)
 
         
         
