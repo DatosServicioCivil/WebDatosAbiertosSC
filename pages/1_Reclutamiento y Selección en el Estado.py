@@ -474,10 +474,16 @@ if a=='Alta Dirección Pública':
 
 
 
+
         graf1=px.bar(tb_nombramiento_adp,x='Año',y='Nombramientos',title='<b>Nombramientos a cargos ADP por año</b>',color_discrete_sequence=[color_6]).\
                     update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
+
+        graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf1.update_layout(yaxis_tickformat='.2%')
         
         #grafico 2: Distribución de Postulaciones por tipo de aviso
         # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
@@ -512,6 +518,8 @@ if a=='Alta Dirección Pública':
                 st.plotly_chart(graf1,use_container_width=True)
             with col2:
                 st.plotly_chart(graf2,use_container_width=True)
+            
+        st.plotly_chart(graf3,use_container_width=True)
         
         with st.container():
             col1,col2=st.columns(2,gap='small')
