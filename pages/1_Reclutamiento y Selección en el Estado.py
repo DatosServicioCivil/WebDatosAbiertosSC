@@ -60,6 +60,7 @@ color_5="#B2FFFF" #celeste
 color_6="#7CB2B2" #celeste orcuro
 # Asignar colores de acuerdo a una paleta de colores a cada sexo
 sexo_color_map = {'Mujeres': 'orange', 'Hombres': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
+sexo_color_map_2 = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
 estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
@@ -467,12 +468,32 @@ if a=='Alta Dirección Pública':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
         
-        graf2=px.line(tb_nombramiento_sexo,x='Año',y='Porcentaje',title='<b>Porcentaje nombramientos ADP desagregado por sexo</b>').\
-                update_yaxes(visible=visible_y_axis,title_text=None).\
-                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-        graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
-        graf2.update_layout(yaxis_tickformat='.2%')
-
+        #grafico 2: Distribución de Postulaciones por tipo de aviso
+        # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
+        df_hombre = tb_nombramiento_sexo[tb_nombramiento_sexo['Sexo'] == 'Hombre']
+        df_mujer = tb_nombramiento_sexo[tb_nombramiento_sexo['Sexo'] == 'Mujer']
+        
+        # crea line plot usando plotly express
+        graf2 = px.line(
+            title='<b>Nombramientos desagregados por sexo</b>',
+            labels={'Año': 'Año', 'Porcentaje': 'Porcentaje'},  # cambia etiquetas de ejes
+        )
+        
+        # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
+        graf2.update_layout(yaxis_tickformat='.2')
+        
+        # agrega lineas para categoria "Aviso" y "postulacion en linea"
+        graf2.add_trace(
+            go.Scatter(x=df_hombre['Año'], y=df_hombre['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=sexo_color_map_2['Hombre']), name='Hombre'))#,line_color=sexo_color_map['Mujeres'])
+        graf2.add_trace(go.Scatter(x=df_mujer['Año'], y=df_mujer['Porcentaje'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=sexo_color_map_2['Mujer']), name='Mujer'))#,line_color=sexo_color_map['Hombres']))
+    
+        # Actualizar la ubicación de la leyenda
+        graf2.update_layout(
+            legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace'))  # Ubicar debajo del eje x en dos columnas
+        
+        # actualiza el eje x para nostrar todas las etiquetas de años
+        graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf2.update_layout(yaxis_tickformat='.2%', legend_title_text='Sexo', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
 
         with st.container():
             col1,col2=st.columns(2,gap='small')
