@@ -453,6 +453,15 @@ if a=='Alta Dirección Pública':
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos':#2
             nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año','Nivel']).agg({'postulaciones':'sum'}).reset_index()
 
+        nombramiento_adp=nombramiento_adp.rename(columns={'postulaciones': 'Nombramientos'})
+
+        graf1=px.bar(nombramiento_adp,x='Año',y='Nombramientos',title='<b>Nombramientos a cargos ADP por año</b>',color_discrete_sequence=[color_6]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf1.update_layout(yaxis_tickformat='.0f')
+        
+        st.plotly_chart(graf1,use_container_width=True)
+
         st.dataframe(nombramiento_adp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
