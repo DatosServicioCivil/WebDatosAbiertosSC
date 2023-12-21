@@ -474,8 +474,14 @@ if a=='Alta Dirección Pública':
         graf2.update_layout(yaxis_tickformat='.2%')
 
 
+        with st.container():
+            col1,col2=st.columns(2,gap='small')
+            with col1:
+                st.plotly_chart(graf1,use_container_width=True)
+            with col2:
+                st.plotly_chart(graf2,use_container_width=True)
+        
 
-        st.plotly_chart(graf1,use_container_width=True)
 
         st.dataframe(tb_nombramiento_sexo)
 #----------------------------------------------------------------------------------------------------------------------
