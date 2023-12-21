@@ -449,13 +449,13 @@ if a=='Alta Dirección Pública':
             tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
-            tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
+            tb_nombramiento_sexo=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
         if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['RegionCargo']==option_2)].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
-            tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
+            tb_nombramiento_sexo=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['RegionCargo']==option_2)].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos':#2
             tb_nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
-            tb_nombramiento_sexo=nombramiento_adp.groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
+            tb_nombramiento_sexo=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()   
 
         tb_nombramiento_adp=tb_nombramiento_adp.rename(columns={'postulaciones': 'Nombramientos'})
         tb_nombramiento_sexo=pd.merge(tb_nombramiento_sexo,tb_nombramiento_adp,how='left',on='Año')
