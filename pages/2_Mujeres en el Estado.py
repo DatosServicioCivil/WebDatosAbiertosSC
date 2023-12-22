@@ -59,6 +59,12 @@ def tabla_postulaciones_adp():
     return tb_postulaciones_adp
 
 @st.cache_data
+def tabla_nombramientos_adp():
+    tb_1=pq.read_table('ADP/tb_nombramientos_adp.parquet').to_pandas()
+    tb_nombramientos_adp=tb_1
+    return tb_nombramientos_adp
+
+@st.cache_data
 def tabla_postulaciones_eepp():
     tb_2=pq.read_table('DEEM/tb_postulaciones_dee.parquet').to_pandas()
     tb_postulaciones_eepp=tb_2
@@ -73,8 +79,10 @@ def tabla_postulaciones_dee():
 #--------------------------------------------------------------------------------------------------
 
 
-# carga datos de postulaciones en ADP
+# carga datos de postulaciones y nombramientos en ADP
 tb_postulaciones_adp=tabla_postulaciones_adp()
+nombramiento_adp=tabla_nombramientos_adp()
+
 # Calculo porcentajes mujeres nombradas en ADP
 Porcentaje_Mujeres_Nombradas_ADP_I_N=tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Sexo']=='Mujer') & (tb_postulaciones_adp['Nivel']=='I')]['postulaciones'].sum()\
     /tb_postulaciones_adp[(tb_postulaciones_adp['Estado']=='SI') & (tb_postulaciones_adp['Nivel']=='I')]['postulaciones'].sum()
@@ -236,6 +244,28 @@ tb_postulaciones_sexo_año=tb_postulaciones_sexo_año.rename(columns={'postulaci
 tb_postulaciones_sexo_año=pd.merge(tb_postulaciones_sexo_año,tb_postulaciones_año,how='left',on='Año')
 tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones'])
 
+
+with st.container():
+    col1,col2=st.columns(2,gap='small')
+    with col1:    
+        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'])
+    with col2:
+        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
+
+if option_1=='Todos':
+    tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+else:
+    tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+
+tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
+tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
+tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['postulaciones']/tb_nombramiento_sexo_ministerio['Total Nombramientos']
+
+Mujeres_Nombradas_ADP=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')]['postulaciones'].sum()
+Porcentaje_Mujeres_Nombradas_ADP=Mujeres_Nombradas_ADP/nombramiento_adp['postulaciones'].sum()
+
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
 graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='Postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
@@ -250,20 +280,41 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
+graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf3.update_layout(yaxis_tickformat='.2%')
 
 with st.container():
     col1,col2,col3=st.columns(3,gap='small')
     with col1:
-        Postulaciones_Mujeres=f"{Postulaciones_Mujeres:,}"
+        Nombramientos_Mujeres=f"{Mujeres_Nombradas_ADP:,}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>Total de postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
         Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
+
+        Postulaciones_Mujeres=f"{Postulaciones_Mujeres:,}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>Total de mujeres nombradas en cargos ADP</h3>", unsafe_allow_html=True)
+        Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Mujeres_Nombradas_ADP}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
     with col2:
         st.plotly_chart(graf2,use_container_width=True)
     with col3:
         st.plotly_chart(graf1,use_container_width=True)
 
-    
+with st.container():
+    col1,col2=st.columns(2,gap='small')
+    with col1:
+        Mujeres_Nombradas_ADP=f"{Mujeres_Nombradas_ADP:,}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Mujeres_Nombradas_ADP}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>Total de mujeres nombradas en cargos ADP</h3>", unsafe_allow_html=True)
+        Porcentaje_Mujeres_Nombradas_ADP=f"{Porcentaje_Mujeres_Nombradas_ADP:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Mujeres_Nombradas_ADP}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
+    with col2:
+        st.plotly_chart(graf3,use_container_width=True)
 
