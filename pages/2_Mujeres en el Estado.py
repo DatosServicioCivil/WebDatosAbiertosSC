@@ -316,7 +316,7 @@ graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
 graf3.update_layout(yaxis_tickformat='.2%')
 
 with st.container():
-    col1,col2=st.columns(2,gap='small')
+    col1,col2=st.columns([0.3,0.7],gap='small')
     with col1:
         Mujeres_Nombradas_ADP=f"{Mujeres_Nombradas_ADP:,}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{Mujeres_Nombradas_ADP}</h1>", unsafe_allow_html=True)
