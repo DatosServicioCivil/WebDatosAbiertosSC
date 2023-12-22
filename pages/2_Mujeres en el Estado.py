@@ -255,27 +255,6 @@ tb_postulaciones_sexo_año=pd.merge(tb_postulaciones_sexo_año,tb_postulaciones_
 tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones'])
 
 
-with st.container():
-    col1,col2=st.columns(2,gap='small')
-    with col1:    
-        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'],key='3')
-    with col2:
-        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='4')
-
-if option_1=='Todos':
-    tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
-    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
-else:
-    tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
-    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
-
-tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
-tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
-tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['postulaciones']/tb_nombramiento_sexo_ministerio['Total Nombramientos']
-
-Mujeres_Nombradas_ADP=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')]['postulaciones'].sum()
-Porcentaje_Mujeres_Nombradas_ADP=Mujeres_Nombradas_ADP/nombramiento_adp['postulaciones'].sum()
-
 #-------------------------------------------------------------------------------------------------------------
 #gráfico postulaciones por año y sexo segun seleccion portal
 graf1=px.bar(tb_postulaciones_sexo_año,x='Año',y='Postulaciones',title='<b>Postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
@@ -305,17 +284,33 @@ with st.container():
         Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
         st.markdown("<h3 style='text-align: center; color: grey;'>% Postulaciones de mujeres en portales del Servicio Civil</h3>", unsafe_allow_html=True)
-
-        Postulaciones_Mujeres=f"{Postulaciones_Mujeres:,}"
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Postulaciones_Mujeres}</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align: center; color: grey;'>Total de mujeres nombradas en cargos ADP</h3>", unsafe_allow_html=True)
-        Porcentaje_Postulaciones_Mujeres=f"{Porcentaje_Postulaciones_Mujeres:.2%}"
-        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Mujeres_Nombradas_ADP}</h1>", unsafe_allow_html=True)
-        st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
     with col2:
         st.plotly_chart(graf2,use_container_width=True)
     with col3:
         st.plotly_chart(graf1,use_container_width=True)
+
+
+with st.container():
+    col1,col2=st.columns(2,gap='small')
+    with col1:    
+        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'],key='3')
+    with col2:
+        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='4')
+
+if option_1=='Todos':
+    tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+else:
+    tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+
+tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
+tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
+tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['postulaciones']/tb_nombramiento_sexo_ministerio['Total Nombramientos']
+
+Mujeres_Nombradas_ADP=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')]['postulaciones'].sum()
+Porcentaje_Mujeres_Nombradas_ADP=Mujeres_Nombradas_ADP/nombramiento_adp['postulaciones'].sum()
+
 
 with st.container():
     col1,col2=st.columns(2,gap='small')
