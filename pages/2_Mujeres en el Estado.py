@@ -269,11 +269,7 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
-graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
-             title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_line_2]).\
-        update_yaxes(visible=visible_y_axis,title_text=None).\
-                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-graf3.update_layout(yaxis_tickformat='.2%')
+
 
 with st.container():
     col1,col2,col3=st.columns(3,gap='small')
@@ -311,6 +307,11 @@ tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['p
 Mujeres_Nombradas_ADP=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')]['postulaciones'].sum()
 Porcentaje_Mujeres_Nombradas_ADP=Mujeres_Nombradas_ADP/nombramiento_adp['postulaciones'].sum()
 
+graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
+             title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_line_2]).\
+        update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf3.update_layout(yaxis_tickformat='.2%')
 
 with st.container():
     col1,col2=st.columns(2,gap='small')
