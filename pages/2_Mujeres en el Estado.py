@@ -330,18 +330,6 @@ graf3.update_layout(
             line=dict(color='red', width=2, dash='dot')  # Line color, width, and dash style
         )
         for x in range(len(tb_nombramiento_sexo_ministerio['Ministerio']))
-    ],
-    annotations=[
-        dict(
-            x=x + 0.5,  # x-coordinate for text (center of the bar)
-            y=line_value,
-            text=f'{line_value:.0%}',  # Text to display (formatted as percentage)
-            showarrow=False,
-            font=dict(color='red', size=12),  # Font color and size
-            xanchor='center',  # Anchor point for x-coordinate
-            yanchor='bottom'  # Anchor point for y-coordinate
-        )
-        for x in range(len(tb_nombramiento_sexo_ministerio['Ministerio']))
     ]
 )
 
