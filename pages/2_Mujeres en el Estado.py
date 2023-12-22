@@ -319,17 +319,31 @@ graf3.update_layout(yaxis_tickformat='.2%')
 
 # Add a horizontal line at 50%
 line_value = 0.5
-graf3.add_shape(
-    dict(
-        type='line',
-        x0=0,  # Starting x-coordinate
-        x1=len(tb_nombramiento_sexo_ministerio['Ministerio']) - 1,  # Ending x-coordinate
-        y0=line_value,  # Constant y-coordinate
-        y1=line_value,  # Constant y-coordinate
-        line=dict(color='red', width=2,dash='dot')  # Line color and width
-    )
+graf3.update_layout(
+    shapes=[
+        dict(
+            type='line',
+            x0=x,  # x-coordinate for each bar
+            x1=x + 1,  # x-coordinate for each bar
+            y0=line_value,  # Constant y-coordinate
+            y1=line_value,  # Constant y-coordinate
+            line=dict(color='red', width=2, dash='dot')  # Line color, width, and dash style
+        )
+        for x in range(len(tb_nombramiento_sexo_ministerio['Ministerio']))
+    ],
+    annotations=[
+        dict(
+            x=x + 0.5,  # x-coordinate for text (center of the bar)
+            y=line_value,
+            text=f'{line_value:.0%}',  # Text to display (formatted as percentage)
+            showarrow=False,
+            font=dict(color='red', size=12),  # Font color and size
+            xanchor='center',  # Anchor point for x-coordinate
+            yanchor='bottom'  # Anchor point for y-coordinate
+        )
+        for x in range(len(tb_nombramiento_sexo_ministerio['Ministerio']))
+    ]
 )
-
 
 
 with st.container():
