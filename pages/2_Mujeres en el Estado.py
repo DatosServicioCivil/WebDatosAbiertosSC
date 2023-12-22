@@ -317,6 +317,21 @@ graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf3.update_layout(yaxis_tickformat='.2%')
 
+# Add a horizontal line at 50%
+line_value = 0.5
+graf3.add_shape(
+    dict(
+        type='line',
+        x0=0,  # Starting x-coordinate
+        x1=len(tb_nombramiento_sexo_ministerio['Ministerio']) - 1,  # Ending x-coordinate
+        y0=line_value,  # Constant y-coordinate
+        y1=line_value,  # Constant y-coordinate
+        line=dict(color='red', width=2)  # Line color and width
+    )
+)
+
+
+
 with st.container():
     col1,col2=st.columns([0.2,0.8],gap='small')
     with col1:
