@@ -19,6 +19,9 @@ color_bar='#006FB3' #blue
 color_bar_2='#0A132D' #dark blue
 color_5="#B2FFFF" #celeste
 color_6="#7CB2B2" #celeste orcuro
+# se define color para sexo
+#------------------------------------------------------------------------------------------------
+sexo_color_map = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
 
 # # carga archivos parquet postulaciones ADP
 # #--------------------------------------------------------------------------------------------------
@@ -156,9 +159,8 @@ def add_logo(logo_path, width, height):
 my_logo = add_logo(logo_path="./imagenes/logo.png", width=150, height=150)
 st.image(my_logo)
 
-# se define color para sexo
-#------------------------------------------------------------------------------------------------
-sexo_color_map = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo de colores por sexo
+#--------------------------------------
+# variable para visualizar eje y
 visible_y_axis=False
 #------------------------------------------------------------------------------------------------
 # Set Page Header
@@ -308,7 +310,7 @@ Mujeres_Nombradas_ADP=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')]['postul
 Porcentaje_Mujeres_Nombradas_ADP=Mujeres_Nombradas_ADP/nombramiento_adp['postulaciones'].sum()
 
 graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
-             title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_line_2]).\
+             title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence='orange').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf3.update_layout(yaxis_tickformat='.2%')
