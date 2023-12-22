@@ -315,7 +315,7 @@ graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
              title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=['orange']).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-graf3.update_layout(yaxis_tickformat='.2%')
+graf3.update_layout(yaxis_tickformat='.0%')
 
 # Add a horizontal line at 50%
 line_value = 0.5
