@@ -326,7 +326,7 @@ graf3.add_shape(
         x1=len(tb_nombramiento_sexo_ministerio['Ministerio']) - 1,  # Ending x-coordinate
         y0=line_value,  # Constant y-coordinate
         y1=line_value,  # Constant y-coordinate
-        line=dict(color='red', width=2)  # Line color and width
+        line=dict(color='red', width=2,dash='dot')  # Line color and width
     )
 )
 
