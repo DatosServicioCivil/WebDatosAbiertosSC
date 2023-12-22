@@ -221,9 +221,9 @@ with st.container():
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
-        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEE', 'EEPP'])
+        option_1 = st.selectbox('Tipo de oferta laboral', ['Todos','ADP', 'DEE', 'EEPP'],key='1')
     with col2:
-        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
+        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='2')
 
 if option_1=='Todos':
     tb_postulaciones_año = tb_postulaciones.groupby(['Año'])['postulaciones'].sum().reset_index()
@@ -248,9 +248,9 @@ tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulacio
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
-        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'])
+        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'],key='3')
     with col2:
-        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"])
+        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='4')
 
 if option_1=='Todos':
     tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
