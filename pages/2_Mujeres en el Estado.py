@@ -291,16 +291,16 @@ with st.container():
 with st.container():
     col1,col2=st.columns(2,gap='small')
     with col1:    
-        option_1 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'],key='3')
+        option_3 = st.selectbox('Nivel Jerárquico', ['Todos','I', 'II'],key='3')
     with col2:
-        option_2=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='4')
+        option_4=st.selectbox("Selecciona como quieres ver el dato",["Gráfico","Tabla"],key='4')
 
 if option_1=='Todos':
     tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
 else:
-    tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_1].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
-    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_1)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_3].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
+    tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_3)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
 
 tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
 tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
