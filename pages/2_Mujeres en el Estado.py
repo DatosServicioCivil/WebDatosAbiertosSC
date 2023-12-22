@@ -10,6 +10,16 @@ import pyarrow.parquet as pq
 
 st.set_page_config(layout='wide')
 
+#--------------------------- colores
+color_line='#4A4A4A' #dark grey
+color_line_2='#E0701E' #orange
+color_line_3='#006FB3' #blue
+color_line_4='#A7ED74' #verde montaña
+color_bar='#006FB3' #blue
+color_bar_2='#0A132D' #dark blue
+color_5="#B2FFFF" #celeste
+color_6="#7CB2B2" #celeste orcuro
+
 # # carga archivos parquet postulaciones ADP
 # #--------------------------------------------------------------------------------------------------
 # @st.cache_data
@@ -280,7 +290,8 @@ graf2=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porce
 graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
 graf2.update_layout(yaxis_tickformat='.0%')
 
-graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
+graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
+             title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_line_2]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf3.update_layout(yaxis_tickformat='.2%')
