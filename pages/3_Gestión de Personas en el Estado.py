@@ -481,9 +481,9 @@ if a=='Egresos ADP':
     texto_egresos_adp_4="""2) Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento."""
     texto_egresos_adp_5="""3) Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública."""
     with st.container():
-        st.header(texto_egresos_adp_1)
-        st.header(texto_egresos_adp_2)
-        st.header(texto_egresos_adp_3)
-        st.header(texto_egresos_adp_4)
-        st.header(texto_egresos_adp_5)
+        st.subheader(texto_egresos_adp_1)
+        st.subheader(texto_egresos_adp_2)
+        st.subheader(texto_egresos_adp_3)
+        st.subheader(texto_egresos_adp_4)
+        st.subheader(texto_egresos_adp_5)
 #---------------------------------------------------------------------------------------------------
