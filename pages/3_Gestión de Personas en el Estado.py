@@ -475,4 +475,11 @@ if a=='Prevención de Maltrato y Acoso Laboral':
 #---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
     st.title('Egresos ADP')
+    texto_egresos_adp="""Como una manera de contribuir a la transparencia en la gestión pública, el Servicio Civil pone a disposición de la ciudadanía las cifras de renuncias voluntarias y no voluntarias del Sistema de Alta Dirección Pública, desde el 11 de marzo de 2022 a la fecha, que son informadas vía oficio a nuestra institución.
+                       Consideraciones
+                        1) Los porcentajes de vacancias son calculados en base a la cantidad de cargos directivos al inicio de cada gobierno.
+                        2) Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento.
+                        3) Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública."""
+    with st.container():
+        st.subheader(texto_egresos_adp)
 #---------------------------------------------------------------------------------------------------
