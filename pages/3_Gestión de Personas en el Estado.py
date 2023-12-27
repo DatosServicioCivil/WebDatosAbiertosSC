@@ -500,7 +500,7 @@ if a=='Egresos ADP':
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    #graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+    graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf1.update_layout(yaxis_tickformat='.0%')
 
     with st.container():
