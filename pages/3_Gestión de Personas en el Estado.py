@@ -510,7 +510,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio a partir \ndel 11 de marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range_x=[valor_min, valor_max])
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
