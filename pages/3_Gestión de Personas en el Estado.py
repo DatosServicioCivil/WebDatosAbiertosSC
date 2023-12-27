@@ -474,6 +474,15 @@ if a=='Prevención de Maltrato y Acoso Laboral':
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
+    @st.cache_data
+    def egresos_adp():
+        df_1=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf I Nivel Datastudio')
+        df_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf II Nivel Datastudio')
+        df_1_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf I y II Nivel Datastudio')
+        df_egresos_adp=pd.concat([df_1,df_2,df_1_2])
+        return df_egresos_adp
+
+
     st.title('Egresos ADP')
     texto_egresos_adp_1="""Como una manera de contribuir a la transparencia en la gestión pública, el Servicio Civil pone a disposición de la ciudadanía las cifras de renuncias voluntarias y no voluntarias del Sistema de Alta Dirección Pública, desde el 11 de marzo de 2022 a la fecha, que son informadas vía oficio a nuestra institución."""
     texto_egresos_adp_2="""Consideraciones"""
@@ -483,15 +492,8 @@ if a=='Egresos ADP':
             2 Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento.\n
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
-    
-
-    # texto_egresos_adp_3="""1) Los porcentajes de vacancias son calculados en base a la cantidad de cargos directivos al inicio de cada gobierno."""
-    # texto_egresos_adp_4="""2) Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento."""
-    # texto_egresos_adp_5="""3) Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública."""
-    # with st.container():
-    #     st.subheader(texto_egresos_adp_1)
-    #     st.subheader(texto_egresos_adp_2)
-    #     st.subheader(texto_egresos_adp_3)
-    #     st.subheader(texto_egresos_adp_4)
-    #     st.subheader(texto_egresos_adp_5)
+    with st.container():
+        st.subheader("Egresos del Sistema de Alta Dirección Pública")
+        st.dataframe(egresos_adp().head(20),width=1300)
+        st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
 #---------------------------------------------------------------------------------------------------
