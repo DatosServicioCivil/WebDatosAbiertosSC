@@ -63,6 +63,7 @@ metodologia_color_map={'E-Learning': '#00D1C4', 'Híbrida': '#C5D100','Presencia
 modo_compra_color_map={'Sin costo': '#19D100', 'Convenio Marco': '#004EB4','Contratación Directa':'#FA0695','Licitación Pública/ Privada':'#D18800','Compra Ágil':'#942201','Compra Coordinada':'#009964'}# Mapeo de colores por tipo de metodologia
 
 respuestas_difusion_color_map={'Si Realiza algún tipo de Difusión de Código': '#19D100', 'No Realiza algún tipo de Difusión de Código': '#004EB4','Sin Respuesta':'#FF0000'}# Mapeo de colores por tipo respuesta
+gobierno_color_map={'MB2': '#000789', 'SP1': '#5f6368','SP2':'#0072f0','GB1':'#67f0f2'}# Mapeo de colores por tipo respuesta
 
 with st.sidebar:
     a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
@@ -493,11 +494,14 @@ if a=='Egresos ADP':
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
     #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-    graf1=px.line(egresos_adp().query("Motivo=='No Voluntario'"),x='Semana',y='% Egreso Acumulado',title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+    graf1=px.line(egresos_adp().query("Motivo=='No Voluntario'"),x='Semana',y='% Egreso Acumulado',\
+                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',\
+                    color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
     graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
     graf1.update_layout(yaxis_tickformat='.0%')
+    
     with st.container():
         st.plotly_chart(graf1,use_container_width=True)
     with st.container():
