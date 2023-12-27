@@ -511,7 +511,7 @@ if a=='Egresos ADP':
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
-    columnas_df_egresos={'Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel'}
+    columnas_df_egresos=['Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel']
     with st.container():
         col1,col2=st.columns(2,gap='small')
         with col1:
