@@ -479,8 +479,8 @@ if a=='Egresos ADP':
     texto_egresos_adp_2="""Consideraciones"""
     with st.expander(texto_egresos_adp_2):
         st.write("""
-            1 Los porcentajes de vacancias son calculados en base a la cantidad de cargos directivos al inicio de cada gobierno.
-            2 Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento.
+            1 Los porcentajes de vacancias son calculados en base a la cantidad de cargos directivos al inicio de cada gobierno.\n
+            2 Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento.\n
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
     
