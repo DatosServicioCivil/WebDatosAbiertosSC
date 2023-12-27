@@ -476,9 +476,9 @@ if a=='Prevención de Maltrato y Acoso Laboral':
 if a=='Egresos ADP':
     @st.cache_data
     def egresos_adp():
-        df_1=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf I Nivel Datastudio')
-        df_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf II Nivel Datastudio')
-        df_1_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet='Graf I y II Nivel Datastudio')
+        df_1=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf I Nivel Datastudio')
+        df_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf II Nivel Datastudio')
+        df_1_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf I y II Nivel Datastudio')
         df_egresos_adp=pd.concat([df_1,df_2,df_1_2])
         return df_egresos_adp
 
