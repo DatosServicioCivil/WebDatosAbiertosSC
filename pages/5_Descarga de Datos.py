@@ -43,6 +43,17 @@ def get_data_csv():
         print(f"An error occurred: {e}")
         return None
 
+@st.cache_data()
+def egresos_adp():
+        df_1=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf I Nivel Datastudio')
+        df_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf II Nivel Datastudio')
+        df_1_2=pd.read_excel('ADP/egresos_adp.xlsx',sheet_name='Graf I y II Nivel Datastudio')
+        df_egresos_adp=pd.concat([df_1,df_2,df_1_2])
+        return df_egresos_adp
+
+df_egresos_adp=egresos_adp()
+
+
 #-----fin carga de datos------------------------------------------------
 
 Cargos, Publicaciones ,Nominas,Nombramientos,Desiertos,Tiempos=get_data_csv()
@@ -139,13 +150,14 @@ if Tematica=='ADP':
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
   with col5:
-    st.write('**Concursos desiertos**')
-    st.markdown('Campos Adscrito, Nivel, N° Concurso, Ministerio, Servicio, Cargo, Fecha Convocatoria, Fecha Envío Nómina, Fecha Desierto, Tipo Desierto')
-    file_content = generate_file_content(Desiertos)
+    columnas_df_egresos=['Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel']
+    st.write('**Egresos ADP**')
+    st.markdown('Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel')
+    file_content = generate_file_content(df_egresos_adp[columnas_df_egresos])
     st.download_button(
           label='Descargar',
           data=file_content,
-          file_name='desiertos_ADP.csv',
+          file_name='df_egresos_adp.csv',
           mime='text/csv'
           )
     st.write(':blue[Fecha de actualización agosto 2023]')
