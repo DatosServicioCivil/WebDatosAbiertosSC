@@ -492,6 +492,14 @@ if a=='Egresos ADP':
             2 Las vacancias son consideradas en la fecha en la cual se hace efectiva la renuncia y no la fecha de recepción del documento.\n
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
+    #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+    graf1=px.line(egresos_adp().query("Motivo=='No Voluntario'"),x='Semana',y='% Egreso Acumulado',title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                        update_yaxes(visible=True,title_text=None).\
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+    graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
+    graf1.update_layout(yaxis_tickformat='.0%')
+    with st.container():
+        st.plotly_chart(graf1,use_container_width=True)
     with st.container():
         st.subheader("Egresos del Sistema de Alta Dirección Pública")
         st.dataframe(egresos_adp().head(20),width=1300)
