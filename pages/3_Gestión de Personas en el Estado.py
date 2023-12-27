@@ -530,6 +530,22 @@ if a=='Egresos ADP':
     graf4.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf4.update_layout(yaxis_tickformat='.0%')
 
+    graf5=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='Todos') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
+                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones en cargos de primer y segundo nivel ADP</b>',\
+                    color='Gobierno',color_discrete_map=gobierno_color_map).\
+                        update_yaxes(visible=True,title_text=None).\
+                            update_xaxes(title_text=None,tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+    graf5.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+    graf5.update_layout(yaxis_tickformat='.0%')
+
+    graf6=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='Todos') & (df_egresos_adp['Motivo']=='No Voluntario')],x='Semana',y='% Egreso Acumulado',\
+                  title='<b>Porcentaje de renuncias no voluntarias en cargos de primer y segundo nivel ADP</b>',\
+                    color='Gobierno',color_discrete_map=gobierno_color_map).\
+                        update_yaxes(visible=True,title_text=None).\
+                            update_xaxes(title_text=None,tickmode='linear',dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+    graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+    graf6.update_layout(yaxis_tickformat='.0%')
+
     columnas_df_egresos=['Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel']
 
     st.subheader("Estadísticas egresos de jefaturas de primer nivel ADP")
@@ -547,6 +563,15 @@ if a=='Egresos ADP':
             st.plotly_chart(graf3,use_container_width=True)
         with col2:
             st.plotly_chart(graf4,use_container_width=True)
+    
+    st.subheader("Estadísticas egresos de jefaturas de primer y segundo nivel ADP")
+    with st.container():
+        col1,col2=st.columns(2,gap='small')
+        with col1:
+            st.plotly_chart(graf5,use_container_width=True)
+        with col2:
+            st.plotly_chart(graf6,use_container_width=True)
+
     with st.container():
         st.subheader("Base de Egresos del Sistema de Alta Dirección Pública")
         st.text('Muestra primeras 20 líneas de la base de datos')
