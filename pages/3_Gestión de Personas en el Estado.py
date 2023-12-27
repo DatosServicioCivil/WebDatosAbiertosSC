@@ -483,6 +483,7 @@ if a=='Egresos ADP':
         df_egresos_adp=pd.concat([df_1,df_2,df_1_2])
         return df_egresos_adp
 
+    df_egresos_adp=egresos_adp()
 
     st.title('Egresos ADP')
     texto_egresos_adp_1="""Como una manera de contribuir a la transparencia en la gestión pública, el Servicio Civil pone a disposición de la ciudadanía las cifras de renuncias voluntarias y no voluntarias del Sistema de Alta Dirección Pública, desde el 11 de marzo de 2022 a la fecha, que son informadas vía oficio a nuestra institución."""
@@ -494,7 +495,7 @@ if a=='Egresos ADP':
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
     #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-    graf1=px.line(egresos_adp().query("Motivo=='No Voluntario'"),x='Semana',y='% Egreso Acumulado',\
+    graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='No Voluntario')],x='Semana',y='% Egreso Acumulado',\
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
