@@ -511,6 +511,7 @@ if a=='Egresos ADP':
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
+    columnas_df_egresos={'Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel'}
     with st.container():
         col1,col2=st.columns(2,gap='small')
         with col1:
@@ -519,6 +520,6 @@ if a=='Egresos ADP':
             st.plotly_chart(graf2,use_container_width=True)
     with st.container():
         st.subheader("Egresos del Sistema de Alta Dirección Pública")
-        st.dataframe(egresos_adp().head(20),width=1300)
+        st.dataframe(df_egresos_adp.columns(columnas_df_egresos).head(20),width=1300)
         st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
 #---------------------------------------------------------------------------------------------------
