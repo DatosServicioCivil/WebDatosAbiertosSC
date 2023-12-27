@@ -520,6 +520,7 @@ if a=='Egresos ADP':
             st.plotly_chart(graf2,use_container_width=True)
     with st.container():
         st.subheader("Egresos del Sistema de Alta Dirección Pública")
+        st.text('Muestra prieras 20 lineas de la base de datos')
         st.dataframe(df_egresos_adp[columnas_df_egresos].head(20), width=1300)
         st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
 #---------------------------------------------------------------------------------------------------
