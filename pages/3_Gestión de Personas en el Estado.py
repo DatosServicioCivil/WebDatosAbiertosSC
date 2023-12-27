@@ -502,7 +502,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas de servicio ADP</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf1.update_layout(yaxis_tickformat='.0%')
 
@@ -510,7 +510,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
@@ -518,7 +518,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas de servicio ADP</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf3.update_layout(yaxis_tickformat='.0%')
 
@@ -526,7 +526,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear',dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear',dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf4.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf4.update_layout(yaxis_tickformat='.0%')
 
@@ -534,7 +534,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones en cargos de primer y segundo nivel ADP</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear', dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf5.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf5.update_layout(yaxis_tickformat='.0%')
 
@@ -542,7 +542,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias en cargos de primer y segundo nivel ADP</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear',dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+                            update_xaxes(title_text='Semana de Gobierno',tickmode='linear',dtick=4,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf6.update_layout(yaxis_tickformat='.0%')
 
