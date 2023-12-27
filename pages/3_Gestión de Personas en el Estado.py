@@ -495,7 +495,7 @@ if a=='Egresos ADP':
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
     #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-    graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I')],x='Semana',y='% Egreso Acumulado',\
+    graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
