@@ -495,6 +495,9 @@ if a=='Egresos ADP':
             3 Las cifras de los años 2010 y 2014 no son comparables con los períodos siguientes, pues son previas a la dictación de la Ley N°20.955, de 2016, que perfeccionó el Sistema de Alta Dirección Pública.
         """)
     #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+    valor_min=0
+    valor_max=94
+    
     graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
                   title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas \nde servicio ADP a partir del 11 de marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
@@ -507,7 +510,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio a partir \ndel 11 de marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange='reversed')
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range_x=[valor_min, valor_max])
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
