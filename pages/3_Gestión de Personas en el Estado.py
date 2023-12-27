@@ -499,7 +499,7 @@ if a=='Egresos ADP':
     valor_max=94
     
     graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
-                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas \nde servicio ADP a partir del 11 de marzo</b>',\
+                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas de servicio ADP</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range=[valor_min, valor_max])
@@ -507,24 +507,48 @@ if a=='Egresos ADP':
     graf1.update_layout(yaxis_tickformat='.0%')
 
     graf2=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='No Voluntario')],x='Semana',y='% Egreso Acumulado',\
-                  title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio a partir \ndel 11 de marzo</b>',\
+                  title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range=[valor_min, valor_max])
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
+    graf3=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='II') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
+                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas de servicio ADP</b>',\
+                    color='Gobierno',color_discrete_map=gobierno_color_map).\
+                        update_yaxes(visible=True,title_text=None).\
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+    graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+    graf3.update_layout(yaxis_tickformat='.0%')
+
+    graf4=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='II') & (df_egresos_adp['Motivo']=='No Voluntario')],x='Semana',y='% Egreso Acumulado',\
+                  title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio</b>',\
+                    color='Gobierno',color_discrete_map=gobierno_color_map).\
+                        update_yaxes(visible=True,title_text=None).\
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange=False, range=[valor_min, valor_max])
+    graf4.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
+    graf4.update_layout(yaxis_tickformat='.0%')
+
     columnas_df_egresos=['Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel']
 
-    st.subheader("Estadísticas egresos de jefaturas de servicios ADP")
+    st.subheader("Estadísticas egresos de jefaturas de primer nivel ADP")
     with st.container():
         col1,col2=st.columns(2,gap='small')
         with col1:
             st.plotly_chart(graf1,use_container_width=True)
         with col2:
             st.plotly_chart(graf2,use_container_width=True)
+
+    st.subheader("Estadísticas egresos de jefaturas de segundo nivel ADP")
     with st.container():
-        st.subheader("Egresos del Sistema de Alta Dirección Pública")
+        col1,col2=st.columns(2,gap='small')
+        with col1:
+            st.plotly_chart(graf3,use_container_width=True)
+        with col2:
+            st.plotly_chart(graf4,use_container_width=True)
+    with st.container():
+        st.subheader("Base de Egresos del Sistema de Alta Dirección Pública")
         st.text('Muestra primeras 20 líneas de la base de datos')
         st.dataframe(df_egresos_adp[columnas_df_egresos].head(20), width=1300)
         st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
