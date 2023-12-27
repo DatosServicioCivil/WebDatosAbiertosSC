@@ -507,7 +507,7 @@ if a=='Egresos ADP':
                   title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio a partir \ndel 11 de marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
-                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+                            update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45,autorange='False')
     graf2.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
     graf2.update_layout(yaxis_tickformat='.0%')
 
@@ -520,7 +520,7 @@ if a=='Egresos ADP':
             st.plotly_chart(graf2,use_container_width=True)
     with st.container():
         st.subheader("Egresos del Sistema de Alta Dirección Pública")
-        st.text('Muestra prieras 20 lineas de la base de datos')
+        st.text('Muestra primeras 20 líneas de la base de datos')
         st.dataframe(df_egresos_adp[columnas_df_egresos].head(20), width=1300)
         st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
 #---------------------------------------------------------------------------------------------------
