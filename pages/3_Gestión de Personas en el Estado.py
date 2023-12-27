@@ -496,7 +496,7 @@ if a=='Egresos ADP':
         """)
     #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
     graf1=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='Total')],x='Semana',y='% Egreso Acumulado',\
-                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',\
+                  title='<b>Porcentaje de renuncias no voluntarias, voluntarias y no renovaciones de jefaturas \nde servicio ADP a partir del 11 de marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
@@ -504,7 +504,7 @@ if a=='Egresos ADP':
     graf1.update_layout(yaxis_tickformat='.0%')
 
     graf2=px.line(df_egresos_adp[(df_egresos_adp['Nivel']=='I') & (df_egresos_adp['Motivo']=='No Voluntario')],x='Semana',y='% Egreso Acumulado',\
-                  title='<b>Porcentaje de renuncias no voluntarias de altos directivos de primer y segundo nivel ADP a partir del 11 de marzo.</b>',\
+                  title='<b>Porcentaje de renuncias no voluntarias de jefaturas de servicio a partir del 11 \nde marzo</b>',\
                     color='Gobierno',color_discrete_map=gobierno_color_map).\
                         update_yaxes(visible=True,title_text=None).\
                             update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
