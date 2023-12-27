@@ -152,7 +152,7 @@ if Tematica=='ADP':
   with col5:
     columnas_df_egresos=['Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel']
     st.write('**Egresos ADP**')
-    st.markdown('Gobierno','Año','Semana','Motivo','Cargos','Egresos','% Egreso Acumulado','Nivel')
+    st.markdown('Gobierno,Año,Seman,Motivo,Cargos,Egresos,% Egreso Acumulado,Nivel')
     file_content = generate_file_content(df_egresos_adp[columnas_df_egresos])
     st.download_button(
           label='Descargar',
