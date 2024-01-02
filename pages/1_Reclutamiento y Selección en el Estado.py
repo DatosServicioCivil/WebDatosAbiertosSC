@@ -405,21 +405,22 @@ if a=='Alta Dirección Pública':
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            #postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
 
+        st.dataframe(df_postulaciones_adp.head(10))
         # ----------------------------------------------------------------------------------------------------------------
         # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
-        postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'ID_Postulacion': 'Postulaciones'})
+        #postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'ID_Postulacion': 'Postulaciones'})
         # ----------------------------------------------------------------------------------------------------------------
 
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
@@ -430,11 +431,11 @@ if a=='Alta Dirección Pública':
 
 
         # gráfico postulaciones por ministerio
-        graf2=px.bar(nombramientos,x='Ministerio',y='ConcuPostulacionesrsos',title='<b>Postulaciones por Ministerio</b>',\
-                     color_discrete_sequence=[color_6]).\
-                    update_yaxes(visible=visible_y_axis,title_text=None).\
-                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-        graf2.update_layout(yaxis_tickformat='.0f')
+        #graf2=px.bar(nombramientos,x='Ministerio',y='ConcuPostulacionesrsos',title='<b>Postulaciones por Ministerio</b>',\
+        #             color_discrete_sequence=[color_6]).\
+        #            update_yaxes(visible=visible_y_axis,title_text=None).\
+        #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        #graf2.update_layout(yaxis_tickformat='.0f')
 
         with st.container():
             st.plotly_chart(graf1,use_container_width=True)
