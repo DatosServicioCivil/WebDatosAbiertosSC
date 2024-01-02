@@ -552,7 +552,8 @@ if a=='Alta Dirección Pública':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
 
-        graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de mujeres con nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
+        graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',\
+                     title='<b>Porcentaje de mujeres con nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence='orange').\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
         graf3.update_layout(yaxis_tickformat='.2%')
