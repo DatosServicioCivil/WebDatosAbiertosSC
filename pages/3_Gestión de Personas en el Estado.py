@@ -696,11 +696,11 @@ if a=='Normas de Gestión de Personas':
         with col3:
             col_3_1,col_3_2,col_3_3,col_3_4,col_3_5=st.columns(5,gap='small')
             texto_Norma_3="""Porcentaje de ingresos a la Contrata y/o Código del Trabajo cubiertos por procesos de Reclutamiento y Selección"""
-            valor_col_3_1=f"{Norma_3[Norma_3['Año']==2018].Metrica:,}"
-            valor_col_3_2=f"{Norma_3[Norma_3['Año']==2019].Metrica:,}"
-            valor_col_3_3=f"{Norma_3[Norma_3['Año']==2020].Metrica:,}"
-            valor_col_3_4=f"{Norma_3[Norma_3['Año']==2021].Metrica:,}"
-            valor_col_3_5=f"{Norma_3[Norma_3['Año']==2022].Metrica:,}"
+            valor_col_3_1=f"{Norma_3[Norma_3['Año']==2018].Metrica}"
+            valor_col_3_2=f"{Norma_3[Norma_3['Año']==2019].Metrica}"
+            valor_col_3_3=f"{Norma_3[Norma_3['Año']==2020].Metrica}"
+            valor_col_3_4=f"{Norma_3[Norma_3['Año']==2021].Metrica}"
+            valor_col_3_5=f"{Norma_3[Norma_3['Año']==2022].Metrica}"
             with col_3_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
