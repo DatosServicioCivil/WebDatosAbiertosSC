@@ -578,7 +578,7 @@ if a=='Normas de Gestión de Personas':
     if option_7=='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_2=df_normas_gp.query('ID_Norma==2').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
-        Norma_3=df_normas_gp.query('ID_Norma==3').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_3=df_normas_gp.query('ID_Norma==3').groupby(['Año']).agg({'Norma_3_Ingresos_con_Procedimiento':'sum','Norma_3_Ingresos_totales':'sum'}).reset_index()
         Norma_4=df_normas_gp.query('ID_Norma==4').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_5=df_normas_gp.query('ID_Norma==5').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_6=df_normas_gp.query('ID_Norma==6').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
