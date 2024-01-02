@@ -150,39 +150,6 @@ if a=='Capacitación en el Estado':
         with col4:
             option_4=st.selectbox('Metodología de Aprendizaje',Metodologia)
 
-    
-        # def filtros(op1, op2, op3, op4):
-        #     filtro = ""
-        #     if op1 != "Todos":
-        #         filtro += f"(df_actividades_ejecutadas_sispubli.Ministerio=='{op1}') & "
-        #     if op2 != "Todos":
-        #         filtro += f"(df_actividades_ejecutadas_sispubli.Servicio=='{op2}') & "
-        #     if op3 != "Todos":
-        #         filtro += f"(df_actividades_ejecutadas_sispubli.Modalidad_de_Compra=='{op3}') & "
-        #     if op4 != "Todos":
-        #         filtro += f"(df_actividades_ejecutadas_sispubli.Metodología_de_Aprendizaje=='{op4}')"
-        #     # Eliminar el último "&" si está presente
-        #     if filtro.endswith(" & "):
-        #         filtro = filtro[:-3]
-
-        #     return filtro
-        # filtro=filtros(option_1,option_2,option_3,option_4)    
-        # st.text(f"{filtro}")
-
-    # if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
-    #     Actividades=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli.groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    #     Metodologia_Actividades=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
-    #     Metodologia_Participantes=df_actividades_ejecutadas_sispubli.groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-    # else:
-    #     Actividades=df_actividades_ejecutadas_sispubli[filtro].groupby('Año').agg({'id_actividad':'count'}).reset_index()
-    #     Inversion=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Gasto_monto_Item001':'sum'}).reset_index()
-    #     Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby('Año').agg({'Numero_de_Participantes':'sum'}).reset_index()
-    #     Metodologia_Actividades=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'id_actividad':'sum'}).reset_index()
-    #     Metodologia_Participantes=df_actividades_ejecutadas_sispubli[(df_actividades_ejecutadas_sispubli.Ministerio=='Ministerio de Minería')].groupby(['Año','Metodología_de_Aprendizaje']).agg({'Numero_de_Participantes':'sum'}).reset_index()
-    #     df_actividades_ejecutadas_sispubli[filtro]
-
     # para 4 variables que toman 2 valores las combinaciones son 16
 
     if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos': #1
@@ -571,7 +538,29 @@ if a=='Egresos ADP':
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Normas de Gestión de Personas':
-    st.title('Normas de Gestion de Personas en el Estado')
+    st.title('Indicadores de Normas de Aplicación General en Gestión y Desarrollo de Personas')
+
+    @st.cache_data
+    def Normas_Gestion_Personas():
+        Normas_GP=pd.read_excel('GestionPersonas/Normas_GP.xlsx',sheet_name='BBDD')  
+        return Normas_GP
+
+    df_normas_gp=Normas_Gestion_Personas()
+
+    unique_ministerios = df_normas_gp.Ministerio.unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
+    #filtros
+    with st.container():
+        col1,col2=st.columns(2,gap="large")
+        with col1:
+           option_1 = st.selectbox('Ministerio',Ministerios)
+        with col2:
+           option_2 = st.selectbox('Institución / Servicio',select_servicio(df_normas_gp,option_1))
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
