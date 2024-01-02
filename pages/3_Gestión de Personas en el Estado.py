@@ -646,11 +646,11 @@ if a=='Normas de Gestión de Personas':
         with col1:
             col_1_1,col_1_2,col_1_3,col_1_4,col_1_5=st.columns(5,gap='small')
             texto_Norma_1="""Porcentaje de Jefaturas de Gestión de Personas que se encuentran en un 2do o 3er Nivel Jerárquico"""
-            valor_col_1_1=f"{Norma_1[Norma_1['Año']==2018].Metrica:.2%}"
-            valor_col_1_2=f"{Norma_1[Norma_1['Año']==2019].Metrica:.2%}"
-            valor_col_1_3=f"{Norma_1[Norma_1['Año']==2020].Metrica:.2%}"
-            valor_col_1_4=f"{Norma_1[Norma_1['Año']==2021].Metrica:.2%}"
-            valor_col_1_5=f"{Norma_1[Norma_1['Año']==2022].Metrica:.2%}"
+            valor_col_1_1=f"{Norma_1[Norma_1['Año']==2018].Metrica}"
+            valor_col_1_2=f"{Norma_1[Norma_1['Año']==2019].Metrica}"
+            valor_col_1_3=f"{Norma_1[Norma_1['Año']==2020].Metrica}"
+            valor_col_1_4=f"{Norma_1[Norma_1['Año']==2021].Metrica}"
+            valor_col_1_5=f"{Norma_1[Norma_1['Año']==2022].Metrica}"
             with col_1_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
@@ -671,11 +671,11 @@ if a=='Normas de Gestión de Personas':
         with col2:
             col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
             texto_Norma_2="""Porcentaje de Servicios Públicos que tienen una Política de Gestión de Personas con estándares del Servicio Civil"""
-            valor_col_2_1=f"{Norma_2[Norma_2['Año']==2018].Metrica:.2%}"
-            valor_col_2_2=f"{Norma_2[Norma_2['Año']==2019].Metrica:.2%}"
-            valor_col_2_3=f"{Norma_2[Norma_2['Año']==2020].Metrica:.2%}"
-            valor_col_2_4=f"{Norma_2[Norma_2['Año']==2021].Metrica:.2%}"
-            valor_col_2_5=f"{Norma_2[Norma_2['Año']==2022].Metrica:.2%}"
+            valor_col_2_1=f"{Norma_2[Norma_2['Año']==2018].Metrica}"
+            valor_col_2_2=f"{Norma_2[Norma_2['Año']==2019].Metrica}"
+            valor_col_2_3=f"{Norma_2[Norma_2['Año']==2020].Metrica}"
+            valor_col_2_4=f"{Norma_2[Norma_2['Año']==2021].Metrica}"
+            valor_col_2_5=f"{Norma_2[Norma_2['Año']==2022].Metrica}"
             with col_2_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
@@ -721,11 +721,11 @@ if a=='Normas de Gestión de Personas':
         with col4:
             col_4_1,col_4_2,col_4_3,col_4_4,col_4_5=st.columns(5,gap='small')
             texto_Norma_4="""Total de Vacantes de planta que se concursaron para los diferentes tipos de concursos"""
-            valor_col_4_1=f"{Norma_4[Norma_4['Año']==2018].Metrica:.2%}"
-            valor_col_4_2=f"{Norma_4[Norma_4['Año']==2019].Metrica:.2%}"
-            valor_col_4_3=f"{Norma_4[Norma_4['Año']==2020].Metrica:.2%}"
-            valor_col_4_4=f"{Norma_4[Norma_4['Año']==2021].Metrica:.2%}"
-            valor_col_4_5=f"{Norma_4[Norma_4['Año']==2022].Metrica:.2%}"
+            valor_col_4_1=f"{Norma_4[Norma_4['Año']==2018].Metrica}"
+            valor_col_4_2=f"{Norma_4[Norma_4['Año']==2019].Metrica}"
+            valor_col_4_3=f"{Norma_4[Norma_4['Año']==2020].Metrica}"
+            valor_col_4_4=f"{Norma_4[Norma_4['Año']==2021].Metrica}"
+            valor_col_4_5=f"{Norma_4[Norma_4['Año']==2022].Metrica}"
             with col_4_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
