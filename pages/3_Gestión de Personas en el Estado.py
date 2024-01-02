@@ -461,8 +461,8 @@ if a=='Integridad':
                 st.dataframe(df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'],width=1300)
                 st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
                 
-    st.dataframe(tabla_difusion_melted.head(20))
-    st.dataframe(tabla_difusion_melted_group.head(20))    
+    #st.dataframe(tabla_difusion_melted.head(20))
+    #st.dataframe(tabla_difusion_melted_group.head(20))    
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
