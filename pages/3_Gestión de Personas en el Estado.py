@@ -421,7 +421,9 @@ if a=='Integridad':
         np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
     tabla_difusion_melted_group=tabla_difusion_melted.groupby('Ministerio')['Valor'].sum().reset_index()
-    tabla_difusion_melted['Porcentaje']=tabla_difusion_melted['Valor']/tabla_difusion_melted['Valor'].sum() 
+    tabla_difusion_melted_group=tabla_difusion_melted_group.rename(columns={'Valor':'Total'})
+    tabla_difusion_melted=pd.merge(tabla_difusion_melted,tabla_difusion_melted_group,how='left',on='Ministerio')
+    tabla_difusion_melted['Porcentaje']=np.round(tabla_difusion_melted['Valor']/tabla_difusion_melted['Total'],2)*100
 
     graf1 = go.Figure(data=[
     go.Pie(
