@@ -513,6 +513,13 @@ if a=='Alta Dirección Pública':
         graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf2.update_layout(yaxis_tickformat='.2%', legend_title_text='Sexo', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
 
+
+        graf4=px.bar(tb_nombramiento_adp_ministerio,x='Año',y='Nombramientos',title='<b>Nombramientos a cargos ADP por año en ministerios</b>',color_discrete_sequence=[color_6]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf4.update_layout(yaxis_tickformat='.0f')
+
+
         with st.container():
             col1,col2=st.columns(2,gap='small')
             with col1:
@@ -520,7 +527,12 @@ if a=='Alta Dirección Pública':
             with col2:
                 st.plotly_chart(graf2,use_container_width=True)
 
-        st.plotly_chart(graf3,use_container_width=True)
+        with st.container():
+            col1,col2=st.columns(2,gap='small')
+            with col1: 
+                st.plotly_chart(graf4,use_container_width=True)
+            with col2:
+                st.plotly_chart(graf3,use_container_width=True)
         
         # with st.container():
         #     col1,col2=st.columns(2,gap='small')
