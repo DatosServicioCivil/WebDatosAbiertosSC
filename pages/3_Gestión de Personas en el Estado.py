@@ -446,12 +446,6 @@ if a=='Integridad':
 
     #-------------------------------------------------------------------------------------------------------
     with st.container():
-        st.subheader("Codigos de Ética")
-
-    with st.container():
-        st.subheader("Instituciones que tienen Códigos de Ética")
-
-    with st.container():
         st.subheader("Instituciones que difunden su Código de Ética")
         col1,col2=st.columns([0.3, 0.7])
         with col1:
@@ -464,7 +458,7 @@ if a=='Integridad':
                 st.dataframe(df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'],width=1300)
                 st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
                 
-
+    st.dataframe(tabla_difusion_melted.head(20))
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
