@@ -444,7 +444,7 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
 
 
-        #st.dataframe(nombramiento_adp.head(10))
+        st.dataframe(nombramiento_adp.head(10))
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
             tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
@@ -481,7 +481,7 @@ if a=='Alta Dirección Pública':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_layout(yaxis_tickformat='.0f')
 
-        graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
+        graf3=px.bar(tb_nombramiento_sexo_ministerio,x='Ministerio',y='Porcentaje',title='<b>Porcentaje de mujeres con nombramientos a cargos ADP por Ministerio</b>',color_discrete_sequence=[color_6]).\
         update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
         graf3.update_layout(yaxis_tickformat='.2%')
