@@ -571,9 +571,9 @@ if a=='Normas de Gestión de Personas':
     with st.container():
         col1,col2=st.columns(2,gap="large")
         with col1:
-           option_1 = st.selectbox('Ministerio',Ministerios,key="7")
+           option_7 = st.selectbox('Ministerio',Ministerios,key="7")
         with col2:
-           option_2 = st.selectbox('Institución / Servicio',select_servicio(df_normas_gp,option_1),key="8")
+           option_8 = st.selectbox('Institución / Servicio',select_servicio(df_normas_gp,option_7),key="8")
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
