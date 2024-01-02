@@ -403,7 +403,6 @@ if a=='Alta Dirección Pública':
             with col5:
                 option_5 = st.selectbox('Sexo Postulantes',sexo_list)
         
-        st.dataframe(df_postulaciones_adp.head(10))
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
@@ -433,8 +432,8 @@ if a=='Alta Dirección Pública':
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
 
-        st.dataframe(postulaciones.head(10))
-        st.dataframe(postulaciones_x_ministerio.head(10))
+        #st.dataframe(postulaciones.head(10))
+        #st.dataframe(postulaciones_x_ministerio.head(10))
         # ----------------------------------------------------------------------------------------------------------------
         # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'postulaciones': 'Postulaciones'})
@@ -458,7 +457,9 @@ if a=='Alta Dirección Pública':
         with st.container():
             st.plotly_chart(graf1,use_container_width=True)
             st.plotly_chart(graf2,use_container_width=True)
+            st.dataframe(df_postulaciones_adp.head(10))
         
+
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
 
     #----------------------------------------------------------------------------------------------------------------------
