@@ -416,7 +416,7 @@ if a=='Alta Dirección Pública':
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
             #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
 
-        st.dataframe(df_postulaciones_adp.head(10))
+        #st.dataframe(df_postulaciones_adp.head(10))
         # ----------------------------------------------------------------------------------------------------------------
         # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
