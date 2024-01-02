@@ -66,7 +66,7 @@ respuestas_difusion_color_map={'Si Realiza algún tipo de Difusión de Código':
 gobierno_color_map={'MB2': '#000789', 'SP1': '#5f6368','SP2':'#0072f0','GB1':'#67f0f2'}# Mapeo de colores por tipo respuesta
 
 with st.sidebar:
-    a=st.radio('Gestión de Personas: ',['Normas de Gestión de Personas','Capacitación en el Estado','Integridad','Prevención de Maltrato y Acoso Laboral','Egresos ADP'])
+    a=st.radio('Gestión de Personas: ',['Capacitación en el Estado','Integridad','Egresos ADP','Normas de Gestión de Personas','Prevención de Maltrato y Acoso Laboral'])
 
 
 
