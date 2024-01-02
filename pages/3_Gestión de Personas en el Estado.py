@@ -420,7 +420,7 @@ if a=='Integridad':
         tabla_difusion_melted_all['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
         np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
-    tabla_difusion_melted_group=tabla_difusion_melted.groupby('Ministerio'].['Valor'].sum().reset_index()
+    tabla_difusion_melted_group=tabla_difusion_melted.groupby('Ministerio')['Valor'].sum().reset_index()
     tabla_difusion_melted['Porcentaje']=tabla_difusion_melted['Valor']/tabla_difusion_melted['Valor'].sum() 
 
     graf1 = go.Figure(data=[
