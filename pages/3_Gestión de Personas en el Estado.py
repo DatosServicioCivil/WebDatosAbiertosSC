@@ -70,10 +70,7 @@ with st.sidebar:
 
 
 
-#---------------------------------------------------------------------------------------------------
-if a=='Normas de Gestión de Personas':
-    st.title('Normas de Gestion de Personas en el Estado')
-#---------------------------------------------------------------------------------------------------
+
 if a=='Capacitación en el Estado':
 
     def select_servicio(df, option):
@@ -470,10 +467,6 @@ if a=='Integridad':
 
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
-if a=='Prevención de Maltrato y Acoso Laboral':
-    st.title('Prevención de Maltrato y Acoso Laboral')
-#---------------------------------------------------------------------------------------------------
-#---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
     @st.cache_data
     def egresos_adp():
@@ -577,4 +570,12 @@ if a=='Egresos ADP':
         st.text('Muestra primeras 20 líneas de la base de datos')
         st.dataframe(df_egresos_adp[columnas_df_egresos].head(20), width=1300)
         st.download_button(label="Descargar datos",data=egresos_adp().to_csv().encode("utf-8"),file_name=f"Egresos ADP.csv",mime="text/csv")
+#---------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
+if a=='Normas de Gestión de Personas':
+    st.title('Normas de Gestion de Personas en el Estado')
+#---------------------------------------------------------------------------------------------------
+#---------------------------------------------------------------------------------------------------
+if a=='Prevención de Maltrato y Acoso Laboral':
+    st.title('Prevención de Maltrato y Acoso Laboral')
 #---------------------------------------------------------------------------------------------------
