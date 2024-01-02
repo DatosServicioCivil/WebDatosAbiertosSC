@@ -142,5 +142,5 @@ with st.container():
 #image = Image.open('./imagenes/datosabiertos.png')
 #st.image(image, width=1000)
 with st.container():
-    texto_foot_1="""<strong>¿Qué son los Datos Abiertos?</strong>"""
+    texto_foot_1="""¿Qué son los Datos Abiertos?"""
     st.caption(texto_foot_1, unsafe_allow_html=False, help=None)
