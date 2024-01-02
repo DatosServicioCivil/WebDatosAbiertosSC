@@ -75,8 +75,8 @@ all_region=pd.read_excel('Regiones/all_region_values.xlsx',sheet_name='Sheet1')
 #-------------------------------------------------------------------------------------------------------------
 #-----------------concursos adp
 #-------------------------------------------------------------------------------------------------------------
-#df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
-df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
+df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
+#df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
 #-------------------------------------------------------------------------------------------------------------
 #-----------------postulaciones adp
