@@ -500,7 +500,7 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
 
 
-        st.dataframe(nombramiento_adp.head(10))
+        #st.dataframe(nombramiento_adp.head(10))
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
             tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
@@ -535,9 +535,9 @@ if a=='Alta Dirección Pública':
             tb_nombramiento_adp=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
             tb_nombramiento_sexo=nombramiento_adp[(nombramiento_adp['Nivel']==option_1) & (nombramiento_adp['Ministerio']==option_3)].groupby(['Año','Sexo']).agg({'postulaciones':'sum'}).reset_index()
 
-        st.dataframe(tb_nombramiento_adp.head(10))
+        #st.dataframe(tb_nombramiento_adp.head(10))
         tb_nombramiento_adp=tb_nombramiento_adp.rename(columns={'postulaciones': 'Nombramientos'})
-        st.dataframe(tb_nombramiento_adp.head(10))
+        #st.dataframe(tb_nombramiento_adp.head(10))
         tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
         tb_nombramiento_sexo=pd.merge(tb_nombramiento_sexo,tb_nombramiento_adp,how='left',on='Año')
         tb_nombramiento_sexo['Porcentaje']=tb_nombramiento_sexo['postulaciones']/tb_nombramiento_sexo['Nombramientos']
