@@ -146,11 +146,12 @@ with st.container():
     texto_foot_2="""Los datos abiertos son datos que pueden ser utilizados, reutilizados y redistribuidos libremente por cualquier persona, y que se encuentran sujetos, cuando más, al requerimiento de atribución y de compartirse de la misma manera en que aparecen. """
     texto_foot_3="""¿Por qué son importantes?"""
     texto_foot_4="""Los datos abiertos son importantes porque permiten a la ciudadanía acceder a información pública de forma libre y gratuita, y a los organismos públicos mejorar la calidad de los servicios que prestan, la toma de decisiones y la rendición de cuentas."""
-    st.caption(texto_foot_1, unsafe_allow_html=False, help=None)  
     with st.expander(texto_foot_1):
         st.write(texto_foot_2, unsafe_allow_html=False)
         st.write(texto_foot_3, unsafe_allow_html=False)
         st.write(texto_foot_4, unsafe_allow_html=False)     
+    texto_foot_5="""Morandé 115, P.9, Santiago, Chile. Fono(56 2) 2873 4400"""
+    st.caption(texto_foot_5, unsafe_allow_html=False, help=None)  
     
     
 
