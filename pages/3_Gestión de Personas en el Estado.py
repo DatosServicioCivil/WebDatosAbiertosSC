@@ -627,7 +627,7 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
-    Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']*100
+    Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']
     Norma_2['Metrica']=Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado']*100
     Norma_3['Metrica']=Norma_3['Norma_3_Ingresos_con_Procedimiento']/Norma_3['Norma_3_Ingresos_totales']*100
     Norma_4['Metrica']=Norma_4['Cumplimiento']
@@ -646,11 +646,11 @@ if a=='Normas de Gestión de Personas':
         with col1:
             col_1_1,col_1_2,col_1_3,col_1_4,col_1_5=st.columns(5,gap='small')
             texto_Norma_1="""Porcentaje de Jefaturas de Gestión de Personas que se encuentran en un 2do o 3er Nivel Jerárquico"""
-            valor_col_1_1=f"{Norma_1[Norma_1['Año']==2018].Metrica:,}"
-            valor_col_1_2=f"{Norma_1[Norma_1['Año']==2019].Metrica:,}"
-            valor_col_1_3=f"{Norma_1[Norma_1['Año']==2020].Metrica:,}"
-            valor_col_1_4=f"{Norma_1[Norma_1['Año']==2021].Metrica:,}"
-            valor_col_1_5=f"{Norma_1[Norma_1['Año']==2022].Metrica:,}"
+            valor_col_1_1=f"{Norma_1[Norma_1['Año']==2018].Metrica:.2%}"
+            valor_col_1_2=f"{Norma_1[Norma_1['Año']==2019].Metrica:.2%}"
+            valor_col_1_3=f"{Norma_1[Norma_1['Año']==2020].Metrica:.2%}"
+            valor_col_1_4=f"{Norma_1[Norma_1['Año']==2021].Metrica:.2%}"
+            valor_col_1_5=f"{Norma_1[Norma_1['Año']==2022].Metrica:.2%}"
             with col_1_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
