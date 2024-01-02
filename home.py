@@ -143,4 +143,4 @@ with st.container():
 #st.image(image, width=1000)
 with st.container():
     texto_foot_1="""<strong>¿Qué son los Datos Abiertos?</strong>"""
-    st.caption(texto_foot_1, unsafe_allow_html=False, *, help=None)
+    st.caption(texto_foot_1, unsafe_allow_html=False, help=None)
