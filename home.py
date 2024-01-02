@@ -133,6 +133,7 @@ with st.container():
         st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h2>", unsafe_allow_html=True)
                            
 with st.container():
+    st.markdown("<hr>", unsafe_allow_html=True)
     st.header("El Servicio civil pone a disposición de la ciuaddanía esta plataforma de Datos Abiertos, como una forma de rendir cuentas a la sociedad civil y generar un diálogo horizontal y transparente.")
 
 #image = Image.open('./imagenes/datosabiertos.png')
