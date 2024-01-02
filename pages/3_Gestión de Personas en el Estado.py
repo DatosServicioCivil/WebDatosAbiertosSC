@@ -574,6 +574,175 @@ if a=='Normas de Gestión de Personas':
            option_7 = st.selectbox('Ministerio',Ministerios,key="7")
         with col2:
            option_8 = st.selectbox('Institución / Servicio',select_servicio_ngp(df_normas_gp,option_7),key="8")
+
+    if option_7=='Todos' and option_8=='Todos':
+        Norma_1=df_normas_gp.query('ID_Norma==1').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_2=df_normas_gp.query('ID_Norma==2').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_3=df_normas_gp.query('ID_Norma==3').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_4=df_normas_gp.query('ID_Norma==4').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_5=df_normas_gp.query('ID_Norma==5').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_6=df_normas_gp.query('ID_Norma==6').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_7=df_normas_gp.query('ID_Norma==7').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_8=df_normas_gp.query('ID_Norma==8').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_9=df_normas_gp.query('ID_Norma==9').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_10=df_normas_gp.query('ID_Norma==10').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_11=df_normas_gp.query('ID_Norma==11').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+
+    if option_7!='Todos' and option_8=='Todos':
+        Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_2=df_normas_gp.query('ID_Norma==2')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_3=df_normas_gp.query('ID_Norma==3')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_4=df_normas_gp.query('ID_Norma==4')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_5=df_normas_gp.query('ID_Norma==5')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_6=df_normas_gp.query('ID_Norma==6')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_7=df_normas_gp.query('ID_Norma==7')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_8=df_normas_gp.query('ID_Norma==8')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_9=df_normas_gp.query('ID_Norma==9')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+
+    if option_7!='Todos' and option_8!='Todos':
+        Norma_1=df_normas_gp.query('ID_Norma==1')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_2=df_normas_gp.query('ID_Norma==2')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_3=df_normas_gp.query('ID_Norma==3')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_4=df_normas_gp.query('ID_Norma==4')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_5=df_normas_gp.query('ID_Norma==5')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_6=df_normas_gp.query('ID_Norma==6')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_7=df_normas_gp.query('ID_Norma==7')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_8=df_normas_gp.query('ID_Norma==8')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_9=df_normas_gp.query('ID_Norma==9')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_10=df_normas_gp.query('ID_Norma==10')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_11=df_normas_gp.query('ID_Norma==11')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+
+    if option_7=='Todos' and option_8!='Todos':
+        Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_2=df_normas_gp.query('ID_Norma==2')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_3=df_normas_gp.query('ID_Norma==3')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_4=df_normas_gp.query('ID_Norma==4')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_5=df_normas_gp.query('ID_Norma==5')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_6=df_normas_gp.query('ID_Norma==6')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_7=df_normas_gp.query('ID_Norma==7')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_8=df_normas_gp.query('ID_Norma==8')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_9=df_normas_gp.query('ID_Norma==9')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+
+    Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']*100
+    Norma_2['Metrica']=Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado']*100
+    Norma_3['Metrica']=Norma_3['Norma_3_Ingresos_con_Procedimiento']/Norma_3['Norma_3_Ingresos_totales']*100
+    Norma_4['Metrica']=Norma_4['Cumplimiento']
+    Norma_5['Metrica']=Norma_5['Cumplimiento']/Norma_5['SSPP_Considerado']*100
+    Norma_6['Metrica']=Norma_6['Cumplimiento']
+    Norma_7['Metrica']=Norma_7['Cumplimiento']/Norma_7['SSPP_Considerado']*100
+    Norma_8['Metrica']=Norma_8['Cumplimiento']/Norma_8['SSPP_Considerado']*100
+    Norma_9['Metrica']=Norma_9['Cumplimiento']
+    Norma_10['Metrica']=Norma_10['Cumplimiento']/Norma_10['SSPP_Considerado']*100
+    Norma_11['Metrica']=Norma_11['Cumplimiento']/Norma_11['SSPP_Considerado']*100
+
+
+    with st.container():
+        col1,col2,col3,col4=st.columns(4,gap='small')
+        with col1:
+            col_1_1,col_1_2,col_1_3,col_1_4,col_1_5=st.columns(5,gap='small')
+            texto_Norma_1="""Porcentaje de Jefaturas de Gestión de Personas que se encuentran en un 2do o 3er Nivel Jerárquico"""
+            valor_col_1_1=f"{Norma_1[Norma_1['Año']==2018].Metrica:,}"
+            valor_col_1_2=f"{Norma_1[Norma_1['Año']==2019].Metrica:,}"
+            valor_col_1_3=f"{Norma_1[Norma_1['Año']==2020].Metrica:,}"
+            valor_col_1_4=f"{Norma_1[Norma_1['Año']==2021].Metrica:,}"
+            valor_col_1_5=f"{Norma_1[Norma_1['Año']==2022].Metrica:,}"
+            with col_1_1:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
+            with col_1_2:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_2}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
+            with col_1_3:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_3}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
+            with col_1_4:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_4}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
+            with col_1_5:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_5}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_1}</h2>", unsafe_allow_html=True)
+
+        with col2:
+            col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
+            texto_Norma_2="""Porcentaje de Servicios Públicos que tienen una Política de Gestión de Personas con estándares del Servicio Civil"""
+            valor_col_2_1=f"{Norma_2[Norma_2['Año']==2018].Metrica:,}"
+            valor_col_2_2=f"{Norma_2[Norma_2['Año']==2019].Metrica:,}"
+            valor_col_2_3=f"{Norma_2[Norma_2['Año']==2020].Metrica:,}"
+            valor_col_2_4=f"{Norma_2[Norma_2['Año']==2021].Metrica:,}"
+            valor_col_2_5=f"{Norma_2[Norma_2['Año']==2022].Metrica:,}"
+            with col_2_1:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_1}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
+            with col_2_2:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_2}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
+            with col_2_3:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_3}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
+            with col_2_4:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_4}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
+            with col_2_5:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_5}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_2}</h2>", unsafe_allow_html=True)
+        
+        with col3:
+            col_3_1,col_3_2,col_3_3,col_3_4,col_3_5=st.columns(5,gap='small')
+            texto_Norma_3="""Porcentaje de ingresos a la Contrata y/o Código del Trabajo cubiertos por procesos de Reclutamiento y Selección"""
+            valor_col_3_1=f"{Norma_3[Norma_3['Año']==2018].Metrica:,}"
+            valor_col_3_2=f"{Norma_3[Norma_3['Año']==2019].Metrica:,}"
+            valor_col_3_3=f"{Norma_3[Norma_3['Año']==2020].Metrica:,}"
+            valor_col_3_4=f"{Norma_3[Norma_3['Año']==2021].Metrica:,}"
+            valor_col_3_5=f"{Norma_3[Norma_3['Año']==2022].Metrica:,}"
+            with col_3_1:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_1}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
+            with col_3_2:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_2}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
+            with col_3_3:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_3}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
+            with col_3_4:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_4}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
+            with col_3_5:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_5}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_3}</h2>", unsafe_allow_html=True)
+    
+        with col4:
+            col_4_1,col_4_2,col_4_3,col_4_4,col_4_5=st.columns(5,gap='small')
+            texto_Norma_4="""Total de Vacantes de planta que se concursaron para los diferentes tipos de concursos"""
+            valor_col_4_1=f"{Norma_4[Norma_4['Año']==2018].Metrica:,}"
+            valor_col_4_2=f"{Norma_4[Norma_4['Año']==2019].Metrica:,}"
+            valor_col_4_3=f"{Norma_4[Norma_4['Año']==2020].Metrica:,}"
+            valor_col_4_4=f"{Norma_4[Norma_4['Año']==2021].Metrica:,}"
+            valor_col_4_5=f"{Norma_4[Norma_4['Año']==2022].Metrica:,}"
+            with col_4_1:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_1}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
+            with col_4_2:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_2}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
+            with col_4_3:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_3}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
+            with col_4_4:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_4}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
+            with col_4_5:
+                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_5}</h3>", unsafe_allow_html=True)
+                st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_4}</h2>", unsafe_allow_html=True)
+
+
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
