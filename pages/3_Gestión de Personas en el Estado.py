@@ -547,6 +547,13 @@ if a=='Normas de Gestión de Personas':
 
     df_normas_gp=Normas_Gestion_Personas()
 
+    unique_ministerios = df_normas_gp.Ministerio.unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
     def select_servicio_ngp(df, option):
         if option == 'Todos':
             unique_servicio = df['Servicio'].unique()
@@ -559,13 +566,6 @@ if a=='Normas de Gestión de Personas':
             nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
             Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
         return Servicio
-
-    unique_ministerios = df_normas_gp.Ministerio.unique()
-    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
-    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
-    Ministerios = pd.concat([nuevo_registro, Ministerios])
-    Ministerios = Ministerios.reset_index(drop=True)
-    Ministerios = Ministerios['Ministerio'].tolist()
 
     #filtros
     with st.container():
