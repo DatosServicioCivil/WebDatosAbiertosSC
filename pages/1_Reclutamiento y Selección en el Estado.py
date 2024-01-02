@@ -91,6 +91,11 @@ def df_post_adp():
     return df_postulaciones_adp
 
 @st.cache_data
+def tb_postulaciones_adp():
+    tb_post_adp=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    return tb_post_adp
+
+@st.cache_data
 def tabla_nombramientos_adp():
     tb_1=pq.read_table('ADP/tb_nombramientos_adp.parquet').to_pandas()
     tb_1.query('Año>1900',inplace=True)
@@ -383,7 +388,7 @@ if a=='Alta Dirección Pública':
     #----------------------------------------------------------------------------------------------------------------------
     # filtro postulaciones ADP
     if seleccion_adp=='Postulaciones':
-        df_postulaciones_adp=df_post_adp()
+        df_postulaciones_adp=tb_postulaciones_adp()
         
         with st.container():
             col1,col2,col3,col4,col5=st.columns(5,gap="large")
@@ -399,28 +404,31 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo Postulantes',sexo_list)
         
         
-        df_postulaciones_adp['GENERO']=np.where(df_postulaciones_adp['GENERO']=='M','Hombre','Mujer')
+        #df_postulaciones_adp['GENERO']=np.where(df_postulaciones_adp['GENERO']=='M','Hombre','Mujer')
         #df_postulaciones_adp['ID_Region']=df_postulaciones_adp['ID_Region'].astype(str)
         #df_postulaciones_adp=pd.merge(df_postulaciones_adp,all_region,how='left',on='ID_Region')
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
-            postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            #postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones=df_postulaciones_adp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+        
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
-            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+        
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
-            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
-            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
-            #postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+        
+        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #3
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
 
         #st.dataframe(df_postulaciones_adp.head(10))
         # ----------------------------------------------------------------------------------------------------------------
         # rename de variable ID_Postulacion
-        postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
-        #postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'ID_Postulacion': 'Postulaciones'})
+        postulaciones=postulaciones.rename(columns={'postulaciones': 'Postulaciones'})
+        postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'postulaciones': 'Postulaciones'})
         # ----------------------------------------------------------------------------------------------------------------
 
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
@@ -431,11 +439,11 @@ if a=='Alta Dirección Pública':
 
 
         # gráfico postulaciones por ministerio
-        #graf2=px.bar(nombramientos,x='Ministerio',y='ConcuPostulacionesrsos',title='<b>Postulaciones por Ministerio</b>',\
-        #             color_discrete_sequence=[color_6]).\
-        #            update_yaxes(visible=visible_y_axis,title_text=None).\
-        #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-        #graf2.update_layout(yaxis_tickformat='.0f')
+        graf2=px.bar(nombramientos,x='Ministerio',y='Postulaciones',title='<b>Postulaciones por Ministerio</b>',\
+                     color_discrete_sequence=[color_6]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf2.update_layout(yaxis_tickformat='.0f')
 
         with st.container():
             st.plotly_chart(graf1,use_container_width=True)
