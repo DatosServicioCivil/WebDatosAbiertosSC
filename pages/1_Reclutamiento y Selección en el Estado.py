@@ -68,7 +68,7 @@ estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'
 
 sexo_list = ['Todos','Mujer','Hombre']  # Lista de sexos
 
-all_region=pd.read_excel('datos/all_region_values.xlsx',sheet_name='Sheet1')
+all_region=pd.read_excel('Regiones/all_region_values.xlsx',sheet_name='Sheet1')
 
 #-------------------------------------------------------------------------------------------------------------
 # carga datos adp
@@ -92,15 +92,15 @@ def df_post_adp():
 
 @st.cache_data
 def tabla_nombramientos_adp():
-    tb_1=pq.read_table('datos/tb_nombramientos_adp.parquet').to_pandas()
+    tb_1=pq.read_table('ADP/tb_nombramientos_adp.parquet').to_pandas()
     tb_1.query('Año>1900',inplace=True)
     tb_nombramientos_adp=tb_1
     return tb_nombramientos_adp
 
 @st.cache_data
 def df_conc_ep():
-    df_1=pq.read_table('datos/df_concursos_eepp_Aviso.parquet').to_pandas()
-    df_2=pq.read_table('datos/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
+    df_1=pq.read_table('EEPP/df_concursos_eepp_Aviso.parquet').to_pandas()
+    df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
     df_conc_ep=pd.concat([df_1,df_2])
     return df_conc_ep
 
