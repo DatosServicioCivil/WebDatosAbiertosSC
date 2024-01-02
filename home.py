@@ -134,7 +134,8 @@ with st.container():
                            
 with st.container():
     st.markdown("<hr>", unsafe_allow_html=True)
-    st.title("El Servicio civil pone a disposición de la ciuaddanía esta plataforma de Datos Abiertos, como una forma de rendir cuentas a la sociedad civil y generar un diálogo horizontal y transparente.")
+    texto_home="""El Servicio civil pone a disposición de la ciuaddanía esta plataforma de Datos Abiertos, como una forma de rendir cuentas a la sociedad civil y generar un diálogo horizontal y transparente."""
+    st.markdown(f"<h1 style='text-align: center; color: grey;'>{texto_home}</h1>", unsafe_allow_html=True)
 
 #image = Image.open('./imagenes/datosabiertos.png')
 #st.image(image, width=1000)
