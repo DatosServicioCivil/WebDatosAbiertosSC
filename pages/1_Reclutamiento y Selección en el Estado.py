@@ -413,13 +413,17 @@ if a=='Alta Dirección Pública':
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
         
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
+        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #3
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
         
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #3
+        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #4
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+
+        if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #5
+            postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
 
         st.dataframe(postulaciones.head(10))
         st.dataframe(postulaciones_x_ministerio.head(10))
