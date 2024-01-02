@@ -547,6 +547,19 @@ if a=='Normas de Gestión de Personas':
 
     df_normas_gp=Normas_Gestion_Personas()
 
+    def select_servicio(df, option):
+        if option == 'Todos':
+            unique_servicio = df['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+        else:
+            unique_servicio = df.query(f'Ministerio == "{option}"')['Servicio'].unique()
+            Servicio = pd.DataFrame({'Servicio': unique_servicio})
+            nuevo_registro = pd.DataFrame({'Servicio': ['Todos']})
+            Servicio = pd.concat([nuevo_registro, Servicio]).Servicio.tolist()
+        return Servicio
+
     unique_ministerios = df_normas_gp.Ministerio.unique()
     Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
     nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
