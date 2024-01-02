@@ -420,6 +420,7 @@ if a=='Integridad':
         tabla_difusion_melted_all['Respuesta'] == 'Resp_1', 'Si Realiza algún tipo de Difusión de Código',
         np.where(tabla_difusion_melted_all['Respuesta'] == 'Resp_2', 'No Realiza algún tipo de Difusión de Código', 'Sin Respuesta')
     )
+    tabla_difusion_melted_group=tabla_difusion_melted.groupby('Ministerio'].['Valor'].sum().reset_index()
     tabla_difusion_melted['Porcentaje']=tabla_difusion_melted['Valor']/tabla_difusion_melted['Valor'].sum() 
 
     graf1 = go.Figure(data=[
@@ -459,6 +460,7 @@ if a=='Integridad':
                 st.download_button(label="Descargar datos",data=df_integridad[df_integridad['Pregunta']=='Difusión de Código de Etica'].to_csv().encode("utf-8"),file_name=f"Difusion Cod Etica.csv",mime="text/csv")
                 
     st.dataframe(tabla_difusion_melted.head(20))
+    st.dataframe(tabla_difusion_melted_group.head(20))    
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Egresos ADP':
