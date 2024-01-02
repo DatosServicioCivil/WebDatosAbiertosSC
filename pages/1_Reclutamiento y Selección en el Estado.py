@@ -309,9 +309,6 @@ if a=='Alta Dirección Pública':
             nombramientos=df_concursos.query('Nombrado==1')[(df_concursos.Nivel==option_1) & (df_concursos.Ministerio==option_3)].groupby('Year_Nombramiento').agg({'CD_Concurso':'count'}).reset_index()
 
     
-    #finalizados=finalizados.rename(columns={'CD_Concurso_x': 'Finalizados','CD_Concurso_y':'Desiertos'})
-    #finalizados['Porcentaje']=finalizados['Desiertos']/finalizados['Finalizados']
-    
         publicaciones=publicaciones.rename(columns={'CD_Concurso': 'Concursos','Year_Convocatoria':'Año'})
         Nominas=Nominas.rename(columns={'CD_Concurso': 'Concursos','Year_Nomina':'Año'})
         dias_concurso=dias_concurso.rename(columns={'Duracion_Concurso': 'Dias','Year_Nomina':'Año'})
@@ -408,21 +405,40 @@ if a=='Alta Dirección Pública':
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['GENERO']==option_5)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Año').agg({'ID_Postulacion':'count'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2)].groupby('Ministerio').agg({'ID_Postulacion':'count'}).reset_index()
 
+        # ----------------------------------------------------------------------------------------------------------------
+        # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'ID_Postulacion': 'Postulaciones'})
+        postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'ID_Postulacion': 'Postulaciones'})
+        # ----------------------------------------------------------------------------------------------------------------
+
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
                 update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
         graf1.update_layout(yaxis_tickformat='.0f')
 
-        st.plotly_chart(graf1,use_container_width=True)
+
+        # gráfico postulaciones por ministerio
+        graf2=px.bar(nombramientos,x='Ministerio',y='ConcuPostulacionesrsos',title='<b>Postulaciones por Ministerio</b>',\
+                     color_discrete_sequence=[color_6]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf2.update_layout(yaxis_tickformat='.0f')
+
+        with st.container():
+            st.plotly_chart(graf1,use_container_width=True)
+            st.plotly_chart(graf2,use_container_width=True)
         
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
 
