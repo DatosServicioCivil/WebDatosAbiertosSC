@@ -444,7 +444,7 @@ if a=='Alta Dirección Pública':
                 option_5 = st.selectbox('Sexo ADP',sexo_list) 
 
 
-        st.dataframe(nombramiento_adp.head(10))
+        
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos':#1
             tb_nombramiento_adp=nombramiento_adp.groupby(['Año']).agg({'postulaciones':'sum'}).reset_index()
@@ -473,7 +473,7 @@ if a=='Alta Dirección Pública':
         tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
         tb_nombramiento_sexo_ministerio['Porcentaje']=tb_nombramiento_sexo_ministerio['postulaciones']/tb_nombramiento_sexo_ministerio['Total Nombramientos']
 
-
+        st.dataframe(nombramiento_adp.head(10))
 
 
         graf1=px.bar(tb_nombramiento_adp,x='Año',y='Nombramientos',title='<b>Nombramientos a cargos ADP por año</b>',color_discrete_sequence=[color_6]).\
