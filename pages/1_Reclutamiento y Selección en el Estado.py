@@ -439,7 +439,7 @@ if a=='Alta Dirección Pública':
 
 
         # gráfico postulaciones por ministerio
-        graf2=px.bar(nombramientos,x='Ministerio',y='Postulaciones',title='<b>Postulaciones por Ministerio</b>',\
+        graf2=px.bar(postulaciones_x_ministerio,x='Ministerio',y='Postulaciones',title='<b>Postulaciones por Ministerio</b>',\
                      color_discrete_sequence=[color_6]).\
                     update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
