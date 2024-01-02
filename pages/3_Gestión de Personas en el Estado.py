@@ -639,6 +639,7 @@ if a=='Normas de Gestión de Personas':
     Norma_10['Metrica']=Norma_10['Cumplimiento']/Norma_10['SSPP_Considerado']*100
     Norma_11['Metrica']=Norma_11['Cumplimiento']/Norma_11['SSPP_Considerado']*100
 
+    st.dataframe(Norma_1)
 
     with st.container():
         col1,col2,col3,col4=st.columns(4,gap='small')
