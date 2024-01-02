@@ -520,7 +520,7 @@ if a=='Alta Dirección Pública':
         graf4.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf4.update_layout(yaxis_tickformat='.0f')
 
-        st.dataframe(tb_nombramiento_adp_ministerio.head(10))
+        #st.dataframe(tb_nombramiento_adp_ministerio.head(10))
 
         with st.container():
             col1,col2=st.columns(2,gap='small')
