@@ -403,10 +403,6 @@ if a=='Alta Dirección Pública':
             with col5:
                 option_5 = st.selectbox('Sexo Postulantes',sexo_list)
         
-        
-        #df_postulaciones_adp['GENERO']=np.where(df_postulaciones_adp['GENERO']=='M','Hombre','Mujer')
-        #df_postulaciones_adp['ID_Region']=df_postulaciones_adp['ID_Region'].astype(str)
-        #df_postulaciones_adp=pd.merge(df_postulaciones_adp,all_region,how='left',on='ID_Region')
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
