@@ -517,7 +517,7 @@ if a=='Alta Dirección Pública':
         graf4=px.bar(tb_nombramiento_adp_ministerio,x='Ministerio',y='Total Nombramientos',\
                       title='<b>Nombramientos a cargos ADP en Ministerios</b>')
         graf4.update_yaxes(visible=visible_y_axis,title_text=None)
-        graf4.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf4.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
         graf4.update_layout(yaxis_tickformat='.0f')
 
         #st.dataframe(tb_nombramiento_adp_ministerio.head(10))
