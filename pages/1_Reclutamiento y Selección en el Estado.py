@@ -424,7 +424,7 @@ if a=='Alta Dirección Pública':
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
 
-        #st.dataframe(df_postulaciones_adp.head(10))
+        st.dataframe(postulaciones.head(10))
         # ----------------------------------------------------------------------------------------------------------------
         # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'postulaciones': 'Postulaciones'})
