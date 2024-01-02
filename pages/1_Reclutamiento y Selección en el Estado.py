@@ -93,6 +93,7 @@ def df_post_adp():
 @st.cache_data
 def tabla_nombramientos_adp():
     tb_1=pq.read_table('ADP/tb_nombramientos_adp.parquet').to_pandas()
+    tb_1.query('Año>1900',inplace=True)
     tb_nombramientos_adp=tb_1
     return tb_nombramientos_adp
 
