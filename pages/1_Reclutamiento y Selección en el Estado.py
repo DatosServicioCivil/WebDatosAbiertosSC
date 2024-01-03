@@ -678,8 +678,7 @@ if a=='Empleo Público':
         with col5:
             columnas=['Ministerio','Institucion']
             option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
-        #with col6:
-        #    option_6 = st.selectbox('Sexo',sexo_list,disabled=sex_disable)
+
 
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
@@ -985,15 +984,15 @@ if a=='Empleo Público':
             return df_post_eepp
 
         with st.container():
-            col3,col4,col5,col6=st.columns(4,gap="small")
-            with col3:    
+            col6,col7,col8,col9=st.columns(4,gap="small")
+            with col6:    
                 option_S1 = st.selectbox('Región',Region)
-            with col4:
+            with col7:
                 option_S2 = st.selectbox('Ministerio',Ministerios)
-            with col5:
+            with col8:
                 columnas=['Ministerio','Institucion']
                 option_S3 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
-            with col6:
+            with col9:
                 option_S4 = st.selectbox('Sexo',sexo_list)
 
         df_postulaciones_eepp=postulciones_eepp()
