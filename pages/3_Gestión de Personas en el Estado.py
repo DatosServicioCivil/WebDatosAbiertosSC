@@ -677,7 +677,7 @@ if a=='Normas de Gestión de Personas':
             st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_1}</h4>", unsafe_allow_html=True)
 
         with col2:
-            titulo_Norma_2="""Política de Gestión y Desarrollo de Personas"""
+            titulo_Norma_2="""Política de Gestión y                         Desarrollo de Personas"""
             st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_2}</h4>", unsafe_allow_html=True)
             col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
             
