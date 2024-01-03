@@ -1010,11 +1010,11 @@ if a=='Empleo Público':
             if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #9
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1)
             if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #10
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Sexo']==option_S4)    
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Sexo']==option_S4)    
             if option_S1!='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4=='Todos': #11
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2) 
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2) 
             if option_S1!='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4=='Todos': #12
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2)
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2)
             if option_S1!='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4!='Todos': #13
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Servicio']==option_S3)
             if option_S1!='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4!='Todos': #14
