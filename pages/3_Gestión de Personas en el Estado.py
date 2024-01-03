@@ -868,7 +868,7 @@ if a=='Normas de Gestión de Personas':
                 with col_8_5:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_8_5}</h5>", unsafe_allow_html=True)
                     st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-                st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_8}</h4>", unsafe_allow_html=True)
+                st.markdown(f"<h6 style='text-align: center; color: grey;'>{texto_Norma_8}</h6>", unsafe_allow_html=True)
 
             with col9:
                 titulo_Norma_9="""Formación y Capacitación"""
