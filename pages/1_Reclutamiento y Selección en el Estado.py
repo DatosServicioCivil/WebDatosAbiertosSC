@@ -965,6 +965,7 @@ if a=='Empleo Público':
         def postulciones_eepp():
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             df_post_eepp=pd.merge(df_post_eepp,all_region,on='Region',how='left')
+            df_post_eepp=df_post_eepp.drop(columns=['Region'])
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
