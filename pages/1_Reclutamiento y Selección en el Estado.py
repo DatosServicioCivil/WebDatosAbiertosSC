@@ -621,11 +621,8 @@ if a=='Alta Dirección Pública':
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
    
-
     df_concursos_eepp=df_conc_ep()
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
-    
-    
     
     estamento_mapping = {
     'Directiva': 'Directivos',
@@ -634,9 +631,10 @@ if a=='Empleo Público':
     df_concursos_eepp['Estamento'].fillna('Otros', inplace=True)
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
-    
-    
+    # aca esta la fecha de actualizacion!!!!
+    #------------------------------------------------------------------------------------
     date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
+    #------------------------------------------------------------------------------------
     
     st.title('Estadísticas Portal Empleos Públicos')
     st.text(f'Fecha Actualización: {date}')
@@ -663,11 +661,6 @@ if a=='Empleo Público':
     Ministerios = Ministerios['Ministerio'].tolist()
 
     #---------------------------------------------------------------
-    # habilitar o deshabilitar filtros de etamento y calidad juridica
-
-   
-
-
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
         with st.container():
@@ -683,8 +676,6 @@ if a=='Empleo Público':
             with col5:
                 columnas=['Ministerio','Institucion']
                 option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
-
-
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             convocatorias=df_concursos_eepp.groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
@@ -714,7 +705,6 @@ if a=='Empleo Público':
             desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
             desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
 
-            
         else:
             if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
                 filtro=(df_concursos_eepp.Estamento==option_1)
@@ -816,8 +806,6 @@ if a=='Empleo Público':
             df_desiertos=df_concursos_eepp[filtro]
             desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
             
-
-                
             convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
             convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
             convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
@@ -850,8 +838,6 @@ if a=='Empleo Público':
         desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
         desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)
         
-
-
         # fin del else
         #----------------------------------------------------------------------------------------------------------------------------
 
@@ -859,12 +845,6 @@ if a=='Empleo Público':
         convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
 
         #----------------------------------------------------------------------------------------------------------------------------
-        # # grafico Evolución de Postulaciones por Año
-        # graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
-        #         update_yaxes(visible=visible_y_axis,title_text=None).\
-        #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-        # graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
-        # graf1.update_layout(yaxis_tickformat='.0f')
         #----------------------------------------------------------------------------------------------------------------------------
         #grafico 2: Distribución de Postulaciones por tipo de aviso
         # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
@@ -962,7 +942,6 @@ if a=='Empleo Público':
         graf12.update_layout(yaxis_tickformat='.2%')
 
         #----------------------------------------------------------------------------------------------------------------------------
-        
         col1,col2,col3=st.columns(3,gap='small')
         with col1:
             st.plotly_chart(graf4,use_container_width=True)
@@ -985,6 +964,7 @@ if a=='Empleo Público':
         @st.cache_data
         def postulciones_eepp():
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
+            df_post_eepp=pd.merge(df_post_eepp,all_region,on='Region',how='left')
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
@@ -1019,11 +999,11 @@ if a=='Empleo Público':
             if option_S1=='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4!='Todos': #6
                 filtro=(df_postulaciones_eepp['Sexo']==option_S4) & (df_postulaciones_eepp['Ministerio']==option_S2)
             if option_S1=='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4=='Todos': #7
-                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S2)
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3)
             if option_S1=='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4!='Todos': #8
-                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Sexo']==option_S4)
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
             if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #9
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3)
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1)
             if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #10
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Sexo']==option_S4)    
             if option_S1!='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4=='Todos': #11
@@ -1035,9 +1015,9 @@ if a=='Empleo Público':
             if option_S1!='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4!='Todos': #14
                 filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
             if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4=='Todos': #15
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3)                
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3)                
             if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4!='Todos': #16
-                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
+                filtro=(df_concursos_eepp['Region_Homologada']==option_S1) & (df_concursos_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
              
             st.dataframe(df_postulaciones_eepp[filtro].head(20))
     #if seleccion_eepp=='Seleccionados': 
