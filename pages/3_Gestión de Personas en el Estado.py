@@ -659,20 +659,21 @@ if a=='Normas de Gestión de Personas':
             valor_col_1_3 =f"{Norma_1.query('Año==2020').Metrica.iloc[0]:.2%}"
             valor_col_1_4 =f"{Norma_1.query('Año==2021').Metrica.iloc[0]:.2%}"
             valor_col_1_5 =f"{Norma_1.query('Año==2022').Metrica.iloc[0]:.2%}"
+
             with col_1_1:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
             with col_1_2:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_2}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_1_2}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
             with col_1_3:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_3}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_1_3}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
             with col_1_4:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_4}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_1_4}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
             with col_1_5:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_5}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_1_5}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
             st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_1}</h2>", unsafe_allow_html=True)
 
