@@ -574,12 +574,6 @@ if a=='Normas de Gestión de Personas':
         with col2:
            option_8 = st.selectbox('Institución / Servicio',select_servicio_ngp(df_normas_gp,option_7),key="8")
 
-    # Norma_1_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    # Norma_2_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    # Norma_5_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    # Norma_10_2018={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    # Norma_11_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-
 
     if option_7=='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -594,11 +588,6 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         
-        # Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
-        # Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
-        # Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
-        # Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
-        # Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
 
     if option_7!='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -645,17 +634,17 @@ if a=='Normas de Gestión de Personas':
 
   
 
-    Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']
-    Norma_2['Metrica']=Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado']*100
-    Norma_3['Metrica']=Norma_3['Norma_3_Ingresos_con_Procedimiento']/Norma_3['Norma_3_Ingresos_totales']*100
+    Norma_1['Metrica']=np.where(Norma_1['SSPP_Considerado']==0,0,Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado'])
+    Norma_2['Metrica']=np.where(Norma_2['SSPP_Considerado']==0,0,Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado'])
+    Norma_3['Metrica']=np.where(Norma_3['Norma_3_Ingresos_totales']==0,0,Norma_3['Norma_3_Ingresos_con_Procedimiento']/Norma_3['Norma_3_Ingresos_totales'])
     Norma_4['Metrica']=Norma_4['Cumplimiento']
-    Norma_5['Metrica']=Norma_5['Cumplimiento']/Norma_5['SSPP_Considerado']*100
+    Norma_5['Metrica']=np.where(Norma_5['SSPP_Considerado']==0,0,Norma_5['Cumplimiento']/Norma_5['SSPP_Considerado'])
     Norma_6['Metrica']=Norma_6['Cumplimiento']
-    Norma_7['Metrica']=Norma_7['Cumplimiento']/Norma_7['SSPP_Considerado']*100
-    Norma_8['Metrica']=Norma_8['Cumplimiento']/Norma_8['SSPP_Considerado']*100
+    Norma_7['Metrica']=np.where(Norma_7['SSPP_Considerado']==0,0,Norma_7['Cumplimiento']/Norma_7['SSPP_Considerado'])
+    Norma_8['Metrica']=np.where(Norma_8['SSPP_Considerado']==0,0,Norma_8['Cumplimiento']/Norma_8['SSPP_Considerado'])
     Norma_9['Metrica']=Norma_9['Cumplimiento']
-    Norma_10['Metrica']=Norma_10['Cumplimiento']/Norma_10['SSPP_Considerado']*100
-    Norma_11['Metrica']=Norma_11['Cumplimiento']/Norma_11['SSPP_Considerado']*100
+    Norma_10['Metrica']=np.where(Norma_10['SSPP_Considerado']==0,0,Norma_10['Cumplimiento']/Norma_10['SSPP_Considerado'])
+    Norma_11['Metrica']=np.where(Norma_11['SSPP_Considerado']==0,0,Norma_11['Cumplimiento']/Norma_11['SSPP_Considerado'])
 
 
     st.dataframe(Norma_1)
