@@ -1028,7 +1028,7 @@ if a=='Empleo Público':
         #----------------------------------------------------------------------------------------------------------------------------
         graf1=px.line(postulaciones,x='Año',y='postulaciones',title='<b>Postulaciones por año</b>')
         graf2=px.bar(postulaciones_x_ministerio,x='Ministerio',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
-        graf2=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
+        graf3=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
 
         with st.container():
             col1,col2,col3=st.columns(3,gap="small")
