@@ -1021,8 +1021,23 @@ if a=='Empleo Público':
             
             postulaciones=df_postulaciones_eepp[filtro].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_eepp[filtro].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_eepp[filtro].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
             st.dataframe(df_postulaciones_eepp[filtro].head(20))
             st.dataframe(postulaciones.T)
+
+        #----------------------------------------------------------------------------------------------------------------------------
+        graf1=px.line(postulaciones,x='Año',y='postulaciones',title='<b>Postulaciones por año</b>')
+        graf2=px.bar(postulaciones_x_ministerio,x='Ministerio',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
+        graf2=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
+
+        with st.container():
+            col1,col2,col3=st.columns(3,gap="small")
+            with col1:
+                st.plotly_chart(graf1,use_container_width=True)
+            with col2:
+                st.plotly_chart(graf2,use_container_width=True)
+            with col3:
+                st.plotly_chart(graf3,use_container_width=True)
     #if seleccion_eepp=='Seleccionados': 
 #----------------------------------------------------------------------------------------------------------------------
 
