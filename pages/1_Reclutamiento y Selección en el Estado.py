@@ -997,7 +997,7 @@ if a=='Empleo Público':
                 option_S2 = st.selectbox('Ministerio',Ministerios)
             with col8:
                 columnas=['Ministerio','Servicio']
-                option_S3 = st.selectbox('Servicio',select_servicio(df_postulaciones_eepp[columnas]),option_S2)
+                option_S3 = st.selectbox('Servicio',select_servicio(df_postulaciones_eepp[columnas],option_S2))
             with col9:
                 option_S4 = st.selectbox('Sexo',sexo_list)
 
