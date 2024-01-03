@@ -876,7 +876,7 @@ if a=='Normas de Gestión de Personas':
                 with col_9_5:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_9_5}</h5>", unsafe_allow_html=True)
                     st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-                st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_9}</h2>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_9}</h4>", unsafe_allow_html=True)
 
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
