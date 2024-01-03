@@ -649,6 +649,8 @@ if a=='Normas de Gestión de Personas':
     with st.container():
         col1,col2,col3=st.columns(3,gap='small')
         with col1:
+            titulo_Norma_1="""Estructura y Estándares de las Áreas de Gestión y Desarrollo  de Personas"""
+            st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_1}</h4>", unsafe_allow_html=True)
             col_1_1,col_1_2,col_1_3,col_1_4,col_1_5=st.columns(5,gap='small')
             texto_Norma_1="""Porcentaje de Jefaturas de Gestión de Personas que se encuentran en un 2do o 3er Nivel Jerárquico"""
             valor_col_1_1 =f"{Norma_1.query('Año==2018').Metrica.iloc[0]:.2%}"
