@@ -883,11 +883,11 @@ if a=='Normas de Gestión de Personas':
             with col10:
                 col_10_1,col_10_2,col_10_3,col_10_4,col_10_5=st.columns(5,gap='small')
                 texto_Norma_10="""Porcentaje de Servicios Públicos que en sus reglamentos especiales de calificación vigentes aplican evaluación de liderazgo a sus directivos y profesionales con personal a cargo"""
-                valor_col_10_1=f"{Norma_10.query('Año==2018').Metrica.iloc[0]:,}"
-                valor_col_10_2=f"{Norma_10.query('Año==2019').Metrica.iloc[0]:,}"
-                valor_col_10_3=f"{Norma_10.query('Año==2020').Metrica.iloc[0]:,}"
-                valor_col_10_4=f"{Norma_10.query('Año==2021').Metrica.iloc[0]:,}"
-                valor_col_10_5=f"{Norma_10.query('Año==2022').Metrica.iloc[0]:,}"
+                valor_col_10_1=f"{Norma_10.query('Año==2018').Metrica.iloc[0]:.2%}"
+                valor_col_10_2=f"{Norma_10.query('Año==2019').Metrica.iloc[0]:.2%}"
+                valor_col_10_3=f"{Norma_10.query('Año==2020').Metrica.iloc[0]:.2%}"
+                valor_col_10_4=f"{Norma_10.query('Año==2021').Metrica.iloc[0]:.2%}"
+                valor_col_10_5=f"{Norma_10.query('Año==2022').Metrica.iloc[0]:.2%}"
                 with col_10_1:
                     st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_1}</h5>", unsafe_allow_html=True)
                     st.markdown("<h5 style='text-align: center; color: black;'>2018</h5>", unsafe_allow_html=True)
