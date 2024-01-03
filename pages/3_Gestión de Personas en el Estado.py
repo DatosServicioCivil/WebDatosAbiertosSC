@@ -837,21 +837,21 @@ if a=='Normas de Gestión de Personas':
                 valor_col_5_4=f"{Norma_5.query('Año==2021').Metrica.iloc[0]:.2%}"
                 valor_col_5_5=f"{Norma_5.query('Año==2022').Metrica.iloc[0]:.2%}"
                 with col_5_1:
-                    st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_5_1}</h3>", unsafe_allow_html=True)
-                    st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_5_1}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2018</h5>", unsafe_allow_html=True)
                 with col_5_2:
-                    st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_5_2}</h3>", unsafe_allow_html=True)
-                    st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_5_2}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2019</h5>", unsafe_allow_html=True)
                 with col_5_3:
-                    st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_5_3}</h3>", unsafe_allow_html=True)
-                    st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_5_3}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2020</h5>", unsafe_allow_html=True)
                 with col_5_4:
-                    st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_5_4}</h3>", unsafe_allow_html=True)
-                    st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_5_4}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2021</h5>", unsafe_allow_html=True)
                 with col_5_5:
-                    st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_5_5}</h3>", unsafe_allow_html=True)
-                    st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
-                st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_5}</h2>", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_5_5}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_5}</h4>", unsafe_allow_html=True)
 
             with col9:
                 col_6_1,col_6_2,col_6_3,col_6_4,col_6_5=st.columns(5,gap='small')
