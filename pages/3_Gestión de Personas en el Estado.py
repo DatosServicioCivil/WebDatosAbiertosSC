@@ -575,6 +575,14 @@ if a=='Normas de Gestión de Personas':
         with col2:
            option_8 = st.selectbox('Institución / Servicio',select_servicio_ngp(df_normas_gp,option_7),key="8")
 
+    Norma_1_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    Norma_2_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    Norma_5_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    Norma_10_2018={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    Norma_11_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+
+
+
     if option_7=='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_2=df_normas_gp.query('ID_Norma==2').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -587,6 +595,12 @@ if a=='Normas de Gestión de Personas':
         Norma_9=df_normas_gp.query('ID_Norma==9').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_10=df_normas_gp.query('ID_Norma==10').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+        
+        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
+        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
+        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
+        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
+        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
 
     if option_7!='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -601,6 +615,12 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
+        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
+        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
+        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
+        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
+        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+
     if option_7!='Todos' and option_8!='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_2=df_normas_gp.query('ID_Norma==2')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -613,6 +633,12 @@ if a=='Normas de Gestión de Personas':
         Norma_9=df_normas_gp.query('ID_Norma==9')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_10=df_normas_gp.query('ID_Norma==10')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
+
+        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
+        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
+        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
+        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
+        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
 
     if option_7=='Todos' and option_8!='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -627,6 +653,12 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
+        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
+        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
+        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
+        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
+        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+
     Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']
     Norma_2['Metrica']=Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado']*100
     Norma_3['Metrica']=Norma_3['Norma_3_Ingresos_con_Procedimiento']/Norma_3['Norma_3_Ingresos_totales']*100
@@ -638,6 +670,7 @@ if a=='Normas de Gestión de Personas':
     Norma_9['Metrica']=Norma_9['Cumplimiento']
     Norma_10['Metrica']=Norma_10['Cumplimiento']/Norma_10['SSPP_Considerado']*100
     Norma_11['Metrica']=Norma_11['Cumplimiento']/Norma_11['SSPP_Considerado']*100
+
 
     st.dataframe(Norma_1)
 
@@ -671,11 +704,11 @@ if a=='Normas de Gestión de Personas':
         with col2:
             col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
             texto_Norma_2="""Porcentaje de Servicios Públicos que tienen una Política de Gestión de Personas con estándares del Servicio Civil"""
-            valor_col_2_1=f"{Norma_2[Norma_2['Año']==2018].Metrica}"
-            valor_col_2_2=f"{Norma_2[Norma_2['Año']==2019].Metrica}"
-            valor_col_2_3=f"{Norma_2[Norma_2['Año']==2020].Metrica}"
-            valor_col_2_4=f"{Norma_2[Norma_2['Año']==2021].Metrica}"
-            valor_col_2_5=f"{Norma_2[Norma_2['Año']==2022].Metrica}"
+            valor_col_2_1=Norma_2.query('Año==2018').Metrica.iloc[0]
+            valor_col_2_2=Norma_2.query('Año==2019').Metrica.iloc[0]
+            valor_col_2_3=Norma_2.query('Año==2020').Metrica.iloc[0]
+            valor_col_2_4=Norma_2.query('Año==2021').Metrica.iloc[0]
+            valor_col_2_5=Norma_2.query('Año==2022').Metrica.iloc[0]
             with col_2_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
@@ -696,11 +729,11 @@ if a=='Normas de Gestión de Personas':
         with col3:
             col_3_1,col_3_2,col_3_3,col_3_4,col_3_5=st.columns(5,gap='small')
             texto_Norma_3="""Porcentaje de ingresos a la Contrata y/o Código del Trabajo cubiertos por procesos de Reclutamiento y Selección"""
-            valor_col_3_1=Norma_3[Norma_3['Año']==2018].Metrica
-            valor_col_3_2=Norma_3[Norma_3['Año']==2019].Metrica
-            valor_col_3_3=Norma_3[Norma_3['Año']==2020].Metrica
-            valor_col_3_4=Norma_3[Norma_3['Año']==2021].Metrica
-            valor_col_3_5=Norma_3[Norma_3['Año']==2022].Metrica
+            valor_col_3_1=Norma_3.query('Año==2018').Metrica.iloc[0]
+            valor_col_3_2=Norma_3.query('Año==2019').Metrica.iloc[0]
+            valor_col_3_3=Norma_3.query('Año==2020').Metrica.iloc[0]
+            valor_col_3_4=Norma_3.query('Año==2021').Metrica.iloc[0]
+            valor_col_3_5=Norma_3.query('Año==2022').Metrica.iloc[0]
             with col_3_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
@@ -721,11 +754,11 @@ if a=='Normas de Gestión de Personas':
         with col4:
             col_4_1,col_4_2,col_4_3,col_4_4,col_4_5=st.columns(5,gap='small')
             texto_Norma_4="""Total de Vacantes de planta que se concursaron para los diferentes tipos de concursos"""
-            valor_col_4_1=f"{Norma_4[Norma_4['Año']==2018].Metrica}"
-            valor_col_4_2=f"{Norma_4[Norma_4['Año']==2019].Metrica}"
-            valor_col_4_3=f"{Norma_4[Norma_4['Año']==2020].Metrica}"
-            valor_col_4_4=f"{Norma_4[Norma_4['Año']==2021].Metrica}"
-            valor_col_4_5=f"{Norma_4[Norma_4['Año']==2022].Metrica}"
+            valor_col_4_1=Norma_4.query('Año==2018').Metrica.iloc[0]
+            valor_col_4_2=Norma_4.query('Año==2019').Metrica.iloc[0]
+            valor_col_4_3=Norma_4.query('Año==2020').Metrica.iloc[0]
+            valor_col_4_4=Norma_4.query('Año==2021').Metrica.iloc[0]
+            valor_col_4_5=Norma_4.query('Año==2022').Metrica.iloc[0]
             with col_4_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
