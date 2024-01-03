@@ -813,20 +813,20 @@ if a=='Normas de Gestión de Personas':
                 valor_col_4_5=f"{Norma_4.query('Año==2022').Metrica.iloc[0]:,}"
                 with col_4_1:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_1}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h7 style='text-align: center; color: grey;'>2018</h7>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2018</h5>", unsafe_allow_html=True)
                 with col_4_2:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_2}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h7 style='text-align: center; color: grey;'>2019</h7>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2019</h5>", unsafe_allow_html=True)
                 with col_4_3:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_3}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h7 style='text-align: center; color: grey;'>2020</h7>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2020</h5>", unsafe_allow_html=True)
                 with col_4_4:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_4}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h7 style='text-align: center; color: grey;'>2021</h7>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: grey;'>2021</h5>", unsafe_allow_html=True)
                 with col_4_5:
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_5}</h5>", unsafe_allow_html=True)
                     st.markdown("<h7 style='text-align: center; color: grey;'>2022</h7>", unsafe_allow_html=True)
-                st.markdown(f"<h3 style='text-align: center; color: grey;'>{texto_Norma_4}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_4}</h4>", unsafe_allow_html=True)
 
             with col8:
                 col_5_1,col_5_2,col_5_3,col_5_4,col_5_5=st.columns(5,gap='small')
