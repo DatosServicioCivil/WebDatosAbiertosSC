@@ -540,7 +540,6 @@ if a=='Egresos ADP':
 if a=='Normas de Gestión de Personas':
     st.title('Indicadores de Normas de Aplicación General en Gestión y Desarrollo de Personas')
 
-    @st.cache_data
     def Normas_Gestion_Personas():
         Normas_GP=pd.read_excel('GestionPersonas/Normas_GP.xlsx',sheet_name='BBDD')  
         return Normas_GP
@@ -580,7 +579,6 @@ if a=='Normas de Gestión de Personas':
     # Norma_5_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
     # Norma_10_2018={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
     # Norma_11_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-
 
 
     if option_7=='Todos' and option_8=='Todos':
