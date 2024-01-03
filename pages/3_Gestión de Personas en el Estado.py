@@ -812,7 +812,7 @@ if a=='Normas de Gestión de Personas':
                 valor_col_4_4=f"{Norma_4.query('Año==2021').Metrica.iloc[0]:,}"
                 valor_col_4_5=f"{Norma_4.query('Año==2022').Metrica.iloc[0]:,}"
                 with col_4_1:
-                    st.markdown(f"{valor_col_4_1}", unsafe_allow_html=True)
+                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_4_1}</h5>", unsafe_allow_html=True)
                     st.markdown("2018", unsafe_allow_html=True)
                 with col_4_2:
                     st.markdown(f"{valor_col_4_2}", unsafe_allow_html=True)
