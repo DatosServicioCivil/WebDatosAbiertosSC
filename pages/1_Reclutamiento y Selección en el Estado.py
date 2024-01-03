@@ -665,22 +665,26 @@ if a=='Empleo Público':
     #---------------------------------------------------------------
     # habilitar o deshabilitar filtros de etamento y calidad juridica
 
-    with st.container():
-        col1,col2,col3,col4,col5=st.columns(5,gap="small")
-        with col1:
-            option_1 = st.selectbox('Estamento',Estamento)
-        with col2:
-            option_2 = st.selectbox('Calidad Juridíca',Calidad)
-        with col3:    
-            option_3 = st.selectbox('Región',Region)
-        with col4:
-            option_4 = st.selectbox('Ministerio',Ministerios)
-        with col5:
-            columnas=['Ministerio','Institucion']
-            option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
+   
 
 
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
+
+        with st.container():
+            col1,col2,col3,col4,col5=st.columns(5,gap="small")
+            with col1:
+                option_1 = st.selectbox('Estamento',Estamento)
+            with col2:
+                option_2 = st.selectbox('Calidad Juridíca',Calidad)
+            with col3:    
+                option_3 = st.selectbox('Región',Region)
+            with col4:
+                option_4 = st.selectbox('Ministerio',Ministerios)
+            with col5:
+                columnas=['Ministerio','Institucion']
+                option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
+
+
 
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             convocatorias=df_concursos_eepp.groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
