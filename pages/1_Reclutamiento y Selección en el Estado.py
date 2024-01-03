@@ -1025,7 +1025,7 @@ if a=='Empleo Público':
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
             
             postulaciones=df_postulaciones_eepp[filtro].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_eepp[filtro].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_eepp[filtro].groupby('Ministerio_Resumido').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_region=df_postulaciones_eepp[filtro].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
          
 
