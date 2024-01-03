@@ -987,6 +987,8 @@ if a=='Empleo Público':
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             return df_post_eepp
 
+        df_postulaciones_eepp=postulciones_eepp()
+
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
             with col6:    
@@ -994,12 +996,12 @@ if a=='Empleo Público':
             with col7:
                 option_S2 = st.selectbox('Ministerio',Ministerios)
             with col8:
-                columnas=['Ministerio','Institucion']
-                option_S3 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
+                columnas=['Ministerio','Servicio']
+                option_S3 = st.selectbox('Servicio',select_servicio(df_postulaciones_eepp[columnas]),option_S2)
             with col9:
                 option_S4 = st.selectbox('Sexo',sexo_list)
 
-        df_postulaciones_eepp=postulciones_eepp()
+        
 
         if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #1
             postulaciones=df_postulaciones_eepp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
