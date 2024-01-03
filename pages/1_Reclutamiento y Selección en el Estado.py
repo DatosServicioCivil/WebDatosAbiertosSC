@@ -967,7 +967,7 @@ if a=='Empleo Público':
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             df_post_eepp=pd.merge(df_post_eepp,all_region,on='Region',how='left')
             df_post_eepp=df_post_eepp.drop(columns=['Region'])
-            df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Ministerio',how='left')
+            df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Minsiterio',how='left')
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
@@ -990,7 +990,7 @@ if a=='Empleo Público':
             postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio_Resumido').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_region=df_postulaciones_eepp.groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
-            #st.dataframe(df_postulaciones_eepp.head(20))
+            st.dataframe(df_postulaciones_eepp.head(20))
         else:
             if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #2
                 filtro=(df_postulaciones_eepp.Sexo==option_S4)
