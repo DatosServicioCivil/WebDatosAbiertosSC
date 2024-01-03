@@ -575,11 +575,11 @@ if a=='Normas de Gestión de Personas':
         with col2:
            option_8 = st.selectbox('Institución / Servicio',select_servicio_ngp(df_normas_gp,option_7),key="8")
 
-    Norma_1_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    Norma_2_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    Norma_5_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    Norma_10_2018={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
-    Norma_11_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    # Norma_1_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    # Norma_2_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    # Norma_5_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    # Norma_10_2018={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
+    # Norma_11_2019={'Año':2019,	'SSPP_Considerado':1,	'Cumplimiento':0	,'Metrica':0}
 
 
 
@@ -596,11 +596,11 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11').groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         
-        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
-        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
-        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
-        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
-        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+        # Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
+        # Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
+        # Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
+        # Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
+        # Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
 
     if option_7!='Todos' and option_8=='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -615,11 +615,7 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Ministerio']==option_7].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
-        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
-        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
-        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
-        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
-        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+   
 
     if option_7!='Todos' and option_8!='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -634,11 +630,7 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[(df_normas_gp['Ministerio']==option_7) & (df_normas_gp['Servicio']==option_8)].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
-        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
-        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
-        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
-        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
-        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+  
 
     if option_7=='Todos' and option_8!='Todos':
         Norma_1=df_normas_gp.query('ID_Norma==1')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
@@ -653,11 +645,7 @@ if a=='Normas de Gestión de Personas':
         Norma_10=df_normas_gp.query('ID_Norma==10')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
         Norma_11=df_normas_gp.query('ID_Norma==11')[df_normas_gp['Servicio']==option_8].groupby(['Año']).agg({'SSPP_Considerado':'sum','Cumplimiento':'sum'}).reset_index()
 
-        Norma_1=Norma_1.append(Norma_1_2019,ignore_index=True)
-        Norma_2=Norma_2.append(Norma_2_2019,ignore_index=True)
-        Norma_5=Norma_5.append(Norma_5_2019,ignore_index=True)
-        Norma_10=Norma_10.append(Norma_10_2018,ignore_index=True)
-        Norma_11=Norma_11.append(Norma_11_2019,ignore_index=True)
+  
 
     Norma_1['Metrica']=Norma_1['Cumplimiento']/Norma_1['SSPP_Considerado']
     Norma_2['Metrica']=Norma_2['Cumplimiento']/Norma_2['SSPP_Considerado']*100
