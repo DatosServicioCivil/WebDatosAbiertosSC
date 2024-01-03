@@ -735,7 +735,7 @@ if a=='Normas de Gestión de Personas':
         col4,col5,col6=st.columns(3,gap='small')
         with col4:
             titulo_Norma_4="""Concursabilidad y Carrera Funcionaria"""
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_4}</h4>", unsafe_allow_html=True)
+            st.markdown(f"<h4 style='text-align: center; color: black;'>{titulo_Norma_4}</h4>", unsafe_allow_html=True)
             col_4_1,col_4_2,col_4_3,col_4_4,col_4_5=st.columns(5,gap='small')
             texto_Norma_4="""Total de Vacantes de planta que se concursaron para los diferentes tipos de concursos"""
             valor_col_4_1=f"{Norma_4.query('Año==2018').Metrica.iloc[0]:,}"
@@ -762,7 +762,7 @@ if a=='Normas de Gestión de Personas':
 
         with col5:
             titulo_Norma_5="""Inducción"""
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_5}</h4>", unsafe_allow_html=True)
+            st.markdown(f"<h4 style='text-align: center; color: black;'>{titulo_Norma_5}</h4>", unsafe_allow_html=True)
             col_5_1,col_5_2,col_5_3,col_5_4,col_5_5=st.columns(5,gap='small')
             texto_Norma_5="""Porcentaje de Servicios Públicos que declaran haber realizado Inducción en un plazo menor a 30 días"""
             valor_col_5_1=f"{Norma_5.query('Año==2018').Metrica.iloc[0]:.2%}"
@@ -789,7 +789,7 @@ if a=='Normas de Gestión de Personas':
 
         with col6:
             titulo_Norma_6="""Gestión Prácticas Profesionales"""
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_6}</h4>", unsafe_allow_html=True)
+            st.markdown(f"<h4 style='text-align: center; color: black;'>{titulo_Norma_6}</h4>", unsafe_allow_html=True)
             col_6_1,col_6_2,col_6_3,col_6_4,col_6_5=st.columns(5,gap='small')
             texto_Norma_6="""Total de estudiantes seleccionados"""
             valor_col_6_1=f"{Norma_6.query('Año==2018').Metrica.iloc[0]:,}"
@@ -901,7 +901,7 @@ if a=='Normas de Gestión de Personas':
             col10,col11=st.columns(2,gap='small')
             with col10:
                 titulo_Norma_10="""Rol de Jefaturas"""
-                st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_10}</h4>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: black;'>{titulo_Norma_10}</h4>", unsafe_allow_html=True)
                 col_10_1,col_10_2,col_10_3,col_10_4,col_10_5=st.columns(5,gap='small')
                 texto_Norma_10="""Porcentaje de Servicios Públicos que en sus reglamentos especiales de calificación vigentes aplican evaluación de liderazgo a sus directivos y profesionales con personal a cargo"""
                 valor_col_10_1=f"{Norma_10.query('Año==2018').Metrica.iloc[0]:.2%}"
@@ -928,7 +928,7 @@ if a=='Normas de Gestión de Personas':
 
             with col11:
                 titulo_Norma_11="""Gestión del Desempeño"""
-                st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_11}</h4>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: black;'>{titulo_Norma_11}</h4>", unsafe_allow_html=True)
                 col_11_1,col_11_2,col_11_3,col_11_4,col_11_5=st.columns(5,gap='small')
                 texto_Norma_11="""Porcentaje de Servicios Públicos que declaran que en su sistema de Gestión del Desempeño se contempla un procedimiento de retroalimentación"""
                 valor_col_11_1=f"{Norma_11.query('Año==2018').Metrica.iloc[0]:.2%}"
