@@ -877,31 +877,7 @@ if a=='Normas de Gestión de Personas':
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_9_5}</h5>", unsafe_allow_html=True)
                     st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
                 st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_9}</h2>", unsafe_allow_html=True)
-=======
-                col_6_1,col_6_2,col_6_3,col_6_4,col_6_5=st.columns(5,gap='small')
-                texto_Norma_6="""Total de estudiantes seleccionados"""
-                valor_col_6_1=f"{Norma_6.query('Año==2018').Metrica.iloc[0]:,}"
-                valor_col_6_2=f"{Norma_6.query('Año==2019').Metrica.iloc[0]:,}"
-                valor_col_6_3=f"{Norma_6.query('Año==2020').Metrica.iloc[0]:,}"
-                valor_col_6_4=f"{Norma_6.query('Año==2021').Metrica.iloc[0]:,}"
-                valor_col_6_5=f"{Norma_6.query('Año==2022').Metrica.iloc[0]:,}"
-                with col_6_1:
-                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_6_1}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h5 style='text-align: center; color: grey;'>2018</h5>", unsafe_allow_html=True)
-                with col_6_2:
-                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_6_2}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h5 style='text-align: center; color: grey;'>2019</h5>", unsafe_allow_html=True)
-                with col_6_3:
-                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_6_3}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h5 style='text-align: center; color: grey;'>2020</h5>", unsafe_allow_html=True)
-                with col_6_4:
-                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_6_4}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h5 style='text-align: center; color: grey;'>2021</h5>", unsafe_allow_html=True)
-                with col_6_5:
-                    st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_6_5}</h5>", unsafe_allow_html=True)
-                    st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-                st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_6}</h4>", unsafe_allow_html=True)
->>>>>>> f55a319fcee60db61808f5eb18cf1a55e011a573
+
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
 if a=='Prevención de Maltrato y Acoso Laboral':
