@@ -664,19 +664,13 @@ if a=='Empleo Público':
 
     #---------------------------------------------------------------
     # habilitar o deshabilitar filtros de etamento y calidad juridica
-    if seleccion_eepp=='Convocatorias':
-        select_disabled=True
-        sex_disable=False
-    else:
-        select_disabled=False
-        sex_disable=True
 
     with st.container():
-        col1,col2,col3,col4,col5,col6=st.columns(6,gap="small")
+        col1,col2,col3,col4,col5=st.columns(5,gap="small")
         with col1:
-            option_1 = st.selectbox('Estamento',Estamento,disabled=select_disabled)
+            option_1 = st.selectbox('Estamento',Estamento)
         with col2:
-            option_2 = st.selectbox('Calidad Juridíca',Calidad,disabled=select_disabled)
+            option_2 = st.selectbox('Calidad Juridíca',Calidad)
         with col3:    
             option_3 = st.selectbox('Región',Region)
         with col4:
@@ -684,8 +678,8 @@ if a=='Empleo Público':
         with col5:
             columnas=['Ministerio','Institucion']
             option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
-        with col6:
-            option_6 = st.selectbox('Sexo',sexo_list,disabled=sex_disable)
+        #with col6:
+        #    option_6 = st.selectbox('Sexo',sexo_list,disabled=sex_disable)
 
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
@@ -990,43 +984,55 @@ if a=='Empleo Público':
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             return df_post_eepp
 
+        with st.container():
+            col3,col4,col5,col6=st.columns(4,gap="small")
+            with col3:    
+                option_S1 = st.selectbox('Región',Region)
+            with col4:
+                option_S2 = st.selectbox('Ministerio',Ministerios)
+            with col5:
+                columnas=['Ministerio','Institucion']
+                option_S3 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
+            with col6:
+                option_S4 = st.selectbox('Sexo',sexo_list)
+
         df_postulaciones_eepp=postulciones_eepp()
 
-        if option_3=='Todos' and option_4=='Todos' and option_5=='Todos' and option_6=='Todos': #1
+        if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #1
             postulaciones=df_postulaciones_eepp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
 
         else:
-            if option_3=='Todos' and option_4=='Todos' and option_5=='Todos' and option_6!='Todos': #2
-                filtro=(df_postulaciones_eepp.Sexo==option_6)
-            if option_3=='Todos' and option_4=='Todos' and option_5!='Todos' and option_6=='Todos': #3
-                filtro=(df_postulaciones_eepp['Servicio']==option_5)
-            if option_3=='Todos' and option_4=='Todos' and option_5!='Todos' and option_6!='Todos': #4
-                filtro=(df_postulaciones_eepp['Sexo']==option_6) & (df_postulaciones_eepp['Servicio']==option_5)
-            if option_3=='Todos' and option_4!='Todos' and option_5=='Todos' and option_6=='Todos': #5
-                filtro=(df_postulaciones_eepp['Ministerio']==option_4)
-            if option_3=='Todos' and option_4!='Todos' and option_5=='Todos' and option_6!='Todos': #6
-                filtro=(df_postulaciones_eepp['Sexo']==option_6) & (df_postulaciones_eepp['Ministerio']==option_4)
-            if option_3=='Todos' and option_4!='Todos' and option_5!='Todos' and option_6=='Todos': #7
-                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_4)
-            if option_3=='Todos' and option_4!='Todos' and option_5!='Todos' and option_6!='Todos': #8
-                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Sexo']==option_6)
-            if option_3!='Todos' and option_4=='Todos' and option_5=='Todos' and option_6=='Todos': #9
+            if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #2
+                filtro=(df_postulaciones_eepp.Sexo==option_S4)
+            if option_S1=='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4=='Todos': #3
+                filtro=(df_postulaciones_eepp['Servicio']==option_S3)
+            if option_S1=='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4!='Todos': #4
+                filtro=(df_postulaciones_eepp['Sexo']==option_S4) & (df_postulaciones_eepp['Servicio']==option_S3)
+            if option_S1=='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4=='Todos': #5
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2)
+            if option_S1=='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4!='Todos': #6
+                filtro=(df_postulaciones_eepp['Sexo']==option_S4) & (df_postulaciones_eepp['Ministerio']==option_S2)
+            if option_S1=='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4=='Todos': #7
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S2)
+            if option_S1=='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4!='Todos': #8
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Sexo']==option_S4)
+            if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #9
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_3)
-            if option_3!='Todos' and option_4=='Todos' and option_5=='Todos' and option_6!='Todos': #10
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Sexo']==option_6)    
-            if option_3!='Todos' and option_4=='Todos' and option_5!='Todos' and option_6=='Todos': #11
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4) 
-            if option_3!='Todos' and option_4!='Todos' and option_5=='Todos' and option_6=='Todos': #12
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4)
-            if option_3!='Todos' and option_4=='Todos' and option_5!='Todos' and option_6!='Todos': #13
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Servicio']==option_5)
-            if option_3!='Todos' and option_4!='Todos' and option_5=='Todos' and option_6!='Todos': #14
-                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5) & (df_postulaciones_eepp['Sexo']==option_6)
-            if option_3!='Todos' and option_4!='Todos' and option_5!='Todos' and option_6=='Todos': #15
-                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5)                
-            if option_3!='Todos' and option_4!='Todos' and option_5!='Todos' and option_6!='Todos': #16
-                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5) & (df_postulaciones_eepp['Sexo']==option_6)
+            if option_S1!='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #10
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Sexo']==option_S4)    
+            if option_S1!='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4=='Todos': #11
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2) 
+            if option_S1!='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4=='Todos': #12
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2)
+            if option_S1!='Todos' and option_S2=='Todos' and option_S3!='Todos' and option_S4!='Todos': #13
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Servicio']==option_S3)
+            if option_S1!='Todos' and option_S2!='Todos' and option_S3=='Todos' and option_S4!='Todos': #14
+                filtro=(df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
+            if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4=='Todos': #15
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3)                
+            if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4!='Todos': #16
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
              
         st.dataframe(df_postulaciones_eepp[filtro].head(20))
     #if seleccion_eepp=='Seleccionados': 
