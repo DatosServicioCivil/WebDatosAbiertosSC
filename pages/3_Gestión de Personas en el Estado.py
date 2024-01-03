@@ -954,7 +954,3 @@ if a=='Normas de Gestión de Personas':
                 st.markdown(f"<h6 style='text-align: center; color: black;'>{texto_Norma_11}</h6>", unsafe_allow_html=True)
 
 #---------------------------------------------------------------------------------------------------
-#---------------------------------------------------------------------------------------------------
-if a=='Prevención de Maltrato y Acoso Laboral':
-    st.title('Prevención de Maltrato y Acoso Laboral')
-#---------------------------------------------------------------------------------------------------
