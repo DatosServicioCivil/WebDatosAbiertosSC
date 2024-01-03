@@ -1004,7 +1004,7 @@ if a=='Empleo Público':
         if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #1
             postulaciones=df_postulaciones_eepp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
-        st.dataframe(df_postulaciones_eepp.head(20))
+            st.dataframe(df_postulaciones_eepp.head(20))
         else:
             if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4!='Todos': #2
                 filtro=(df_postulaciones_eepp.Sexo==option_S4)
