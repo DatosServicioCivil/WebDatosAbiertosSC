@@ -189,9 +189,29 @@ else:
       st.download_button(
           label='Descargar',
           data='GestionPersonas/2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023 (1).pdf',
-          file_name='2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023 (1).pdf',
+          file_name='2do-inf-trim-resultados-cumplimiento-norma-RyS_julio2023.pdf',
           mime='pdf'
           )
       st.write(':blue[Fecha de emisión julio 2023]')
+    
+   col9,col10=st.columns(2,gap='medium')
+   with col7:
+      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección - **III trimestre 2023**") 
+      st.download_button(
+      label='Descargar',
+            data='GestionPersonas/3er inf trim resultados cumplimiento norma RyS_octubre2023.pdf',
+            file_name='3er-inf-trim-resultados-cumplimiento-norma-RyS_sept2023.pdf',
+            mime='pdf'
+            )
+      st.write(':blue[Fecha de emisión septiembre 2023]')
+   with col8:
+      st.write("Reporte de cumplimiento de norma de Reclutamieno y Selección - **IV trimestre 2023**") 
+      st.download_button(
+            label='Descargar',
+            data='GestionPersonas/4to inf trim resultados cumplimiento norma RyS_diciembre2023.pdf',
+            file_name='4to-inf-trim-resultados-cumplimiento-norma-RyS_dic2023.pdf',
+            mime='pdf'
+            )
+      st.write(':blue[Fecha de emisión diciembre 2023]')
   #st.download_button('Download file', ADP/Nominas_ADP.csv)
 
