@@ -967,10 +967,10 @@ if a=='Empleo Público':
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             df_post_eepp=pd.merge(df_post_eepp,all_region,on='Region',how='left')
             df_post_eepp=df_post_eepp.drop(columns=['Region'])
-            df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Ministerio',how='left')
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
+        df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Ministerio',how='left')
 
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
