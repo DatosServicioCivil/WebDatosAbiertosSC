@@ -967,10 +967,10 @@ if a=='Empleo Público':
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             df_post_eepp=pd.merge(df_post_eepp,all_region,on='Region',how='left')
             df_post_eepp=df_post_eepp.drop(columns=['Region'])
+            df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Ministerio',how='left')
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
-        df_postulaciones_eepp=pd.merge(df_postulaciones_eepp,ministerios,on='Ministerio',how='left')
 
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
@@ -987,7 +987,7 @@ if a=='Empleo Público':
         
         if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #1
             postulaciones=df_postulaciones_eepp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
-            postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio_Resumido').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_region=df_postulaciones_eepp.groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
             st.dataframe(df_postulaciones_eepp.head(20))
@@ -1032,7 +1032,7 @@ if a=='Empleo Público':
 
         #----------------------------------------------------------------------------------------------------------------------------
         graf1=px.line(postulaciones,x='Año',y='postulaciones',title='<b>Postulaciones por año</b>')
-        graf2=px.bar(postulaciones_x_ministerio,x='Ministerio',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
+        graf2=px.bar(postulaciones_x_ministerio,x='Ministerio_Resumido',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
         graf3=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
 
         with st.container():
