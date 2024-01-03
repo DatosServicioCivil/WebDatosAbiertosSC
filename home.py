@@ -12,7 +12,7 @@ import streamlit.components.v1 as components
 import pyarrow.parquet as pq
 
 st.set_page_config(layout='wide',
-                   initial_sidebar_state="expanded")                                #collapsed
+                   initial_sidebar_state="collapsed")                                #collapsed expanded
 
 
 def remote_css(url):
