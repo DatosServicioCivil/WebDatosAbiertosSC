@@ -674,22 +674,19 @@ if a=='Normas de Gestión de Personas':
             with col_1_5:
                 st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_1_5}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_1}</h4>", unsafe_allow_html=True)
+            st.markdown(f"<h6 style='text-align: center; color: grey;'>{texto_Norma_1}</h6>", unsafe_allow_html=True)
 
         with col2:
             titulo_Norma_2="""Política de Gestión y Desarrollo de Personas"""
             st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_2}</h4>", unsafe_allow_html=True)
             col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
-            
             texto_Norma_2="""Porcentaje de Servicios Públicos que tienen una Política de Gestión de Personas con estándares del Servicio Civil"""
             valor_col_2_1=f"{Norma_2.query('Año==2018').Metrica.iloc[0]:.2%}"
             valor_col_2_2=f"{Norma_2.query('Año==2019').Metrica.iloc[0]:.2%}"
             valor_col_2_3=f"{Norma_2.query('Año==2020').Metrica.iloc[0]:.2%}"
             valor_col_2_4=f"{Norma_2.query('Año==2021').Metrica.iloc[0]:.2%}"
             valor_col_2_5=f"{Norma_2.query('Año==2022').Metrica.iloc[0]:.2%}"
-            
-            #st.markdown(f"<h4 style='text-align: center; color: grey;'></h4>", unsafe_allow_html=True)
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_2}</h4>", unsafe_allow_html=True)
+
             with col_2_1:
                 st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_2_1}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: grey;'>2018</h5>", unsafe_allow_html=True)
@@ -705,9 +702,11 @@ if a=='Normas de Gestión de Personas':
             with col_2_5:
                 st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_2_5}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-            
+            st.markdown(f"<h6 style='text-align: center; color: grey;'>{texto_Norma_2}</h6>", unsafe_allow_html=True)
         
         with col3:
+            titulo_Norma_3="""Procesos de Reclutamiento y Selección"""
+            st.markdown(f"<h4 style='text-align: center; color: grey;'>{titulo_Norma_3}</h4>", unsafe_allow_html=True)
             col_3_1,col_3_2,col_3_3,col_3_4,col_3_5=st.columns(5,gap='small')
             texto_Norma_3="""Porcentaje de ingresos a la Contrata y/o Código del Trabajo cubiertos por procesos de Reclutamiento y Selección"""
             valor_col_3_1=f"{Norma_3.query('Año==2018').Metrica.iloc[0]:.2%}"
@@ -730,7 +729,7 @@ if a=='Normas de Gestión de Personas':
             with col_3_5:
                 st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_3_5}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
-            st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_3}</h4>", unsafe_allow_html=True)
+            st.markdown(f"<h6 style='text-align: center; color: grey;'>{texto_Norma_3}</h6>", unsafe_allow_html=True)
     
     with st.container():
         col4,col5,col6=st.columns(3,gap='small')
