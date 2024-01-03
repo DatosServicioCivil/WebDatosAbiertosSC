@@ -1017,7 +1017,7 @@ if a=='Empleo Público':
             if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4=='Todos': #15
                 filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3)                
             if option_S1!='Todos' and option_S2!='Todos' and option_S3!='Todos' and option_S4!='Todos': #16
-                filtro=(df_concursos_eepp['Region_Homologada']==option_S1) & (df_concursos_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_S1) & (df_postulaciones_eepp['Ministerio']==option_S2) & (df_postulaciones_eepp['Servicio']==option_S3) & (df_postulaciones_eepp['Sexo']==option_S4)
              
             st.dataframe(df_postulaciones_eepp[filtro].head(20))
     #if seleccion_eepp=='Seleccionados': 
