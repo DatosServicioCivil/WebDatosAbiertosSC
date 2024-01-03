@@ -680,75 +680,75 @@ if a=='Normas de Gestión de Personas':
         with col2:
             col_2_1,col_2_2,col_2_3,col_2_4,col_2_5=st.columns(5,gap='small')
             texto_Norma_2="""Porcentaje de Servicios Públicos que tienen una Política de Gestión de Personas con estándares del Servicio Civil"""
-            valor_col_2_1=Norma_2.query('Año==2018').Metrica.iloc[0]
-            valor_col_2_2=Norma_2.query('Año==2019').Metrica.iloc[0]
-            valor_col_2_3=Norma_2.query('Año==2020').Metrica.iloc[0]
-            valor_col_2_4=Norma_2.query('Año==2021').Metrica.iloc[0]
-            valor_col_2_5=Norma_2.query('Año==2022').Metrica.iloc[0]
+            valor_col_2_1=f"{Norma_2.query('Año==2018').Metrica.iloc[0]:.2%}"
+            valor_col_2_2=f"{Norma_2.query('Año==2019').Metrica.iloc[0]:.2%}"
+            valor_col_2_3=f"{Norma_2.query('Año==2020').Metrica.iloc[0]:.2%}"
+            valor_col_2_4=f"{Norma_2.query('Año==2021').Metrica.iloc[0]:.2%}"
+            valor_col_2_5=f"{Norma_2.query('Año==2022').Metrica.iloc[0]:.2%}"
             with col_2_1:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_1}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_2_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
             with col_2_2:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_2}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_2_2}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
             with col_2_3:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_3}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_2_3}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
             with col_2_4:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_4}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_2_4}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
             with col_2_5:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_2_5}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_2_5}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
             st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_2}</h2>", unsafe_allow_html=True)
         
         with col3:
             col_3_1,col_3_2,col_3_3,col_3_4,col_3_5=st.columns(5,gap='small')
             texto_Norma_3="""Porcentaje de ingresos a la Contrata y/o Código del Trabajo cubiertos por procesos de Reclutamiento y Selección"""
-            valor_col_3_1=Norma_3.query('Año==2018').Metrica.iloc[0]
-            valor_col_3_2=Norma_3.query('Año==2019').Metrica.iloc[0]
-            valor_col_3_3=Norma_3.query('Año==2020').Metrica.iloc[0]
-            valor_col_3_4=Norma_3.query('Año==2021').Metrica.iloc[0]
-            valor_col_3_5=Norma_3.query('Año==2022').Metrica.iloc[0]
+            valor_col_3_1=f"{Norma_3.query('Año==2018').Metrica.iloc[0]:.2%}"
+            valor_col_3_2=f"{Norma_3.query('Año==2019').Metrica.iloc[0]:.2%}"
+            valor_col_3_3=f"{Norma_3.query('Año==2020').Metrica.iloc[0]:.2%}"
+            valor_col_3_4=f"{Norma_3.query('Año==2021').Metrica.iloc[0]:.2%}"
+            valor_col_3_5=f"{Norma_3.query('Año==2022').Metrica.iloc[0]:.2%}"
             with col_3_1:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_1}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_3_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
             with col_3_2:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_2}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_3_2}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
             with col_3_3:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_3}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_3_3}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
             with col_3_4:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_4}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_3_4}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
             with col_3_5:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_3_5}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_3_5}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
             st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_3}</h2>", unsafe_allow_html=True)
     
         with col4:
             col_4_1,col_4_2,col_4_3,col_4_4,col_4_5=st.columns(5,gap='small')
             texto_Norma_4="""Total de Vacantes de planta que se concursaron para los diferentes tipos de concursos"""
-            valor_col_4_1=Norma_4.query('Año==2018').Metrica.iloc[0]
-            valor_col_4_2=Norma_4.query('Año==2019').Metrica.iloc[0]
-            valor_col_4_3=Norma_4.query('Año==2020').Metrica.iloc[0]
-            valor_col_4_4=Norma_4.query('Año==2021').Metrica.iloc[0]
-            valor_col_4_5=Norma_4.query('Año==2022').Metrica.iloc[0]
+            valor_col_4_1=f"{Norma_4.query('Año==2018').Metrica.iloc[0]:.2%}"
+            valor_col_4_2=f"{Norma_4.query('Año==2019').Metrica.iloc[0]:.2%}"
+            valor_col_4_3=f"{Norma_4.query('Año==2020').Metrica.iloc[0]:.2%}"
+            valor_col_4_4=f"{Norma_4.query('Año==2021').Metrica.iloc[0]:.2%}"
+            valor_col_4_5=f"{Norma_4.query('Año==2022').Metrica.iloc[0]:.2%}"
             with col_4_1:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_1}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_4_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
             with col_4_2:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_2}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_4_2}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2019</h3>", unsafe_allow_html=True)
             with col_4_3:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_3}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_4_3}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2020</h3>", unsafe_allow_html=True)
             with col_4_4:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_4}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_4_4}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2021</h3>", unsafe_allow_html=True)
             with col_4_5:
-                st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_4_5}</h3>", unsafe_allow_html=True)
+                st.markdown(f"<h3 style='text-align: center; color: grey;'>{valor_col_4_5}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2022</h3>", unsafe_allow_html=True)
             st.markdown(f"<h2 style='text-align: center; color: grey;'>{texto_Norma_4}</h2>", unsafe_allow_html=True)
 
