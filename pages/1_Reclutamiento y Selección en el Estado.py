@@ -1035,8 +1035,9 @@ if a=='Empleo Público':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
         graf1.update_layout(yaxis_tickformat='.0f')
-        
+
         graf2=px.bar(postulaciones_x_ministerio,x='Ministerio_Resumido',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
+        graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1)
         graf3=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
 
         with st.container():
