@@ -620,13 +620,10 @@ if a=='Alta Dirección Pública':
         
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
-    
-    #df_concursos_eepp_aviso=pd.read_csv('EEPP/df_concursos_eepp_Aviso.csv',sep=";",encoding='utf-8')
-    #df_concursos_eepp_Postulacion=pd.read_csv('EEPP/df_concursos_eepp_Postulacion en linea.csv',sep=";",encoding='utf-8')
-    #df_concursos_eepp=pd.concat([df_concursos_eepp_aviso,df_concursos_eepp_Postulacion])
+   
+
     df_concursos_eepp=df_conc_ep()
     df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
-    #df_concursos_eepp=pd.merge(df_concursos_eepp,all_region,how='left',left_on='Región',right_on='Region')
     
     
     
@@ -658,13 +655,6 @@ if a=='Empleo Público':
     Calidad = Calidad.reset_index(drop=True)
     Calidad = Calidad['Calidad Jurídica'].tolist()
 
-    # unique_region = df_concursos_eepp['Region_Homologada'].unique()
-    # Region = pd.DataFrame({'Region': unique_region})
-    # nuevo_registro = pd.DataFrame({'Region': ['Todos']})
-    # Region = pd.concat([nuevo_registro, Region])
-    # Region = Region.reset_index(drop=True)
-    # Region = Region['Region'].tolist()
-
     unique_ministerios = df_concursos_eepp['Ministerio'].unique()
     Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
     nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
@@ -686,306 +676,313 @@ if a=='Empleo Público':
             columnas=['Ministerio','Institucion']
             option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
 
-    if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
-        convocatorias=df_concursos_eepp.groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
-        convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
-        
-        convocatorias_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-        convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
-        
-        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
-        convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
+    if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
-        vacantes=df_concursos_eepp.groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
-        vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
-        
-        vacantes_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
-        vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
-        
-        vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
-        
-        vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
+            convocatorias=df_concursos_eepp.groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+            convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
+            
+            convocatorias_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
+            convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
+            
+            convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
+            convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
-        rentas=df_rentas
-        rentas_x_min=df_rentas.groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
-        rentas_x_estamento=df_rentas.groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
+            vacantes=df_concursos_eepp.groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
+            vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
+            
+            vacantes_x_tipo=df_concursos_eepp.groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
+            vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
+            
+            vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
+            
+            vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
 
-        df_desiertos=df_concursos_eepp
-        desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+            rentas=df_rentas
+            rentas_x_min=df_rentas.groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
+            rentas_x_estamento=df_rentas.groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
+
+            df_desiertos=df_concursos_eepp
+            desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+            desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
+
+            
+        else:
+            if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
+                filtro=(df_concursos_eepp.Estamento==option_1)
+                filtro_rentas=(df_rentas.Estamento==option_1)
+            if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2)
+            if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #4
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3)
+                filtro_rentas=(df_rentas['Region_Homologada']==option_3)
+            if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #5
+                filtro=(df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Ministerio']==option_4)
+            if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #6
+                filtro=(df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #7
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2)
+            if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #8
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3)
+            if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #9
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4)
+            if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #10
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #11
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
+            if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #12
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
+            if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #13
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
+            if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #14
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #15
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #16
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
+            if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #17
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
+            if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #18
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #19
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #20
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #21
+                filtro=(df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #22
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #23
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
+            if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #24
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
+            if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #25
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
+            if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #26
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Institucion']==option_5)
+            if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #27
+                filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #28
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #29
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #30
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
+            if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #31
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
+            if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #32
+                filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
+                filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
+            
+            convocatorias=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+            convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
+
+            df_desiertos=df_concursos_eepp[filtro]
+            desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+            
+
+                
+            convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
+            convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
+            convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
+            convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
+
+            vacantes=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
+            vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
+            
+            vacantes_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
+            vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
+            vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
+            vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
+
+            rentas=df_rentas[filtro_rentas].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
+            rentas_x_min=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
+            rentas_x_estamento=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
+
+        convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
+        convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
+        
+        # cambio nombre year_convocatoria x Año
+        convocatorias_vacantes=convocatorias_vacantes.rename(columns={'Year_Convocatoria': 'Año'})
+        convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
+        convocatorias=convocatorias.rename(columns={'Year_Convocatoria': 'Año'})
         desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
+        vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
+        vacantes=vacantes.rename(columns={'Year_Convocatoria': 'Año'})
 
-        
-    else:
-        if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #2
-            filtro=(df_concursos_eepp.Estamento==option_1)
-            filtro_rentas=(df_rentas.Estamento==option_1)
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #3
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2)
-        if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #4
-            filtro=(df_concursos_eepp['Region_Homologada']==option_3)
-            filtro_rentas=(df_rentas['Region_Homologada']==option_3)
-        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #5
-            filtro=(df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Ministerio']==option_4)
-        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #6
-            filtro=(df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #7
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2)
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #8
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3)
-        if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #9
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4)
-        if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #10
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #11
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #12
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
-        if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #13
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #14
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #15
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #16
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
-        if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #17
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
-        if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #18
-            filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #19
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #20
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #21
-            filtro=(df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #22
-            filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #23
-            filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5=='Todos': #24
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4)
-        if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #25
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3)
-        if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #26
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Institucion']==option_5)
-        if option_1=='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #27
-            filtro=(df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #28
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2!='Todos' and option_3=='Todos' and option_4!='Todos' and option_5!='Todos': #29
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #30
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Institucion']==option_5)
-        if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #31
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4)
-        if option_1!='Todos' and option_2!='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #32
-            filtro=(df_concursos_eepp['Estamento']==option_1) & (df_concursos_eepp['Tipo de Vacante']==option_2) & (df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_concursos_eepp['Institucion']==option_5)
-            filtro_rentas=(df_rentas['Estamento']==option_1) & (df_rentas['Tipo de Vacante']==option_2) & (df_rentas['Region_Homologada']==option_3) & (df_rentas['Ministerio']==option_4) & (df_rentas['Institucion']==option_5)
-        
-        convocatorias=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
-        convocatorias=convocatorias.rename(columns={'idConcurso': 'Convocatorias'})
-
-        df_desiertos=df_concursos_eepp[filtro]
-        desiertos=df_desiertos[df_desiertos.Estado.isin(['Empleo Desierto','Concurso Desierto'])].groupby('Year_Convocatoria').agg({'idConcurso':'count'}).reset_index()
+        #----------------------------------------------------------------------------------------------------------------------------
+        desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
+        desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)
         
 
-             
-        convocatorias_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'idConcurso':'count'}).reset_index()
-        convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'idConcurso': 'Convocatorias_x_tipo'})
-        convocatorias_x_tipo=pd.merge(convocatorias_x_tipo,convocatorias,on='Year_Convocatoria',how='left')
-        convocatorias_x_tipo['Porcentaje_1']=np.round(convocatorias_x_tipo.Convocatorias_x_tipo/convocatorias_x_tipo.Convocatorias,2)*100
 
-        vacantes=df_concursos_eepp[filtro].groupby('Year_Convocatoria').agg({'Nº de Vacantes':'sum'}).reset_index()
-        vacantes=vacantes.rename(columns={'Nº de Vacantes': 'Vacantes'})
+        # fin del else
+        #----------------------------------------------------------------------------------------------------------------------------
+
+        tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar}
+        convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
+
+        #----------------------------------------------------------------------------------------------------------------------------
+        # # grafico Evolución de Postulaciones por Año
+        # graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
+        #         update_yaxes(visible=visible_y_axis,title_text=None).\
+        #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        # graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+        # graf1.update_layout(yaxis_tickformat='.0f')
+        #----------------------------------------------------------------------------------------------------------------------------
+        #grafico 2: Distribución de Postulaciones por tipo de aviso
+        # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
+        df_aviso = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Aviso']
+        df_linea = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Postulacion en linea']
         
-        vacantes_x_tipo=df_concursos_eepp[filtro].groupby(['Year_Convocatoria','Tipo postulacion']).agg({'Nº de Vacantes':'sum'}).reset_index()
-        vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Nº de Vacantes': 'Vacantes_x_tipo'})
-        vacantes_x_tipo=pd.merge(vacantes_x_tipo,vacantes,on='Year_Convocatoria',how='left')
-        vacantes_x_tipo['Porcentaje_2']=np.round(vacantes_x_tipo.Vacantes_x_tipo/vacantes_x_tipo.Vacantes,2)*100
-
-        rentas=df_rentas[filtro_rentas].groupby('Year_Convocatoria').agg({'Renta Bruta':'mean'}).reset_index()
-        rentas_x_min=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Ministerio']).agg({'Renta Bruta':'mean'}).reset_index()
-        rentas_x_estamento=df_rentas[filtro_rentas].groupby(['Year_Convocatoria','Estamento']).agg({'Renta Bruta':'mean'}).reset_index()
-
-    convocatorias_vacantes=pd.merge(convocatorias_x_tipo,vacantes_x_tipo,how='left',on=['Year_Convocatoria','Tipo postulacion'])
-    convocatorias_vacantes['Vacantes_x_Convocatoria']=np.round(convocatorias_vacantes.Vacantes_x_tipo/convocatorias_vacantes.Convocatorias_x_tipo,2)
+        # crea line plot usando plotly express
+        graf2 = px.line(
+            title='<b>Vacantes promedio por convocatorias</b>',
+            labels={'Año': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # cambia etiquetas de ejes
+        )
+        
+        # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
+        graf2.update_layout(yaxis_tickformat='.2')
+        
+        # agrega lineas para categoria "Aviso" y "postulacion en linea"
+        graf2.add_trace(
+            go.Scatter(x=df_aviso['Año'], y=df_aviso['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Aviso']), name='Aviso'))#,line_color=sexo_color_map['Mujeres'])
+        graf2.add_trace(go.Scatter(x=df_linea['Año'], y=df_linea['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Postulacion en linea']), name='Postulacion en linea'))#,line_color=sexo_color_map['Hombres']))
     
-    # cambio nombre year_convocatoria x Año
-    convocatorias_vacantes=convocatorias_vacantes.rename(columns={'Year_Convocatoria': 'Año'})
-    convocatorias_x_tipo=convocatorias_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
-    convocatorias=convocatorias.rename(columns={'Year_Convocatoria': 'Año'})
-    desiertos=desiertos.rename(columns={'idConcurso': 'Desiertos','Year_Convocatoria':'Año'})
-    vacantes_x_tipo=vacantes_x_tipo.rename(columns={'Year_Convocatoria': 'Año'})
-    vacantes=vacantes.rename(columns={'Year_Convocatoria': 'Año'})
-
-    #----------------------------------------------------------------------------------------------------------------------------
-    desiertos=pd.merge(desiertos,convocatorias,on='Año',how='left')
-    desiertos['Porcentaje']=np.round(desiertos.Desiertos/desiertos.Convocatorias,2)
-    
-
-
-    # fin del else
-    #----------------------------------------------------------------------------------------------------------------------------
-
-    tipo_convocatoria={'Aviso':color_line_2,'Postulacion en linea':color_bar}
-    convocatorias_x_tipo['Color'] = convocatorias_x_tipo['Tipo postulacion'].map(tipo_convocatoria)
-
-    #----------------------------------------------------------------------------------------------------------------------------
-    # # grafico Evolución de Postulaciones por Año
-    # graf1=px.line(df_postulaciones,x='año',y='postulaciones',title='<b>Evolución de postulaciones por año</b>').\
-    #         update_yaxes(visible=visible_y_axis,title_text=None).\
-    #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    # graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
-    # graf1.update_layout(yaxis_tickformat='.0f')
-    #----------------------------------------------------------------------------------------------------------------------------
-    #grafico 2: Distribución de Postulaciones por tipo de aviso
-    # Se crean distintos DataFrames para "Aviso" y "postulacion en linea"
-    df_aviso = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Aviso']
-    df_linea = convocatorias_vacantes[convocatorias_x_tipo['Tipo postulacion'] == 'Postulacion en linea']
-    
-    # crea line plot usando plotly express
-    graf2 = px.line(
-        title='<b>Vacantes promedio por convocatorias</b>',
-        labels={'Año': 'Año', 'Vacantes_x_Convocatoria': 'Vacantes por convocatoria'},  # cambia etiquetas de ejes
-    )
-    
-    # Cambiar el formato del eje y a porcentaje (0.1 se mostrará como 10%)
-    graf2.update_layout(yaxis_tickformat='.2')
-    
-    # agrega lineas para categoria "Aviso" y "postulacion en linea"
-    graf2.add_trace(
-        go.Scatter(x=df_aviso['Año'], y=df_aviso['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Aviso']), name='Aviso'))#,line_color=sexo_color_map['Mujeres'])
-    graf2.add_trace(go.Scatter(x=df_linea['Año'], y=df_linea['Vacantes_x_Convocatoria'], mode='lines+markers',line_shape='spline',marker=dict(size=8, color=tipo_postulacion_color_map['Postulacion en linea']), name='Postulacion en linea'))#,line_color=sexo_color_map['Hombres']))
-   
-    # Actualizar la ubicación de la leyenda
-    graf2.update_layout(
-        legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace'))  # Ubicar debajo del eje x en dos columnas
-    
-    # actualiza el eje x para nostrar todas las etiquetas de años
-    graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf2.update_layout(yaxis_tickformat='.2f', legend_title_text='Tipo de postulación', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
-    
-    #----------------------------------------------------------------------------------------------------------------------------
-    # # grafico Postulación Promedio por Año
-    # graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
-    #         update_yaxes(visible=visible_y_axis,title_text=None).\
-    #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    
-    # graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
-    #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Convocatorias por Año
-    graf4=px.bar(convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-            update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
-                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf4.update_layout(yaxis_tickformat='.0f')
-    # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
-    #----------------------------------------------------------------------------------------------------------------------------
-    graf7=px.bar(convocatorias_x_tipo, x='Año', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
-                 color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map,labels={'idConcurso': 'Cantidad de Convocatorias'}).\
+        # Actualizar la ubicación de la leyenda
+        graf2.update_layout(
+            legend=dict(x=0.5, xanchor='center', y=-0.2, yanchor='top', traceorder='normal', itemsizing='trace'))  # Ubicar debajo del eje x en dos columnas
+        
+        # actualiza el eje x para nostrar todas las etiquetas de años
+        graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf2.update_layout(yaxis_tickformat='.2f', legend_title_text='Tipo de postulación', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+        
+        #----------------------------------------------------------------------------------------------------------------------------
+        # # grafico Postulación Promedio por Año
+        # graf3=px.line(df_postulaciones_promedio,x='Año',y='Tasa Postulación Promedio - Concursos en Línea',title='<b>Evolución de postulaciones promedio por convocatoria por año</b>').\
+        #         update_yaxes(visible=visible_y_axis,title_text=None).\
+        #                 update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        
+        # graf3.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line)
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico Convocatorias por Año
+        graf4=px.bar(convocatorias,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
                 update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf7.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
-    # Personaliza el eje Y
-    graf7.update_yaxes(
-        type='linear',  # Puedes cambiar 'linear' a 'log' u otro tipo de escala si lo deseas
-        dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
-        )
-    #----------------------------------------------------------------------------------------------------------------------------
-    graf8= px.bar(convocatorias_x_tipo, x="Año", y="Porcentaje_1",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map, text_auto=True).\
-            update_yaxes(visible=False,title_text=None,type='linear').\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
-                        update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+        graf4.update_layout(yaxis_tickformat='.0f')
+        # Se puede cambiar type de 'linear' a 'log' dtick es el intervalo
+        #----------------------------------------------------------------------------------------------------------------------------
+        graf7=px.bar(convocatorias_x_tipo, x='Año', y='Convocatorias_x_tipo',title='<b>Cantidad  de convocatorias por forma de publicación por año</b>',
+                    color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map,labels={'idConcurso': 'Cantidad de Convocatorias'}).\
+                    update_yaxes(visible=visible_y_axis,title_text=None,type='linear', dtick=5000).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf7.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+        # Personaliza el eje Y
+        graf7.update_yaxes(
+            type='linear',  # Puedes cambiar 'linear' a 'log' u otro tipo de escala si lo deseas
+            dtick=5000  # Establece el intervalo en el eje Y, en este caso, cada 10 unidades
+            )
+        #----------------------------------------------------------------------------------------------------------------------------
+        graf8= px.bar(convocatorias_x_tipo, x="Año", y="Porcentaje_1",title='<b>Distribución (%) de tipo de convocatorias por año</b>', color='Tipo postulacion',color_discrete_map=tipo_postulacion_color_map, text_auto=True).\
+                update_yaxes(visible=False,title_text=None,type='linear').\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45).\
+                            update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+        
+        #----------------------------------------------------------------------------------------------------------------------------
     
-    #----------------------------------------------------------------------------------------------------------------------------
-  
-    # grafico Vacantes Concursadas por Año
-    graf5=px.bar(vacantes,x='Año',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar_2]).\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf5.update_layout(yaxis_tickformat='.0f')
-    #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Porcentaje de convocatorias con postulación en linea por año
-    #graf6=px.line(convocatorias_x_tipo,x='Year_Convocatoria',y='Porcentaje_2',title='<b>Distribución (%) de convocatorias con postulación en línea por año</b>').\
-    #        update_yaxes(visible=visible_y_axis,title_text=None).\
-    #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    # 
-    #graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
-    #graf6.update_layout(yaxis_tickformat='.0%')
-    #----------------------------------------------------------------------------------------------------------------------------
-    graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
-    graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
-    graf10.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
+        # grafico Vacantes Concursadas por Año
+        graf5=px.bar(vacantes,x='Año',y='Vacantes',title='<b>Vacantes ofrecidas por año</b>',color_discrete_sequence=[color_bar_2]).\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf5.update_layout(yaxis_tickformat='.0f')
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico Porcentaje de convocatorias con postulación en linea por año
+        #graf6=px.line(convocatorias_x_tipo,x='Year_Convocatoria',y='Porcentaje_2',title='<b>Distribución (%) de convocatorias con postulación en línea por año</b>').\
+        #        update_yaxes(visible=visible_y_axis,title_text=None).\
+        #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        # 
+        #graf6.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_bar)
+        #graf6.update_layout(yaxis_tickformat='.0%')
+        #----------------------------------------------------------------------------------------------------------------------------
+        graf9=px.histogram(rentas, x="Renta Bruta",title='<b>Histograma de rentas brutas ofrecidas</b>')
+        graf10=px.line(rentas_x_min, x="Year_Convocatoria", y="Renta Bruta", color='Ministerio',markers='o',title='<b>Evolución de rentas brutas ofrecidas por año</b>')
+        graf10.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.3, xanchor="right", x=1))
 
-    graf11=px.line(rentas_x_estamento, x="Year_Convocatoria", y="Renta Bruta", color='Estamento',markers='o',title='<b>Rentas brutas promedio por estamento por año</b>')
-    graf11.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.5, xanchor="right", x=1))
-    graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    #----------------------------------------------------------------------------------------------------------------------------
-    #graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
-    #        update_yaxes(visible=visible_y_axis,title_text=None).\
-    #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    #graf12.update_layout(yaxis_tickformat='.0f')
-    
-    #gráfico desiertos EEPP
-    graf12=px.line(desiertos,x='Año',y='Porcentaje',title='<b>Porcentaje convocatorias desiertos en EEPP</b>').\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-    graf12.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
-    graf12.update_layout(yaxis_tickformat='.2%')
+        graf11=px.line(rentas_x_estamento, x="Year_Convocatoria", y="Renta Bruta", color='Estamento',markers='o',title='<b>Rentas brutas promedio por estamento por año</b>')
+        graf11.update_layout(yaxis_tickformat='.0f', legend=dict(orientation="h", yanchor="bottom", y=-0.5, xanchor="right", x=1))
+        graf11.update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        #----------------------------------------------------------------------------------------------------------------------------
+        #graf12=px.bar(desiertos,x='Año',y='Desiertos',title='<b>Concursos desiertos por año</b>',color_discrete_sequence=[color_line_4]).\
+        #        update_yaxes(visible=visible_y_axis,title_text=None).\
+        #                update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        #graf12.update_layout(yaxis_tickformat='.0f')
+        
+        #gráfico desiertos EEPP
+        graf12=px.line(desiertos,x='Año',y='Porcentaje',title='<b>Porcentaje convocatorias desiertos en EEPP</b>').\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf12.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline', line_color=color_line_4)
+        graf12.update_layout(yaxis_tickformat='.2%')
 
+        #----------------------------------------------------------------------------------------------------------------------------
+        
+        col1,col2,col3=st.columns(3,gap='small')
+        with col1:
+            st.plotly_chart(graf4,use_container_width=True)
+            st.markdown('Nota: Solo se consideran convocatorias efectuadas en portal de EEPP')
+        with col2:
+            st.plotly_chart(graf8,use_container_width=True)
+        with col3:
+            st.plotly_chart(graf12,use_container_width=True)
+        
+        
+        col4, col5, col6=st.columns(3,gap='small')
+        with col4:
+                st.plotly_chart(graf5,use_container_width=True)
+        with col5:
+                st.plotly_chart(graf2,use_container_width=True)
+        with col6:
+                st.plotly_chart(graf11,use_container_width=True)
 
+    if seleccion_eepp=='Postulaciones':
+        @st.cache()
+        def postulciones_eepp():
+            df_post_eepp=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
+            return df_post_eepp
 
-    #----------------------------------------------------------------------------------------------------------------------------
+        df_postulaciones_eepp=postulciones_eepp()
 
-    
-    col1,col2,col3=st.columns(3,gap='small')
-    with col1:
-        st.plotly_chart(graf4,use_container_width=True)
-        st.markdown('Nota: Solo se consideran convocatorias efectuadas en portal de EEPP')
-    with col2:
-        st.plotly_chart(graf8,use_container_width=True)
-    with col3:
-        st.plotly_chart(graf12,use_container_width=True)
-    
-    
-    col4, col5, col6=st.columns(3,gap='small')
-    with col4:
-            st.plotly_chart(graf5,use_container_width=True)
-    with col5:
-            st.plotly_chart(graf2,use_container_width=True)
-    with col6:
-            st.plotly_chart(graf11,use_container_width=True)
-
-
-
+        st.dataframe(df_postulaciones_eepp.head(20))
+    #if seleccion_eepp=='Seleccionados': 
 #----------------------------------------------------------------------------------------------------------------------
 
 if a=='Prácticas Chile':
