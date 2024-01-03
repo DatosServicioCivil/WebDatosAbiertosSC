@@ -662,12 +662,21 @@ if a=='Empleo Público':
     Ministerios = Ministerios.reset_index(drop=True)
     Ministerios = Ministerios['Ministerio'].tolist()
 
+    #---------------------------------------------------------------
+    # habilitar o deshabilitar filtros de etamento y calidad juridica
+    if seleccion_eepp=='Convocatorias':
+        select_disabled=True
+        sex_disable=False
+    else:
+        select_disabled=False
+        sex_disable=True
+
     with st.container():
-        col1,col2,col3,col4,col5=st.columns(5,gap="small")
+        col1,col2,col3,col4,col5,col6=st.columns(6,gap="small")
         with col1:
-            option_1 = st.selectbox('Estamento',Estamento)
+            option_1 = st.selectbox('Estamento',Estamento,disabled=select_disabled)
         with col2:
-            option_2 = st.selectbox('Calidad Juridíca',Calidad)
+            option_2 = st.selectbox('Calidad Juridíca',Calidad,disabled=select_disabled)
         with col3:    
             option_3 = st.selectbox('Región',Region)
         with col4:
@@ -675,6 +684,8 @@ if a=='Empleo Público':
         with col5:
             columnas=['Ministerio','Institucion']
             option_5 = st.selectbox('Servicio',select_servicio(df_concursos_eepp[columnas].rename(columns={'Institucion': 'Servicio'}),option_4))
+        with col6:
+            option_6 = st.selectbox('Sexo',sexo_list,disabled=sex_disable)
 
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
@@ -974,14 +985,50 @@ if a=='Empleo Público':
                 st.plotly_chart(graf11,use_container_width=True)
 
     if seleccion_eepp=='Postulaciones':
-        @st.cache()
+        @st.cache_resource()
         def postulciones_eepp():
-            df_post_eepp=pq.read_table('EEPP/tb_postulaciones_eepp.parquet').to_pandas()
+            df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
 
-        st.dataframe(df_postulaciones_eepp.head(20))
+        if option_3=='Todos' and option_4=='Todos' and option_5=='Todos' and option_6=='Todos': #1
+            postulaciones=df_postulaciones_eepp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_ministerio=df_postulaciones_eepp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+
+        else:
+            if option_3=='Todos' and option_4=='Todos' and option_5=='Todos' and option_6!='Todos': #2
+                filtro=(df_postulaciones_eepp.Sexo==option_6)
+            if option_3=='Todos' and option_4=='Todos' and option_5!='Todos' and option_6=='Todos': #3
+                filtro=(df_postulaciones_eepp['Servicio']==option_5)
+            if option_3=='Todos' and option_4=='Todos' and option_5!='Todos' and option_6!='Todos': #4
+                filtro=(df_postulaciones_eepp['Sexo']==option_6) & (df_postulaciones_eepp['Servicio']==option_5)
+            if option_3=='Todos' and option_4!='Todos' and option_5=='Todos' and option_6=='Todos': #5
+                filtro=(df_postulaciones_eepp['Ministerio']==option_4)
+            if option_3=='Todos' and option_4!='Todos' and option_5=='Todos' and option_6!='Todos': #6
+                filtro=(df_postulaciones_eepp['Sexo']==option_6) & (df_postulaciones_eepp['Ministerio']==option_4)
+            if option_3=='Todos' and option_4!='Todos' and option_5!='Todos' and option_6=='Todos': #7
+                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_4)
+            if option_3=='Todos' and option_4!='Todos' and option_5!='Todos' and option_6!='Todos': #8
+                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Sexo']==option_6)
+            if option_3!='Todos' and option_4=='Todos' and option_5=='Todos' and option_6=='Todos': #9
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3)
+            if option_3!='Todos' and option_4=='Todos' and option_5=='Todos' and option_6!='Todos': #10
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Sexo']==option_6)    
+            if option_3!='Todos' and option_4=='Todos' and option_5!='Todos' and option_6=='Todos': #11
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4) 
+            if option_3!='Todos' and option_4!='Todos' and option_5=='Todos' and option_6=='Todos': #12
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4)
+            if option_3!='Todos' and option_4=='Todos' and option_5!='Todos' and option_6!='Todos': #13
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Servicio']==option_5)
+            if option_3!='Todos' and option_4!='Todos' and option_5=='Todos' and option_6!='Todos': #14
+                filtro=(df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5) & (df_postulaciones_eepp['Sexo']==option_6)
+            if option_3!='Todos' and option_4!='Todos' and option_5!='Todos' and option_6=='Todos': #15
+                filtro=(df_postulaciones_eepp['Region_Homologada']==option_3) & (df_postulaciones_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5)                
+            if option_3!='Todos' and option_4!='Todos' and option_5!='Todos' and option_6!='Todos': #16
+                filtro=(df_concursos_eepp['Region_Homologada']==option_3) & (df_concursos_eepp['Ministerio']==option_4) & (df_postulaciones_eepp['Servicio']==option_5) & (df_postulaciones_eepp['Sexo']==option_6)
+             
+        st.dataframe(df_postulaciones_eepp[filtro].head(20))
     #if seleccion_eepp=='Seleccionados': 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -1185,4 +1232,3 @@ if a=='Directores para Chile':
     #with col4:
     #        st.text('')
         
-
