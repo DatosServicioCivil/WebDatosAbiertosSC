@@ -985,7 +985,7 @@ if a=='Empleo Público':
                 st.plotly_chart(graf11,use_container_width=True)
 
     if seleccion_eepp=='Postulaciones':
-        @st.cache_resource()
+        @st.cache_data
         def postulciones_eepp():
             df_post_eepp=pq.read_table('datos/tb_postulaciones_eepp.parquet').to_pandas()
             return df_post_eepp
