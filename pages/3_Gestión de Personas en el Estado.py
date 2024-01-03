@@ -654,11 +654,11 @@ if a=='Normas de Gestión de Personas':
         with col1:
             col_1_1,col_1_2,col_1_3,col_1_4,col_1_5=st.columns(5,gap='small')
             texto_Norma_1="""Porcentaje de Jefaturas de Gestión de Personas que se encuentran en un 2do o 3er Nivel Jerárquico"""
-            valor_col_1_1 = Norma_1.query('Año==2018').Metrica.iloc[0]
-            valor_col_1_1 = Norma_1.query('Año==2019').Metrica.iloc[0]
-            valor_col_1_1 = Norma_1.query('Año==2020').Metrica.iloc[0]
-            valor_col_1_1 = Norma_1.query('Año==2021').Metrica.iloc[0]
-            valor_col_1_1 = Norma_1.query('Año==2022').Metrica.iloc[0]
+            valor_col_1_1 =f"{Norma_1.query('Año==2018').Metrica.iloc[0]:.2%}"
+            valor_col_1_2 =f"{Norma_1.query('Año==2019').Metrica.iloc[0]:.2%}"
+            valor_col_1_3 =f"{Norma_1.query('Año==2020').Metrica.iloc[0]:.2%}"
+            valor_col_1_4 =f"{Norma_1.query('Año==2021').Metrica.iloc[0]:.2%}"
+            valor_col_1_5 =f"{Norma_1.query('Año==2022').Metrica.iloc[0]:.2%}"
             with col_1_1:
                 st.markdown("<h3 style='text-align: center; color: grey;'>{valor_col_1_1}</h3>", unsafe_allow_html=True)
                 st.markdown("<h3 style='text-align: center; color: grey;'>2018</h3>", unsafe_allow_html=True)
