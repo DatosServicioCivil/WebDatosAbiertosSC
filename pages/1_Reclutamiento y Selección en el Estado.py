@@ -970,7 +970,7 @@ if a=='Empleo Público':
             return df_post_eepp
 
         df_postulaciones_eepp=postulciones_eepp()
-        df_post_eepp=pd.merge(df_post_eepp,ministerios,on='Ministerio',how='left')
+        df_postulaciones_eepp=pd.merge(df_postulaciones_eepp,ministerios,on='Ministerio',how='left')
 
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
