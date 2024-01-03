@@ -769,7 +769,7 @@ if a=='Normas de Gestión de Personas':
                 st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_5_3}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: black;'>2020</h5>", unsafe_allow_html=True)
             with col_5_4:
-                st.markdown(f"<h5 style='text-align: center; color: grblacky;'>{valor_col_5_4}</h5>", unsafe_allow_html=True)
+                st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_5_4}</h5>", unsafe_allow_html=True)
                 st.markdown("<h5 style='text-align: center; color: black;'>2021</h5>", unsafe_allow_html=True)
             with col_5_5:
                 st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_5_5}</h5>", unsafe_allow_html=True)
@@ -877,6 +877,58 @@ if a=='Normas de Gestión de Personas':
                     st.markdown(f"<h5 style='text-align: center; color: grey;'>{valor_col_9_5}</h5>", unsafe_allow_html=True)
                     st.markdown("<h5 style='text-align: center; color: grey;'>2022</h5>", unsafe_allow_html=True)
                 st.markdown(f"<h4 style='text-align: center; color: grey;'>{texto_Norma_9}</h4>", unsafe_allow_html=True)
+        
+        with st.container():
+            col10,col11=st.columns(2,gap='small')
+            with col10:
+                col_10_1,col_10_2,col_10_3,col_10_4,col_10_5=st.columns(5,gap='small')
+                texto_Norma_10="""Porcentaje de Servicios Públicos que en sus reglamentos especiales de calificación vigentes aplican evaluación de liderazgo a sus directivos y profesionales con personal a cargo"""
+                valor_col_10_1=f"{Norma_10.query('Año==2018').Metrica.iloc[0]:,}"
+                valor_col_10_2=f"{Norma_10.query('Año==2019').Metrica.iloc[0]:,}"
+                valor_col_10_3=f"{Norma_10.query('Año==2020').Metrica.iloc[0]:,}"
+                valor_col_10_4=f"{Norma_10.query('Año==2021').Metrica.iloc[0]:,}"
+                valor_col_10_5=f"{Norma_10.query('Año==2022').Metrica.iloc[0]:,}"
+                with col_10_1:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_1}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2018</h5>", unsafe_allow_html=True)
+                with col_10_2:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_2}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2019</h5>", unsafe_allow_html=True)
+                with col_10_3:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_3}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2020</h5>", unsafe_allow_html=True)
+                with col_10_4:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_4}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2021</h5>", unsafe_allow_html=True)
+                with col_10_5:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_10_5}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2022</h5>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: black;'>{texto_Norma_10}</h4>", unsafe_allow_html=True)
+
+            with col11:
+                col_11_1,col_11_2,col_11_3,col_11_4,col_11_5=st.columns(5,gap='small')
+                texto_Norma_11="""Porcentaje de Servicios Públicos que declaran que en su sistema de Gestión del Desempeño se contempla un procedimiento de retroalimentación"""
+                valor_col_11_1=f"{Norma_11.query('Año==2018').Metrica.iloc[0]:.2%}"
+                valor_col_11_2=f"{Norma_11.query('Año==2019').Metrica.iloc[0]:.2%}"
+                valor_col_11_3=f"{Norma_11.query('Año==2020').Metrica.iloc[0]:.2%}"
+                valor_col_11_4=f"{Norma_11.query('Año==2021').Metrica.iloc[0]:.2%}"
+                valor_col_11_5=f"{Norma_11.query('Año==2022').Metrica.iloc[0]:.2%}"
+                with col_11_1:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_11_1}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2018</h5>", unsafe_allow_html=True)
+                with col_11_2:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_11_2}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2019</h5>", unsafe_allow_html=True)
+                with col_11_3:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_11_3}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2020</h5>", unsafe_allow_html=True)
+                with col_11_4:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_11_4}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2021</h5>", unsafe_allow_html=True)
+                with col_11_5:
+                    st.markdown(f"<h5 style='text-align: center; color: black;'>{valor_col_11_5}</h5>", unsafe_allow_html=True)
+                    st.markdown("<h5 style='text-align: center; color: black;'>2022</h5>", unsafe_allow_html=True)
+                st.markdown(f"<h4 style='text-align: center; color: black;'>{texto_Norma_11}</h4>", unsafe_allow_html=True)
 
 #---------------------------------------------------------------------------------------------------
 #---------------------------------------------------------------------------------------------------
