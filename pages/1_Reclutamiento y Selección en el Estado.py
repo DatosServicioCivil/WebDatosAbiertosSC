@@ -1107,6 +1107,7 @@ if a=='Prácticas Chile':
     df_seleccionados=pd.read_excel('PCH/Seleccionado_x_año.xlsx')
     
     df_convocatorias_pch=concursos_pch()
+    df_convocatorias_pch['Año']=pd.to_datetime(df_convocatorias_pch['Fecha_inicio']).dt.year
     # df_postulaciones_pch=postulaciones_pch()
     # df_seleccionados_pch=seleccionados_pch()
 
