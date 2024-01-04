@@ -1180,9 +1180,9 @@ if a=='Prácticas Chile':
 
 
         if option_pch1=='Todos' and option_pch2=='Todos' and option_pch3=='Todos': #1
-            convocatorias_pch=df_convocatorias_pch.groupby('Año').agg({'idConcurso':'count'}).reset_index()
-            convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'idConcurso':'count'}).reset_index()
-            convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'idConcurso':'count'}).reset_index()
+            convocatorias_pch=df_convocatorias_pch.groupby('Año').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'Cod_practica':'count'}).reset_index()
 
         convocatorias_pch=convocatorias_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'Cod_practica': 'Convocatorias'})
