@@ -1194,6 +1194,10 @@ if a=='Prácticas Chile':
              update_yaxes(visible=visible_y_axis,title_text=None).\
                      update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por Año
+        graf5=px.bar(convocatorias_x_region_pch,x='Region_Homologada',y='Convocatorias',title='<b>Convocatorias por región</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
 
 
@@ -1202,9 +1206,9 @@ if a=='Prácticas Chile':
             with col1:
                 st.markdown('<p class="normal-font">Prácticas Chile es un programa gestionado por el Servicio Civil, que busca promover y atraer talento joven al Estado, y que permite a estudiantes de carreras universitarias y técnicas realizar sus prácticas en ministerios y servicios públicos, poniendo al servicio del país sus conocimientos y habilidades. </p>', unsafe_allow_html=True)
             with col2:
-                st.plotly_chart(graf1,use_container_width=True)
+                st.plotly_chart(graf4,use_container_width=True)
             with col3:
-                st.plotly_chart(graf2,use_container_width=True)
+                st.plotly_chart(graf5,use_container_width=True)
     
         with st.container():   
             col4, col5=st.columns(2,gap='small')
