@@ -95,6 +95,7 @@ def df_post_adp():
 @st.cache_data
 def tb_postulaciones_adp():
     tb_post_adp=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    tb_post_adp=pd.merge(tb_post_adp,all_region,how='left',on='Region')
     return tb_post_adp
 
 @st.cache_data
