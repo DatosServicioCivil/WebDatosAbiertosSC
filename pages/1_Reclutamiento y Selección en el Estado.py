@@ -1228,7 +1228,7 @@ if a=='Prácticas Chile':
                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
     #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por año y modalidad
-        graf7=px.bar(convocatorias_x_año_modalidad, x="Año", y="Convocatorias",color='Modalidad',color_discrete_map=modalidad_practica_color_map ,title="Concursos Desiertos o Anulados").\
+        graf7=px.bar(convocatorias_x_año_modalidad, x="Año", y="Convocatorias",color='Modalidad',color_discrete_map=modalidad_practica_color_map ,title="Convocatorias por año y modalidad").\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
