@@ -1080,12 +1080,38 @@ if a=='Empleo Público':
 
 if a=='Prácticas Chile':
 
+    @st.cache_data
+    def concursos_pch():
+        df_conc_pch=pq.read_table('PCH/df_concursos_pch.parquet').to_pandas()
+        df_conc_pch=pd.merge(df_conc_pch,all_region,on='Region',how='left')
+        return df_conc_pch
+    
+    @st.cache_data
+    def postulaciones_pch():
+        df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
+        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        return df_post_pch
+    
+    @st.cache_data
+    def seleccionados_pch():
+        df_sel_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
+        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
+        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        return df_sel_pch
+
     df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
     df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
     #df_seleccionados=pd.read_csv('PCH/Seleccionado_x_año.csv',sep=";",encoding='utf-8')
     df_seleccionados=pd.read_excel('PCH/Seleccionado_x_año.xlsx')
     
-    date='31 de Marzo de 2023'
+    df_convocatorias_pch=concursos_pch()
+    df_postulaciones_pch=postulaciones_pch()
+    df_seleccionados_pch=seleccionados_pch()
+
+
+    date='31 de diciembre de 2023'
     
     st.title('Estadísticas Portal Prácticas Chile')
     st.subheader(date)
@@ -1137,7 +1163,7 @@ if a=='Prácticas Chile':
     with col4:
             st.plotly_chart(graf3,use_container_width=True)
     with col4:
-            st.text('')
+            st.dataframe(df_convocatorias_pch.head(20))
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
