@@ -64,6 +64,7 @@ sexo_color_map_2 = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
 estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
+modalidad_practica_color_map={'Presencial': color_5, 'Modalidad a Distancia': color_bar_2}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
 sexo_list = ['Todos','Mujer','Hombre']  # Lista de sexos
@@ -1227,10 +1228,10 @@ if a=='Prácticas Chile':
                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
     #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por año y modalidad
-        #graf7=px.bar(convocatorias_x_año_modalidad, x="Año", y="Convocatorias",color='Modalidad',color_discrete_map=estados_edu_color_map ,title="Concursos Desiertos o Anulados").\
-        #     update_yaxes(visible=visible_y_axis,title_text=None).\
-        #            update_xaxes(title_text=None,tickmode='linear', dtick=1).\
-        #                update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+        graf7=px.bar(convocatorias_x_año_modalidad, x="Año", y="Convocatorias",color='Modalidad',color_discrete_map=modalidad_practica_color_map ,title="Concursos Desiertos o Anulados").\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1).\
+                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
 
 
 
@@ -1248,7 +1249,7 @@ if a=='Prácticas Chile':
             with col4:
                     st.plotly_chart(graf6,use_container_width=True)
             with col4:
-                    st.plotly_chart(graf4,use_container_width=True)
+                    st.plotly_chart(graf7,use_container_width=True)
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
