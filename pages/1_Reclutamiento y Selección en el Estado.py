@@ -1143,7 +1143,7 @@ if a=='Prácticas Chile':
     </style>
     """, unsafe_allow_html=True)
     
-      #----------------------------------------------------------------------------------------------------------------------------
+    #----------------------------------------------------------------------------------------------------------------------------
     # grafico Evolución de Postulaciones por Año
     graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución de postulaciones por año</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
@@ -1166,15 +1166,7 @@ if a=='Prácticas Chile':
     graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
 
-     #----------------------------------------------------------------------------------------------------------------------------
-    # grafico concursos por Año
-    # graf4=px.bar(df_convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-    #         update_yaxes(visible=visible_y_axis,title_text=None).\
-    #                 update_xaxes(title_text=None,tickmode='linear', dtick=1)
-    #----------------------------------------------------------------------------------------------------------------------------
-
-
-    if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+        if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
         
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
@@ -1185,6 +1177,25 @@ if a=='Prácticas Chile':
             with col8:
                 columnas=['Ministerio','Servicio']
                 option_pch3 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch2))
+
+
+        if option_pch1=='Todos' and option_pch2=='Todos' and option_pch3=='Todos': #1
+            convocatorias_pch=df_convocatorias_pch.groupby('Año').agg({'idConcurso':'count'}).reset_index()
+            convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'idConcurso':'count'}).reset_index()
+            convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'idConcurso':'count'}).reset_index()
+
+        convocatorias_pch=convocatorias_pch.rename(columns={'idConcurso': 'Convocatorias'})
+        convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'idConcurso': 'Convocatorias'})
+        convocatorias_x_region_pch=convocatorias_x_region_pch.rename(columns={'idConcurso': 'Convocatorias'})
+    
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por Año
+        graf4=px.bar(convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    #----------------------------------------------------------------------------------------------------------------------------
+
+
 
         with st.containaer():   
             col1,col2,col3=st.columns(3,gap='small')
@@ -1200,7 +1211,7 @@ if a=='Prácticas Chile':
             with col4:
                     st.plotly_chart(graf3,use_container_width=True)
             with col4:
-                    st.dataframe(df_convocatorias_pch.head(20))
+                    st.plotly_chart(graf4,use_container_width=True)
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
