@@ -410,46 +410,57 @@ if a=='Alta Dirección Pública':
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
             postulaciones=df_postulaciones_adp.groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp.groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp.groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
         
         if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #2
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
         
         if option_1=='Todos' and option_2!='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #3
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Region_Homologada']==option_2) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
         
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #4
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5=='Todos': #5
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #6
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4=='Todos' and option_5!='Todos': #7
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         if option_1!='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5!='Todos': #8
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         if option_1=='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #9
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
         
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5=='Todos': #10
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
         
         if option_1!='Todos' and option_2=='Todos' and option_3!='Todos' and option_4!='Todos' and option_5!='Todos': #11
             postulaciones=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Año').agg({'postulaciones':'sum'}).reset_index()
             postulaciones_x_ministerio=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Ministerio').agg({'postulaciones':'sum'}).reset_index()
+            postulaciones_x_region=df_postulaciones_adp[(df_postulaciones_adp['Nivel']==option_1) & (df_postulaciones_adp['Ministerio']==option_3) & (df_postulaciones_adp['Servicio']==option_4) & (df_postulaciones_adp['Sexo']==option_5)].groupby('Region_Homologada').agg({'postulaciones':'sum'}).reset_index()
 
         #st.dataframe(postulaciones.head(10))
         #st.dataframe(postulaciones_x_ministerio.head(10))
@@ -457,6 +468,7 @@ if a=='Alta Dirección Pública':
         # rename de variable ID_Postulacion
         postulaciones=postulaciones.rename(columns={'postulaciones': 'Postulaciones'})
         postulaciones_x_ministerio=postulaciones_x_ministerio.rename(columns={'postulaciones': 'Postulaciones'})
+        postulaciones_x_region=postulaciones_x_region.rename(columns={'postulaciones': 'Postulaciones'})
         # ----------------------------------------------------------------------------------------------------------------
 
         graf1=px.line(postulaciones,x='Año',y='Postulaciones',title='<b>Evolución de postulaciones ADP por año</b>').\
@@ -473,13 +485,21 @@ if a=='Alta Dirección Pública':
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
         graf2.update_layout(yaxis_tickformat='.0f')
 
+        # gráfico postulaciones por region
+        graf3=px.bar(postulaciones_x_ministerio,x='Region_Homologada',y='Postulaciones',title='<b>Postulaciones por Región</b>',\
+                     color_discrete_sequence=[color_6]).\
+                    update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf3.update_layout(yaxis_tickformat='.0f')
+
         with st.container():
+            st.plotly_chart(graf1,use_container_width=True)
             col1,col2=st.columns(2,gap='small')
             with col1:
-                st.plotly_chart(graf1,use_container_width=True)
-            with col2:
                 st.plotly_chart(graf2,use_container_width=True)
-            st.dataframe(df_postulaciones_adp.head(10))
+            with col2:
+                st.plotly_chart(graf3,use_container_width=True)
+            #st.dataframe(df_postulaciones_adp.head(10))
         
 
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
