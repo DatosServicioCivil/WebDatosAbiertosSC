@@ -478,7 +478,7 @@ if a=='Alta Dirección Pública':
                 st.plotly_chart(graf1,use_container_width=True)
             with col2:
                 st.plotly_chart(graf2,use_container_width=True)
-            #st.dataframe(df_postulaciones_adp.head(10))
+            st.dataframe(df_postulaciones_adp.head(10))
         
 
         #if option_1=='Todos' and option_2=='Todos' and option_3=='Todos' and option_4=='Todos' and option_5=='Todos': #1
