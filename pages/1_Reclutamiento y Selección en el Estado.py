@@ -1184,9 +1184,9 @@ if a=='Prácticas Chile':
             convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'idConcurso':'count'}).reset_index()
             convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'idConcurso':'count'}).reset_index()
 
-        convocatorias_pch=convocatorias_pch.rename(columns={'idConcurso': 'Convocatorias'})
-        convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'idConcurso': 'Convocatorias'})
-        convocatorias_x_region_pch=convocatorias_x_region_pch.rename(columns={'idConcurso': 'Convocatorias'})
+        convocatorias_pch=convocatorias_pch.rename(columns={'Cod_practica': 'Convocatorias'})
+        convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'Cod_practica': 'Convocatorias'})
+        convocatorias_x_region_pch=convocatorias_x_region_pch.rename(columns={'Cod_practica': 'Convocatorias'})
     
         #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
