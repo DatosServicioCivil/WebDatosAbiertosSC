@@ -1038,7 +1038,11 @@ if a=='Empleo Público':
 
         graf2=px.bar(postulaciones_x_ministerio,x='Ministerio_Resumido',y='postulaciones',title='<b>Postulaciones por Ministerio</b>')
         graf2.update_xaxes(title_text=None,tickmode='linear', dtick=1)
+        graf2.update_layout(yaxis_tickformat='.0f')
+
         graf3=px.bar(postulaciones_x_region,x='Region_Homologada',y='postulaciones',title='<b>Postulaciones por Región</b>')
+        graf3.update_xaxes(title_text=None,tickmode='linear', dtick=1)
+        graf3.update_layout(yaxis_tickformat='.0f')
 
         with st.container():
             col1,col2,col3=st.columns(3,gap="small")
