@@ -1166,7 +1166,7 @@ if a=='Prácticas Chile':
     graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
 
-        if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+    if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
         
         with st.container():
             col6,col7,col8,col9=st.columns(4,gap="small")
