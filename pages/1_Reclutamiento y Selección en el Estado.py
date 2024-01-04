@@ -1168,9 +1168,9 @@ if a=='Prácticas Chile':
 
      #----------------------------------------------------------------------------------------------------------------------------
     # grafico concursos por Año
-    graf4=px.bar(df_convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    # graf4=px.bar(df_convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+    #         update_yaxes(visible=visible_y_axis,title_text=None).\
+    #                 update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
 
 
