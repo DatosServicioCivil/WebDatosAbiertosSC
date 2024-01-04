@@ -1112,6 +1112,22 @@ if a=='Prácticas Chile':
     # df_seleccionados_pch=seleccionados_pch()
 
 
+    unique_ministerios = df_convocatorias_pch['Ministerio'].unique()
+    Ministerios = pd.DataFrame({'Ministerio': unique_ministerios})
+    nuevo_registro = pd.DataFrame({'Ministerio': ['Todos']})
+    Ministerios = pd.concat([nuevo_registro, Ministerios])
+    Ministerios = Ministerios.reset_index(drop=True)
+    Ministerios = Ministerios['Ministerio'].tolist()
+
+    unique_region = df_convocatorias_pch['Region_Homologada'].unique()
+    Region = pd.DataFrame({'Region': unique_region})
+    nuevo_registro = pd.DataFrame({'Region': ['Todos']})
+    Region = pd.concat([nuevo_registro, Region])
+    Region = Region.reset_index(drop=True)
+    Region = Region['Region'].tolist()
+
+
+
     date='31 de diciembre de 2023'
     
     st.title('Estadísticas Portal Prácticas Chile')
@@ -1127,7 +1143,7 @@ if a=='Prácticas Chile':
     </style>
     """, unsafe_allow_html=True)
     
-    #----------------------------------------------------------------------------------------------------------------------------
+      #----------------------------------------------------------------------------------------------------------------------------
     # grafico Evolución de Postulaciones por Año
     graf1=px.line(df_postulaciones,x='año',y='Postulaciones',title='<b>Evolución de postulaciones por año</b>').\
             update_yaxes(visible=visible_y_axis,title_text=None).\
@@ -1149,22 +1165,42 @@ if a=='Prácticas Chile':
     
     graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
     #----------------------------------------------------------------------------------------------------------------------------
+
+     #----------------------------------------------------------------------------------------------------------------------------
+    # grafico concursos por Año
+    graf4=px.bar(df_convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+            update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
+    #----------------------------------------------------------------------------------------------------------------------------
+
+
+    if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+        
+        with st.container():
+            col6,col7,col8,col9=st.columns(4,gap="small")
+            with col6:    
+                option_pch1 = st.selectbox('Región',Region)
+            with col7:
+                option_pch2 = st.selectbox('Ministerio',Ministerios)
+            with col8:
+                columnas=['Ministerio','Servicio']
+                option_pch3 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch2))
+
+        with st.containaer():   
+            col1,col2,col3=st.columns(3,gap='small')
+            with col1:
+                st.markdown('<p class="normal-font">Prácticas Chile es un programa gestionado por el Servicio Civil, que busca promover y atraer talento joven al Estado, y que permite a estudiantes de carreras universitarias y técnicas realizar sus prácticas en ministerios y servicios públicos, poniendo al servicio del país sus conocimientos y habilidades. </p>', unsafe_allow_html=True)
+            with col2:
+                st.plotly_chart(graf1,use_container_width=True)
+            with col3:
+                st.plotly_chart(graf2,use_container_width=True)
     
-    
-    col1,col2,col3=st.columns(3,gap='small')
-    with col1:
-        st.markdown('<p class="normal-font">Prácticas Chile es un programa gestionado por el Servicio Civil, que busca promover y atraer talento joven al Estado, y que permite a estudiantes de carreras universitarias y técnicas realizar sus prácticas en ministerios y servicios públicos, poniendo al servicio del país sus conocimientos y habilidades. </p>', unsafe_allow_html=True)
-    with col2:
-        st.plotly_chart(graf1,use_container_width=True)
-    with col3:
-        st.plotly_chart(graf2,use_container_width=True)
-    
-    
-    col4, col5=st.columns(2,gap='small')
-    with col4:
-            st.plotly_chart(graf3,use_container_width=True)
-    with col4:
-            st.dataframe(df_convocatorias_pch.head(20))
+        with st.containaer():   
+            col4, col5=st.columns(2,gap='small')
+            with col4:
+                    st.plotly_chart(graf3,use_container_width=True)
+            with col4:
+                    st.dataframe(df_convocatorias_pch.head(20))
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
