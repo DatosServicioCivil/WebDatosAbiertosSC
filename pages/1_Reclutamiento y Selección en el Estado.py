@@ -1190,12 +1190,17 @@ if a=='Prácticas Chile':
     
         #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
-        graf4=px.bar(convocatorias_pch,x='Año',y='Convocatorias',title='<b>Evolución de convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
+        graf4=px.bar(convocatorias_pch,x='Año',y='Convocatorias',title='<b>Convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                      update_xaxes(title_text=None,tickmode='linear', dtick=1)
     #----------------------------------------------------------------------------------------------------------------------------
-        # grafico concursos por Año
+        # grafico concursos por region
         graf5=px.bar(convocatorias_x_region_pch,x='Region_Homologada',y='Convocatorias',title='<b>Convocatorias por región</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+     #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por ministerio
+        graf6=px.bar(convocatorias_x_ministerio_pch,x='Ministerio',y='Convocatorias',title='<b>Convocatorias por Ministerio</b>',color_discrete_sequence=[color_bar]).\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                      update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
@@ -1213,7 +1218,7 @@ if a=='Prácticas Chile':
         with st.container():   
             col4, col5=st.columns(2,gap='small')
             with col4:
-                    st.plotly_chart(graf3,use_container_width=True)
+                    st.plotly_chart(graf6,use_container_width=True)
             with col4:
                     st.plotly_chart(graf4,use_container_width=True)
 
