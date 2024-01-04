@@ -1183,11 +1183,33 @@ if a=='Prácticas Chile':
             convocatorias_pch=df_convocatorias_pch.groupby('Año').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_año_modalidad=df_convocatorias_pch.groupby(['Año','Modalidad']).agg({'Cod_practica':'count'}).reset_index()
+        else:
+            if option_pch1!='Todos' and option_pch2!='Todos' and option_pch3!='Todos': #2
+                filtro=(df_convocatorias_pch['Region_Homologada']==option_pch1) & (df_convocatorias_pch['Ministerio']==option_pch2) & (df_convocatorias_pch['Servicio']==option_pch3)
+            if option_pch1!='Todos' and option_pch2!='Todos' and option_pch3=='Todos': #8
+                filtro=(df_convocatorias_pch['Region_Homologada']==option_pch1) & (df_convocatorias_pch['Ministerio']==option_pch2)
+            if option_pch1!='Todos' and option_pch2=='Todos' and option_pch3!='Todos': #7
+                filtro=(df_convocatorias_pch['Region_Homologada']==option_pch1) & (df_convocatorias_pch['Servicio']==option_pch3)
+            if option_pch1!='Todos' and option_pch2=='Todos' and option_pch3=='Todos': #6
+                filtro=(df_convocatorias_pch['Region_Homologada']==option_pch1)
+            if option_pch1=='Todos' and option_pch2!='Todos' and option_pch3!='Todos': #3
+                filtro=(df_convocatorias_pch['Ministerio']==option_pch2) & (df_convocatorias_pch['Servicio']==option_pch3)
+            if option_pch1=='Todos' and option_pch2!='Todos' and option_pch3=='Todos': #5
+                filtro=(df_convocatorias_pch['Ministerio']==option_pch2)
+            if option_pch1=='Todos' and option_pch2=='Todos' and option_pch3!='Todos': #4
+                filtro=(df_convocatorias_pch['Servicio']==option_pch3)
+            
+            convocatorias_pch=df_convocatorias_pch[filtro].groupby('Año').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_ministerio_pch=df_convocatorias_pch[filtro].groupby('Ministerio').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_region_pch=df_convocatorias_pch[filtro].groupby('Region_Homologada').agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_año_modalidad=df_convocatorias_pch[filtro].groupby(['Año','Modalidad']).agg({'Cod_practica':'count'}).reset_index()
 
         convocatorias_pch=convocatorias_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_region_pch=convocatorias_x_region_pch.rename(columns={'Cod_practica': 'Convocatorias'})
-    
+        convocatorias_x_año_modalidad=convocatorias_x_año_modalidad.rename(columns={'Cod_practica': 'Convocatorias'})
+        
         #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
         graf4=px.bar(convocatorias_pch,x='Año',y='Convocatorias',title='<b>Convocatorias por año</b>',color_discrete_sequence=[color_bar]).\
@@ -1202,7 +1224,13 @@ if a=='Prácticas Chile':
         # grafico concursos por ministerio
         graf6=px.bar(convocatorias_x_ministerio_pch,x='Ministerio',y='Convocatorias',title='<b>Convocatorias por Ministerio</b>',color_discrete_sequence=[color_bar]).\
              update_yaxes(visible=visible_y_axis,title_text=None).\
-                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
+    #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por año y modalidad
+        #graf7=px.bar(convocatorias_x_año_modalidad, x="Año", y="Convocatorias",color='Modalidad',color_discrete_map=estados_edu_color_map ,title="Concursos Desiertos o Anulados").\
+        #     update_yaxes(visible=visible_y_axis,title_text=None).\
+        #            update_xaxes(title_text=None,tickmode='linear', dtick=1).\
+        #                update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
 
 
 
