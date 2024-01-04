@@ -1206,7 +1206,7 @@ if a=='Prácticas Chile':
             with col3:
                 st.plotly_chart(graf2,use_container_width=True)
     
-        with st.containaer():   
+        with st.container():   
             col4, col5=st.columns(2,gap='small')
             with col4:
                     st.plotly_chart(graf3,use_container_width=True)
