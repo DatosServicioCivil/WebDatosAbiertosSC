@@ -1170,7 +1170,7 @@ if a=='Prácticas Chile':
     if seleccion_pch=='Convocatorias':# =st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
         
         with st.container():
-            col6,col7,col8,col9=st.columns(4,gap="small")
+            col6,col7,col8=st.columns(3,gap="small")
             with col6:    
                 option_pch1 = st.selectbox('Región',Region)
             with col7:
