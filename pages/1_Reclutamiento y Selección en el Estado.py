@@ -1197,7 +1197,7 @@ if a=='Prácticas Chile':
 
 
 
-        with st.containaer():   
+        with st.container():   
             col1,col2,col3=st.columns(3,gap='small')
             with col1:
                 st.markdown('<p class="normal-font">Prácticas Chile es un programa gestionado por el Servicio Civil, que busca promover y atraer talento joven al Estado, y que permite a estudiantes de carreras universitarias y técnicas realizar sus prácticas en ministerios y servicios públicos, poniendo al servicio del país sus conocimientos y habilidades. </p>', unsafe_allow_html=True)
