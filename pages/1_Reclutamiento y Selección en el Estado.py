@@ -64,6 +64,7 @@ sexo_color_map_2 = {'Mujer': 'orange', 'Hombre': 'blue','Todos':'grey'}  # Mapeo
 tipo_postulacion_color_map={'Aviso': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 tipo_vacante_color_map={'Aviso': 'orange', 'Postulacion en linea': 'dark grey'}# Mapeo de colores por tipo de postulacion
 estados_edu_color_map={'Nombrado': color_line_4, 'Desierto': color_6,'Anulado':'red','En Proceso':'pink'}# Mapeo de colores por tipo de postulacion
+estados_pch_color_map={'FINALIZADA CON NOMBRAMIENTO': color_line_4, 'Desierto': color_6,'Anulado':'red','Evaluación':'pink','POSTULACION':'#A7ED74'}# Mapeo de colores por estado
 modalidad_practica_color_map={'Presencial': color_5, 'Modalidad a Distancia': color_bar_2}# Mapeo de colores por tipo de postulacion
 #estado_color_map={'Nombrado': 'orange', 'Postulacion en linea': 'blue'}# Mapeo de colores por tipo de postulacion
 
@@ -1185,6 +1186,7 @@ if a=='Prácticas Chile':
             convocatorias_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_region_pch=df_convocatorias_pch.groupby('Region_Homologada').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_año_modalidad=df_convocatorias_pch.groupby(['Año','Modalidad']).agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_año_estado=df_convocatorias_pch.groupby(['Año','Estado_Practica']).agg({'Cod_practica':'count'}).reset_index()
         else:
             if option_pch1!='Todos' and option_pch2!='Todos' and option_pch3!='Todos': #2
                 filtro=(df_convocatorias_pch['Region_Homologada']==option_pch1) & (df_convocatorias_pch['Ministerio']==option_pch2) & (df_convocatorias_pch['Servicio']==option_pch3)
@@ -1205,11 +1207,13 @@ if a=='Prácticas Chile':
             convocatorias_x_ministerio_pch=df_convocatorias_pch[filtro].groupby('Ministerio').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_region_pch=df_convocatorias_pch[filtro].groupby('Region_Homologada').agg({'Cod_practica':'count'}).reset_index()
             convocatorias_x_año_modalidad=df_convocatorias_pch[filtro].groupby(['Año','Modalidad']).agg({'Cod_practica':'count'}).reset_index()
+            convocatorias_x_año_estado=df_convocatorias_pch[filtro].groupby(['Año','Estado_Practica']).agg({'Cod_practica':'count'}).reset_index()
 
         convocatorias_pch=convocatorias_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_ministerio_pch=convocatorias_x_ministerio_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_region_pch=convocatorias_x_region_pch.rename(columns={'Cod_practica': 'Convocatorias'})
         convocatorias_x_año_modalidad=convocatorias_x_año_modalidad.rename(columns={'Cod_practica': 'Convocatorias'})
+        convocatorias_x_año_estado=convocatorias_x_año_estado.rename(columns={'Cod_practica': 'Convocatorias'})
         
         #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
@@ -1232,9 +1236,14 @@ if a=='Prácticas Chile':
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+    #----------------------------------------------------------------------------------------------------------------------------  
+        graf8=px.bar(convocatorias_x_año_estado, x="Año", y="Convocatorias",color='Estado_Practica',color_discrete_map=estados_pch_color_map ,title="Convocatorias por año y modalidad").\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                    update_xaxes(title_text=None,tickmode='linear', dtick=1).\
+                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+    
 
-
-
+    #----------------------------------------------------------------------------------------------------------------------------
         with st.container():   
             col1,col2,col3=st.columns(3,gap='small')
             with col1:
@@ -1245,11 +1254,13 @@ if a=='Prácticas Chile':
                 st.plotly_chart(graf5,use_container_width=True)
     
         with st.container():   
-            col4, col5=st.columns(2,gap='small')
+            col4, col5,col6=st.columns(3,gap='small')
             with col4:
                     st.plotly_chart(graf6,use_container_width=True)
             with col5:
                     st.plotly_chart(graf7,use_container_width=True)
+            with col6:
+                    st.plotly_chart(graf8,use_container_width=True)
 
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
