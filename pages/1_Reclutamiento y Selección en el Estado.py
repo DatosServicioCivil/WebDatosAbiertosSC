@@ -486,7 +486,7 @@ if a=='Alta Dirección Pública':
         graf2.update_layout(yaxis_tickformat='.0f')
 
         # gráfico postulaciones por region
-        graf3=px.bar(postulaciones_x_ministerio,x='Region_Homologada',y='Postulaciones',title='<b>Postulaciones por Región</b>',\
+        graf3=px.bar(postulaciones_x_region,x='Region_Homologada',y='Postulaciones',title='<b>Postulaciones por Región</b>',\
                      color_discrete_sequence=[color_6]).\
                     update_yaxes(visible=visible_y_axis,title_text=None).\
                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
