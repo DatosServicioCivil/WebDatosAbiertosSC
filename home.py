@@ -77,21 +77,26 @@ def df_conc_adp():
     return df_conc
 
 
-#@st.cache_data
-#def df_selec_pch():
-#    df_sel_pch = pd.read_parquet('PCH/df_postulaciones_pch.parquet')
-#    return df_sel_pch
-
+@st.cache_data
+def df_selec_pch():
+    df_sel_pch = pq.read_table('PCH/df_postulaciones_pch.parquet')
+    df_sel_pch=df_sel_pch.drop_columns(['FechaNacimiento', 'FechaPostulacion'])
+    df_sel_pch = df_sel_pch.to_pandas(timestamp_as_object=False)
+    return df_sel_pch
 
 
 df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_conc_adp()
-#df_seleccionados_pch=df_selec_pch()
+df_seleccionados_pch=df_selec_pch()
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
 concursos_adp=df_concursos_adp.CD_Concurso.count()
 nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
+
+# Realiza el conteo de valores en la columna 'EstadoPost'
+seleccionados_pch = df_seleccionados_pch['EstadoPost'].value_counts().reset_index()
+seleccionados_pch = seleccionados_pch.loc[seleccionados_pch['EstadoPost'] == "Seleccionado", 'count'].values[0]
 
 
 with st.container():
@@ -129,7 +134,7 @@ with st.container():
         #image = Image.open('imagenes/Directores.png')
         image=add_logo(logo_path="./imagenes/Directores.png", width=150, height=150)
         st.image(image)
-        valor_col5=f"{nombrados_adp:,}".replace(",", ".")
+        valor_col5=f"{seleccionados_pch:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col5}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Prácticas Chile</h2>", unsafe_allow_html=True)
     with col6:
