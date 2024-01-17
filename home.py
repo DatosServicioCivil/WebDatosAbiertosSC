@@ -162,7 +162,7 @@ with st.container():
     st.caption(texto_foot_5, unsafe_allow_html=False, help=None)  
 
 
-    st.dataframe(df_seleccionados_pch.head(10))
+st.dataframe(df_seleccionados_pch.head(10))
     
     
 
