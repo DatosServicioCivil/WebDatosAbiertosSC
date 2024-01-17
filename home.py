@@ -77,16 +77,16 @@ def df_conc_adp():
     return df_conc
 
 
-@st.cache_data
-def df_selec_pch():
-    df_sel_pch = pd.read_parquet('PCH/df_postulaciones_pch.parquet')
-    return df_sel_pch
+#@st.cache_data
+#def df_selec_pch():
+#    df_sel_pch = pd.read_parquet('PCH/df_postulaciones_pch.parquet')
+#    return df_sel_pch
 
 
 
 df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_conc_adp()
-df_seleccionados_pch=df_selec_pch()
+#df_seleccionados_pch=df_selec_pch()
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
@@ -141,7 +141,7 @@ with st.container():
         st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h2>", unsafe_allow_html=True)
 
 
-st.dataframe(df_seleccionados_pch.head(10))
+#st.dataframe(df_seleccionados_pch.head(10))
 
 
 
