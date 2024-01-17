@@ -139,7 +139,12 @@ with st.container():
         valor_col6=f"{nombrados_adp:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h2>", unsafe_allow_html=True)
-                           
+
+
+st.dataframe(df_seleccionados_pch.head(10))
+
+
+
 with st.container():
     st.markdown("\n")
     st.markdown("\n")
@@ -162,7 +167,7 @@ with st.container():
     st.caption(texto_foot_5, unsafe_allow_html=False, help=None)  
 
 
-st.dataframe(df_seleccionados_pch.head(10))
+
     
     
 
