@@ -76,9 +76,17 @@ def df_conc_adp():
     df_conc = pd.read_parquet('ADP/df_concursos.parquet')
     return df_conc
 
+
+@st.cache_data
+def df_selec_pch():
+    df_sel_pch = pd.read_parquet('PCH/df_postulaciones_pch.parquet')
+    return df_sel_pch
+
+
+
 df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_conc_adp()
-
+df_seleccionados_pch=df_selec_pch()
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
@@ -152,6 +160,9 @@ with st.container():
         st.write(texto_foot_4, unsafe_allow_html=False)     
     texto_foot_5="""Morandé 115, P.9, Santiago, Chile. Fono(56 2) 2873 4400"""
     st.caption(texto_foot_5, unsafe_allow_html=False, help=None)  
+
+
+    st.dataframe(df_seleccionados_pch.head(10))
     
     
 
