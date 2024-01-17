@@ -84,10 +84,20 @@ def df_selec_pch():
     df_sel_pch = df_sel_pch.to_pandas(timestamp_as_object=False)
     return df_sel_pch
 
+@st.cache_data
+def df_selec_dee():
+    df_sel_dee = pd.read_csv('DEEM/tblConcursos.csv', sep=';')
+    return df_sel_dee
+
+
+
+
+
 
 df_concursos_eepp=df_conc_eepp()
 df_concursos_adp=df_conc_adp()
 df_seleccionados_pch=df_selec_pch()
+df_seleccionados_deem=df_selec_dee()
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
@@ -97,6 +107,8 @@ nombrados_adp=df_concursos_adp.query("Estado=='Nombrado'").CD_Concurso.count()
 # Realiza el conteo de valores en la columna 'EstadoPost'
 seleccionados_pch = df_seleccionados_pch['EstadoPost'].value_counts().reset_index()
 seleccionados_pch = seleccionados_pch.loc[seleccionados_pch['EstadoPost'] == "Seleccionado", 'count'].values[0]
+
+seleccionados_deem=df_seleccionados_deem[df_seleccionados_deem['Estado'] == "Nombrado"].agg('count').values[0]
 
 
 with st.container():
@@ -141,7 +153,7 @@ with st.container():
         #image = Image.open('imagenes/trainee.PNG')
         image=add_logo(logo_path="./imagenes/trainee.PNG", width=150, height=150)
         st.image(image)
-        valor_col6=f"{nombrados_adp:,}".replace(",", ".")
+        valor_col6=f"{seleccionados_deem:,}".replace(",", ".")
         st.markdown(f"<h1 style='text-align: center; color: grey;'>{valor_col6}</h1>", unsafe_allow_html=True)
         st.markdown("<h2 style='text-align: center; color: grey;'>Personas seleccionadas en Directores para Chile</h2>", unsafe_allow_html=True)
 
