@@ -1364,9 +1364,13 @@ if a=='Prácticas Chile':
                     st.plotly_chart(graf11,use_container_width=True)
 
         with st.container():
-            st.subheader('muestra dataset postulaciones prácticas chile')
-            st.dataframe(tb_postulaciones_sexo_año)
-            st.dataframe(df_postulaciones_pch.head(20))
+            col18, col19=st.columns(2,gap='small')
+            with col18:
+                st.plotly_chart(graf13,use_container_width=True)
+            with col19:
+                st.subheader('muestra dataset postulaciones prácticas chile')
+                #st.dataframe(tb_postulaciones_sexo_año)
+                st.dataframe(df_postulaciones_pch.head(20))
 
 
     if seleccion_pch=='Seleccionados':
