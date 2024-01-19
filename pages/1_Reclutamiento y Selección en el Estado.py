@@ -1387,6 +1387,49 @@ if a=='Prácticas Chile':
             with col14:
                 columnas=['Ministerio','Servicio']
                 option_pch9 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch8))
+        
+        if option_pch7=='Todos' and option_pch8=='Todos' and option_pch9=='Todos': #1
+            seleccionados_pch=df_seleccionados_pch.groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_sexo_pch=df_seleccionados_pch.groupby(['Año','Sexo']).agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_ministerio_pch=df_seleccionados_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_region_pch=df_seleccionados_pch.groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
+    
+        else:
+            if option_pch7!='Todos' and option_pch8!='Todos' and option_pch9!='Todos': #2
+                filtro=(df_seleccionados_pch['region_homologada_postulante']==option_pch7) & (df_seleccionados_pch['Ministerio']==option_pch8) & (df_seleccionados_pch['Servicio']==option_pch9)
+            if option_pch7!='Todos' and option_pch8!='Todos' and option_pch9=='Todos': #8
+                filtro=(df_seleccionados_pch['region_homologada_postulante']==option_pch7) & (df_seleccionados_pch['Ministerio']==option_pch8)
+            if option_pch7!='Todos' and option_pch8=='Todos' and option_pch9!='Todos': #7
+                filtro=(df_seleccionados_pch['region_homologada_postulante']==option_pch7) & (df_seleccionados_pch['Servicio']==option_pch9)
+            if option_pch7!='Todos' and option_pch8=='Todos' and option_pch9=='Todos': #6
+                filtro=(df_seleccionados_pch['region_homologada_postulante']==option_pch7)
+            if option_pch7=='Todos' and option_pch8!='Todos' and option_pch9!='Todos': #3
+                filtro=(df_seleccionados_pch['Ministerio']==option_pch8) & (df_seleccionados_pch['Servicio']==option_pch9)
+            if option_pch7=='Todos' and option_pch8!='Todos' and option_pch9=='Todos': #5
+                filtro=(df_seleccionados_pch['Ministerio']==option_pch8)
+            if option_pch7=='Todos' and option_pch8=='Todos' and option_pch9!='Todos': #4
+                filtro=(df_seleccionados_pch['Servicio']==option_pch9)
+
+            seleccionados_pch=df_seleccionados_pch[filtro].groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_sexo_pch=df_seleccionados_pch[filtro].groupby(['Año','Sexo']).agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_ministerio_pch=df_seleccionados_pch[filtro].groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
+            seleccionados_x_region_pch=df_seleccionados_pch[filtro].groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
+    
+
+        seleccionados_pch=seleccionados_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
+        seleccionados_x_sexo_pch=seleccionados_x_sexo_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
+        seleccionados_x_ministerio_pch=seleccionados_x_ministerio_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
+        seleccionados_x_region_pch=seleccionados_x_region_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
+    
+        
+        # cambio de nombre de columnas
+        tb_seleccionados_año=seleccionados_pch.rename(columns={'Postulaciones':'Total Postulaciones'})
+        tb_seleccionados_sexo_año=seleccionados_x_sexo_pch.rename(columns={'Postulaciones':'Postulaciones'})
+        # union de tablas por left join 
+        tb_postulaciones_sexo_año=pd.merge(tb_seleccionados_sexo_año,tb_seleccionados_año,how='left',on='Año')
+        tb_seleccionados_sexo_año['Porcentaje']=(tb_seleccionados_sexo_año['Postulaciones']/tb_seleccionados_sexo_año['Total Postulaciones'])
+        
+        st.dataframe(tb_seleccionados_sexo_año)
         st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
