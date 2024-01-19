@@ -1348,11 +1348,11 @@ if a=='Prácticas Chile':
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
         
         #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-        # graf13=px.line(postulaciones_x_sexo_pch,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
-        #              update_yaxes(visible=True,title_text=None).\
-        #                  update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
-        # graf13.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
-        # graf13.update_layout(yaxis_tickformat='.0%')
+        graf13=px.line(tb_postulaciones_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                      update_yaxes(visible=True,title_text=None).\
+                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf13.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
+        graf13.update_layout(yaxis_tickformat='.0%')
 
         with st.container():   
             col15, col16,col17=st.columns(3,gap='small')
