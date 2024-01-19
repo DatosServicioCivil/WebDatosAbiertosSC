@@ -1088,19 +1088,22 @@ if a=='Prácticas Chile':
         df_conc_pch=pd.merge(df_conc_pch,all_region,on='Region',how='left')
         return df_conc_pch
     
+    all_region_postulante=all_region.rename(columns={'Region':'region_postulante'})
+    all_region_practica=all_region.rename(columns={'Region':'region_practica'})
+
     @st.cache_data
     def postulaciones_pch():
         df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
-        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
-        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        df_post_pch=pd.merge(df_post_pch,all_region_postulante,on='region_postulante',how='left')
+        df_post_pch=pd.merge(df_post_pch,all_region_practica,on='region_practica',how='left')
         return df_post_pch
     
     @st.cache_data
     def seleccionados_pch():
         df_sel_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
         df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
-        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
-        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        df_sel_pch=pd.merge(df_sel_pch,all_region_postulante,on='region_postulante',how='left')
+        df_sel_pch=pd.merge(df_sel_pch,all_region_practica,on='region_practica',how='left')
         return df_sel_pch
 
     df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
