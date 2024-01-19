@@ -1262,8 +1262,26 @@ if a=='Prácticas Chile':
             with col6:
                     st.plotly_chart(graf8,use_container_width=True)
     if seleccion_pch=='Postulaciones':
+        with st.container():
+            col9,col10,col11=st.columns(3,gap="small")
+            with col9:    
+                option_pch4 = st.selectbox('Región',Region)
+            with col7:
+                option_pch5 = st.selectbox('Ministerio',Ministerios)
+            with col8:
+                columnas=['Ministerio','Servicio']
+                option_pch6 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch5))
         st.dataframe(df_postulaciones_pch.head(20))
     if seleccion_pch=='Seleccionados':
+        with st.container():
+            col12,col13,col14=st.columns(3,gap="small")
+            with col12:    
+                option_pch7 = st.selectbox('Región',Region)
+            with col13:
+                option_pch8 = st.selectbox('Ministerio',Ministerios)
+            with col14:
+                columnas=['Ministerio','Servicio']
+                option_pch9 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch8))
         st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
