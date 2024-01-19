@@ -1430,8 +1430,47 @@ if a=='Prácticas Chile':
         tb_seleccionados_sexo_año['Porcentaje']=(tb_seleccionados_sexo_año['Postulaciones']/tb_seleccionados_sexo_año['Total Postulaciones'])
         
         #st.dataframe(tb_seleccionados_año)
-        st.dataframe(tb_seleccionados_sexo_año)
+        #st.dataframe(tb_seleccionados_sexo_año)
         st.dataframe(df_seleccionados_pch.head(20))
+
+                #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por Año
+        graf14=px.bar(seleccionados_pch,x='Año',y='Postulaciones',title='<b>Seleccionados por año</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por region
+        graf15=px.bar(seleccionados_x_region_pch,x='region_homologada_postulante',y='Postulaciones',title='<b>Seleccionados por región</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1)
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico concursos por ministerio
+        graf16=px.bar(seleccionados_x_ministerio_pch,x='Ministerio',y='Postulaciones',title='<b>Seleccionados por Ministerio</b>',color_discrete_sequence=[color_bar]).\
+             update_yaxes(visible=visible_y_axis,title_text=None).\
+                     update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
+        #----------------------------------------------------------------------------------------------------------------------------  
+        #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+        graf17=px.line(tb_seleccionados_sexo_año,x='Año',y='Porcentaje',title='<b>Porcentaje seleccionados por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                      update_yaxes(visible=True,title_text=None).\
+                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf17.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
+
+        with st.container():   
+            col20, col21,col22=st.columns(3,gap='small')
+            with col20:
+                    st.plotly_chart(graf14,use_container_width=True)
+            with col21:
+                    st.plotly_chart(graf15,use_container_width=True)
+            with col22:
+                    st.plotly_chart(graf16,use_container_width=True)
+
+        with st.container():
+            col23, col24=st.columns(2,gap='small')
+            with col23:
+                st.plotly_chart(graf13,use_container_width=True)
+            with col24:
+                st.subheader('muestra dataset seleccionados en prácticas chile')
+                st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
