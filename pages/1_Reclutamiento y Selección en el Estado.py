@@ -1088,20 +1088,20 @@ if a=='Prácticas Chile':
         df_conc_pch=pd.merge(df_conc_pch,all_region,on='Region',how='left')
         return df_conc_pch
     
-    # @st.cache_data
-    # def postulaciones_pch():
-    #     df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
-    #     df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
-    #     df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_practica',right_on='Region',how='left')
-    #     return df_post_pch
+    @st.cache_data
+    def postulaciones_pch():
+        df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
+        df_post_pch=pd.merge(df_post_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        return df_post_pch
     
-    # @st.cache_data
-    # def seleccionados_pch():
-    #     df_sel_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
-    #     df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
-    #     df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
-    #     df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_practica',right_on='Region',how='left')
-    #     return df_sel_pch
+    @st.cache_data
+    def seleccionados_pch():
+        df_sel_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
+        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_postulante',right_on='Region',how='left')
+        df_sel_pch=pd.merge(df_sel_pch,all_region,left_on='region_practica',right_on='Region',how='left')
+        return df_sel_pch
 
     df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
     df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
@@ -1110,8 +1110,8 @@ if a=='Prácticas Chile':
     
     df_convocatorias_pch=concursos_pch()
     df_convocatorias_pch['Año']=pd.to_datetime(df_convocatorias_pch['Fecha_inicio']).dt.year
-    # df_postulaciones_pch=postulaciones_pch()
-    # df_seleccionados_pch=seleccionados_pch()
+    df_postulaciones_pch=postulaciones_pch()
+    df_seleccionados_pch=seleccionados_pch()
 
 
     unique_ministerios = df_convocatorias_pch['Ministerio'].unique()
@@ -1261,7 +1261,10 @@ if a=='Prácticas Chile':
                     st.plotly_chart(graf7,use_container_width=True)
             with col6:
                     st.plotly_chart(graf8,use_container_width=True)
-
+    if seleccion_pch=='Postulaciones':
+        st.dataframe(df_postulaciones_pch.head(20))
+    if seleccion_pch=='Seleccionados':
+        st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
     df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
