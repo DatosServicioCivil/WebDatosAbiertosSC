@@ -1285,7 +1285,6 @@ if a=='Prácticas Chile':
             postulaciones_pch=df_postulaciones_pch.groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_ministerio_pch=df_postulaciones_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_region_pch=df_postulaciones_pch.groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_año_modalidad=df_postulaciones_pch.groupby(['Año','Modalidad']).agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_año_estado=df_postulaciones_pch.groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
         else:
             if option_pch4!='Todos' and option_pch5!='Todos' and option_pch6!='Todos': #2
@@ -1306,13 +1305,11 @@ if a=='Prácticas Chile':
             postulaciones_pch=df_postulaciones_pch[filtro].groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_ministerio_pch=df_postulaciones_pch[filtro].groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_region_pch=df_postulaciones_pch[filtro].groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_año_modalidad=df_postulaciones_pch[filtro].groupby(['Año','Modalidad']).agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_año_estado=df_postulaciones_pch[filtro].groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
 
         postulaciones_pch=postulaciones_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_ministerio_pch=postulaciones_x_ministerio_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_region_pch=postulaciones_x_region_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
-        postulaciones_x_año_modalidad=postulaciones_x_año_modalidad.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_año_estado=postulaciones_x_año_estado.rename(columns={'ID_PostPractica': 'Postulaciones'})
 
         #----------------------------------------------------------------------------------------------------------------------------
@@ -1330,14 +1327,8 @@ if a=='Prácticas Chile':
         graf11=px.bar(postulaciones_x_ministerio_pch,x='Ministerio',y='Postulaciones',title='<b>Postulaciones por Ministerio</b>',color_discrete_sequence=[color_bar]).\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                      update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-90)
-        #----------------------------------------------------------------------------------------------------------------------------
-        # grafico concursos por año y modalidad
-        graf12=px.bar(postulaciones_x_año_modalidad, x="Año", y="Postulaciones",color='Modalidad',color_discrete_map=modalidad_practica_color_map ,title="Postulaciones por año y modalidad").\
-             update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1).\
-                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
         #----------------------------------------------------------------------------------------------------------------------------  
-        graf13=px.bar(postulaciones_x_año_estado, x="Año", y="Postulaciones",color='EstadoPost',color_discrete_map=estados_pch_color_map ,title="Estado de Postulaciones por año").\
+        graf12=px.bar(postulaciones_x_año_estado, x="Año", y="Postulaciones",color='EstadoPost',color_discrete_map=estados_pch_color_map ,title="Estado de Postulaciones por año").\
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
