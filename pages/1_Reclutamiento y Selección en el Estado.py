@@ -1279,8 +1279,7 @@ if a=='Prácticas Chile':
             with col11:
                 columnas=['Ministerio','Servicio']
                 option_pch6 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch5))
-        st.dataframe(df_postulaciones_pch.head(20))
-        
+                
         if option_pch4=='Todos' and option_pch5=='Todos' and option_pch6=='Todos': #1
             postulaciones_pch=df_postulaciones_pch.groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_ministerio_pch=df_postulaciones_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
@@ -1341,6 +1340,10 @@ if a=='Prácticas Chile':
                     st.plotly_chart(graf10,use_container_width=True)
             with col17:
                     st.plotly_chart(graf11,use_container_width=True)
+
+        with st.container():
+            st.subheader('muestra dataset postulaciones prácticas chile')
+            st.dataframe(df_postulaciones_pch.head(20))
 
 
     if seleccion_pch=='Seleccionados':
