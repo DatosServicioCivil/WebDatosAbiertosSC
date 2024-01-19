@@ -1096,8 +1096,6 @@ if a=='Prácticas Chile':
         df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
         df_post_pch=pd.merge(df_post_pch,all_region_postulante,on='region_postulante',how='left')
         df_post_pch=pd.merge(df_post_pch,all_region_practica,on='region_practica',how='left')
-        # df_post_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
-        # df_post_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
         return df_post_pch
     
     @st.cache_data
@@ -1273,9 +1271,9 @@ if a=='Prácticas Chile':
             col9,col10,col11=st.columns(3,gap="small")
             with col9:    
                 option_pch4 = st.selectbox('Región',Region)
-            with col7:
+            with col10:
                 option_pch5 = st.selectbox('Ministerio',Ministerios)
-            with col8:
+            with col11:
                 columnas=['Ministerio','Servicio']
                 option_pch6 = st.selectbox('Servicio',select_servicio(df_convocatorias_pch[columnas],option_pch5))
         st.dataframe(df_postulaciones_pch.head(20))
