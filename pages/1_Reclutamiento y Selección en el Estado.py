@@ -1099,6 +1099,7 @@ if a=='Prácticas Chile':
         df_post_pch=df_post_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
         df_post_pch=df_post_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
         df_post_pch=df_post_pch[df_post_pch.Sexo.isin(['H','M'])]
+        df_post_pch['Sexo']=np.where(df_post_pch['Sexo']=='H','Hombres','Mujeres')
         return df_post_pch
     
     @st.cache_data
@@ -1110,6 +1111,7 @@ if a=='Prácticas Chile':
         df_sel_pch=df_sel_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
         df_sel_pch=df_sel_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
         df_sel_pch=df_sel_pch[df_sel_pch.Sexo.isin(['H','M'])]
+        df_sel_pch['Sexo']=np.where(df_sel_pch['Sexo']=='H','Hombres','Mujeres')
         return df_sel_pch
 
     df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
