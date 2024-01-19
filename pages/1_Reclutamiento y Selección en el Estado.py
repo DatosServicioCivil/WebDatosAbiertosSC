@@ -1431,7 +1431,7 @@ if a=='Prácticas Chile':
         
         #st.dataframe(tb_seleccionados_año)
         #st.dataframe(tb_seleccionados_sexo_año)
-        st.dataframe(df_seleccionados_pch.head(20))
+        #st.dataframe(df_seleccionados_pch.head(20))
 
                 #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
