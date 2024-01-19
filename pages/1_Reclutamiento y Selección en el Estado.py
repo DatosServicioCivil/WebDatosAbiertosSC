@@ -1467,7 +1467,7 @@ if a=='Prácticas Chile':
         with st.container():
             col23, col24=st.columns(2,gap='small')
             with col23:
-                st.plotly_chart(graf13,use_container_width=True)
+                st.plotly_chart(graf17,use_container_width=True)
             with col24:
                 st.subheader('muestra dataset seleccionados en prácticas chile')
                 st.dataframe(df_seleccionados_pch.head(20))
