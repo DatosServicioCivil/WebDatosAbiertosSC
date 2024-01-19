@@ -1096,8 +1096,8 @@ if a=='Prácticas Chile':
         df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
         df_post_pch=pd.merge(df_post_pch,all_region_postulante,on='region_postulante',how='left')
         df_post_pch=pd.merge(df_post_pch,all_region_practica,on='region_practica',how='left')
-        df_post_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
-        df_post_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
+        # df_post_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
+        # df_post_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
         return df_post_pch
     
     @st.cache_data
@@ -1106,8 +1106,8 @@ if a=='Prácticas Chile':
         df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
         df_sel_pch=pd.merge(df_sel_pch,all_region_postulante,on='region_postulante',how='left')
         df_sel_pch=pd.merge(df_sel_pch,all_region_practica,on='region_practica',how='left')
-        df_sel_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
-        df_sel_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
+        # df_sel_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
+        # df_sel_pch.rename(columns={'Region_Homologada_y':'region_homologada_practica'})
         return df_sel_pch
 
     df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
