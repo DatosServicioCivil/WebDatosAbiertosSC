@@ -1429,6 +1429,7 @@ if a=='Prácticas Chile':
         tb_postulaciones_sexo_año=pd.merge(tb_seleccionados_sexo_año,tb_seleccionados_año,how='left',on='Año')
         #tb_seleccionados_sexo_año['Porcentaje']=(tb_seleccionados_sexo_año['Postulaciones']/tb_seleccionados_sexo_año['Total Postulaciones'])
         
+        st.dataframe(tb_seleccionados_año)
         st.dataframe(tb_seleccionados_sexo_año)
         st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
