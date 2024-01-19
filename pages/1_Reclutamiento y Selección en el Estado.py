@@ -1283,10 +1283,10 @@ if a=='Prácticas Chile':
         
         if option_pch4=='Todos' and option_pch5=='Todos' and option_pch6=='Todos': #1
             postulaciones_pch=df_postulaciones_pch.groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_ministerio_pch=df_convocatorias_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_region_pch=df_convocatorias_pch.groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_año_modalidad=df_convocatorias_pch.groupby(['Año','Modalidad']).agg({'ID_PostPractica':'count'}).reset_index()
-            postulaciones_x_año_estado=df_convocatorias_pch.groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_ministerio_pch=df_postulaciones_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_region_pch=df_postulaciones_pch.groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_año_modalidad=df_postulaciones_pch.groupby(['Año','Modalidad']).agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_año_estado=df_postulaciones_pch.groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
         else:
             if option_pch4!='Todos' and option_pch5!='Todos' and option_pch6!='Todos': #2
                 filtro=(df_postulaciones_pch['region_homologada_postulante']==option_pch4) & (df_postulaciones_pch['Ministerio']==option_pch5) & (df_postulaciones_pch['Servicio']==option_pch6)
