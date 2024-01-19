@@ -1005,7 +1005,7 @@ if a=='Empleo Público':
                 columnas=['Ministerio','Servicio']
                 option_S3 = st.selectbox('Servicio',select_servicio(df_postulaciones_eepp[columnas],option_S2))
             with col9:
-                option_S4 = st.selectbox('Sexo',sexo_list)
+                option_S4 = st.selectbox('Sexo postulantes',sexo_list)
 
         
         if option_S1=='Todos' and option_S2=='Todos' and option_S3=='Todos' and option_S4=='Todos': #1
@@ -1282,6 +1282,7 @@ if a=='Prácticas Chile':
                 
         if option_pch4=='Todos' and option_pch5=='Todos' and option_pch6=='Todos': #1
             postulaciones_pch=df_postulaciones_pch.groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_sexo_pch=df_postulaciones_pch.groupby(['Año','Sexo']).agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_ministerio_pch=df_postulaciones_pch.groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_region_pch=df_postulaciones_pch.groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_año_estado=df_postulaciones_pch.groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
@@ -1302,14 +1303,28 @@ if a=='Prácticas Chile':
                 filtro=(df_postulaciones_pch['Servicio']==option_pch6)
 
             postulaciones_pch=df_postulaciones_pch[filtro].groupby('Año').agg({'ID_PostPractica':'count'}).reset_index()
+            postulaciones_x_sexo_pch=df_postulaciones_pch[filtro].groupby(['Año','Sexo']).agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_ministerio_pch=df_postulaciones_pch[filtro].groupby('Ministerio').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_region_pch=df_postulaciones_pch[filtro].groupby('region_homologada_postulante').agg({'ID_PostPractica':'count'}).reset_index()
             postulaciones_x_año_estado=df_postulaciones_pch[filtro].groupby(['Año','EstadoPost']).agg({'ID_PostPractica':'count'}).reset_index()
 
         postulaciones_pch=postulaciones_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
+        postulaciones_x_sexo_pch=postulaciones_x_sexo_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_ministerio_pch=postulaciones_x_ministerio_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_region_pch=postulaciones_x_region_pch.rename(columns={'ID_PostPractica': 'Postulaciones'})
         postulaciones_x_año_estado=postulaciones_x_año_estado.rename(columns={'ID_PostPractica': 'Postulaciones'})
+        
+
+
+        # cambio de nombre de columnas
+        tb_postulaciones_año=postulaciones_pch.rename(columns={'Postulaciones':'Total Postulaciones'})
+        tb_postulaciones_sexo_año=postulaciones_x_sexo_pch.rename(columns={'Postulaciones':'Postulaciones'})
+        # union de tablas por left join 
+        tb_postulaciones_sexo_año=pd.merge(tb_postulaciones_sexo_año,tb_postulaciones_año,how='left',on='Año')
+        tb_postulaciones_sexo_año['Porcentaje']=(tb_postulaciones_sexo_año['Postulaciones']/tb_postulaciones_sexo_año['Total Postulaciones'])
+
+
+
 
         #----------------------------------------------------------------------------------------------------------------------------
         # grafico concursos por Año
@@ -1331,6 +1346,13 @@ if a=='Prácticas Chile':
              update_yaxes(visible=visible_y_axis,title_text=None).\
                     update_xaxes(title_text=None,tickmode='linear', dtick=1).\
                         update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+        
+        #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+        graf13=px.line(postulaciones_x_sexo_pch,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>',color='Sexo',color_discrete_map=sexo_color_map).\
+                     update_yaxes(visible=True,title_text=None).\
+                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+        graf13.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
+        graf13.update_layout(yaxis_tickformat='.0%')
 
         with st.container():   
             col15, col16,col17=st.columns(3,gap='small')
@@ -1343,6 +1365,7 @@ if a=='Prácticas Chile':
 
         with st.container():
             st.subheader('muestra dataset postulaciones prácticas chile')
+            st.dataframe(tb_postulaciones_sexo_año)
             st.dataframe(df_postulaciones_pch.head(20))
 
 
