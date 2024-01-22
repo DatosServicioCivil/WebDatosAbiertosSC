@@ -684,6 +684,15 @@ if a=='Empleo Público':
     Ministerios = Ministerios.reset_index(drop=True)
     Ministerios = Ministerios['Ministerio'].tolist()
 
+
+    unique_años = list(range(2000, 2025))
+    Años = pd.DataFrame({'Año': unique_años})
+    nuevo_registro = pd.DataFrame({'Año': ['Todos']})
+    Años = pd.concat([nuevo_registro, Años])
+    Años = Años.reset_index(drop=True)
+    Años = Años['Año'].tolist()
+
+
     #---------------------------------------------------------------
     if seleccion_eepp=='Convocatorias': #, "Postulaciones","Seleccionados"] 
 
@@ -1089,13 +1098,26 @@ if a=='Empleo Público':
             return df_sel_eepp
 
         df_seleccionados_eepp=seleccionados_eepp()
+        #años=df_seleccionados_eepp.Año.unique().tolist()
+
+        # unique_años = list(range(2000, 2025))
+        # Años = pd.DataFrame({'Año': unique_años})
+        # nuevo_registro = pd.DataFrame({'Año': ['Todos']})
+        # Años = pd.concat([nuevo_registro, Años])
+        # Años = Años.reset_index(drop=True)
+        # Años = Años['Año'].tolist()
+
+
+
 
         with st.container():
-            col10,col11=st.columns(2,gap="small")
+            col10,col11,col12=st.columns(3,gap="small")
             with col10:    
                 option_S10 = st.selectbox('Región',Region)
             with col11:
                 option_S11 = st.selectbox('Sexo postulantes',sexo_list)
+            with col12:
+                option_S12 = st.selectbox('Año',Años)
 
         if option_S10=='Todos' and option_S11=='Todos': #1
             seleccionados=df_seleccionados_eepp.groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
