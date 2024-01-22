@@ -78,7 +78,7 @@ with col1:
    st.markdown("Selecciona zona y región")
    zona=st.selectbox("Zona", ["Todas","Norte", "Centro", "Sur", "Austral"])
    if zona=='Norte':
-      region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
+      region=st.selectbox("Región", ["Todas","Arica y Parinacota","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
    elif zona=='Centro':
       region=st.selectbox("Región", ["Todas","Valparaíso","Metropolitana" ,"O'Higgins", "Maule"])
    elif zona=='Sur':
