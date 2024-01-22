@@ -1089,9 +1089,9 @@ if a=='Empleo Público':
 
         with st.container():
             col10,col11=st.columns(2,gap="small")
-            with col6:    
+            with col10:    
                 option_S10 = st.selectbox('Región',Region)
-            with col9:
+            with col11:
                 option_S11 = st.selectbox('Sexo postulantes',sexo_list)
 
         st.dataframe(df_seleccionados_eepp.head(20))
