@@ -158,4 +158,8 @@ graf1.update_yaxes(title_text='Porcentaje')
 graf1.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')
 #labels={"Region_Homologada":"Región","Porcentaje":"Porcentaje","Tipo":"Tipo de Seleccionado"}
 
-st.plotly_chart(graf1,use_container_width=True)
+if region!='Todas':
+   graf1.update_layout(legend_title_text='Región')
+   st.plotly_chart(graf1,use_container_width=True)
+else:
+   st.text('Selecciona una región para ver el gráfico')
