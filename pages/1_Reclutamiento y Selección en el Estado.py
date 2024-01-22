@@ -1586,13 +1586,6 @@ if a=='Directores para Chile':
     </style>
     """, unsafe_allow_html=True)
 
-    # unique_region = df_DEEM['Region'].unique()
-    # Region = pd.DataFrame({'Region': unique_region})
-    # nuevo_registro = pd.DataFrame({'Region': ['Todos']})
-    # Region = pd.concat([nuevo_registro, Region])
-    # Region = Region.reset_index(drop=True)
-    # Region = Region['Region'].tolist()
-
     unique_comuna = df_DEEM['Comuna'].unique()
     Comuna = pd.DataFrame({'Comuna': unique_comuna})
     nuevo_registro = pd.DataFrame({'Comuna': ['Todos']})
@@ -1609,81 +1602,66 @@ if a=='Directores para Chile':
 
     columnas=['Region','Comuna']
 
-    with st.container():
-        col1,col2=st.columns(2,gap="small")
-        with col1:
-            option_1 = st.selectbox('Región',Region)
-        with col2:
-            option_2 = st.selectbox('Comuna',select_comuna(df_DEEM,option_1))
-    #----------------------------------------------------------------------------------------------------------------------------
-    if option_1=='Todos' and option_2=='Todos': 
-            df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM.groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
-            df_estados_finales = df_DEEM.groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
-    if option_1!='Todos' and option_2=='Todos':  #2
-            df_convocatorias=df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
-            df_estados_finales = df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
-    if option_1=='Todos' and option_2!='Todos':  #3
-            df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
-            df_estados_finales = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
-    if option_1!='Todos' and option_2!='Todos': #4
-            df_convocatorias=df_DEEM[(df_DEEM.Region_Homologada==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
-            df_estados = df_DEEM[(df_DEEM.Comuna==option_2) & (df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
-            df_estados_finales = df_DEEM[(df_DEEM.Region_Homologada==option_1) & (df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
-    #----------------------------------------------------------------------------------------------------------------------------
+    if seleccion_dee=='Convocatorias':
+
+        with st.container():
+            col1,col2=st.columns(2,gap="small")
+            with col1:
+                option_1 = st.selectbox('Región',Region)
+            with col2:
+                option_2 = st.selectbox('Comuna',select_comuna(df_DEEM,option_1))
+        #----------------------------------------------------------------------------------------------------------------------------
+        if option_1=='Todos' and option_2=='Todos': 
+                df_convocatorias=df_DEEM.groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+                df_estados = df_DEEM.groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
+                df_estados_finales = df_DEEM.groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+        if option_1!='Todos' and option_2=='Todos':  #2
+                df_convocatorias=df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+                df_estados = df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
+                df_estados_finales = df_DEEM[(df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+        if option_1=='Todos' and option_2!='Todos':  #3
+                df_convocatorias=df_DEEM[(df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+                df_estados = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
+                df_estados_finales = df_DEEM[(df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+        if option_1!='Todos' and option_2!='Todos': #4
+                df_convocatorias=df_DEEM[(df_DEEM.Region_Homologada==option_1) & (df_DEEM.Comuna==option_2)].groupby('AgnoFechaInicioConvocatoria').agg({'idConcurso':'count'}).reset_index()
+                df_estados = df_DEEM[(df_DEEM.Comuna==option_2) & (df_DEEM.Region_Homologada==option_1)].groupby(['AgnoFechaInicioConvocatoria','Estado_Concurso']).agg({'idConcurso': 'count'}).reset_index()
+                df_estados_finales = df_DEEM[(df_DEEM.Region_Homologada==option_1) & (df_DEEM.Comuna==option_2)].groupby(['AgnoFechaInicioConvocatoria','Estado_Final']).agg({'idConcurso': 'count'}).reset_index()
+        #----------------------------------------------------------------------------------------------------------------------------
+
+        
+        df_convocatorias=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
+        df_estados=df_estados.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
+        #----------------------------------------------------------------------------------------------------------------------------
+        # grafico Convocatorias por Año
+        graf1=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1)
+
+        # grafico Desiertos y Anulados por Año
+        
+        graf3=px.bar(df_estados[df_estados['Estado_Concurso'].isin(['Desierto','Anulado'])], x="Año", y="Convocatorias",color='Estado_Concurso',color_discrete_map=estados_edu_color_map ,title="Concursos Desiertos o Anulados").\
+                update_yaxes(visible=visible_y_axis,title_text=None).\
+                        update_xaxes(title_text=None,tickmode='linear', dtick=1).\
+                            update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
+        
+        graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final',color='Estado_Final',color_discrete_map=estados_edu_color_map).\
+                    update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
+        #estados_edu_color_map
+        #----------------------------------------------------------------------------------------------------------------------------
+        
+        with st.container():
+            col1,col2,col3=st.columns(3,gap='small')
+            with col1:
+                st.plotly_chart(graf1,use_container_width=True)
+            with col2:
+                st.plotly_chart(graf3,use_container_width=True)
+                #st.markdown('gráfico 3')
+                #st.dataframe(df_estados[df_estados['Estado_Concurso'].isin(['Desierto','Anulado'])])
+            with col3:
+            st.plotly_chart(graf4,use_container_width=True)
+
 
     
-    df_convocatorias=df_convocatorias.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
-    df_estados=df_estados.rename(columns={'AgnoFechaInicioConvocatoria':'Año','idConcurso':'Convocatorias'})
-    #----------------------------------------------------------------------------------------------------------------------------
-    # grafico Convocatorias por Año
-    graf1=px.bar(df_convocatorias,x='Año',y='Convocatorias',title='<b>Convocatorias de directores de escuelas por año</b>',color_discrete_sequence=[color_bar]).\
-            update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1)
 
-    # grafico Desiertos y Anulados por Año
-    
-    graf3=px.bar(df_estados[df_estados['Estado_Concurso'].isin(['Desierto','Anulado'])], x="Año", y="Convocatorias",color='Estado_Concurso',color_discrete_map=estados_edu_color_map ,title="Concursos Desiertos o Anulados").\
-             update_yaxes(visible=visible_y_axis,title_text=None).\
-                    update_xaxes(title_text=None,tickmode='linear', dtick=1).\
-                        update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))  # Ubicar debajo del eje x en dos columnas
-    
-    graf4 = px.pie(df_estados_finales, values='idConcurso', names='Estado_Final',color='Estado_Final',color_discrete_map=estados_edu_color_map).\
-                update_layout(legend=dict(x=0.5, xanchor='center', y=-0.1, yanchor='top', traceorder='normal', itemsizing='trace',orientation='h'))
-    #estados_edu_color_map
-    #----------------------------------------------------------------------------------------------------------------------------
-    
-    with st.container():
-        col1,col2,col3=st.columns(3,gap='small')
-        with col1:
-            st.plotly_chart(graf1,use_container_width=True)
-        with col2:
-            st.plotly_chart(graf3,use_container_width=True)
-            #st.markdown('gráfico 3')
-            #st.dataframe(df_estados[df_estados['Estado_Concurso'].isin(['Desierto','Anulado'])])
-        with col3:
-           st.plotly_chart(graf4,use_container_width=True)
-
-
-    
-    
-    # grafico Seleccionados por Año
-    # Create the line plot
-    #graf3 = px.line(df_seleccionados, x='year', y='Seleccionados', title='<b>Evolución de cantidad estudiantes seleccionados/as por año</b>')\
-    #    .update_yaxes(visible=visible_y_axis, title_text=None)\
-    #    .update_xaxes(title_text=None,tickmode='linear', dtick=1)
-    #
-    #graf3.update_traces(mode='lines+markers', marker=dict(size=8), line_shape='spline', line_color=color_line)
-    #----------------------------------------------------------------------------------------------------------------------------
-    
-
-    
-    
-    #col4, col5=st.columns(2,gap='small')
-    #with col4:
-    #        st.plotly_chart(graf3,use_container_width=True)
-    #with col4:
-    #        st.text('')
         
