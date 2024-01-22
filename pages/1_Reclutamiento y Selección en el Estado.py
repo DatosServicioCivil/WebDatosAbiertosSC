@@ -1101,6 +1101,17 @@ if a=='Empleo Público':
             seleccionados=df_seleccionados_eepp.groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_region=df_seleccionados_eepp.groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_sexo=df_seleccionados_eepp.groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
+        else:
+            if option_S10=='Todos' and option_S11!='Todos': #2
+                filtro=(df_seleccionados_eepp.Sexo==option_S11)
+            if option_S10!='Todos' and option_S11=='Todos': #3
+                filtro=(df_seleccionados_eepp['Región']==option_S10)
+            if option_S10!='Todos' and option_S11!='Todos': #4
+                filtro=(df_seleccionados_eepp['Sexo']==option_S11) & (df_seleccionados_eepp['Región']==option_S10)
+
+            seleccionados=df_seleccionados_eepp[filtro].groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
+            seleccionados_x_region=df_seleccionados_eepp[filtro].groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
+            seleccionados_x_sexo=df_seleccionados_eepp[filtro].groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
 
         st.dataframe(seleccionados)
         st.dataframe(df_seleccionados_eepp.head(20))
