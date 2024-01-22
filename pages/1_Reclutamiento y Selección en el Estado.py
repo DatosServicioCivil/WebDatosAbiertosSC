@@ -1077,7 +1077,24 @@ if a=='Empleo Público':
             with col2:
                 st.plotly_chart(graf3,use_container_width=True)
                 
-    #if seleccion_eepp=='Seleccionados': 
+    if seleccion_eepp=='Seleccionados': 
+        @st.cache_data
+        def seleccionados_eepp():
+            df_sel_eepp=pq.read_table('EEPP/df_seleccionados_eepp.parquet').to_pandas()
+            df_sel_eepp=pd.merge(df_sel_eepp,all_region,left_on='region_postulante',right_on='Region',how='left')
+            #df_sel_eepp=df_sel_eepp.drop(columns=['Region'])
+            return df_sel_eepp
+
+        df_seleccionados_eepp=seleccionados_eepp()
+
+        with st.container():
+            col10,col11=st.columns(2,gap="small")
+            with col6:    
+                option_S10 = st.selectbox('Región',Region)
+            with col9:
+                option_S11 = st.selectbox('Sexo postulantes',sexo_list)
+
+        st.dataframe(df_seleccionados_eepp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 
 if a=='Prácticas Chile':
