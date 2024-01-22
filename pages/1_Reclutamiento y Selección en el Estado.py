@@ -1119,18 +1119,26 @@ if a=='Empleo Público':
             with col12:
                 option_S12 = st.selectbox('Año',Años)
 
-        if option_S10=='Todos' and option_S11=='Todos': #1
+        if option_S10=='Todos' and option_S11=='Todos' and option_S12=='Todos': #1
             seleccionados=df_seleccionados_eepp.groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_region=df_seleccionados_eepp.groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_sexo=df_seleccionados_eepp.groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
             df_seleccionados_eepp=df_seleccionados_eepp
         else:
-            if option_S10=='Todos' and option_S11!='Todos': #2
+            if option_S10=='Todos' and option_S11!='Todos' and option_S12=='Todos': #2
                 filtro=(df_seleccionados_eepp.Sexo==option_S11)
-            if option_S10!='Todos' and option_S11=='Todos': #3
+            if option_S10!='Todos' and option_S11=='Todos' and option_S12=='Todos': #3
                 filtro=(df_seleccionados_eepp['Región']==option_S10)
-            if option_S10!='Todos' and option_S11!='Todos': #4
+            if option_S10!='Todos' and option_S11!='Todos' and option_S12=='Todos': #4
                 filtro=(df_seleccionados_eepp['Sexo']==option_S11) & (df_seleccionados_eepp['Región']==option_S10)
+            if option_S10=='Todos' and option_S11=='Todos' and option_S12!='Todos': #5
+                filtro=(df_seleccionados_eepp['Año']==option_S12)
+            if option_S10!='Todos' and option_S11=='Todos' and option_S12!='Todos': #6
+                filtro=(df_seleccionados_eepp['Año']==option_S12) & (df_seleccionados_eepp['Región']==option_S10)
+            if option_S10=='Todos' and option_S11!='Todos' and option_S12!='Todos': #7
+                filtro=(df_seleccionados_eepp['Año']==option_S12) & (df_seleccionados_eepp['Sexo']==option_S11)
+            if option_S10!='Todos' and option_S11!='Todos' and option_S12!='Todos': #8
+                filtro=(df_seleccionados_eepp['Año']==option_S12) & (df_seleccionados_eepp['Sexo']==option_S11) & (df_seleccionados_eepp['Región']==option_S10)
 
             seleccionados=df_seleccionados_eepp[filtro].groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_region=df_seleccionados_eepp[filtro].groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
