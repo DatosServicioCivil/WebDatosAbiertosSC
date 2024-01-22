@@ -154,6 +154,7 @@ else:
 
 graf1=px.bar(df_ind_eepp_residencia, x="mes", y="resultado",title="Porcentaje de Seleccionados EEPP y PCH en Región de Residencia")
 graf1.update_xaxes(title_text='Mes')
+graf1.update_yaxes(title_text='Porcentaje')
 #labels={"Region_Homologada":"Región","Porcentaje":"Porcentaje","Tipo":"Tipo de Seleccionado"}
 
 st.plotly_chart(graf1,use_container_width=True)
