@@ -1082,7 +1082,8 @@ if a=='Empleo Público':
         def seleccionados_eepp():
             df_sel_eepp=pq.read_table('EEPP/df_seleccionados_eepp.parquet').to_pandas()
             df_sel_eepp=pd.merge(df_sel_eepp,all_region,left_on='region_postulante',right_on='Region',how='left')
-            df_sel_eepp=df_sel_eepp.drop(columns=['Region','region_postulante'])
+            df_sel_eepp=df_sel_eepp.drop(columns=['Region','region_postulante','ID_Region'])
+            df_sel_eepp=df_sel_eepp.rename(columns={'Region':'region_homologada_postulante'})
             return df_sel_eepp
 
         df_seleccionados_eepp=seleccionados_eepp()
