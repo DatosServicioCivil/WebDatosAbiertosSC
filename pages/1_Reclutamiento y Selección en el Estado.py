@@ -1115,7 +1115,15 @@ if a=='Empleo Público':
             seleccionados_x_sexo=df_seleccionados_eepp[filtro].groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
             df_seleccionados_eepp=df_seleccionados_eepp[filtro]
 
-        st.dataframe(seleccionados)
+        with st.container():
+            col12,col13,col14=st.columns(3,gap="small")
+            with col12:
+                st.dataframe(seleccionados)
+            with col13:
+                st.dataframe(seleccionados_x_region)
+            with col14:
+                st.dataframe(seleccionados_x_sexo)
+    
         st.dataframe(df_seleccionados_eepp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 
