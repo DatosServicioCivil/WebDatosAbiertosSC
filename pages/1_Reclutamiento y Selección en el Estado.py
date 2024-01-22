@@ -1102,7 +1102,7 @@ if a=='Empleo Público':
             seleccionados_x_region=df_seleccionados_eepp.groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
             seleccionados_x_sexo=df_seleccionados_eepp.groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
 
-        st.dataframe(seleccionados.head(20))
+        st.dataframe(seleccionados)
         st.dataframe(df_seleccionados_eepp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 
