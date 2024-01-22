@@ -80,13 +80,13 @@ with col1:
    if zona=='Norte':
       region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo"])
    elif zona=='Centro':
-      region=st.selectbox("Región", ["Todas","Valparaíso","Metropolitana" ,"O’Higgins", "Maule"])
+      region=st.selectbox("Región", ["Todas","Valparaíso","Metropolitana" ,"O'Higgins", "Maule"])
    elif zona=='Sur':
       region=st.selectbox("Región", ["Todas","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos"])
    elif zona=='Austral':
       region=st.selectbox("Región", ["Todas","Aysén", "Magallanes"])
    else:
-       region=st.selectbox("Región", ["Todas","Arica","Tarapacá", "Antofagasta", "Atacama", "Coquimbo","Valparaíso","Metropolitana" ,"O’Higgins", "Maule","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos","Aysén", "Magallanes"])
+       region=st.selectbox("Región", ["Todas","Arica y Parinacota","Tarapacá", "Antofagasta", "Atacama", "Coquimbo","Valparaíso","Metropolitana" ,"O'Higgins", "Maule","Ñuble", "Biobío", "La Araucanía", "Los Ríos","Los Lagos","Aysén", "Magallanes"])
 
 with col2:
       col21,col22,col23=st.columns(spec=[1,1,1],gap='small')
@@ -106,7 +106,7 @@ with col2:
       
 with col3:
    # zona norte
-   if region=='Arica':
+   if region=='Arica y Parinacota':
       st.image("imagenes/Fotos_Regiones/Parinacota_volcano.jpg", caption='Volcán Parinacota y el Lago Chungará - Región de Arica y Parinacota',width=500)
    if region=='Tarapacá':
       st.image("imagenes/Fotos_Regiones/Iquique_night_skyline.jpg", caption='Ciudad de Iquique - Región de Tarapacá',width=500)
@@ -121,7 +121,7 @@ with col3:
       st.image("imagenes/Fotos_Regiones/valparaiso_gr-740x540.jpg", caption='Ciudad de Valparaiso - Región de Valparaíso',width=500)
    if region=='Metropolitana':
       st.image("imagenes/Fotos_Regiones/Plaza_de_la_Constitución_Chile.jpg",caption='Plaza de la Constitución - Región Metropolitana',width=500)
-   if region=='O’Higgins':
+   if region=="O'Higgins":
       st.image("imagenes/Fotos_Regiones/ohiggins.jpg",caption='Ciudad de Rancagua - Región del Libertador General Bernardo O’Higgins',width=500)
    if region=='Maule':
       st.image("imagenes/Fotos_Regiones/maule.jpg",caption='Parque Nacional Radal Siete Tazas - Región del Maule',width=500)
@@ -146,5 +146,10 @@ with col3:
 all_region_values=pd.read_excel('Regiones/all_region_values.xlsx')
 df_ind_eepp_residencia=pd.read_excel('Regiones/df_ind_region.xlsx')
 df_ind_eepp_residencia=pd.merge(df_ind_eepp_residencia,all_region_values,how='left',left_on='id_region',right_on='ID_Region')
+
+if region=='Todas':
+   df_ind_eepp_residencia=df_ind_eepp_residencia
+else:
+   df_ind_eepp_residencia=df_ind_eepp_residencia[df_ind_eepp_residencia['Region_Homologada']==region]
 
 st.dataframe(df_ind_eepp_residencia)
