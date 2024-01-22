@@ -1661,6 +1661,11 @@ if a=='Directores para Chile':
             with col3:
                 st.plotly_chart(graf4,use_container_width=True)
 
+    if seleccion_dee=='Postulaciones':
+        st.subheader('en corrección / mantención')
+    
+    if seleccion_dee=='Seleccionados':
+        st.subheader('en corrección / mantención')
 
     
 
