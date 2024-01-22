@@ -1084,6 +1084,8 @@ if a=='Empleo Público':
             df_sel_eepp=pd.merge(df_sel_eepp,all_region,left_on='region_postulante',right_on='Region',how='left')
             df_sel_eepp=df_sel_eepp.drop(columns=['Region','region_postulante','ID_Region'])
             df_sel_eepp=df_sel_eepp.rename(columns={'Region_Homologada':'Región'})
+            df_sel_eepp['Año']=pd.to_datetime(df_sel_eepp['posFechaPostulacion']).dt.year
+            df_sel_eepp['Mes']=pd.to_datetime(df_sel_eepp['posFechaPostulacion']).dt.month
             return df_sel_eepp
 
         df_seleccionados_eepp=seleccionados_eepp()
@@ -1095,6 +1097,12 @@ if a=='Empleo Público':
             with col11:
                 option_S11 = st.selectbox('Sexo postulantes',sexo_list)
 
+        if option_S10=='Todos' and option_S11=='Todos': #1
+            seleccionados=df_seleccionados_eepp.groupby('Año').agg({'idPostulaciones':'count'}).reset_index()
+            seleccionados_x_region=df_seleccionados_eepp.groupby('Región').agg({'idPostulaciones':'count'}).reset_index()
+            seleccionados_x_sexo=df_seleccionados_eepp.groupby(['Año','Sexo']).agg({'idPostulaciones':'count'}).reset_index()
+
+        st.dataframe(seleccionados.head(20))
         st.dataframe(df_seleccionados_eepp.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 
