@@ -152,4 +152,9 @@ if region=='Todas':
 else:
    df_ind_eepp_residencia=df_ind_eepp_residencia[df_ind_eepp_residencia['Region_Homologada']==region]
 
+graf1=px.bar(df_ind_eepp_residencia, x="mes", y="resultado", color="Tipo",title="Porcentaje de Seleccionados EEPP y PCH en Región de Residencia")
+#labels={"Region_Homologada":"Región","Porcentaje":"Porcentaje","Tipo":"Tipo de Seleccionado"}
+
+st.plotly_chart(graf1,use_container_width=True)
+
 st.dataframe(df_ind_eepp_residencia)
