@@ -143,7 +143,8 @@ with col3:
       st.image("imagenes/Fotos_Regiones/torrespaine.jpg",caption='Torres del Paine - Región de Magallanes y de la Antártica Chilena',width=500)
 
 
-
+all_region_values=pd.read_excel('Regiones/all_region_values.xlsx')
 df_ind_eepp_residencia=pd.read_excel('Regiones/df_ind_region.xlsx')
+df_ind_eepp_residencia=pd.merge(df_ind_eepp_residencia,all_region_values,how='left',left_on='id_region',right_on='ID_Region')
 
 st.dataframe(df_ind_eepp_residencia)
