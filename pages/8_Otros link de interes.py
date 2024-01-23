@@ -47,4 +47,7 @@ with st.container():
     with col2:
         st.markdown('Aca puedes encontrar las actas del Consejo de Alta Dirección Pública')
         st.write("<a href='https://www.serviciocivil.cl/consejo-alta-direccion-publica/actas-del-consejo-de-alta-direccion-publica/' id='my-link'>Actas de Consejo ADP</a>", unsafe_allow_html=True)
+    with col3:
+        st.markdown('Aca puedes encontrar el resumen ejecutivo de los proceso de selección y antecedentes curriculares de los entrevistados')
+        st.write("<a href='https://www.serviciocivil.cl/sistema-de-alta-direccion-publica-2/resumen-ejecutivo-del-proceso-de-seleccion-y-antecedentes-curriculares-entrevistados/' id='my-link'>Resumen Ejecutivo del Proceso de Selección y Antecedentes Curriculares Entrevistados</a>", unsafe_allow_html=True)
 
