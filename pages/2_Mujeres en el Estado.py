@@ -283,6 +283,7 @@ graf2.update_layout(yaxis_tickformat='.0%')
 
 
 with st.container():
+    st.markdown("<h3 style='text-align: left; color: grey;'>Postulaciones de mujeres en portales Servicio Civil</h3>", unsafe_allow_html=True)
     col1,col2,col3=st.columns([0.2,0.4,0.4],gap='small')
     with col1:
         Postulaciones_Mujeres=f"{Postulaciones_Mujeres:,}"
@@ -359,6 +360,7 @@ graf3.update_layout(
 
 
 with st.container():
+    st.markdown("<h3 style='text-align: left; color: grey;'>Nombramientos de mujeres en ADP</h3>", unsafe_allow_html=True)
     col1,col2=st.columns([0.2,0.8],gap='small')
     with col1:
         Mujeres_Nombradas_ADP=f"{Mujeres_Nombradas_ADP:,}"
@@ -380,7 +382,7 @@ graf4.update_layout(yaxis_tickformat='.0%')
 Porcentaje_Nominas_Mujeres_ADP=tbl_nominas_mujeres['Cantidad_Mujeres'].sum()/tbl_nominas_mujeres['Cantidad'].sum()
 
 with st.container():
-    st.markdown("<h3 style='text-align: center; color: grey;'>Nóminas con mujeres en ADP</h3>", unsafe_allow_html=True)
+    st.markdown("<h3 style='text-align: left; color: grey;'>Nóminas con mujeres en ADP</h3>", unsafe_allow_html=True)
     col3,col4=st.columns([0.2,0.8],gap='small')
     with col3:
         Porcentaje_Nominas_Mujeres_ADP=f"{Porcentaje_Nominas_Mujeres_ADP:.2%}"
