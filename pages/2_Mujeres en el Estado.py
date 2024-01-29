@@ -375,7 +375,7 @@ with st.container():
 with st.container():
     col3,col4=st.columns([0.2,0.8],gap='small')
     with col3:
-        st.dataframe(tbl_nominas)
+        st.dataframe(tbl_nominas_mujeres)
         #st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
     with col4:
         st.dataframe(df_nominas_mujeres_adp.head(10))
