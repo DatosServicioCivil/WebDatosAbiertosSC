@@ -89,6 +89,11 @@ def tabla_postulaciones_dee():
     tb_postulaciones_dee=tb_3
     return tb_postulaciones_dee
 
+@st.cache_data
+def nominas_mujeres_adp():
+    df_nom_mujeres_adp=pq.read_table('datos/df_nominas_mujeres.parquet').to_pandas()
+    return df_nom_mujeres_adp
+
 #--------------------------------------------------------------------------------------------------
 
 
@@ -148,6 +153,10 @@ tb_postulaciones = tabla_postulaciones()
 # Filtrar por Sexo
 tb_postulaciones = tb_postulaciones[tb_postulaciones['Sexo'].isin(['Hombre', 'Mujer'])]
 #------------------------------------------------------------------------------------------------
+# Carga datos de nominas con mujeres en ADP
+df_nominas_mujeres_adp=nominas_mujeres_adp()
+#------------------------------------------------------------------------------------------------
+
 
 # This function sets the logo and company name inside the sidebar
 def add_logo(logo_path, width, height):
@@ -299,10 +308,22 @@ if option_3=='Todos':
     tb_nombramiento_adp_ministerio=nombramiento_adp.groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     nombramiento_adp=nombramiento_adp
+    tbl_nominas=df_nominas_mujeres_adp.groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad')
 else:
     tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_3].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_3)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     nombramiento_adp=nombramiento_adp[nombramiento_adp['Nivel']==option_3]
+    
+
+    # 
+    # tbl_nominas_mujeres=df_nominas_mujeres[df_nominas_mujeres['Nomina_Mujer']=='Si'].groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad_Mujeres')
+    # tbl_nominas_mujeres=pd.merge(tbl_nominas,tbl_nominas_mujeres,on='Año',how='left')
+    # tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Cantidad_Mujeres']/tbl_nominas_mujeres['Cantidad']
+    # tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Porcentaje'].fillna(0)
+    # tbl_nominas_mujeres
+
+
+
 
 tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
 tb_nombramiento_sexo_ministerio=pd.merge(tb_nombramiento_sexo_ministerio,tb_nombramiento_adp_ministerio,how='left',on='Ministerio')
@@ -346,3 +367,12 @@ with st.container():
     with col2:
         st.plotly_chart(graf3,use_container_width=True)
 
+
+
+with st.container():
+    col3,col4=st.columns([0.2,0.8],gap='small')
+    with col3:
+        st.dataframe(tbl_nominas)
+        #st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
+    with col4:
+        st.dataframe(df_nominas_mujeres_adp.head(10))
