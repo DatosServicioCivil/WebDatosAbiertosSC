@@ -371,7 +371,7 @@ with st.container():
         st.plotly_chart(graf3,use_container_width=True)
 
 #gráfico porcentaje postulaciones por año y sexo segun seleccion portal
-graf4=px.line(tbl_nominas_mujeres,x='Año',y='Porcentaje',title='<b>Porcentaje nóminas con mujeres por año</b>',color='orange').\
+graf4=px.line(tbl_nominas_mujeres,x='Año',y='Porcentaje',title='<b>Porcentaje nóminas con mujeres por año</b>').\
                      update_yaxes(visible=True,title_text=None).\
                          update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
 graf4.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
