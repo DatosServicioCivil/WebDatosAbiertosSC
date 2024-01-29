@@ -309,20 +309,23 @@ if option_3=='Todos':
     tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer')].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     nombramiento_adp=nombramiento_adp
     tbl_nominas=df_nominas_mujeres_adp.groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad')
+    tbl_nominas_mujeres=df_nominas_mujeres_adp[df_nominas_mujeres_adp['Nomina_Mujer']=='Si'].groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad_Mujeres')
 else:
     tb_nombramiento_adp_ministerio=nombramiento_adp[nombramiento_adp['Nivel']==option_3].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     tb_nombramiento_sexo_ministerio=nombramiento_adp[(nombramiento_adp.Sexo=='Mujer') & (nombramiento_adp['Nivel']==option_3)].groupby(['Ministerio']).agg({'postulaciones':'sum'}).reset_index()
     nombramiento_adp=nombramiento_adp[nombramiento_adp['Nivel']==option_3]
+    tbl_nominas_mujeres=df_nominas_mujeres_adp[(df_nominas_mujeres_adp['Nomina_Mujer']=='Si') & (df_nominas_mujeres_adp['nivel']==option_3)].groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad_Mujeres')
+    tbl_nominas=df_nominas_mujeres_adp[(df_nominas_mujeres_adp['nivel']==option_3)].groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad')
     
 
-    # 
-    # tbl_nominas_mujeres=df_nominas_mujeres[df_nominas_mujeres['Nomina_Mujer']=='Si'].groupby(['Año'])['conc_x_conc'].agg('count').reset_index(name='Cantidad_Mujeres')
-    # tbl_nominas_mujeres=pd.merge(tbl_nominas,tbl_nominas_mujeres,on='Año',how='left')
-    # tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Cantidad_Mujeres']/tbl_nominas_mujeres['Cantidad']
-    # tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Porcentaje'].fillna(0)
-    # tbl_nominas_mujeres
+    
+    
 
 
+
+tbl_nominas_mujeres=pd.merge(tbl_nominas,tbl_nominas_mujeres,on='Año',how='left')
+tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Cantidad_Mujeres']/tbl_nominas_mujeres['Cantidad']
+tbl_nominas_mujeres['Porcentaje']=tbl_nominas_mujeres['Porcentaje'].fillna(0)
 
 
 tb_nombramiento_adp_ministerio=tb_nombramiento_adp_ministerio.rename(columns={'postulaciones': 'Total Nombramientos'})    
