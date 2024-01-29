@@ -370,12 +370,20 @@ with st.container():
     with col2:
         st.plotly_chart(graf3,use_container_width=True)
 
+#gráfico porcentaje postulaciones por año y sexo segun seleccion portal
+graf4=px.line(tbl_nominas_mujeres,x='Año',y='Porcentaje',title='<b>Porcentaje postulaciones por año desagregado por sexo</b>').\
+                     update_yaxes(visible=True,title_text=None).\
+                         update_xaxes(title_text=None,tickmode='linear', dtick=1,tickangle=-45)
+graf4.update_traces(mode='lines+markers', marker=dict(size=8),line_shape='spline')#, line_color=color_line)
+graf4.update_layout(yaxis_tickformat='.0%')
 
+Porcentaje_Nominas_Mujeres_ADP=tbl_nominas_mujeres['Cantidad_Mujeres'].sum()/tbl_nominas_mujeres['Cantidad'].sum()
 
 with st.container():
     col3,col4=st.columns([0.2,0.8],gap='small')
     with col3:
-        st.dataframe(tbl_nominas_mujeres)
-        #st.markdown("<h3 style='text-align: center; color: grey;'>% de mujeres nombradas en cargos ADP en portales del Servicio Civil</h3>", unsafe_allow_html=True)
+        Porcentaje_Nominas_Mujeres_ADP=f"{Porcentaje_Nominas_Mujeres_ADP:.2%}"
+        st.markdown(f"<h1 style='text-align: center; color: grey;'>{Porcentaje_Nominas_Mujeres_ADP}</h1>", unsafe_allow_html=True)
+        st.markdown("<h3 style='text-align: center; color: grey;'>% de nóminas que al menos presentan una mujer en la nómina para un cargo ADP</h3>", unsafe_allow_html=True)
     with col4:
-        st.dataframe(df_nominas_mujeres_adp.head(10))
+        st.plotly_chart(graf4,use_container_width=True)
