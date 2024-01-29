@@ -380,6 +380,7 @@ graf4.update_layout(yaxis_tickformat='.0%')
 Porcentaje_Nominas_Mujeres_ADP=tbl_nominas_mujeres['Cantidad_Mujeres'].sum()/tbl_nominas_mujeres['Cantidad'].sum()
 
 with st.container():
+    st.markdown("<h3 style='text-align: center; color: grey;'>Nóminas con mujeres en ADP</h3>", unsafe_allow_html=True)
     col3,col4=st.columns([0.2,0.8],gap='small')
     with col3:
         Porcentaje_Nominas_Mujeres_ADP=f"{Porcentaje_Nominas_Mujeres_ADP:.2%}"
