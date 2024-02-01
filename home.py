@@ -87,7 +87,7 @@ def df_selec_pch():
 @st.cache_data
 def df_selec_dee():
     #df_sel_dee = pd.read_csv('datos/tblConcursos.csv', sep=';')
-    df_sel_dee=pd.read_table('datos/df_concursos_dee.parquet')
+    df_sel_dee=pd.read_parquet('datos/df_concursos_dee.parquet')
     return df_sel_dee
 
 
