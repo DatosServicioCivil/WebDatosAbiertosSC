@@ -68,18 +68,18 @@ st.markdown("<hr>", unsafe_allow_html=True)
 
 @st.cache_data
 def df_conc_eepp():
-    df_conc_ep = pd.read_parquet('EEPP/df_concursos_eepp.parquet')
+    df_conc_ep = pd.read_parquet('datos/df_concursos_eepp.parquet')
     return df_conc_ep
 
 @st.cache_data
 def df_conc_adp():
-    df_conc = pd.read_parquet('ADP/df_concursos.parquet')
+    df_conc = pd.read_parquet('datos/df_concursos.parquet')
     return df_conc
 
 
 @st.cache_data
 def df_selec_pch():
-    df_sel_pch = pq.read_table('PCH/df_postulaciones_pch.parquet')
+    df_sel_pch = pq.read_table('datos/df_postulaciones_pch.parquet')
     df_sel_pch=df_sel_pch.drop_columns(['FechaNacimiento', 'FechaPostulacion'])
     df_sel_pch = df_sel_pch.to_pandas(timestamp_as_object=False)
     return df_sel_pch
