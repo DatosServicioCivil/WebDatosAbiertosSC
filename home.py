@@ -65,27 +65,27 @@ st.markdown(
 st.markdown("<hr>", unsafe_allow_html=True)
 
 #--------------------------------------------------------------------------------------------
-tiempo_actualizacion=60
+tiempo_actualizacion=3600
 
-#@st.cache_data(ttl=tiempo_actualizacion)
+@st.cache_data(ttl=tiempo_actualizacion)
 def df_conc_eepp():
     df_conc_ep = pd.read_parquet('datos/df_concursos_eepp.parquet')
     return df_conc_ep
 
-#@st.cache_data(ttl=tiempo_actualizacion)
+@st.cache_data(ttl=tiempo_actualizacion)
 def df_conc_adp():
     df_conc = pd.read_parquet('datos/df_concursos.parquet')
     return df_conc
 
 
-#@st.cache_data(ttl=tiempo_actualizacion)
+@st.cache_data(ttl=tiempo_actualizacion)
 def df_selec_pch():
     df_sel_pch = pq.read_table('datos/df_postulaciones_pch.parquet')
     df_sel_pch=df_sel_pch.drop_columns(['FechaNacimiento', 'FechaPostulacion'])
     df_sel_pch = df_sel_pch.to_pandas(timestamp_as_object=False)
     return df_sel_pch
 
-#@st.cache_data(ttl=tiempo_actualizacion)
+@st.cache_data(ttl=tiempo_actualizacion)
 def df_selec_dee():
     #df_sel_dee = pd.read_csv('datos/tblConcursos.csv', sep=';')
     df_sel_dee=pd.read_parquet('datos/df_concursos_dee.parquet')
@@ -96,10 +96,10 @@ def df_selec_dee():
 
 
 
-df_concursos_eepp=pd.read_parquet('datos/df_concursos_eepp.parquet')
-df_concursos_adp=pd.read_parquet('datos/df_concursos.parquet')
+df_concursos_eepp=df_conc_eepp()
+df_concursos_adp=df_conc_adp()
 df_seleccionados_pch=df_selec_pch()
-df_seleccionados_deem=pd.read_parquet('datos/df_concursos_dee.parquet')
+df_seleccionados_deem=df_selec_dee()
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
