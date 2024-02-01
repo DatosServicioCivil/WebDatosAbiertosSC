@@ -96,10 +96,10 @@ def df_selec_dee():
 
 
 
-df_concursos_eepp=df_conc_eepp()
-df_concursos_adp=df_conc_adp()
+df_concursos_eepp=pd.read_parquet('datos/df_concursos_eepp.parquet')
+df_concursos_adp=pd.read_parquet('datos/df_concursos.parquet')
 df_seleccionados_pch=df_selec_pch()
-df_seleccionados_deem=df_selec_dee()
+df_seleccionados_deem=pd.read_parquet('datos/df_concursos_dee.parquet')
 
 vacantes = df_concursos_eepp['Vacantes'].sum()
 postulaciones=df_concursos_eepp['Total_Postulaciones'].sum()
