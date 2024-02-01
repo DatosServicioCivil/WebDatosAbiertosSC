@@ -111,7 +111,8 @@ seleccionados_pch = df_seleccionados_pch['EstadoPost'].value_counts().reset_inde
 seleccionados_pch = seleccionados_pch.loc[seleccionados_pch['EstadoPost'] == "Seleccionado", 'count'].values[0]
 
 seleccionados_deem=df_seleccionados_deem[df_seleccionados_deem['Estado'] == "Nombrado"].agg('count').values[0]
-sel_dee=df_seleccionados_deem['idConcurso'].query("Estado=='Nombrado'").count()
+sel_dee = (df_seleccionados_deem[df_seleccionados_deem['Estado'] == 'Nombrado']).count()
+
 st.write(sel_dee)
 
 with st.container():
