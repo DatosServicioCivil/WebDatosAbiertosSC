@@ -180,8 +180,13 @@ if a=='Alta Dirección Pública':
         #st.subheader(date)
         seleccion_adp=st.radio('Seleccionar: ',["Concursos", "Postulaciones","Nombramientos"],horizontal=True)
 if a=='Empleo Público':
+       # aca esta la fecha de actualizacion!!!!
+    #-----------------------------------------------------------------------------------
+    date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
     with st.container():
-       seleccion_eepp=st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
+        st.title('Estadísticas Portal Empleos Públicos')
+        st.text(f'Fecha Actualización: {date}')
+        seleccion_eepp=st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
 if a=='Prácticas Chile':
     with st.container():
        seleccion_pch=st.radio('Seleccionar: ',["Convocatorias", "Postulaciones","Seleccionados"],horizontal=True)
@@ -655,13 +660,7 @@ if a=='Empleo Público':
     df_concursos_eepp['Estamento'].fillna('Otros', inplace=True)
 
     df_rentas=df_concursos_eepp[df_concursos_eepp['Renta Bruta']!=0]
-    # aca esta la fecha de actualizacion!!!!
-    #------------------------------------------------------------------------------------
-    date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
-    #------------------------------------------------------------------------------------
     
-    st.title('Estadísticas Portal Empleos Públicos')
-    st.text(f'Fecha Actualización: {date}')
 
     unique_estamento = df_concursos_eepp['Estamento'].unique()
     Estamento = pd.DataFrame({'Estamento': unique_estamento})
