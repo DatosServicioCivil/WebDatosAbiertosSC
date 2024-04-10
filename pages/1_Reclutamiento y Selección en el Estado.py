@@ -78,39 +78,39 @@ ministerios=pd.read_excel('datos/ministerios.xlsx',sheet_name='Hoja1')
 #-------------------------------------------------------------------------------------------------------------
 #-----------------concursos adp
 #-------------------------------------------------------------------------------------------------------------
-df_concursos=pd.read_csv('ADP/df_concursos.csv',sep=';',encoding='utf-8')
+df_concursos=pd.read_parquet('datos/df_concursos.parquet')
 #df_concursos=pq.read_table('ADP/df_concursos.parquet').to_pandas()
 df_concursos=pd.merge(df_concursos,all_region,how='left',on='Region')
 #-------------------------------------------------------------------------------------------------------------
 #-----------------postulaciones adp
 #-------------------------------------------------------------------------------------------------------------
 
-@st.cache_data
-def df_post_adp():
-    df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
-    df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
-    df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
-    df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
-    df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
-    return df_postulaciones_adp
+# @st.cache_data
+# def df_post_adp():
+#     df_post_adp_1=pq.read_table('ADP/df_postulaciones_adp_1.parquet').to_pandas()
+#     df_post_adp_2=pq.read_table('ADP/df_postulaciones_adp_2.parquet').to_pandas()
+#     df_post_adp_3=pq.read_table('ADP/df_postulaciones_adp_3.parquet').to_pandas()
+#     df_post_adp_4=pq.read_table('ADP/df_postulaciones_adp_4.parquet').to_pandas()
+#     df_postulaciones_adp=pd.concat([df_post_adp_1,df_post_adp_2,df_post_adp_3,df_post_adp_4])
+#     return df_postulaciones_adp
 
 @st.cache_data
 def tb_postulaciones_adp():
-    tb_post_adp=pq.read_table('ADP/tb_postulaciones_adp.parquet').to_pandas()
+    tb_post_adp=pq.read_table('datos/tb_postulaciones_adp.parquet').to_pandas()
     tb_post_adp=pd.merge(tb_post_adp,all_region,how='left',on='Region')
     return tb_post_adp
 
 @st.cache_data
 def tabla_nombramientos_adp():
-    tb_1=pq.read_table('ADP/tb_nombramientos_adp.parquet').to_pandas()
+    tb_1=pq.read_table('datos/tb_nombramientos_adp.parquet').to_pandas()
     tb_1.query('Año>1900',inplace=True)
     tb_nombramientos_adp=tb_1
     return tb_nombramientos_adp
 
 @st.cache_data
 def df_conc_ep():
-    df_1=pq.read_table('EEPP/df_concursos_eepp_Aviso.parquet').to_pandas()
-    df_2=pq.read_table('EEPP/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
+    df_1=pq.read_table('datos/df_concursos_eepp_Aviso.parquet').to_pandas()
+    df_2=pq.read_table('datos/df_concursos_eepp_Postulacion en linea.parquet').to_pandas()
     df_conc_ep=pd.concat([df_1,df_2])
     return df_conc_ep
 
@@ -1089,7 +1089,7 @@ if a=='Empleo Público':
     if seleccion_eepp=='Seleccionados': 
         @st.cache_data
         def seleccionados_eepp():
-            df_sel_eepp=pq.read_table('EEPP/df_seleccionados_eepp.parquet').to_pandas()
+            df_sel_eepp=pq.read_table('datos/df_seleccionados_eepp.parquet').to_pandas()
             df_sel_eepp=pd.merge(df_sel_eepp,all_region,left_on='region_postulante',right_on='Region',how='left')
             df_sel_eepp=df_sel_eepp.drop(columns=['Region','region_postulante','ID_Region'])
             df_sel_eepp=df_sel_eepp.rename(columns={'Region_Homologada':'Región'})
@@ -1161,7 +1161,7 @@ if a=='Prácticas Chile':
 
     @st.cache_data
     def concursos_pch():
-        df_conc_pch=pq.read_table('PCH/df_concursos_pch.parquet').to_pandas()
+        df_conc_pch=pq.read_table('datos/df_concursos_pch.parquet').to_pandas()
         df_conc_pch=pd.merge(df_conc_pch,all_region,on='Region',how='left')
         return df_conc_pch
     
@@ -1170,7 +1170,7 @@ if a=='Prácticas Chile':
 
     @st.cache_data
     def postulaciones_pch():
-        df_post_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_post_pch=pq.read_table('datos/df_postulaciones_pch.parquet').to_pandas()
         df_post_pch=pd.merge(df_post_pch,all_region_postulante,on='region_postulante',how='left')
         df_post_pch=pd.merge(df_post_pch,all_region_practica,on='region_practica',how='left')
         df_post_pch=df_post_pch.rename(columns={'Region_Homologada_x':'region_homologada_postulante'})
@@ -1181,7 +1181,7 @@ if a=='Prácticas Chile':
     
     @st.cache_data
     def seleccionados_pch():
-        df_sel_pch=pq.read_table('PCH/df_postulaciones_pch.parquet').to_pandas()
+        df_sel_pch=pq.read_table('datos/df_postulaciones_pch.parquet').to_pandas()
         df_sel_pch=df_sel_pch.query("EstadoPost=='Seleccionado'")
         df_sel_pch=pd.merge(df_sel_pch,all_region_postulante,on='region_postulante',how='left')
         df_sel_pch=pd.merge(df_sel_pch,all_region_practica,on='region_practica',how='left')
@@ -1191,10 +1191,10 @@ if a=='Prácticas Chile':
         df_sel_pch['Sexo']=np.where(df_sel_pch['Sexo']=='H','Hombres','Mujeres')
         return df_sel_pch
 
-    df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
-    df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
+    #df_postulaciones=pd.read_csv('PCH/postulaciones_x_año.csv',encoding='utf-8')    
+    #df_convocatorias=pd.read_csv('PCH/Convocatorias_x_año.csv')
     #df_seleccionados=pd.read_csv('PCH/Seleccionado_x_año.csv',sep=";",encoding='utf-8')
-    df_seleccionados=pd.read_excel('PCH/Seleccionado_x_año.xlsx')
+    #df_seleccionados=pd.read_excel('PCH/Seleccionado_x_año.xlsx')
     
     df_convocatorias_pch=concursos_pch()
     df_convocatorias_pch['Año']=pd.to_datetime(df_convocatorias_pch['Fecha_inicio']).dt.year
@@ -1550,7 +1550,8 @@ if a=='Prácticas Chile':
                 st.dataframe(df_seleccionados_pch.head(20))
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Directores para Chile':
-    df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
+    #df_DEEM=pd.read_csv('DEEM/tblConcursos.csv',encoding='utf-8',sep=';')        
+    df_DEEM=pd.read_parquet('datos/df_concursos_dee.parquet')
     df_DEEM=df_DEEM.rename(columns={'Comuna/Ciudad': 'Comuna'})
     df_DEEM['Estado_Concurso']=np.where(df_DEEM['Estado']=='Desvinculado','Nombrado',df_DEEM['Estado'])
     estados_proceso=['Admisibilidad','Ev.Externa', 'Entrevista', 'Nómina', 'Convocatoria']
