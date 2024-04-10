@@ -182,7 +182,7 @@ if a=='Alta Dirección Pública':
 if a=='Empleo Público':
        # aca esta la fecha de actualizacion!!!!
     #-----------------------------------------------------------------------------------
-    date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
+    date=df_concursos_eepp.FechaActualizacion.max()#.strftime('%d/%m/%Y')
     with st.container():
         st.title('Estadísticas Portal Empleos Públicos')
         st.text(f'Fecha Actualización: {date}')
