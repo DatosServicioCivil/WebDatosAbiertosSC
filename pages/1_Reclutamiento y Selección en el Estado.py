@@ -1080,11 +1080,11 @@ if a=='Empleo Público':
 
         with st.container():
             st.plotly_chart(graf1,use_container_width=True)
-            col1,col2=st.columns(2,gap="small")
-            with col1:
-                st.plotly_chart(graf2,use_container_width=True)
-            with col2:
-                st.plotly_chart(graf3,use_container_width=True)
+        with st.container():
+        #col1,col2=st.columns(2,gap="small")
+            st.plotly_chart(graf2,use_container_width=True)
+        with st.container():
+            st.plotly_chart(graf3,use_container_width=True)
                 
     if seleccion_eepp=='Seleccionados': 
         @st.cache_data
