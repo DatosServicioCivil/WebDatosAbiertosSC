@@ -182,7 +182,9 @@ if a=='Alta Dirección Pública':
 if a=='Empleo Público':
        # aca esta la fecha de actualizacion!!!!
     #-----------------------------------------------------------------------------------
-    date=df_concursos_eepp.FechaActualizacion.max()#.strftime('%d/%m/%Y')
+    df_concursos_eepp=df_conc_ep()
+    df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
+    date=df_concursos_eepp.FechaActualizacion.max().strftime('%d/%m/%Y')
     with st.container():
         st.title('Estadísticas Portal Empleos Públicos')
         st.text(f'Fecha Actualización: {date}')
@@ -650,8 +652,7 @@ if a=='Alta Dirección Pública':
 #----------------------------------------------------------------------------------------------------------------------
 if a=='Empleo Público':
    
-    df_concursos_eepp=df_conc_ep()
-    df_concursos_eepp['Year_Convocatoria']=pd.to_datetime(df_concursos_eepp['Fecha Inicio']).dt.year
+    
     
     estamento_mapping = {
     'Directiva': 'Directivos',
